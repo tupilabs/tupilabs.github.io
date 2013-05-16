@@ -1,9 +1,8 @@
 ---
-title: My new blog
+title: Blog
 layout: blog
-format: none
 ---
 
-{% for post in pagination.posts %}
+{% for post in blog.posts.in_category('blog') %}
 {% include 'partial_post.html' %}
 {% endfor %}

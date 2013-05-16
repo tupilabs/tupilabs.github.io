@@ -1,16 +1,75 @@
-{% extends "default.html" %}
-
-{% block content %}
-
-{{ content|raw }}
-
-<div id="navigation">
-	{% if pagination.prev_page %}
-		&laquo;&nbsp;<a href="{{ pcurl(pagination.prev_page) }}" id="navigation-next">Newer Entries</a>
-	{% endif %}
-	{% if pagination.next_page %}
-		<a href="{{ pcurl(pagination.next_page) }}" id="navigation-next">Older Entries</a>&nbsp;&raquo;
-	{% endif %}
-</div>
-
-{% endblock %}
+{% import 'macros_google.html' as google %} {% import "macros_less.html"
+as less %}
+<!doctype html>
+<html>
+<head>
+<title>{{ site.title }}{% if page.title is not empty %} &mdash;
+	{{ page.title }}{% endif %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="{{ site.description }}" />
+<meta name="author" content="{{ site.author }}" />
+<meta name="generator" content="PieCrust {{ piecrust.version }}" />
+<meta name="template-engine" content="Twig" />
+<link rel="shortcut icon" type="image/x-icon"
+	href="{{site.root}}/favicon.ico">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!--[if lt IE 9]>
+   		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS2"
+	href="http://{{site.base_url}}/feed/rss.xml">
+<link rel="stylesheet" href="{{site.base_url}}css/bootstrap.css"
+	type="text/css" media="screen, projection" />
+<link rel="stylesheet"
+	href="{{site.base_url}}css/bootstrap-responsive.css" type="text/css"
+	media="screen, projection" />
+<link rel="stylesheet" href="{{site.base_url}}css/tupilabs.css"
+	type="text/css" media="screen, projection" />
+<!--[if lt IE 8]>
+	    <link rel="stylesheet" href="{{site.root}}css/blueprint/ie.css" type="text/css" media="screen, projection" />
+	<![endif]-->
+{{ google.webfonts('Droid+Serif:700italic') }} {{ less.stylesheet(baker,
+server, site.root ~ 'css/default') }} {{ less.less_js(baker, server,
+site.root) }}
+</head>
+<body>
+	{% block header %}
+	<div class='topbar'>
+		<div class='container'>
+			<div class='logo'>
+				<a href='{{site.root}}'>{{ site.title }}</a>
+			</div>
+			<ul class="nav" id="rss">
+				<li>
+					<!-- add language chooser -->
+				</li>
+				<li><a href="{{site.root}}/feed/rss.xml"><img
+						src="{{site.base_url}}img/rss-32x32.png" width="32px"
+						height="32px" /></a></li>
+			</ul>
+			<div class="menu-primary-navigation-container">
+				<ul id="menu-primary-navigation" class="nav">
+					<li class="menu-work"><a href="{{ pcurl('work') }}">Work</a></li>
+					<li class="menu-blog"><a href="{{ pcurl('blog') }}">Blog</a></li>
+					<li class="menu-contact"><a href="{{ pcurl('contact') }}">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+	<section id="sec_content">
+		<div id="content" class="container content-fluid">
+			<div class="row-fluid">
+				<div id="main" class="span8" role="main">
+					{{ content|raw }}
+				</div>
+				<!-- /#main -->
+			</div>
+		</div>
+		<!-- /#content -->
+	</section>
+	{% block footer %} {% include 'footer.html' %} {% endblock %} {{
+	piecrust.debug_info|raw }}
+</body>
+</html>

@@ -1,0 +1,242 @@
+body {
+    font-family: Ubuntu, Helvetica, Tahoma, sans-serif;
+    background-image: url('../img/asfalt.png');
+}
+.container {
+    width: 90%;
+}
+/*a {
+    color: #E6E6E6;
+    text-decoration: underline;
+}
+a:hover {
+    color: #D5D5D5;
+    text-decoration: underline;
+}*/
+.topbar {
+    height: 75px;
+    line-height: 75px;
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-index: 9;
+    padding-top: 10px;
+    background-color: white;
+    background-image: url('../img/retina_dust.png');
+}
+.topbar a {
+    color: #08C;
+    text-decoration: none;
+}
+.logo {
+    display: inline;
+    float: left;
+}
+.logo a {
+    text-indent: -5000em;
+    background-image: url('../img/tupilabs.png');
+    background-repeat: no-repeat;
+    width: 240px;
+    height: 60px;
+    display: inline-block;
+}
+.topbar .nav {
+    display: inline;
+    float: right;
+    font-family: Ubuntu, Helvetica, Tahoma, sans-serif;
+    font-size: 20px;
+}
+.topbar .nav li {
+    float: left;
+    line-height: 75px;
+    margin-left: 10px;
+}
+.topbar .nav li a {
+    display: inline;
+}
+.topbar .nav li a:hover {
+    background: none;
+    color: #DA4F49;
+    text-decoration: underline;
+}
+section#main {
+    padding: 3em 0 3.75em 0;
+    border-bottom: 1px solid #E1E1E1;
+    background-image: url('../img/use_your_illusion.png');
+    color:#E6E6E6;
+}
+section#main h1 {
+    font-size: 4.0em;
+    line-height: 1.4em;
+    white-space: nowrap;
+}
+section#main h2 {
+    font-size: 2.5em;
+    line-height: 1.4em;
+}
+#sec {
+    border-bottom: 1px solid #494D55;
+    padding: 15px 0px 15px 0px;
+    background-image: url('../img/retina_dust.png');
+}
+#sec h3 {
+    font-family: 'Droid Serif', serif;
+    font-weight: 700;
+    font-style: italic;
+    border-bottom: 1px solid #F2F2F2;
+}
+#sec_content { 
+    background-color: #FFFFFF;
+    padding: 20px 0px 20px 0px;
+    margin: 0px;
+    background-image: url('../img/retina_dust.png');
+}
+#sec_content > div#content {
+    background-color: white;
+    padding: 10px; 
+}
+span.news {
+    background: transparent url('../img/globe.png') center center no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    padding-left: 10px;
+}
+span.blog {
+    background: transparent url('../img/speech_bubble.png') center center no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    padding-left: 10px;
+}
+span.ideas {
+    background: transparent url('../img/light-bulb.png') center center no-repeat;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    padding-left: 10px;
+}
+footer {
+    color:#CDCDCD;
+    padding-bottom: 40px;
+    font-size: 0.9em;
+}
+
+footer h3.green { 
+    color:#C5C5C5;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+footer a {
+    color: #46A546;
+    text-decoration: none;
+    font-weight: 700;
+}
+footer a:hover {
+    color: #DF8505;
+    text-decoration: underline;
+}
+footer .nav li a:hover {
+    background: none;
+    text-decoration: underline;
+}
+footer .nav li a {
+    display: inline;
+}
+#team { 
+    display: inline-block;
+}
+.person {
+    float: left;
+    padding-right: 8px;
+}
+
+article header time {
+    font-size: 0.8em;
+    color:#777777;
+}
+
+article p.author {
+    font-size: 0.8em;
+    color:#777777;
+}
+
+article div.entry-content p {
+}
+
+.box {
+    border: 1px solid #EEEEEE;
+    background-color:#FFFFFF;
+    padding: 10px;
+}
+
+div#main h1, .main_div h1 {
+    border-bottom: 2px dashed #BBBBBB;
+    padding-bottom: 6px;
+}
+
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+.center {
+    text-align: center;
+}
+
+div#lang_sel {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .topbar {
+      height: auto;
+      line-height: auto;
+  }
+  .topbar .nav{
+      height: auto;
+      margin: 0px;
+      padding: 0px;
+      border: 0px;
+      float: right;
+  }
+  .topbar .nav li {
+    float: left;
+    line-height: 40px;
+    margin-left: 10px;
+  }
+  .topbar .nav li:hover {
+      background:none;
+  }
+  section#main h1 {
+    font-size: 2.4em;
+    line-height: 1.4em;
+    white-space: normal;
+  }
+  section#main h2 {
+    font-size: 1.4em;
+    line-height: 1.4em;
+    white-space: normal;
+  }
+  #rss {
+      display: none;
+  }
+}

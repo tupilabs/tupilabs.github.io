@@ -1,13 +1,30 @@
 site:
-    title: Your New PieCrust Website
-    description: A sample website running with PieCrust
-    author: Anonymous
-    pretty_urls: false
+    title: TupiLabs
+    description: Innovation and Open Source
+    author: TupiLabs
+    pretty_urls: true
+    enable_gzip: false
+    cache_time: 0
     
 smartypants:
     enable: true
 
+server:
+    config_variants: 
+        default:
+            site: 
+                base_url: http://localhost/tupilabs.com/
+        live: 
+            site: 
+                base_url: http://localhost:8080/
+
 baker:
     skip_patterns:
         - /^index.php/
-
+    config_variants:
+        default:
+            site:
+                base_url: http://localhost/tupilabs.com/blog/
+        production: 
+            site: 
+                base_url: http://www.tupilabs.com/

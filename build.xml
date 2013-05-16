@@ -73,6 +73,8 @@
         <exec append="true" executable="${basedir}/tools/PieCrust/bin/chef">
         	<arg value="--root=${basedir}/site" />
         	<arg value="serve" />
+        	<!-- flag to use a different configuration for production -->
+        	<arg value="--config=live" />
         </exec>
     </target>
 	

@@ -1,0 +1,161 @@
+{% import 'macros_google.html' as google %} {% import "macros_less.html"
+as less %}
+<!doctype html>
+<html>
+<head>
+<title>{{ site.title }}{% if page.title is not empty %} &mdash;
+	{{ page.title }}{% endif %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="{{ site.description }}" />
+<meta name="author" content="{{ site.author }}" />
+<meta name="generator" content="PieCrust {{ piecrust.version }}" />
+<meta name="template-engine" content="Twig" />
+<link rel="shortcut icon" type="image/x-icon"
+	href="{{site.root}}/favicon.ico">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!--[if lt IE 9]>
+   		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  	<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS2"
+	href="http://{{site.base_url}}/feed/rss.xml">
+<link rel="stylesheet" href="{{site.base_url}}css/bootstrap.css"
+	type="text/css" media="screen, projection" />
+<link rel="stylesheet"
+	href="{{site.base_url}}css/bootstrap-responsive.css"
+	type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="{{site.base_url}}css/tupilabs.css"
+	type="text/css" media="screen, projection" />
+<!--[if lt IE 8]>
+	    <link rel="stylesheet" href="{{site.root}}css/blueprint/ie.css" type="text/css" media="screen, projection" />
+	<![endif]-->
+{{ google.webfonts('Droid+Serif:700italic') }} {{ less.stylesheet(baker,
+server, site.root ~ 'css/default') }} {{ less.less_js(baker, server,
+site.root) }}
+</head>
+<body>
+	{% block header %}
+	<div class='topbar'>
+		<div class='container'>
+			<div class='logo'>
+				<a href='{{site.root}}'>{{ site.title }}</a>
+			</div>
+			<ul class="nav" id="rss">
+				<li>
+					<!-- add language chooser -->
+				</li>
+				<li><a href="{{site.root}}/feed/rss.xml"><img
+						src="{{site.base_url}}img/rss-32x32.png" width="32px"
+						height="32px" /></a></li>
+			</ul>
+			<div class="menu-primary-navigation-container">
+				<ul id="menu-primary-navigation" class="nav">
+					<li class="menu-work"><a href="{{ pcurl('work') }}">Work</a></li>
+					<li class="menu-blog"><a href="{{ pcurl('blog') }}">Blog</a></li>
+					<li class="menu-contact"><a href="{{ pcurl('contact') }}">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	{% endblock %}
+	<section id="main">
+		<div id="content" class="container" style="position: relative">
+			<hgroup>
+				<h1>
+					<span style="color: #DA4F49">Innovation</span> and <span
+						style="color: #DA4F49">Open Source</span>
+				</h1>
+				<h2>
+					we innovate with Open Source to create<br> awesome
+					applications <a href="for_you">for you</a>.<br>
+				</h2>
+			</hgroup>
+		</div>
+		<!-- /#content -->
+	</section>
+	<section id="sec">
+		<div class="container container-fluid">
+			<div class="row-fluid">
+				<div class="span4">
+					<div class="box">
+						<h3>
+							News<span class="news">&nbsp;</span>
+						</h3>
+						{% for post in blog.posts.in_category('news').limit(3) %}
+						<article class="post type-post status-publish format-standard hentry">
+							<header>
+								<h5 class="entry-title">
+									<a href="{{ post.url }}" title="Permanent link">{{ post.title }}</a>
+								</h5>
+								<time class="updated" datetime="{{ post.date }}:{{ post.time }}">
+									Posted on {{ post.date }} at {{ post.time }}.
+								</time>
+							</header>
+							<div class="entry-content">
+								{{ post.content|raw }}
+							</div>
+						</article>
+						{% endfor %}
+						<p>
+							<a href="{{site.base_url}}news">More News</a>
+						</p>
+					</div>
+				</div>
+				<div class="span4">
+					<div class="box">
+						<h3>
+							Blog<span class="blog">&nbsp;</span>
+						</h3>
+						{% for post in blog.posts.in_category('blog') %}
+						<article class="post type-post status-publish format-standard hentry">
+							<header>
+								<h5 class="entry-title">
+									<a href="{{ post.url }}" title="Permanent link">{{ post.title }}</a>
+								</h5>
+								<time class="updated" datetime="{{ post.date }}:{{ post.time }}">
+									Posted on {{ post.date }} at {{ post.time }}.
+								</time>
+							</header>
+							<div class="entry-content">
+								{{ post.content|raw }}
+							</div>
+						</article>
+						{% endfor %}
+						<p>
+							<a href="{{site.base_url}}blog">More Posts</a>
+						</p>
+					</div>
+				</div>
+				<div class="span4">
+					<div class="box">
+						<h3>
+							Ideas<span class="ideas">&nbsp;</span>
+						</h3>
+						{% for post in blog.posts.in_category('ideas').limit(3) %}
+						<article class="post type-post status-publish format-standard hentry">
+							<header>
+								<h5 class="entry-title">
+									<a href="{{ post.url }}" title="Permanent link">{{ post.title }}</a>
+								</h5>
+								<time class="updated" datetime="{{ post.date }}:{{ post.time }}">
+									Posted on {{ post.date }} at {{ post.time }}.
+								</time>
+							</header>
+							<div class="entry-content">
+								{{ post.content|raw }}
+							</div>
+						</article>
+						{% endfor %}
+						<p>
+							<a href="{{site.base_url}}ideas">More Ideas</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% block footer %}
+	{% include 'footer.html' %}
+	{% endblock %} {{ piecrust.debug_info|raw }}
+</body>
+</html>
