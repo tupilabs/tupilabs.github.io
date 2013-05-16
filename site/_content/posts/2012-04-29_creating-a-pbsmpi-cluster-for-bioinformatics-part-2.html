@@ -1,0 +1,45 @@
+---
+title: 'Creating a PBS/MPI cluster for bioinformatics – Part 2'
+id: 389
+author: kinow
+tags: 
+    - jenkins
+    - bioinformatics
+time: '16:51:12'
+category: blog
+---
+<p>In the <a href="{{site.base_url}}creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="Creating a PBS/MPI cluster for bioinformatics – Part 1">previous post</a> of this series we saw how to configure a basic network for our small cluster. Now it is time to work on the <strong>MPI</strong> stuff. Our cluster will be a <strong><a href="http://en.wikipedia.org/wiki/Beowulf_cluster" title="Beowulf Cluster Wiki entry">Beowulf cluster</a></strong>. This kind of cluster is composed of <strong>commodity computers</strong>, connected via network sharing resources and programs. And in the next post, we will see how to include a <em>batch queuing system</em> to control the resource utilization in our cluster.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Message_Passing_Interface" title="Message Passing Interface Wiki entry">MPI</a> is not a library. MPI is actually a standard. When you find an RESTful application, REST is only a standard, and you have different libraries that implement this standard (Jersey, JBoss Reast Easy, CodeIgniter+Rest Controllers, and so it goes). With MPI it is not different. There are different implementations of the MPI specification. We suggest you to read <a href="http://techtinkering.com/2009/12/02/setting-up-a-beowulf-cluster-using-open-mpi-on-linux/" title="Setting Up a Beowulf Cluster using OpenMPI on Linux">this tutorial</a> that, although it was written in 2009, it uses Debian (operational system we are using in BioUno cluster) and is very well written and concise. Basically, you have to install <a href="http://open-mpi.org/" title="OpenMPI">OpenMPI</a>, one of the existing MPI libraries. And if you followed the instructions in <a href="{{site.base_url}}creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="Creating a PBS/MPI cluster for bioinformatics – Part 1">part 1</a> of this series, then you already have SSH correctly configured in your computers.</p>
+
+<!--more-->
+
+<p><code># /etc/mpi_hostfile
+# Here, the master is a quad-core, run 'grep processor /proc/cpuinfo' to see yours cpu info
+localhost slots=6
+# Slaves
+# che is a dual-core
+che slots=2
+</code></p>
+
+<h2>Installing MrBayes with MPI support and Beagle Lib</h2>
+
+<p>Now that you already have MPI installed and have created a <strong>MPI host file</strong>, as seen above, lets install <a href="http://mrbayes.sourceforge.net/" title="MrBayes">MrBayes</a>. But first, <a href="http://code.google.com/p/beagle-lib/" title="Beagle Lib">Beagle</a>. Beagle is a "<em>high-performance library that can perform the core calculations at the heart of most Bayesian and Maximum Likelihood phylogenetics packages</em>". Basically, <strong>Beagle has some highly optimized code for calculations</strong> used in MrBayes and other tools, and can also use <strong>GPUs</strong>. Unfortunately our cluster has only cheap graphic video cards, but in the future we will try extending this series to add a comparison using GPUs.</p>
+
+<p>Follow the instructions from Beagle website to install it in your Linux machine. Don't forget to check that it found your Java or GPU (in case you are using it) and also check your shared libraries and all before going to the next step.</p>
+
+<p>Download MrBayes tar.gz file from its website, decompress it and go to the src folder. You can simply run <code>autoconf</code>, <code>./configure --enable-mpi=yes</code> and <code>make</code>. If everything works out fine, you will have the executable <strong>mb</strong> ready to be executed. Move this executable to your NFS exported directory, so that the slave nodes can access it too.</p>
+
+<h2>Running your first analysis with MrBayes</h2>
+
+<p>Now you are almost done. Download our example Nexus file prepared to run MrBayes as batch from <a href="https://github.com/tupilabs/biology-data/blob/master/mrbayes/primates.nex" title="primates.nex Nexus file prepared to run MrBayes as batch">https://github.com/tupilabs/biology-data/blob/master/mrbayes/primates.nex</a> and execute the following command.</p>
+
+<p><code>/export/biouno/mrbayes_3.2.0/src/mb /export/biouno/biology-data/mrbayes/primates.nex</code></p>
+
+<p>You should see MrBayes analysis output, as well as a primates.nex.p and primates.nex.t files, containing information on probability and phylogenetic trees. Now lets try running MrBayes in parallel.</p>
+
+<p><code>mpirun -np 3 --hostfile /etc/mpi_hostfile /export/biouno/mrbayes_3.2.0/src/mb /export/biouno/biology-data/mrbayes/primates.nex < /dev/null > log.txt</code></p>
+
+<p>In the example above, MPI will execute MrBayes only in the master, as we required 3 processors, and the master has 4. You can try increasing the number of processors, but you will have to increase the number of chains in the Nexus file as well. The focus in BioUno is the Java interface to call MrBayes and control the cluster from within Jenkins. So benchmarking is not being discussed here. However, for what it is worth, running in 1 processor the analysis took approximately 3.5 seconds and less than 1 second using 3 processors.</p>
+
+<p>In the next part we will configure the job queuing system to run <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Structure">structure</a>. Stay tuned.</p>

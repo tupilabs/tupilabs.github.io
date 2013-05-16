@@ -1,0 +1,17 @@
+---
+title: 'Create a tool to find out the average test coverage in Jenkins plug-ins'
+id: 1008
+author: kinow
+tags: 
+    - jenkins
+    - coverage
+time: '18:52:09'
+category: ideas
+---
+<p>This idea popped up while chatting with <a href="https://github.com/darkrift" title="https://github.com/darkrift">Richard Lavoie</a>. I was telling him about selenium tests for plug-ins, <a href="http://www.snakebite.org" title="SnakeBite">snakebite</a> one thing leads to another, and then came the idea of measuring the coverage in plug-ins.</p>
+
+<p>Basically, this tool would have to iterate over the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins" title="Jenkins Plugins">600+ plug-ins</a>, and trigger a <code>mvn test</code> command. Then it would have to save the coverage information somewhere, and plot a graph, or generate some report about it.</p>
+
+<img src="http://198.58.106.34/assets/jenkins_no_bg-191x300.png" alt="" title="jenkins_no_bg" width="191" height="300" class="aligncenter size-medium wp-image-918" />
+
+<p>Depending on the machine, probably this tool could spawn more than 1 thread for doing this. Even then, it would still take quite a while for processing all the plug-ins.</p>

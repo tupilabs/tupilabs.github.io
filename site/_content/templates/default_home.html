@@ -67,7 +67,7 @@ site.root) }}
 				</h1>
 				<h2>
 					we innovate with Open Source to create<br> awesome
-					applications <a href="for_you">for you</a>.<br>
+					applications <a href="for_you">for you</a><br>
 				</h2>
 			</hgroup>
 		</div>
@@ -84,9 +84,9 @@ site.root) }}
 						{% for post in blog.posts.in_category('news').limit(3) %}
 						<article class="post type-post status-publish format-standard hentry">
 							<header>
-								<h5 class="entry-title">
-									<a href="{{ post.url }}" title="Permanent link">{{ post.title }}</a>
-								</h5>
+								<h2 class="entry-title">
+                                    <a href="{{ post.url }}" title="Permanent link">{{ post.title }}</a>
+                                </h2>
 								<time class="updated" datetime="{{ post.date }}:{{ post.time }}">
 									Posted on {{ post.date }} at {{ post.time }}.
 								</time>
@@ -106,12 +106,12 @@ site.root) }}
 						<h3>
 							Blog<span class="blog">&nbsp;</span>
 						</h3>
-						{% for post in blog.posts.in_category('blog') %}
+						{% for post in blog.posts.in_category('blog').limit(3) %}
 						<article class="post type-post status-publish format-standard hentry">
 							<header>
-								<h5 class="entry-title">
+								<h2 class="entry-title">
 									<a href="{{ post.url }}" title="Permanent link">{{ post.title }}</a>
-								</h5>
+								</h2>
 								<time class="updated" datetime="{{ post.date }}:{{ post.time }}">
 									Posted on {{ post.date }} at {{ post.time }}.
 								</time>
@@ -134,9 +134,9 @@ site.root) }}
 						{% for post in blog.posts.in_category('ideas').limit(3) %}
 						<article class="post type-post status-publish format-standard hentry">
 							<header>
-								<h5 class="entry-title">
-									<a href="{{ post.url }}" title="Permanent link">{{ post.title }}</a>
-								</h5>
+								<h2 class="entry-title">
+                                    <a href="{{ post.url }}" title="Permanent link">{{ post.title }}</a>
+                                </h2>
 								<time class="updated" datetime="{{ post.date }}:{{ post.time }}">
 									Posted on {{ post.date }} at {{ post.time }}.
 								</time>

@@ -3,8 +3,8 @@ site:
     description: Innovation and Open Source
     author: TupiLabs
     pretty_urls: true
-    enable_gzip: false
-    cache_time: 0
+    enable_gzip: true
+    debug: true
     
 smartypants:
     enable: true

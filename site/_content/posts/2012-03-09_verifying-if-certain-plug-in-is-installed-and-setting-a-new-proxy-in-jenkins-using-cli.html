@@ -1,0 +1,45 @@
+---
+title: 'Verifying if certain plug-in is installed and setting a new proxy in Jenkins using CLI'
+id: 156
+author: kinow
+tags: 
+    - jenkins
+time: '18:04:05'
+category: blog
+---
+What ho lads!
+
+Few days ago I was talking with Olivier Renault [1] about few things that he needs to deploy JinFeng [1] using a non-interactive command line. JinFeng is an integration and testing platform built on top of many Open Source tools, like TestLink [2] and Jenkins [3]. One of the features he needs is Test Steps in TestLink XML-RPC API (I'm working on this, and hopefully will be able to provide a patch for TestLink 1.9.4).
+<!--more-->
+<h2>Installing plug-ins from command line</h2>
+Jenkins only needs a JVM to be executed but JinFeng also needs TestLink plug-in installed. So the trick here is to use Jenkins CLI [4] to tell Jenkins we want it to download and install the plug-in. Jenkins CLI is a command line client for Jenkins.
+
+The command to install plug-ins is quite simple and intuitive.
+
+<code>java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin testlink</code>
+<h2>Additional hacks #1: Checking if the plug-in is already installed</h2>
+I haven't had the chance to try JinFeng 0.2 yet, but I believe its install script will be able to use existing Jenkins or TestLink installations. So we need to check if TestLink plug-in is already installed, right?
+
+Jenkins CLI has some built-in commands, like install-plugin. But it doesn't have a built-in command to check if a plug-in is already installed. So a workaround is to use the groovy command, that executes Groovy scripts in Jenkins (you may find convenient to use the groovysh command too, to execute your Groovy scripts, or http://localhost:8080/script for a web Groovy console).
+
+Here is a sample script that checks if a plug-in is already installed or not.
+
+[gist]<script src="https://gist.github.com/2008351.js"></script>[/gist]
+
+Now you can execute this script as following: <code>cat ~/script1.groovy | java -jar jenkins-cli.jar -s http://localhost:8080 groovy =</code> It will output 1 if Jenkins has the plug-in installed, or 0 otherwise.
+<h2>What if I'm using a proxy?</h2>
+That's doable as well. Here's another script for setting the proxy settings in Jenkins.
+
+[gist]<script src="https://gist.github.com/2008358.js"> </script>[/gist]
+
+You may be wondering how I'm creating these scripts. I'll blog about that later. But here's a quick explanation. I checked out Jenkins sources from GitHub, then imported the project in Eclipse. Then I create an empty class there, with a main method. Finally, I write what I would like to have in a Groovy script, but in Java. The last step is just convert it to Groovy, and voilà!
+
+Hope it helps other people too. If you use many scripts for administering Jenkins, you may be interested in Scriptler plug-in [5] too. They even have a scripts repository. Awesome, no? You can download the scripts mentioned in this post from there too. I simply love Jenkins community.
+
+Cheers
+
+[1] <a href="http://www.sqaopen.net/">http://www.sqaopen.net/</a>
+[2] <a href="http://www.teamst.org">http://www.teamst.org</a>
+[3] <a href="http://www.jenkins-ci.org">http://www.jenkins-ci.org</a>
+[4] <a href="https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+CLI">https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+CLI</a>
+[5] <a href="http://wiki.hudson-ci.org/display/HUDSON/Scriptler+Plugin">http://wiki.hudson-ci.org/display/HUDSON/Scriptler+Plugin</a>

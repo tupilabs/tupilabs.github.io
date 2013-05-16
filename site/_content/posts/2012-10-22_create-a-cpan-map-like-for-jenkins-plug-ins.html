@@ -1,0 +1,34 @@
+---
+title: 'Create a Map of Jenkins Plug-ins (similar to Map of CPAN)'
+id: 871
+author: kinow
+tags: 
+    - perl
+    - cpan
+    - jenkins
+time: '15:14:42'
+category: ideas
+---
+<p>There's a plethora of plug-ins for <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a>, that's well known. But there are way more modules in <a href="http://www.cpan.org" title="CPAN">CPAN</a>. One way to visualize all the modules in CPAN is with <a href="http://mapofcpan.org/" title="Map of CPAN">Map of CPAN</a>.</p>
+
+<p>The idea here is to create similar map for Jenkins plug-ins (Map of Jenkins plug-ins). It could use the plug-in type (plugin-labels) and show its growth through the time. That would be interesting, especially if it was possible to create a video (like this one below) showing what happened since the fork from <a href="http://hudson-ci.org/" title="Hudson CI">Hudson</a>.</p>
+
+<p class="center"><iframe src="http://player.vimeo.com/video/51893508" width="500" height="328" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p> <p><a href="http://vimeo.com/51893508">Map of CPAN – The Movie</a> from <a href="http://vimeo.com/grantm">Grant McLean</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+
+<p>The code for the CPAN map generator is hosted at GitHub: <a href="https://github.com/grantm/cpan-map">https://github.com/grantm/cpan-map</a>. And it uses the <a href="http://en.wikipedia.org/wiki/Hilbert_curve" title="Hilbert curve">Hilbert curve</a> for ploting those geometric forms.</p>
+
+<hr/>
+
+<p><em>Update 26, oct. 2012</em></p>
+
+<p>The map generation is started with a Perl script cpan-map that downloads a tar.gz file from <a href="https://metacpan.org/" title="MetaCPAN">MetaCPAN</a> and creates a map of namespaces and its modules. Then it creates an image with Hilbert curves. It assigns different colors for each namespace.</p>
+
+<p>For Jenkins plug-ins map we could use <em>update-center.json</em> file, and group plug-ins by its label. We could get the author picture from Gravatar (like Map of CPAN), and use the same interface of Map of CPAN - it uses <a href="http://sammyjs.org/" title="SammyJS">sammy.js</a> and <a href="http://www.jquery.com" title="jQuery">jQuery</a>.</p>
+
+<p>Links for Hilbert curves and Java</p>
+
+<ul>
+	<li><a href="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html" title="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html"></a></li>
+	<li><a href="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html" title="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html"></a></li>
+</ul>
+

@@ -1,0 +1,12 @@
+---
+title: News
+id: 679
+author: kinow
+tags: {  }
+date: '2012-10-01'
+time: '22:48:58'
+---
+
+{% for post in blog.posts.in_category('news') %}
+{% include 'partial_post.html' %}
+{% endfor %}

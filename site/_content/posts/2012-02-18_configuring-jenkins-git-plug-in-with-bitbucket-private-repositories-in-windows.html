@@ -1,0 +1,65 @@
+---
+title: 'Configuring Jenkins Git Plug-in with BitBucket private repositories in Windows'
+id: 137
+author: kinow
+tags: 
+    - jenkins 
+time: '04:14:36'
+category: blog
+---
+Tell me about writing a specific title. This is my first entry here in TupiLabs. Today I will show you how to configure <a title="Jenkins" href="http://www.jenkins-ci.org">Jenkins</a> Git Plug-in, to retrieve sources from a private repository hosted at <a title="BitBucket" href="http://www.bitbucket.org">BitBucket</a>. Phew. Ah, and all this using a Windows server.
+
+<strong><a href="#tldr">TL;DR</a></strong>: ssh -vT &lt;host&gt; displays where it is looking for your .ssh directory. Probably you will want check permissions and the %HOME% environment variable too. In case your job is getting stuck, click here to skip the introduction text.
+<h2>Motivation</h2>
+<ul>
+	<li>At TupiLabs, we have repositories hosted at <a title="GitHub" href="http://www.github.com">GitHub </a>(public repositories) and BitBucket (mix of public and private repositories).</li>
+	<li>We use Jenkins for many activities. Not only as a build server, but as a <em>function</em> in our development environment. We will talk about that later ;-)</li>
+	<li>We use Jenkins, Mac and Windows for development.</li>
+	<li>We have jobs running at <a title="Linode" href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4">Linode</a> with <a title="Ubuntu" href="http://www.ubuntu.com">Ubuntu</a>+Jenkins+Git Plug-in+BitBucket.</li>
+	<li>There aren't many resources for configuring Jenkins and BitBucket in Windows.</li>
+	<li>I have a good friend of mine who would like to read about it. Heck! That's enough to write about it :-D</li>
+</ul>
+<!--more-->
+<h2>Requirements</h2>
+It's really simple to set up your environment for this integration. All you'll need is:
+<ul>
+	<li>Jenkins</li>
+	<li>Jenkins Git Plug-in</li>
+	<li>An account in BitBucket with a private repository</li>
+	<li>msysgit (a.k.a. Git for Windows)</li>
+	<li>Windows XP or later</li>
+</ul>
+I assume you are used with Jenkins, and that you are able to create a private repository in BitBucket and push projects from the command line using git and SSH keys.
+<h2>Righto so, hammer-time!</h2>
+Log in to BitBucket and, in case you don't any private repositories yet, create one. The process to create a private repository is the same to create a public one, except that you need to remember to select the <em>Private</em> check box.
+
+<a href="http://198.58.106.34/assets/001.png"><img class="aligncenter size-medium wp-image-140" title="001" src="http://198.58.106.34/assets/001-300x240.png" alt="" width="300" height="240" /></a>
+
+Now you will need to configure Git for Windows. You can find the instructions for doing so at <a title="Win set up git" href="http://help.github.com/win-set-up-git/">this</a> GitHub help page (strange use a GitHub help page, to configure a BitBucket repository in Windows, no? :-) Few points to take note here. Install git in a directory with no spaces in its name and, if possible, check the option to include all Git tools to your Windows Path (that can make things easier later). The instructions in GitHub are equivalent, to what you have to do in BitBucket, specially include your keys to your profile in BitBucket.
+
+<a href="http://198.58.106.34/assets/002.png"><img class="aligncenter size-medium wp-image-142" title="002" src="http://198.58.106.34/assets/002-300x145.png" alt="" width="300" height="145" /></a>
+
+<a name="tldr"></a>At this point, you should have a private repository in BitBucket and your Windows machine configured to access this repository. Git delegates authentication to SSH, using SSH keys. Push a sample project to BitBucket. We will use this project later in Jenkins.
+
+<a href="http://198.58.106.34/assets/005.png"><img class="aligncenter size-medium wp-image-144" title="005" src="http://198.58.106.34/assets/005-300x261.png" alt="" width="300" height="261" /></a>
+
+The first time you connect to your private repository, you will notice git asks you to include it to the list of known hosts. Write y/yes and git won't ask you that again anymore. You have to take care, cause in case you haven't added (either manually, or running git in a prompt) the host to the list of known hosts, your Job in Jenkins may get stuck.
+
+Create a new user, <em>jenkins</em>, and add it to the Administrators group. Start Jenkins, install <a title="Jenkins Git Plug-in" href="https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin">Jenkins Git Plug-in</a> (the Wiki has a lot of interesting stuff).Configure Jenkins to execute as service and log on with the user you have just created. Now log in to Windows using the jenkins user, and try to access your private repository from command line. You can try a simple <em>git pull</em>.
+
+<a href="http://198.58.106.34/assets/011.png"><img class="aligncenter size-medium wp-image-147" title="011" src="http://198.58.106.34/assets/011-266x300.png" alt="" width="266" height="300" /></a>
+
+Still logged in as jenkins, execute ssh -vT git@github.com. I know, I know, here I am again, mixing GitHub and BitBucket :-) Pay attention to what is written to the console screen. Probably you'll find a line similar to <em>debug1: identity file /c/home/bruno/.ssh/identity type -1</em>. <em>/c/home/bruno/.ssh</em> is the repository where ssh is looking for SSH keys.
+
+This is not good. I know, that I have placed my user's home directory to <em>c:homebruno</em> (my normal account ID is <em>bruno</em>). When Jenkins is running as <em>jenkins</em> user, it may have trouble using that keys. So what I'm going to do is move these keys somewhere else, like <em>c:optjenkins.ssh</em>, and will update my <em>HOME</em> environment variable.
+
+<em>HOME</em> environment variable? Yup. msysigt, or Git for Windows, uses MingW, which by its turn uses this environment variable to create a virtual file structure similar to the one of *nix systems. Update the <em>HOME</em> environment, open a new console (so that it will load the new value) and execute <em>ssh -vT git@github.com</em> again, and confirm that it's picking your new value. Time to log off <em>jenkins</em> user, and log on again with your normal user.
+
+Create a new job in Jenkins and configure it to use your private repository in Jenkins. Execute it and, if everything is fine, you will see something similar to the following screen.
+
+<a href="http://198.58.106.34/assets/0081.png"><img class="aligncenter size-medium wp-image-148" title="008" src="http://198.58.106.34/assets/0081-300x139.png" alt="" width="300" height="139" /></a>
+
+Not it's time to install your plug-ins, prepare your scripts and put Jenkins to rock in and build awesome software! I hope you found this post interesting. Feel free to send comments, suggestions or any kind of feedback :-)
+
+All the best,
+Bruno
