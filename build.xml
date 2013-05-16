@@ -39,7 +39,7 @@
     <target name="blog" depends="clean" description="Create static blog">
     	<!-- executes piecrust/bin/chef reading from the site directory 
     	     and writing to blog. The blog directory is not versioned.  -->
-        <exec append="true" executable="${basedir}PieCrust/bin/chef">
+        <exec append="true" executable="${basedir}/tools/PieCrust/bin/chef">
         	<arg value="--root=${basedir}/site" />
         	<arg value="bake" />
         	<arg value="--output=${basedir}/blog" />
@@ -54,7 +54,7 @@
     <target name="blog-dist" depends="clean" description="Create static blog for distribution">
     	<!-- executes piecrust/bin/chef reading from the site directory 
     	     and writing to blog. The blog directory is not versioned.  -->
-        <exec append="true" executable="${basedir}/PieCrust/bin/chef">
+        <exec append="true" executable="${basedir}/tools/PieCrust/bin/chef">
             <arg value="--root=${basedir}/site" />
             <arg value="bake" />
             <arg value="--output=${basedir}/blog" />
@@ -70,7 +70,7 @@
          ================================= -->
     <target name="blog-run" description="Runs static blog and watch for modifications">
     	<!-- 8080 is the default port -->
-        <exec append="true" executable="${basedir}/PieCrust/bin/chef">
+        <exec append="true" executable="${basedir}/tools/PieCrust/bin/chef">
         	<arg value="--root=${basedir}/site" />
         	<arg value="serve" />
         </exec>
