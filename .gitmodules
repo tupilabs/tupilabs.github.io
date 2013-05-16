@@ -1,3 +1,3 @@
-[submodule "PieCrust"]
-	path = PieCrust
-	url = ./tools/PieCrust/
+[submodule "tools/PieCrust"]
+	path = tools/PieCrust
+	url = git@github.com:ludovicchabant/PieCrust.git
