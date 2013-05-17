@@ -8,42 +8,101 @@ tags:
 time: '02:55:42'
 category: blog
 ---
-<p>While we worked on our <a href="{{site.base_url}}creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="Creating a PBS/MPI cluster for bioinformatics – Part 1">small internal cluster</a> set up, we used <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> for running structure jobs in batch. This post has a simple comparison of web applications that can be used for monitoring a PBS cluster. This is a very simple comparison, and the information may not be sufficient for you to decide whether you should use it or not in your computer facility.</p>
+<p>
+ While we worked on our <a href="{{site.base_url}}creating-a-pbsmpi-cluster-for-bioinformatics-part-1/"
+  title="Creating a PBS/MPI cluster for bioinformatics – Part 1">small internal cluster</a> set up, we used <a
+  href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> for running structure
+ jobs in batch. This post has a simple comparison of web applications that can be used for monitoring a PBS cluster.
+ This is a very simple comparison, and the information may not be sufficient for you to decide whether you should use it
+ or not in your computer facility.
+</p>
 
-<p>We found tools with a simple query in SourceForge.net. We looked up <em>pbs</em>, and selected three tools. They are <a href="http://sourceforge.net/projects/pbsclusterviz/?source=directory" title="PBS Viz Cluster">PBS Viz Cluster 0.6a</a>, <a href="http://sourceforge.net/projects/torquemon/?source=directory" title="Torque Web Monitor">Torque Web Monitor 1.0</a> and <a href="http://sourceforge.net/projects/myjam/?source=directory" title="myJAM">myJAM 2.4.7-3191</a>. The hardware used is not being taken in account in this comparison, but for what it is worth, we have a Core i5 quad core, with 6GB of memory and 400GB disk. The operational system is Debian Squeeze, and the web server an Apache.</p>
+<p>
+ We found tools with a simple query in SourceForge.net. We looked up <em>pbs</em>, and selected three tools. They are <a
+  href="http://sourceforge.net/projects/pbsclusterviz/?source=directory" title="PBS Viz Cluster">PBS Viz Cluster
+  0.6a</a>, <a href="http://sourceforge.net/projects/torquemon/?source=directory" title="Torque Web Monitor">Torque Web
+  Monitor 1.0</a> and <a href="http://sourceforge.net/projects/myjam/?source=directory" title="myJAM">myJAM 2.4.7-3191</a>.
+ The hardware used is not being taken in account in this comparison, but for what it is worth, we have a Core i5 quad
+ core, with 6GB of memory and 400GB disk. The operational system is Debian Squeeze, and the web server an Apache.
+</p>
 
 <!--more-->
 
 <h2>PBS Viz Cluster</h2>
 
-<p>PBS Viz Cluster is a desktop application that shows a 3D representation of your cluster usage. The graphical interface is very beautiful. If you are used to applications like <a href="http://www.phpmyadmin.net/" title="phpMyAdmin">phpMyAdmin</a>, it may be hard to get used to this tool. Or sometimes you don't have access to your cluster, like when you leave office to home. In a case like this, you wouldn't be able to view your cluster status. </p>
+<p>
+ PBS Viz Cluster is a desktop application that shows a 3D representation of your cluster usage. The graphical interface
+ is very beautiful. If you are used to applications like <a href="http://www.phpmyadmin.net/" title="phpMyAdmin">phpMyAdmin</a>,
+ it may be hard to get used to this tool. Or sometimes you don't have access to your cluster, like when you leave office
+ to home. In a case like this, you wouldn't be able to view your cluster status.
+</p>
 
-<p><a href="http://198.58.106.34/assets/262114.jpg"><img src="http://198.58.106.34/assets/262114-300x225.jpg" alt="" title="262114" width="300" height="225" class="aligncenter size-medium wp-image-574" /></a></p>
+<p>
+ <a href="{{site.base_url}}img/posts/2012-06-30_comparison-of-pbs-cluster-monitoring-applications/262114.jpg"><img src="{{site.base_url}}img/posts/2012-06-30_comparison-of-pbs-cluster-monitoring-applications/262114.jpg" alt=""
+  title="262114" width="300" height="225" class="aligncenter size-medium wp-image-574" /></a>
+</p>
 
-<blockquote>PBS Cluster Viz is a project to display information useful to admins and users about a computing cluster managed by a PBS-compatible resource manager. Information includes load and job distribution. Interactive as well as static output is available. It is licensed under GPL license.</blockquote>
+<blockquote>PBS Cluster Viz is a project to display information useful to admins and users about a
+ computing cluster managed by a PBS-compatible resource manager. Information includes load and job distribution.
+ Interactive as well as static output is available. It is licensed under GPL license.</blockquote>
 
 <h2>Torque Web Monitor</h2>
 
-<p>Probably this is the simplest of the three tools. It is a Python web application. You run your scripts as CGI, but there is a dependency of PBS python module. You can customize the logo displayed quite easily, and the application uses no database, but there is a configuration file that you must put somewhere in your server (in our installation it is in <em>/etc/pbswebmon.conf</em>.</p>
+<p>
+ Probably this is the simplest of the three tools. It is a Python web application. You run your scripts as CGI, but
+ there is a dependency of PBS python module. You can customize the logo displayed quite easily, and the application uses
+ no database, but there is a configuration file that you must put somewhere in your server (in our installation it is in
+ <em>/etc/pbswebmon.conf</em>.
+</p>
 
-<p><a href="/assets/Screenshot-from-2012-06-30-022923-e1341035863837.png"><img src="{{site.base_url}}assets/Screenshot-from-2012-06-30-022923-300x136.png" alt="" title="Screenshot from 2012-06-30 02:29:23" width="300" height="136" class="aligncenter size-medium wp-image-577" /></a></p>
+<p>
+ <a href="{{site.base_url}}img/posts/2012-06-30_comparison-of-pbs-cluster-monitoring-applications/Screenshot-from-2012-06-30-022923-e1341035863837.png"><img
+  src="{{site.base_url}}img/posts/2012-06-30_comparison-of-pbs-cluster-monitoring-applications/Screenshot-from-2012-06-30-022923-e1341035863837.png" alt=""
+  title="Screenshot from 2012-06-30 02:29:23" width="300" height="136" class="aligncenter size-medium wp-image-577" /></a>
+</p>
 
-<blockquote>Interactive web monitor for PBS/Torque batch systems, focused on providing queue and detailed job information for users.</blockquote>
+<blockquote>Interactive web monitor for PBS/Torque batch systems, focused on providing queue and detailed
+ job information for users.</blockquote>
 
-<p>The web interface is very simple, and perfect for simple monitoring of your cluster. It displays information about your nodes, queues, users and jobs. It is licensed under the <em>GPL license</em>.</p>
+<p>
+ The web interface is very simple, and perfect for simple monitoring of your cluster. It displays information about your
+ nodes, queues, users and jobs. It is licensed under the <em>GPL license</em>.
+</p>
 
 <h2>myJAM</h2>
 
-<p>This is a web application, so if you are used to this kind of applications, or if you need to access your application anywhere, this may be a good choice for you. The web interface is <strong>not</strong> a modern 2.0 application, but is very neat, simple and intuitive. myJAM is a PHP application that stores its information in a MySQL database.</p>
+<p>
+ This is a web application, so if you are used to this kind of applications, or if you need to access your application
+ anywhere, this may be a good choice for you. The web interface is <strong>not</strong> a modern 2.0 application, but is
+ very neat, simple and intuitive. myJAM is a PHP application that stores its information in a MySQL database.
+</p>
 
-<p><a href="/assets/Screenshot-from-2012-06-30-021845-e1341035841168.png"><img src="{{site.base_url}}assets/Screenshot-from-2012-06-30-021845-300x136.png" alt="" title="Screenshot from 2012-06-30 02:18:45" width="300" height="136" class="aligncenter size-medium wp-image-578" /></a></p>
+<p>
+ <a href="{{site.base_url}}img/posts/2012-06-30_comparison-of-pbs-cluster-monitoring-applications/Screenshot-from-2012-06-30-021845-e1341035841168.png"><img
+  src="{{site.base_url}}img/posts/2012-06-30_comparison-of-pbs-cluster-monitoring-applications/Screenshot-from-2012-06-30-021845-e1341035841168.png" alt=""
+  title="Screenshot from 2012-06-30 02:18:45" width="300" height="136" class="aligncenter size-medium wp-image-578" /></a>
+</p>
 
-<blockquote>&lt;myJAM/> is a web based monitoring and accounting tool for HPC clusters with pbs-like batch-systems (e.g. Torque or PBSPro).</blockquote>
+<blockquote>&lt;myJAM/> is a web based monitoring and accounting tool for HPC clusters with pbs-like
+ batch-systems (e.g. Torque or PBSPro).</blockquote>
 
-<p>myJAM has support for departments, billing and user management. We haven't used these features, but probably some labs and teams running computer facilities might find it useful. It is licensed under the <em>GPL license</em>.</p>
+<p>
+ myJAM has support for departments, billing and user management. We haven't used these features, but probably some labs
+ and teams running computer facilities might find it useful. It is licensed under the <em>GPL license</em>.
+</p>
 
 <h2>Conclusion</h2>
 
-<p>In our set up, <strong>we decided to use Torque Web Monitor</strong>, because it had a web interface and provided the basic features. But if you are more comfortable with a desktop application, or just want something to give a quick look at your cluster status, PBS Viz Cluster may be a good idea too. Or if you need to keep track of departments use or billing your users, probably you would be better going with myJAM.</p>
+<p>
+ In our set up, <strong>we decided to use Torque Web Monitor</strong>, because it had a web interface and provided the
+ basic features. But if you are more comfortable with a desktop application, or just want something to give a quick look
+ at your cluster status, PBS Viz Cluster may be a good idea too. Or if you need to keep track of departments use or
+ billing your users, probably you would be better going with myJAM.
+</p>
 
-<p>During <a href="http://www.open-bio.org/wiki/BOSC_2012" title="BOSC2012">BOSC2012</a>, we will try to send some ideas to <a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a>. Probably, when the API is ready for use, we will be able to create something awesome as another alternative, but with a more permissive license, better web interface, code published in <a href="http://www.github.com" title="GitHub">Github</a> and more documentation.</p>
+<p>
+ During <a href="http://www.open-bio.org/wiki/BOSC_2012" title="BOSC2012">BOSC2012</a>, we will try to send some ideas
+ to <a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a>. Probably, when the API is ready for use,
+ we will be able to create something awesome as another alternative, but with a more permissive license, better web
+ interface, code published in <a href="http://www.github.com" title="GitHub">Github</a> and more documentation.
+</p>
