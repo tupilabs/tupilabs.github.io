@@ -86,6 +86,7 @@
     	<copy todir="${basedir}/dist">
     	   <fileset dir="${basedir}">
     	   	  <include name="blog/**" />
+    	   	<include name="blog/.htaccess" />
     	   </fileset>
     	</copy>
     </target>
@@ -96,11 +97,14 @@
     <target name="deploy" depends="dist" description="Deploys via SSH to the server">
     	<input message="Please enter SSH user:" addproperty="ssh.username" />
     	<input message="Please enter SSH host:" addproperty="ssh.host" />
+    	<input message="Please enter SSH port:" addproperty="ssh.port" />
     	<input message="Please enter SSH dir:" addproperty="ssh.dir" />
     	<exec executable="rsync" dir="${basedir}/dist" failonerror="true">
+    	  <arg value="-e" />
+    	  <arg value="'ssh -p ${ssh.port}'" />
 	      <arg value="-r"/>
 	      <arg value="."/>
-	      <arg value="${ssh.username}@${ssh.host}:/var/www/tupilabs.com/"/>
+	      <arg value="${ssh.username}@${ssh.host}:${ssh.dir}"/>
 	      <arg value="--exclude-from=${basedir}/tools/deploy/rsync.excludes"/>
 	      <arg value="-v"/>
 	    </exec>

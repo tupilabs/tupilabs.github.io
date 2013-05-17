@@ -3,3 +3,4 @@
 .settings
 /site/_cache/
 /blog/
+.externalToolBuilders
