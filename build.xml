@@ -85,8 +85,8 @@
         <mkdir dir="${basedir}/dist"/>
         <copy todir="${basedir}/dist">
             <fileset dir="${basedir}/blog">
-                <include name="blog/**" />
-                <include name="blog/.htaccess" />
+                <include name="**" />
+                <include name=".htaccess" />
             </fileset>
         </copy>
     </target>
