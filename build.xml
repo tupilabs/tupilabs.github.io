@@ -100,13 +100,12 @@
     	<input message="Please enter SSH port:" addproperty="ssh.port" />
     	<input message="Please enter SSH dir:" addproperty="ssh.dir" />
     	<exec executable="rsync" dir="${basedir}/dist" failonerror="true">
-    	  <arg value="-e" />
-    	  <arg value="'ssh -p ${ssh.port}'" />
-	      <arg value="-r"/>
-	      <arg value="."/>
-	      <arg value="${ssh.username}@${ssh.host}:${ssh.dir}"/>
 	      <arg value="--exclude-from=${basedir}/tools/deploy/rsync.excludes"/>
+		  <arg value="--rsh=/usr/bin/ssh -p${ssh.port}" />
 	      <arg value="-v"/>
+		  <arg value="-r"/>
+          <arg value="."/>
+          <arg value="${ssh.username}@${ssh.host}:${ssh.dir}"/>
 	    </exec>
     </target>
 
