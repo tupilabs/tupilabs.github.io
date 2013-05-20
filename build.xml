@@ -108,5 +108,18 @@
           <arg value="${ssh.username}@${ssh.host}:${ssh.dir}"/>
 	    </exec>
     </target>
+	
+	<!-- ================================= 
+          target: deploy              
+         ================================= -->
+    <target name="deploy-local" depends="dist" description="Deploys using rsync to local server">
+        <exec executable="rsync" dir="${basedir}/dist" failonerror="true">
+          <arg value="--exclude-from=${basedir}/tools/deploy/rsync.excludes"/>
+          <arg value="-v"/>
+          <arg value="-r"/>
+          <arg value="."/>
+          <arg value="/var/www/tupilabs.com"/>
+        </exec>
+    </target>
 
 </project>
