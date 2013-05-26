@@ -58,6 +58,7 @@ site.root) }}
 		</div>
 	</div>
 	{% endblock %}
+    {% block content %}
 	<section id="sec_content">
 		<div id="content" class="container content-fluid">
 			<div class="row-fluid">
@@ -72,6 +73,7 @@ site.root) }}
 		</div>
 		<!-- /#content -->
 	</section>
+    {% endblock %}
 	{% block footer %} {% include 'footer.html' %} {% endblock %} {{
 	piecrust.debug_info|raw }}
 </body>

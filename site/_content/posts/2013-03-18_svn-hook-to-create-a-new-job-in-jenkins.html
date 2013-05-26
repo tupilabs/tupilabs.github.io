@@ -9,6 +9,7 @@ tags:
     - subversion
 time: '15:55:29'
 category: blog
+layout: blog
 ---
 <p>We had prepared a build pipeline using SVN, hooks and Jenkins. Besides the traditional hook to trigger jobs in Jenkins, we had created a hook to create new jobs in Jenkins, based on a Groovy template for every new branch. Basically, it was matching the Subversion commit log against "^A new branch". It was working nice, except for Eclipse developers. New branches created with Eclipse weren't triggering the hook correctly. After a little debug, we found out that Eclipse uses different commands to create a new branch.</p>
 

@@ -1,4 +1,5 @@
 {% extends "default.html" %}
+{% import 'macros_tweet.html' as tweet %}
 
 {% block content %}
 	<h2>{{ page.title }}</h2>
@@ -6,5 +7,6 @@
 		<span class="post-date">{{ page.date }}&nbsp;{{ page.time }}</span>
 		{% if page.author %}<span class="post-author">by {{ page.author }}</span>{% endif %}
 	</div>
+    {{ tweet.button(site.base_url, page.url, page.url, page.title) }}
 	{{ content|raw }}
 {% endblock %}
