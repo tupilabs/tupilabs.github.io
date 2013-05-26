@@ -93,6 +93,9 @@ site.root) }}
 							</header>
 							<div class="entry-content">
 								{{ post.content|raw }}
+                                {% if post.has_more %}
+                                <a href="{{post.url}}">( Read more ... )</a>
+                                {%endif%}
 							</div>
 						</article>
 						{% endfor %}
@@ -118,6 +121,9 @@ site.root) }}
 							</header>
 							<div class="entry-content">
 								{{ post.content|raw }}
+                                {% if post.has_more %}
+                                <a href="{{post.url}}">( Read more ... )</a>
+                                {%endif%}
 							</div>
 						</article>
 						{% endfor %}
@@ -143,6 +149,9 @@ site.root) }}
 							</header>
 							<div class="entry-content">
 								{{ post.content|raw }}
+                                {% if post.has_more %}
+                                <a href="{{post.url}}">( Read more ... )</a>
+                                {%endif%}
 							</div>
 						</article>
 						{% endfor %}

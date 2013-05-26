@@ -1,0 +1,61 @@
+---
+title: 'Creating a Twig macro for PieCrust'
+author: kinow
+tags: 
+    - piecrust
+    - twig
+    - twig macro
+time: '18:34:00'
+category: blog
+layout: blog
+---
+
+We have started using [PieCrust](http://bolt80.com/piecrust/) in several of our 
+projects (the next one is [BioUno](http://biouno.org), watch the 
+[GitHub repo](https://github.com/biouno/biouno.org) to see the changes needed).
+
+A recurrent task was adding a Tweet Button. So we thought it could help others 
+that are getting their feet wet in PieCrust.
+
+<!--more-->
+
+PieCrust Twig macros can be placed under *$WEBSITE_CONTENT_DIR/templates*. Where 
+the *$WEBSITE_CONTENT_DIR* is the *$ROOT_DIR/_content* of your project. Create a 
+new file there, with the name *macros_tweet.html* (or any other name), with the 
+following content.
+
+{%geshi 'xml'%}
+{% verbatim %}{% macro button(base_url,counturl,url,text) %}{% endverbatim %}
+<div class="tw_button" style="">
+    <iframe
+    allowtransparency="true"
+    frameborder="0"
+    scrolling="no"
+    src="http://platform.twitter.com/widgets/tweet_button.1368146021.html#_=1369516789398&amp;count=horizontal&amp;counturl={{base_url|e}}{{counturl|e}}&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer={{base_url|e}}{{url|e}}&amp;size=m&amp;text={{text|e}}&amp;url={{base_url|e}}{{url|e}}"
+    class="twitter-share-button twitter-count-horizontal"
+    title="Twitter Tweet Button"
+    data-twttr-rendered="true"
+    style="width: 107px; height: 20px;"></iframe>
+</div>
+{% verbatim %}{% endmacro %}{% endverbatim %}{% endgeshi %}
+    
+Now add the following line in the templates/pages where you want to use this macro.
+
+{%geshi 'twig'%}{%verbatim%}{% import 'macros_tweet.html' as tweet %}{%endverbatim%}{%endgeshi%}
+    
+This imports your macro using the namespace tweet. So the button function will 
+be available as in the following example.
+
+{%geshi 'twig'%}{%verbatim%}{{ tweet.button(site.base_url, page.url, page.url, page.title) }}{%endverbatim%}{%endgeshi%}
+    
+We'll write about our CodeIgniter + PieCrust integration. In this integration we 
+create a custom variable, *site.base_url* that points to the web site URL 
+(http://www.mywebsite.com, for instance).
+
+The other parameters are the count URL (the number of tweets is based on this one), 
+the reference URL to be used in the tweet body and the page title, used as 
+tweet text too.
+
+For a complete example you can [clone this repository](https://github.com/tupilabs/piecrust-tweet-button-macro).
+
+*ps: the Tweet button that you see on the top of this post is created with this same macro ;-)*
