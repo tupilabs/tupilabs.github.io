@@ -2,7 +2,7 @@ site:
     title: TupiLabs
     description: Innovation and Open Source
     author: TupiLabs
-    pretty_urls: true
+    pretty_urls: false
     enable_gzip: true
     debug: true
     
