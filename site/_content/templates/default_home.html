@@ -1,5 +1,4 @@
-{% import 'macros_google.html' as google %} {% import "macros_less.html"
-as less %}
+{% import 'macros_google.html' as google %} {% import "macros_less.html" as less %}
 <!doctype html>
 <html>
 <head>
@@ -172,4 +171,4 @@ site.root) }}
 	{% endblock %} {{ piecrust.debug_info|raw }}
 </body>
 </html>
-{{ google.analytics(UA-27590622-1) }}
+{{ google.analytics('UA-27590622-1') }}
