@@ -10,6 +10,7 @@ RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -l [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^.*$ - [NC,L]
+RewriteCond $1 !^(patches_welcome|robots.txt)
 
 # Rewrite all the rest through the gateway.
 RewriteRule ^.*$ index.php [NC,L]
