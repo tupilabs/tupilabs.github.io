@@ -1,18 +1,28 @@
 ---
-title: 'TupiLabs Report: 13 Oct, 19 Oct'
+title: 'Increasing logging level in Tomcat to solve org.apache.catalina.core.StandardContext listenerStart error'
 author: kinow
 tags: 
-    - tupilabs-report
-time: '17:09:03'
-category: news
+    - tomcat
+    - java
+    - troubleshooting
+time: '17:19:03'
+category: blog
 layout: blog
 ---
-Here's the list of the cool things that happened at **TupiLabs** since last Sunday.
+Soemtimes during the deployment of new applications in [Tomcat](http://tomcat.apache.org) 
+you may see errors like 'org.apache.catalina.core.StandardContext listenerStart' in your 
+startup log.
 
-- Submitted a vectorized version of an uploaded logo to [LOG4J2-316](https://issues.apache.org/jira/browse/LOG4J2-316)
-- Yay, a Tupi is featuring in the [POSA book acknowledgements](http://aosabook.org/en/posa/introduction.html)
-- [STANBOL-1175](https://issues.apache.org/jira/browse/STANBOL-1175) got [merged](http://svn.apache.org/viewvc?view=revision&revision=r1532706)
+This may be caused due to many reasons (missing classes, including javax.servlet.* jars with 
+your application, etc), but the reason is not displayed in the startup log.
 
-We are working [for you]({{site.base_url}}for_you/)
+But you can find out what is causing this error by adding **logging.properties** to your 
+$TOMCAT_HOME/conf directory, with the following content:
 
-Have a great week! :-)
+    org.apache.catalina.core.ContainerBase.[Catalina].level = DEBUG
+    org.apache.catalina.core.ContainerBase.[Catalina].handlers = java.util.logging.ConsoleHandler
+    
+After that you should be able to see the whole exception and figure out what is 
+causing your application to fail.
+
+Happy hacking!
