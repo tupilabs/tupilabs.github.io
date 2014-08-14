@@ -21,7 +21,8 @@
    		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   	<![endif]-->
 <link rel="alternate" type="application/rss+xml" title="RSS2"
-	href="http://{{site.base_url}}/feed/rss.xml">
+	href="{{site.base_url}}/feed/rss.xml">
+<link rel="stylesheet" href="{{site.base_url}}css/lightbox.css">
 <link rel="stylesheet" href="{{site.base_url}}css/bootstrap.css"
 	type="text/css" media="screen, projection" />
 <link rel="stylesheet"
@@ -79,6 +80,8 @@ site.root) }}
     {% endblock %}
 	{% block footer %} {% include 'footer.html' %} {% endblock %} {{
 	piecrust.debug_info|raw }}
+<script src="{{site.base_url}}js/jquery-1.11.0.min.js"></script>
+<script src="{{site.base_url}}js/lightbox.js"></script>
 </body>
 </html>
 {{ google.analytics('UA-27590622-1') }}
