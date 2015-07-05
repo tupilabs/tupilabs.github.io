@@ -5,3 +5,4 @@
 /blog/
 /dist/
 .externalToolBuilders
+deploy.sh
