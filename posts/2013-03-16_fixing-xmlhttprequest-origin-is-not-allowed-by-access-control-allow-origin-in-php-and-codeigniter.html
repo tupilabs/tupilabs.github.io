@@ -1,0 +1,31 @@
+---
+title: 'Fixing "XMLHttpRequest Origin is not allowed by Access-Control-Allow-Origin" in PHP and CodeIgniter'
+id: 1126
+author: kinow
+tags:
+    - codeigniter
+    - csrf
+    - javascript
+    - php
+    - speak-like-a-brazilian
+time: '17:10:02'
+category: blog
+layout: blog
+---
+<p>Since it has been released, <a href="http://www.speaklikeabrazilian.com" title="SLBR">Speak Like A Brazilian</a> had a bug when users voted, but had accessed the site via <em>speaklikeabrazilian.com</em>, and not <m>www.speaklikeabrazilian.com</em> (the latter is the base_url in <em>application/config/config.php</em>).</p>
+
+<p>Looking at the developer console in Chrome, you could see that XMLHttpRequest was having trouble by, what looked in principle, like a security bug. Maybe a cross-domain issue.</p>
+
+<p>After searching the Internet, we've found what was causing this issue. Unfortunately I lost the link, but in a StackOverFlow discussion, one user said it had something to do with the CSRF check.</p>
+
+<p>A quick test, where we disabled the CSRF token verification, showed that he was right. But we couldn't simply disable CSRF everywhere. So if you are facing similar issue, here's the trick: Create a hook that disables CSRF verification only for a certain URL.</p>
+
+<p>It's not a very nice approach, but as in Speak Like A Brazilian the votes are linked by IP, there's no need to keep the CSRF token. Here's the solution that worked for us.</p>
+
+<pre>
+&lt;?php if (!defined('BASEPATH')) exit('No direct script access allowed');<br/> <br/>/**<br/> * Security Class<br/> *<br/> * @package hooks<br/> * @description Disables CSRF token for certain pages.<br/> */<br/> <br/>class DisableCSRF<br/>{<br/><br/>        function disable_if_callback() <br/>        {    <br/>            if(stripos($_SERVER[&quot;REQUEST_URI&quot;],'/rating/expression') !== FALSE)<br/>            {<br/>                $CFG =&amp; load_class('Config', 'core');<br/>                $CFG-&gt;set_item('csrf_protection', FALSE);<br/>            }<br/>        } <br/>        <br/>}
+</pre>
+
+<p>And as a side note, we are still in honey moon with <a href="http://www.codeigniter.com">CodeIgniter</a>. We have just finished another project with it, and so far we haven't been let down by this amazing framework. Hope it helps you, in case you have similar error.</p>
+
+<p>Happy St. Patricks Day! And happy coding!</p>

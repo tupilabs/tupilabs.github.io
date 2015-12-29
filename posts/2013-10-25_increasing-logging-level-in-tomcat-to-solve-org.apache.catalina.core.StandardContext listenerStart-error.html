@@ -1,0 +1,28 @@
+---
+title: 'Increasing logging level in Tomcat to solve org.apache.catalina.core.StandardContext listenerStart error'
+author: kinow
+tags: 
+    - tomcat
+    - java
+    - troubleshooting
+time: '17:19:03'
+category: blog
+layout: blog
+---
+Sometimes during the deployment of new applications in [Tomcat](http://tomcat.apache.org) 
+you may see errors like 'org.apache.catalina.core.StandardContext listenerStart' in your 
+startup log.
+
+This may be caused due to many reasons (missing classes, including javax.servlet.* jars with 
+your application, etc), but the reason is not displayed in the startup log.
+
+But you can find out what is causing this error by adding **logging.properties** to your 
+$TOMCAT_HOME/conf directory, with the following content:
+
+    org.apache.catalina.core.ContainerBase.[Catalina].level = DEBUG
+    org.apache.catalina.core.ContainerBase.[Catalina].handlers = java.util.logging.ConsoleHandler
+    
+After that you should be able to see the whole exception and figure out what is 
+causing your application to fail.
+
+Happy hacking!

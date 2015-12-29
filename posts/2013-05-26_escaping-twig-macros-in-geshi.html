@@ -1,0 +1,26 @@
+---
+title: 'Escaping Twig macros in Geshi'
+author: kinow
+tags: 
+    - piecrust
+    - twig
+    - twig macro
+    - geshi
+time: '19:29:00'
+category: blog
+layout: blog
+---
+
+While writing the [last post]({{pcurl('/2013/05/26/creating-a-twig-macro-for-piecrust')}}), I had some trouble trying to escape a Twig macro 
+when using Geshi for syntax highlighting. Here's the trick to escape it: 
+*[verbatim](http://twig.sensiolabs.org/doc/tags/verbatim.html)*.
+
+The *verbatim* Twig tag prints the subsequent tags without interpreting it.
+
+{%geshi 'twig'%}
+{%verbatim%}{%geshi 'twig'%}
+{ %verbatim%}{% macro button(...) %}{ %endverbatim%}
+<p>Some random HTML code...</p>{% verbatim%}{% endmacro %}{ %endverbatim%}
+{%endgeshi%}{%endverbatim%}{%endgeshi%}
+
+*We had to add an extra space between { and %. Can you figure out why? :-)*

@@ -1,0 +1,7 @@
+site:
+  description: Innovation and Open Source
+  pretty_urls: true
+  title: TupiLabs
+  css: site.css
+smartypants:
+  enable: true

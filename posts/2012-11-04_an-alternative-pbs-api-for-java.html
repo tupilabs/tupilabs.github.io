@@ -1,0 +1,24 @@
+---
+title: 'An alternative PBS API for Java'
+id: 935
+author: kinow
+tags: 
+    - pbs
+    - java
+time: '19:26:51'
+category: blog
+layout: blog
+---
+<p>Last week we released a new API for <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> in Java - <a href="https://github.com/tupilabs/pbs-java-api" title="pbs-java-api">pbs-java-api</a>. There is an existing API that works very well (<a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a>), and we even got in touch and worked with the author before releasing this new API. So what's the difference between the two API's and when should I use one or the other?</p>
+
+<p>Here's the main differences between the two API's:</p>
+
+<ul>
+	<li>pbs4java uses <a href="http://en.wikipedia.org/wiki/Domain-driven_design" title="DDD">DDD</a>, while pbs-java-api has a more classical approach. We needed this to avoid serialization problems in Jenkins.</li>
+	<li>pbs-java-api is available from Maven Central</li>
+	<li>pbs-java-api tries to map the commands (qnodes, qstat, qsub, ...). So you would call PBS.qsub(...) instead of Job#submit().</li>
+</ul>
+
+<p>That's pretty much it, so you really don't need to switch to pbs-java-api. We created this new API as we needed a non DDD API to be used with the Jenkins plug-in API and that was available from Maven Central.</p>
+
+<p>pbs-java-api - <a href="https://github.com/tupilabs/pbs-java-api">https://github.com/tupilabs/pbs-java-api</a></p>

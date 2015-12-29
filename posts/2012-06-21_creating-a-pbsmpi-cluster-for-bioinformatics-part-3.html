@@ -1,0 +1,56 @@
+---
+title: 'Creating a PBS/MPI cluster for bioinformatics – Part 3'
+id: 440
+author: kinow
+tags: 
+    - jenkins
+    - bioinformatics
+time: '01:26:44'
+category: blog
+layout: blog
+---
+<p>This is the third and last part of this blog series. In this post we will install Structure (Pritchard Lab) and Torque PBS. We will configure a simple run in Structure using the two machines in our cluster.</p>
+
+<h2>Installing Structure</h2>
+
+<p>Installing structure is very simple. Download the latest version from <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Pritchard Lab">Prichard Lab page</a>, decompress it and move the executables to a folder in your $PATH (or use symlinks). Here I'm using <code>/usr/local/bin</code>, but to keep things in order, I renamed the <em>console</em> folder (from structure_linux_console.tar.gz) to <em>structure-console-2.3.3</em>, because I like to know the tool and its version without having to browse it. Then I moved it under <code>/opt/biouno</code>, where I keep the executables used by the cluster. Finally, I created the symlink <code>/usr/local/bin/structure</code> that points to <code>/opt/biouno/structure-console-2.3.3/structure</code>.</p>
+
+<!--more-->
+
+<p>You will have to execute the steps above in all the nodes. In a real cluster facility, probably you would use some automated deploy system, or NFS, or something similar to simplify (imagine if you have 30 computers and have to install Structure in all of them). Structure does not use MPI for parallelism, instead you have to break your job into smaller pieces. Here's the <a href="https://groups.google.com/forum/#!msg/structure-software/HKa_sD6Qxes/" title="Structure Google Groups discussion about running structure in a cluster">link for the thread</a> in the Structure Google Groups about it. So first let's run a standalone execution to understand how to run in a cluster.</p>
+
+<p>We will use the Structure example from <a href="http://bodegaphylo.wikispot.org/Structure" title="Bodega Phylogenetics Wiki">Bodega Phylogenetics' Wiki</a>. Download marm_struct.input. This will be our input file, now we need to create the <em>mainparams</em> and the <em>extraparams</em> files. For the sake of simplicity, you can get these files from <a href="https://github.com/tupilabs/biology-data" title="Biology data">this</a> GitHub repository. Put all the files in a directory and, from this directory, execute structure. It should take a few minutes to finish, and will output a lot of information to your terminal. </p>
+
+<h2>Installing Torque PBS</h2>
+
+<p>There are several tutorials for installing Torque PBS. The one that worked the best with us is this <a href="http://ubuntuforums.org/showthread.php?t=289767" title="Ubuntu Forums entry about installing Torque PBS">one</a>. Following all the steps, and trying for a while with different configurations, you will manage to set up your PBS cluster.</p>
+
+<p>Basically, what you will need is 1) download Torque PBS from <a href="http://www.adaptivecomputing.com/" title="Adaptive Computing website">Adaptive Computing website</a>, 2) compile and install in your local machine, 3) generate the tarballs for the other machines in your cluster and 3) set up some configuration files for your environment. This last step is the trickiest one. Here's our mom configuration file.</p>
+
+<p><code># /var/spool/torque/mom_priv/config @ server
+$pbsserver chuva.kinoshita.eti.br
+$clienthost chuva.kinoshita.eti.br
+$logevent 255
+$cputmult 1.0
+$wallmutt 1.0
+$max_load 1.0
+$ideal_load 1.0
+$restricted *.kinoshita.eti.br
+</code></p>
+
+<p><code># /var/spool/torque/mom_priv/config @ slave
+$pbsserver chuva.kinoshita.eti.br
+$logevent 255
+</code></p>
+
+<h2>Running structure in parallel</h2>
+
+<p>In the beginning of this post, we installed and executed Structure. The mainparams defined two populations. The number of populations is normally called <em>K parameter</em>. The <a href="http://bodegaphylo.wikispot.org/Structure" title="Bodega Phylogenetics Wiki">Bodega Phylogenetics' Wiki</a> has some good information about this, but you can find more on the Internet and in scientific papers.</p>
+
+<p>As it is not so easy to define the value of K, most users have to run Structure many times and analyse the output data of each run. This execution using different values of K can be run in parallel. Let's create a sample input file for our PBS cluster, to distribute one value of K for each node in our cluster.</p>
+
+<p>First, copy the current folder, and update the mainparams in one of the folders. You must change <em>MAXPOPS</em> from 2 to 1. Both configurations, with K=1 and K=2 must be copied to your NFS partition, and then you have different options to split them through your PBS cluster. You can name the folders with the machine names, and use the hostname environment variable in your shell script (the one you are submitting to your PBS cluster), or you can code some mechanism to select the right configuration file.</p>
+
+<p>One last note, the default schedule management in Torque PBS is very simple, probably real computer facilities use other tools, like Moab or Maui in conjunction with the batch scheduling software.</p>
+
+<p>So far configuring our small cluster for <a href="http://www.biouno.org">BioUno</a> has been fun, but there is room for improvements in the cluster management, and in the integration of the cluster with <a href="http://www.jenkins-ci.org">Jenkins</a>. We will take a look at the existing plug-ins for cloud computing, and using API's like pbs4java, we expect to enable Jenkins and BioUno users to use a PBS cluster to build software or to create biology workflows. Stay tuned for more posts on biotechnology and BioUno!</p>

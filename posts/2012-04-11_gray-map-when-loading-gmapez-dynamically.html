@@ -1,0 +1,19 @@
+---
+title: 'Gray map when loading GMapez dynamically'
+id: 189
+author: kinow
+tags: 
+    - google maps
+time: '07:06:04'
+category: blog
+layout: blog
+---
+If you are using <a title="GMapEz" href="http://n01se.net/gmapez/">GMapEz</a> and you load it dynamically, then you may face a problem having a gray area instead of your map. In our case, we were using GMapEz and <a title="JQuery Stepy" href="http://www.wbotelhos.com/stepy/">JQuery Stepy</a>. When the page was loaded, the first step didn't have a map. When the user hit next, then a map was supposed to appear, but it was gray.
+
+What happens is that if the map is not displayed then you will have to call 'checkResize' on GMapEz' map object.
+
+The first thing you need to do is expose the googlemap as a variable accessible from other scripts. For this, you will need to edit gmapez-x.js, including 'var googlemap = null;' in the top of your script, and then modify the source as needed to create the object.
+
+Finally, when the map is displayed (in our case, on step number 2 of the form) you call googlemap.map.checkResize().
+
+This should fix your gray map :-)

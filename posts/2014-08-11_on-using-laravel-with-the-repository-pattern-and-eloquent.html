@@ -1,0 +1,80 @@
+---
+title: 'On using Laravel with the repository pattern and Eloquent'
+author: kinow
+tags:
+    - laravel
+    - repositories
+    - patterns
+    - eloquent
+    - php
+time: '21:27:03'
+category: blog
+layout: blog
+---
+
+[Separation of concerns](http://en.wikipedia.org/wiki/Separation_of_concerns) is a design principle, and 
+states that each part of a software addresses a separate concern. Different patterns and abstractions 
+can be used for that like MVC, DAOs and repositories.
+
+Repositories help in the abstraction of the data layer. It provides an interface for retrieving data, 
+independent of the implementation, acting like a collection of objects.
+
+<figure style='text-align: center'>
+<img src="{{assets.RepositoryDiagram}}" alt="From: http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html"/>
+<figcaption>Fig1. - Repositories <i>http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html</i></figcaption>
+</figure>
+
+In [Nestor-QA](http://nestor-qa.org) I had implemented repositories using some Java code I had in my 
+mind, without paying too much attention to the abstraction layers. Two weeks ago, while working on some 
+complicated issue in Nestor I noticed that the repositories in Nestor had been implemented using the 
+Eloquent classes.
+
+Eloquent is a library used in Laravel for data abstraction. It provides access to databases like MySQL 
+and SQLite, kind like DAOs (and sometimes like repositories too). However, for Nestor being a test 
+management tool, we are trying to be platform and framework independent. Here's the old repository code in 
+action: 
+
+{% geshi 'php' %}
+class DbProjectRepository implements ProjectRepository {
+
+	public function all()
+	{
+		return Project::where('project_statuses_id', '<>', 2)->get();
+	}
+
+	// ...
+
+}
+{% endgeshi %}
+
+As you can see, we were returning the result of the get() method from Eloquent. Another big mistake was 
+using these objects in the views. In the end we were not only using data layer elements in the wrong place, 
+but we also had many queries to render an UI. 
+
+{% geshi 'php' %}
+abstract class DbBaseRepository extends BaseRepository {
+
+	protected $model;
+
+	public function __construct($model)
+	{
+		$this->model = $model;
+	}
+
+	public function all()
+	{
+		return $this->model->all()->toArray();
+	}
+
+	// ...
+}
+{% endgeshi %}
+
+After searching for a while, I found a [nice example](https://github.com/samgreenwood/swapshop/tree/master/app/Swapshop/Repositories) 
+of a class design for repositories, where the return type is always an array. In the views you will 
+have the array and keys, and in case someday you decide moving to another framework, you can leave the 
+views unchanged (hopefully :-). Neat, no?
+
+![Ahn ahn]({{assets.SA1HWow}})
+
+Happy hacking

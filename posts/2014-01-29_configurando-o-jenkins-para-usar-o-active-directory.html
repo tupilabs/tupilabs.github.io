@@ -1,0 +1,33 @@
+---
+title: 'Configurando o Jenkins para usar o Active Directory'
+author: kinow
+tags:
+    - jenkins
+    - tutorial
+    - active directory
+    - portuguese
+time: '15:37:03'
+category: blog
+layout: blog
+---
+
+Depois de ver algumas mensagens na [lista do Jenkins em Portugu&ecirc;s](https://groups.google.com/forum/#!forum/jenkinsci-br) 
+decidir escrever este post para ajudar quem quiser configurar o [Jenkins](http://jenkins-ci.org) para usar o 
+[Microsoft Active Directory](http://en.wikipedia.org/wiki/Active_Directory).
+
+O Jenkins j&aacute; possui autentica&ccedil;&atilde;o e uma base de usu&aacute;rios pr&oacute;pria. O que faremos &eacute; apenas utilizar o Active Directory (AD) 
+como a base de usu&aacute;rios. Para isso basta instalar o 
+[Jenkins Active Directory plugin](http://wiki.jenkins-ci.org/display/JENKINS/Active+Directory+Plugin) e reiniciar. 
+
+![Plug-in do AD]({{assets.ad_jenkins_001}})
+
+Agora precisamos configurar o Jenkins para acessar o Active Directory. V&aacute; at&eacute; _Gerenciar Jenkins / Configurar Seguran&ccedil;a Global_ 
+e em Controle de Acesso, selecione &quot;Active Directory&quot;. Entre o dom&iacute;nio e os dados para se conectar no AD. Caso voc&ecirc; n&atilde;o saiba 
+os dados do seu AD, pergunte para algu&eacute;m de infraestrutura ou tente se conectar ao AD com algum cliente de LDAP.
+
+![Configurando o Plug-in]({{assets.ad_jenkins_002}})
+
+Pronto! Agora basta voc&ecirc; escolher o modelo de autoriza&ccedil;&atilde;o. Na maioria das vezes utilizo a estrat&eacute;gia baseada em matriz por 
+projeto. Se voc&ecirc; utilizar a mesma, adicione o nome de usu&aacute;rio de rede e atribua as permiss&otilde;es corretas.
+
+Espero que ajude, boa divers&atilde;o!

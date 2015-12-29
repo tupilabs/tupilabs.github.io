@@ -1,0 +1,20 @@
+---
+title:
+format: none
+---
+{% set display_tag = tag %}
+{% if is_multiple_tag %}
+    {% set display_tag = tag|join(', ') %}
+{% endif %}
+<h2>Posts tagged with {{ display_tag }}</h2>
+
+<section>
+    {% for post in pagination.posts %}
+    {% include 'partial_post.html' %}
+    {% endfor %}
+</section>
+<section>
+    {% if pagination.prev_page %}<div class="prev"><a href="{{ pagination.prev_page }}">Next Posts</a></div>{% endif %}
+    {% if pagination.next_page %}<div class="next"><a href="{{ pagination.next_page }}">Previous Posts</a></div>{% endif %}
+</section>
+

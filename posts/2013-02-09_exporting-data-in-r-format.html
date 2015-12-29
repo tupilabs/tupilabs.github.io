@@ -1,0 +1,38 @@
+---
+title: 'Exporting data in R format'
+id: 1094
+author: kinow
+tags:
+    - jenkins
+    - quandl
+    - r
+    - rstudio
+    - statistics
+    - stats
+time: '12:32:54'
+category: ideas
+layout: blog
+---
+<p>
+ <a href="www.quandl.com">Quandl</a> has now a feature that lets users export data as an R matrix, this way the data can
+ be easily <a href="http://www.quandl.com/help/r">loaded into R</a>. Damn awesome righto? Kudos to the guys from Quandl!
+</p>
+
+<p>
+ <code>read.csv('http://www.quandl.com/api/v1/datasets/OFDP/ALUMINIUM_21.csv?&utf8=â&trim_start=2012-01-03&trim_end=2013-02-07&sort_order=desc',
+  colClasses=c('Date'='Date'))</code>
+</p>
+
+<p class='center'>
+ <a href="{{site.base_url}}img/logos/r_quandl.png"><img src="{{site.base_url}}img/logos/r_quandl.png"
+  alt="r_quandl" width="150" height="145" class="aligncenter size-full wp-image-1096" /></a>
+</p>
+
+<p>Today's idea is use Quandl approach in other applications. Jenkins exports some of its objects to its external
+ JSON API. And there are stats being collected from plug-ins (like the download statistics). I am curious to know if
+ there would have any gain in exporting parts of this data as R matrices and processing it directly with R.</p>
+
+<p>This could be used in a lot of different applications, perhaps even using Hadoop and R. Instead of writing
+ collectors to consume an RESTful service, you would simply write one R line to get the job done.</p>
+
+<p>R does very fine in plotting too, so I wouldn't be surprised to at least see some prettier charts :o)</p>

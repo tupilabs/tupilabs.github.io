@@ -1,0 +1,61 @@
+---
+title: 
+format: none
+---
+
+{% if pagination.has_posts %}
+<section>
+    {% for post in pagination.posts %}
+    {% include 'partial_post.html' %}
+    {% endfor %}
+</section>
+<section>
+    {% if pagination.prev_page %}<div class="prev"><a href="{{ pagination.prev_page }}">Next Posts</a></div>{% endif %}
+    {% if pagination.next_page %}<div class="next"><a href="{{ pagination.next_page }}">Previous Posts</a></div>{% endif %}
+</section>
+{% endif %}
+
+
+<--markdown-->
+
+{% if not pagination.has_posts and not site.hide_quickstart %}
+
+## Quick Start
+
+Welcome to your new [PieCrust][] website!
+
+Since you don't seem to have any blog post or home page created yet, here's a
+quick reference of things you probably want to do next. All `chef` commands need
+to be run from inside your website's directory.
+
+For more information, refer to the [documentation][doc]. This message will go
+away as soon as you've written your first blog post, or after you set the
+`hide_quickstart` setting to `true` in the site configuration (_i.e._ in
+`config.yml` under the `site` section).
+
+### Create a new page
+
+Run `chef prepare page my-new-page`, where `my-new-page` is the [URL
+slug][slug] you want for your new page. This can contain sub-directories, like
+so: `about/my-new-page`.
+
+### Create a new blog post
+
+Run `chef prepare post my-new-post-slug`, where `my-new-post-slug` is the [URL
+slug][slug] you want for your new post. Unlike pages, this shouldn't contain
+any sub-directories.
+
+### Bake your site
+
+Run `chef bake`.
+
+### Preview your site
+
+Run `chef serve`, and point your browser to `http://localhost:8080`.
+
+
+[piecrust]: {{ piecrust.url }}
+[doc]: http://bolt80.com/piecrust/
+[slug]: http://en.wikipedia.org/wiki/Clean_URL#Slug
+{% endif %}
+

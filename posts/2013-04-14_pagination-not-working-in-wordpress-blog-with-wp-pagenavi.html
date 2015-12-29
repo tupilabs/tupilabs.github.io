@@ -1,0 +1,25 @@
+---
+title: 'Pagination not working in Wordpress blog with WP-PageNavi'
+id: 1228
+author: kinow
+tags:
+    - wordpress
+    - wordpress-pagination
+    - wordpress-plugins
+    - wordpress-themes
+    - wp-pagenavi
+time: '23:41:03'
+category: blog
+layout: blog
+---
+<p>TupiLabs website uses <a href="http://www.wordpress.org" title="Wordpress">Wordpress</a> as backing <a href="http://en.wikipedia.org/wiki/Content_management_system" title="CMS Wikipedia post">CMS</a> and blog, and here we have a modified <a href="http://www.rootstheme.com/" title="Roots Theme for Wordpress">Roots theme</a> with bunch of plug-ins and settings. The pagination of the posts is done with <a href="http://wordpress.org/extend/plugins/wp-pagenavi/" title="WP-Pagenavi">WP-Pagenavi</a> plug-in. When we received a message from <strong>José</strong> saying that the pagination was broken, we thought it had something to do with <a href="http://wpml.org/" title="WPML">WPML</a>, a translation plug-in, used to maintain both languages (en and pt_BR) in the site.</p>
+
+<p>Later we figured out what was causing this error. The error happened only in <strong>pages that list categories</strong> (blog, news and ideas). In these pages, the function <em>query_posts</em> was being used, and after googling a while we found out that there was an extra argument for pagination.</p>
+
+<code>query_posts(array('category_name' => 'blog'));</code>
+
+<p>Changing the line above to:</p>
+
+<code>query_posts(array('category_name' => 'blog', 'paged' => get_query_var('page')));</code>
+
+<p>Fixed the issue. We also use plug-ins for cache, so we had to purge the pages from the cache in order to see the results. Hope that helps you, in case you have similar problem. Cheers.</p>

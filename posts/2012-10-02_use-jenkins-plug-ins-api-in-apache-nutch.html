@@ -1,0 +1,16 @@
+---
+title: 'Use Jenkins plug-ins API in Apache Nutch'
+id: 746
+author: kinow
+tags: 
+    - nutch
+    - jenkins
+time: '03:57:57'
+category: ideas
+layout: blog
+---
+I'm working in an <a href="http://nutch.apache.org" title="Apache Nutch">Apache Nutch</a> project that involves some new plug-ins and customization in existing parts parts of Nutch, however, after reading Nutch's code base and learning about its plug-in architecture, I believe someone could use part of <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> API to enhance the plug-in API in Nutch.
+
+Nutch uses a similar concept, with the same name as in Jenkins, Extension Points. However, it's quite hard to create a plug-in project separate from the core project (it uses Ivy and plug-ibs have some dependencies to the core project). And you have to extend certain classes and configure XML files to prepare your plug-in.
+
+Part of this could be automatically done with inheritance + Java annotations. I'll have a cycle for Open Source in the next days, and will give it a try to see if that really makes sense.

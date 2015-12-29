@@ -1,0 +1,29 @@
+---
+title: 'Create a plug-in (or contribute to an existing one [MSBuild?]) that exposes meta information about a .NET solution'
+id: 1178
+author: kinow
+tags:
+    - net
+    - net-solutions
+    - dotnet
+    - jenkins
+    - jenkins-plug-in
+    - msbuild
+    - plugin
+time: '11:52:16'
+category: ideas
+layout: blog
+---
+<p>This idea happened after <a href="http://www.twitter.com/agrayz" title="@agrayz">Andrew Gray'</a>s <a href="https://nuget.org/packages/objectified-solutions/" title="Objectified Solutions">objectified-solutions</a>. With Objectified Solutions one can extract meta information from a .NET solution. This information includes:</p>
+
+<ul>
+	<li>Global properties of the solution</li>
+	<li>List of projects in solution</li>
+	<li>Global properties of each project</li>
+	<li>List of source files in each project</li>
+	<li>List of System references that each project depends on</li>
+	<li>List of Project references that each project depends on</li>
+	<li>Basic properties of each source file</li>
+</ul>
+
+<p>The code is hosted at <a href="https://github.com/agray/objectified-solutions" title="GitHub">GitHub</a> too. Maybe someone could even think about a ".NET solution project" job type for Jenkins.</p>
