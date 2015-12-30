@@ -23,10 +23,15 @@ posts_filters:
                     {% include 'partial_post.html' %}
                     {% endfor %}
                 </section>
-                <section>
-                    {% if pagination.prev_page %}<div class="prev"><a href="{{ pagination.prev_page }}">Next Posts</a></div>{% endif %}
-                    {% if pagination.next_page %}<div class="next"><a href="{{ pagination.next_page }}">Previous Posts</a></div>{% endif %}
-                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    {% if pagination.next_page %}
+                    <a class="item" href="{{ pagination.next_page }}"><i class='left arrow icon'></i> Previous Posts</a>
+                    {% endif %}
+                    {% if pagination.prev_page %}
+                    <a class="item" href="{{ pagination.prev_page }}"><i class='right arrow icon'></i> Next Posts</a>
+                    {% endif %}
+                </div>
                 {% endif %}
             </div>
         </div>
