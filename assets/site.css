@@ -91,10 +91,18 @@
 	font-size: 1.33em;
 }
 
+#blog img {
+    max-width:100%;
+}
+
 #tutorials h3 {
 	font-size: 2em;
 }
 
 #tutorials p {
 	font-size: 1.33em;
+}
+
+#tutorials img {
+    max-width:100%;
 }
