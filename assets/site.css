@@ -106,3 +106,15 @@
 #tutorials img {
     max-width:100%;
 }
+
+#site-content h3 {
+	font-size: 2em;
+}
+
+#site-content p {
+	font-size: 1.33em;
+}
+
+#site-content img {
+    max-width:100%;
+}
