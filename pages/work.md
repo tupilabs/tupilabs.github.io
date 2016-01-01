@@ -37,11 +37,31 @@ format: html
                     </div>
                     <div class="card">
                         <div class="content">
+                            <div class="header">Jenkins TAP Plug-in</div>
+                            <div class="meta">Open Source Project</div>
+                            <div class="description">
+                                <p>A plug-in that adds support to TAP test result files to Jenkins. TAP Plug-in depends on tap4j - a TAP implementation for Java, and on the JUnit Plug-in. Almost 2000 users.</p>
+                                <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin">Project Link</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
                             <div class="header">Jenkins TestLink Plug-in</div>
                             <div class="meta">Open Source Project</div>
                             <div class="description">
                                 <p>A plug-in that integrates Jenkins and TestLink and generates reports on automated test execution. With this plug-in you can manage your tests in TestLink, schedule and control in Jenkins, and execute using your favorite test execution tool (TestPartner, Selenium, TestNG, Perl modules, PHPUnit, among others). Over 1000+ users.</p>
                                 <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin">Project Link</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">Jenkins Testopia Plug-in</div>
+                            <div class="meta">Open Source Project</div>
+                            <div class="description">
+                                <p>A plug-in that integrates Jenkins with Testopia and generates reports on automated test execution. With this plug-in you can manage your tests in Testopia, schedule and control in Jenkins, and execute using your favorite test execution tool (TestPartner, Selenium, TestNG, Perl modules, prove, PHPUnit, among others).</p>
+                                <p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Testopia+Plugin">Project Link</a></p>
                             </div>
                         </div>
                     </div>

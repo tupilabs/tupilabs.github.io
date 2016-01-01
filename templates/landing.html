@@ -39,7 +39,7 @@
         <img src="{{ site.root}}tupilabs.png" style="width: 350px; height: 80px;">
       </h1>
       <h2><i>Innovation</i> and <i>Open Source</i></h2>
-      <div class="ui huge green button">Get Started <i class="right arrow icon"></i></div>
+      <a class="ui huge green button" href="#row-content">Get Started <i class="right arrow icon"></i></a>
     </div>
 
   </div>
@@ -54,5 +54,32 @@
 <script src="{{ site.root }}jquery.min.js"></script>
 <script src="{{ site.root }}semantic.min.js"></script>
 <script src="{{ site.root }}site.js"></script>
+<script type="text/javascript">
+$(document)
+	.ready(function() {
+
+		// fix menu when passed
+		$('.masthead')
+			.visibility({
+				once: false,
+				onBottomPassed: function() {
+					$('.fixed.menu').transition('fade in');
+				},
+				onBottomPassedReverse: function() {
+					$('.fixed.menu').transition('fade out');
+				}
+			})
+		;
+
+        $('a.button').click(function(){
+            $('html, body').animate({
+                scrollTop: $( $.attr(this, 'href') ).offset().top
+            }, 500);
+            return false;
+        });
+
+	})
+;
+</script>
 </body>
 </html>
