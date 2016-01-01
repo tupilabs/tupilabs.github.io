@@ -24,7 +24,7 @@ new file there, with the name *macros_tweet.html* (or any other name), with the
 following content.
 
 {%geshi 'xml'%}
-{% verbatim %}{% macro button(base_url,counturl,url,text) %}{% endverbatim %}
+{% raw %}{% macro button(base_url,counturl,url,text) %}{% endraw %}
 <div class="tw_button" style="">
     <iframe
     allowtransparency="true"
@@ -36,16 +36,16 @@ following content.
     data-twttr-rendered="true"
     style="width: 107px; height: 20px;"></iframe>
 </div>
-{% verbatim %}{% endmacro %}{% endverbatim %}{% endgeshi %}
+{% raw %}{% endmacro %}{% endraw %}{% endgeshi %}
     
 Now add the following line in the templates/pages where you want to use this macro.
 
-{%geshi 'twig'%}{%verbatim%}{% import 'macros_tweet.html' as tweet %}{%endverbatim%}{%endgeshi%}
+{%geshi 'twig'%}{%raw%}{% import 'macros_tweet.html' as tweet %}{%endraw%}{%endgeshi%}
     
 This imports your macro using the namespace tweet. So the button function will 
 be available as in the following example.
 
-{%geshi 'twig'%}{%verbatim%}{{ tweet.button(site.base_url, page.url, page.url, page.title) }}{%endverbatim%}{%endgeshi%}
+{%geshi 'twig'%}{%raw%}{{ tweet.button(site.base_url, page.url, page.url, page.title) }}{%endraw%}{%endgeshi%}
     
 We'll write about our CodeIgniter + PieCrust integration. In this integration we 
 create a custom variable, *site.base_url* that points to the web site URL 
