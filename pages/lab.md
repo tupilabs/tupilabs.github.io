@@ -8,7 +8,11 @@ format: html
     <div class="ui stackable grid container">
         <div class="row">
             <div class="sixteen wide column">
-                <h3 class="ui header">Welcome to the Lab!</h3>
+                <h1>Welcome to the Lab!</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
                 <p>Here you can find more about our work in progress, and learn more about how we craft code from ideas. Suggestions are more than welcome. Some of the code that will be published in this space is not ready for production.</p>
                 
                 <div class="ui relaxed divided list">
