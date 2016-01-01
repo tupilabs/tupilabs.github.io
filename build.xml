@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     May 15, 2013 21:20:00 PM                                                        
+
+     TupiLabs.com
+     ====================================================================== -->
+<project name="TupiLabs.com" default="usage">
+
+    <description>
+        TupiLabs.com
+    </description>
+
+    <!-- ================================= 
+          target: usage              
+         ================================= -->
+    <target name="usage" description="Prints build usage">
+        <echo message="clean: removes dist directory and its contents" />
+        <echo message="blog: creates static html blog" />
+        <echo message="blog-run: runs the blog with piecrust built-in web server" />
+        <echo message="deploy: deploys the site to production" />
+        <echo message="usage: prints this help menu" />
+    </target>
+
+    <!-- ================================= 
+          target: clean              
+         ================================= -->
+    <target name="clean" description="Cleans dist directory">
+        <echo message="Cleaninig counter..." />
+        <delete dir="${basedir}/_counter" failonerror="false" />
+    </target>
+
+    <!-- ================================= 
+          target: blog              
+         ================================= -->
+    <target name="blog" depends="clean" description="Create static blog">
+        <!-- executes piecrust/bin/chef reading from the site directory 
+             and writing to blog. The blog directory is not versioned.  -->
+        <exec append="true" executable="/usr/local/bin/chef">
+            <arg value="bake" />
+            <arg value="--force" />
+        </exec>
+    </target>
+
+    <!-- ================================= 
+          target: blog-run              
+         ================================= -->
+    <target name="blog-run" description="Runs static blog and watch for modifications">
+        <!-- 8080 is the default port -->
+        <exec append="true" executable="/usr/local/bin/chef">
+            <arg value="serve" />
+        </exec>
+    </target>
+
+    <!-- ================================= 
+          target: deploy              
+         ================================= -->
+    <target name="deploy" depends="blog" description="Deploys via SSH to the server">
+        <input message="Please enter SSH user:" addproperty="ssh.username" />
+        <input message="Please enter SSH host:" addproperty="ssh.host" />
+        <input message="Please enter SSH port:" addproperty="ssh.port" />
+        <input message="Please enter SSH dir:" addproperty="ssh.dir" />
+        <exec executable="rsync" dir="${basedir}/_counter" failonerror="true">
+            <arg value="--exclude=.git"/>
+            <arg value="--delete"/>
+            <arg value="--rsh=/usr/bin/ssh -p${ssh.port}" />
+            <arg value="-v"/>
+            <arg value="-r"/>
+            <arg value="."/>
+            <arg value="${ssh.username}@${ssh.host}:${ssh.dir}"/>
+        </exec>
+    </target>
+
+</project>

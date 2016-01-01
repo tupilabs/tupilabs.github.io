@@ -1,57 +1,67 @@
 <!doctype html>
 <html class="no-js">
 <head>
-  <meta charset="utf-8">
-  <meta name="description" content="{{ site.description }}">
-  <meta name="author" content="{{ site.author }}">
-  <title>{{ site.title }}{% if page.title %} &mdash; {{ page.title }}{% endif %}</title>
-  <meta name="description" content="">
-  <meta name=viewport content="width=device-width, initial-scale=1">
-  <meta name="mobile-web-app-capable" content="yes">
-  
-  <link rel="stylesheet" type="text/css" href="{{ site.root }}semantic.min.css">
-  <link rel="stylesheet" type="text/css" href="{{ site.root }}{{ site.css }}">
+    <meta charset="utf-8">
+    <meta name="description" content="{{ site.description }}">
+    <meta name="author" content="{{ site.author }}">
+    <title>{{ site.title }}{% if page.title %} &mdash; {{ page.title }}{% endif %}</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="{{ site.root }}semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ site.root }}{{ site.css }}">
 </head>
 <body>
-  <!-- Following Menu -->
-  <div class="ui large top fixed menu">
-    <div class="ui container">
-      <a class="item" href="{{ site.root }}"><i class="home icon"></i> Home</a>
-      <a class="item" href="{{ site.root }}work"><i class="terminal icon"></i> Work</a>
-      <a class="item" href="{{ site.root }}tutorials"><i class="book icon"></i> Tutorials</a>
-      <a class="item" href="{{ site.root }}blog"><i class="newspaper icon"></i> Blog</a>
-      <a class="item" href="{{ site.root }}courses"><i class="student icon"></i> Courses</a>
-      <a class="item" href="{{ site.root }}lab"><i class="lab icon"></i> Lab</a>
-      <div class="right menu">
-        <a class="item" href="{{ site.root }}contact"><i class="mail outline icon"></i> Contact</a>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Page Contents -->
-  <div class="pusher">
-    <div class="ui container">
-      <div class="ui large stackable menu">
-        <a class="item" href="{{ site.root }}"><i class="home icon"></i> Home</a>
-        <a class="item" href="{{ site.root }}work"><i class="terminal icon"></i> Work</a>
-        <a class="item" href="{{ site.root }}tutorials"><i class="book icon"></i> Tutorials</a>
-        <a class="item" href="{{ site.root }}blog"><i class="newspaper icon"></i> Blog</a>
-        <a class="item" href="{{ site.root }}courses"><i class="student icon"></i> Courses</a>
-        <a class="item" href="{{ site.root }}lab"><i class="lab icon"></i> Lab</a>
-        <div class="right menu">
-          <a class="item" href="{{ site.root }}contact"><i class="mail outline icon"></i> Contact</a>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="{{ site.root }}"><i class="home icon"></i> Home</a>
+            <a class="item" href="{{ site.root }}work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="{{ site.root }}tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="{{ site.root }}blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="{{ site.root }}courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="{{ site.root }}lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="{{ site.root }}contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
         </div>
-      </div>
     </div>
     
-    {% block main %}
-    {{ content|safe }}
-    {% endblock %}
-    
-    {% include 'footer.html' %}
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="{{ site.root }}"><i class="home icon"></i> Home</a>
+                <a class="item" href="{{ site.root }}work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="{{ site.root }}tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="{{ site.root }}blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="{{ site.root }}courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="{{ site.root }}lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="{{ site.root }}contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        {% block main %}
+        {{ content|safe }}
+        {% endblock %}
+        
+        {% include 'footer.html' %}
     </div>
     <script src="{{ site.root }}jquery.min.js"></script>
     <script src="{{ site.root }}semantic.min.js"></script>
-    <script src="{{ site.root }}site.js"></script>{{ piecrust.debug_info|safe }}
-  </body>
-  </html>
+    <script src="{{ site.root }}site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>
