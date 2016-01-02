@@ -13,7 +13,6 @@ format: html
         </div>
         <div class="row">
             <div class="sixteen wide column">
-
                 <div class="ui cards">
                     <div class="card">
                         <div class="content">
@@ -22,6 +21,16 @@ format: html
                             <div class="description">
                                 <p>Speak Like A Brazilian is a simple Laravel 5 web site, using a MariaDB database to store expressions, much like Urban Dictionary, but from several idioms to Brazilian Portuguese. The site focuses on daily expressions, slangs and what cannot be found in dictionaries. Its FaceBook page has over 1000+ followers (organic).</p>
                                 <p><a href="http://speaklikeabrazilian.com">Project Link</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">ASF Releases Aggregator</div>
+                            <div class="meta">Open Source Bot</div>
+                            <div class="description">
+                                <p>Twitter @asf_releases aggregator. Parses markmail e-mails messages sent to Apache mailing lists with ANNOUNCE and ANNOUNCEMENT in the title, tweeting about it. Scheduled to run as a cron job.</p>
+                                <p><a href="https://github.com/tupilabs/asf_releases_aggregator">Project Link</a></p>
                             </div>
                         </div>
                     </div>
