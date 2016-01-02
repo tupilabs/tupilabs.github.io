@@ -29,7 +29,7 @@ format: html
                             <div class="header">ASF Releases Aggregator</div>
                             <div class="meta">Open Source Bot</div>
                             <div class="description">
-                                <p>Twitter @asf_releases aggregator. Parses markmail e-mails messages sent to Apache mailing lists with ANNOUNCE and ANNOUNCEMENT in the title, tweeting about it. Scheduled to run as a cron job.</p>
+                                <p>Twitter <a href="https://twitter.com/asf_releases">@asf_releases aggregator</a>. Parses markmail e-mails messages sent to Apache mailing lists with ANNOUNCE and ANNOUNCEMENT in the title, tweeting about it. Scheduled to run as a cron job.</p>
                                 <p><a href="https://github.com/tupilabs/asf_releases_aggregator">Project Link</a></p>
                             </div>
                         </div>
