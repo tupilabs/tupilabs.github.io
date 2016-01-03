@@ -46,6 +46,36 @@ format: html
                     </div>
                     <div class="card">
                         <div class="content">
+                            <div class="header">r/functionalprogramming</div>
+                            <div class="meta">Open Source Community</div>
+                            <div class="description">
+                                <p>A subreddit for Functional Programming. Over 2300+ readers.</p>
+                                <p><a href="https://www.reddit.com/r/functionalprogramming/">Project Link</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">r/fuzzylogic</div>
+                            <div class="meta">Open Source Community</div>
+                            <div class="description">
+                                <p>A subreddit for Fuzzy Logic. Over 40+ readers.</p>
+                                <p><a href="https://www.reddit.com/r/fuzzylogic/">Project Link</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">r/testanythingprotocol</div>
+                            <div class="meta">Open Source Community</div>
+                            <div class="description">
+                                <p>A subreddit for Fuzzy Logic. 20 readers.</p>
+                                <p><a href="https://www.reddit.com/r/testanythingprotocol/">Project Link</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
                             <div class="header">Jenkins TAP Plug-in</div>
                             <div class="meta">Open Source Project</div>
                             <div class="description">
@@ -118,6 +148,10 @@ format: html
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class='ui divider'></div>
+                <div class='ui container'>
+                    <p>Check out our <a href="{{ site.root }}tag/tupilabs-report">weekly reports</a>, with a list of our Open Source contributions.</p>
                 </div>
             </div>
         </div>

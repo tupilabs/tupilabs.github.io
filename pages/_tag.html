@@ -1,20 +1,35 @@
 ---
 title:
-format: none
+format: html
 ---
 {% set display_tag = tag %}
 {% if is_multiple_tag %}
     {% set display_tag = tag|join(', ') %}
 {% endif %}
-<h2>Posts tagged with {{ display_tag }}</h2>
-
-<section>
-    {% for post in pagination.posts %}
-    {% include 'partial_post.html' %}
-    {% endfor %}
-</section>
-<section>
-    {% if pagination.prev_page %}<div class="prev"><a href="{{ pagination.prev_page }}">Next Posts</a></div>{% endif %}
-    {% if pagination.next_page %}<div class="next"><a href="{{ pagination.next_page }}">Previous Posts</a></div>{% endif %}
-</section>
-
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Posts tagged with {{ display_tag }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <section>
+                    {% for post in pagination.posts %}
+                    {% include 'partial_post.html' %}
+                    {% endfor %}
+                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    {% if pagination.next_page %}
+                    <a class="item" href="{{ pagination.next_page }}"><i class='left arrow icon'></i> Previous Posts</a>
+                    {% endif %}
+                    {% if pagination.prev_page %}
+                    <a class="item" href="{{ pagination.prev_page }}"><i class='right arrow icon'></i> Next Posts</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
