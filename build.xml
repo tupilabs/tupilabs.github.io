@@ -35,7 +35,7 @@
     <target name="blog" depends="clean" description="Create static blog">
         <!-- executes piecrust/bin/chef reading from the site directory 
              and writing to blog. The blog directory is not versioned.  -->
-        <exec append="true" executable="/usr/local/bin/chef">
+        <exec append="true" executable="chef">
             <arg value="bake" />
             <arg value="--force" />
         </exec>
