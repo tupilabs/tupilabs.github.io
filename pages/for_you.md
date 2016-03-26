@@ -15,10 +15,10 @@ format: html
                 more people.</p>
 
                 <p>Our software is created with permissive Open Source OSI approved licenses, so that
-                you can use it for both your hobby or professional project. And we contribute to both new and existing
-                projects.</p>
+                you can use it for both your hobby and professional project. And we contribute to both new and existing
+                open source projects.</p>
 
-                <p>We have no preference for programming language, operating system, or tools. We like Jenkins CI,
+                <p>We have no preference for programming language or operating system. We like Jenkins CI,
                 but we will try to work and fix issues in Travis CI or TeamCity.</p>
 
                 <p>If you believe in our work, and would like to contribute so that we can continue working for you,
