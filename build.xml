@@ -46,7 +46,7 @@
          ================================= -->
     <target name="blog-run" description="Runs static blog and watch for modifications">
         <!-- 8080 is the default port -->
-        <exec append="true" executable="/usr/local/bin/chef">
+        <exec append="true" executable="chef">
             <arg value="serve" />
         </exec>
     </target>
