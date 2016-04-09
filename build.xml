@@ -27,6 +27,8 @@
     <target name="clean" description="Cleans dist directory">
         <echo message="Cleaninig counter..." />
         <delete dir="${basedir}/_counter" failonerror="false" />
+        <echo message="Cleaning cache..." />
+        <delete dir="${basedir}/_cache" failonerror="false" />
     </target>
 
     <!-- ================================= 
@@ -44,7 +46,7 @@
     <!-- ================================= 
           target: blog-run              
          ================================= -->
-    <target name="blog-run" description="Runs static blog and watch for modifications">
+    <target name="blog-run" depends="clean" description="Runs static blog and watch for modifications">
         <!-- 8080 is the default port -->
         <exec append="true" executable="chef">
             <arg value="serve" />

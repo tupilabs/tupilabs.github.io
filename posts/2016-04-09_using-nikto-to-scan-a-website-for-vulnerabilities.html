@@ -1,0 +1,87 @@
+---
+title: 'Using Nikto to scan a website for vulnerabilities'
+author: kinow
+tags:
+    - laravel
+    - security
+    - nikto
+    - speak-like-a-brazilian
+time: '19:29:03'
+category: blog
+layout: blog
+---
+
+[Nikto](https://www.cirt.net/Nikto2) is a web server scanner, written in Perl and licensed under
+GNU GPL. The [source code](https://github.com/sullo/nikto.git) is available at GitHub.
+
+We released a new version of [Speak Like A Brazilian](https://speaklikeabrazilian.com) last week,
+upgrading from Laravel 4.x to 5.x. Once we had a release candidate (RC) tag
+ready we deployed it and ran Nikto to check for issues in the server.
+
+The default settings are enough for an initial test, but you can take a look at
+*nikto --help* for other interesting parameters.
+
+{% geshi 'shell' %}
+nikto -host https://speaklikeabrazilian.com
+{% endgeshi %}
+
+Here are the results of the scanning.
+
+{% geshi 'shell' %}
+- Nikto v2.1.4
+---------------------------------------------------------------------------
++ Target IP:          45.56.78.89
++ Target Hostname:    speaklikeabrazilian.com
++ Target Port:        80
++ Start Time:         2016-04-08 12:57:02
+---------------------------------------------------------------------------
++ Server: nginx
++ Retrieved x-powered-by header: PHP/5.5.9-1ubuntu4.14
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ robots.txt contains 11 entries which should be manually viewed.
++ ETag header found on server, fields: 0x5704861f 0xef 
++ OSVDB-3092: /new: This may be interesting...
++ OSVDB-3092: /new/: This might be interesting...
++ OSVDB-3093: /.htaccess: Contains authorization information
++ OSVDB-3092: /de/: This might be interesting... potential country code (Germany)
++ OSVDB-3092: /it/: This might be interesting... potential country code (Italy)
++ OSVDB-3092: /jp/: This might be interesting... potential country code (Japan)
++ OSVDB-3092: /pt/: This might be interesting... potential country code (Portugal)
++ OSVDB-3092: /es/: This might be interesting... potential country code (Spain)
++ 6448 items checked: 39 error(s) and 11 item(s) reported on remote host
++ End Time:           2016-04-08 13:29:41 (1959 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+{% endgeshi %}
+
+There list had a few false positives, but two outstanding issues could be easily fixed.
+First the .htaccess file.
+
+{% geshi 'shell' %}
+# File: speaklikeabrazilian.vhost.conf
+# From: https://www.nginx.com/resources/wiki/start/topics/recipes/dokuwiki/
+# Block access to .htaccess files
+location ~ /\.ht {
+    deny  all;
+}
+{% endgeshi %}
+
+And the second one is to hide the PHP server signature.
+
+{% geshi 'shell' %}
+# File: php.ini
+# From: http://www.techbrown.com/hide-server-signature-of-nginx-php-version-on-linux.shtml
+expose_php = Off
+{% endgeshi %}
+
+It is not polite to run Nikto (or most other scanners to be honest) on web sites that you
+do not maintain. Some sites are behind firewalls and IDS (Intrustion Detection System) systems
+that may block Nikto. When that happens, you can liaise with your Ops team and schedule an
+internal run on an application you develop or maintain.
+
+Nikto may help you finding flaws in your server and deployment. The next step now for Speak Like A
+Brazilian now is running the new code through
+[OWASP's ZAP Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project),
+which can analyse the HTTP requests for possible bugs.
+
+Happy hacking!
