@@ -11,6 +11,8 @@ import os
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
+ROOT = os.path.dirname(os.path.realpath(__file__))
+
 # TODO: add source
 def is_valid_url(url):
     import re
@@ -95,15 +97,17 @@ if (len(tasks) > 0):
     to_date = dates[1]
     time = time.strftime("%H:%M:%S", time.gmtime(666))
 
-    file = open('template.tpl', 'r')
+    template_file = os.path.join(ROOT, 'template.tpl')
+    file = open(template_file, 'r')
     template = Template(file.read())
     content = template.render({'from': from_date, 'to': to_date, 'time': time, 'author': 'kinow', 'tasks': tasks})
 
-    file_name = today.strftime("%Y-%m-%d_tupilabs-report-" + from_date + "-" + to_date + ".html").lower()
+    output_file_name = today.strftime("%Y-%m-%d_tupilabs-report-" + from_date + "-" + to_date + ".html").lower()
+    output_file = os.pash.join(ROOT, 'posts', output_file_name)
 
-    output_file = open(file_name, 'w')
-    output_file.write(content)
-    output_file.close()
+    out = open(output_file, 'w')
+    out.write(content)
+    out.close()
 
     print('Report generated, archiving cards!')
 
