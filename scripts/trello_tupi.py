@@ -103,7 +103,7 @@ if (len(tasks) > 0):
     content = template.render({'from': from_date, 'to': to_date, 'time': time, 'author': 'kinow', 'tasks': tasks})
 
     output_file_name = today.strftime("%Y-%m-%d_tupilabs-report-" + from_date + "-" + to_date + ".html").lower()
-    output_file = os.pash.join(ROOT, 'posts', output_file_name)
+    output_file = os.path.join(ROOT, 'posts', output_file_name)
 
     out = open(output_file, 'w')
     out.write(content)
