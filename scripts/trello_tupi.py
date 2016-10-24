@@ -13,7 +13,7 @@ load_dotenv(find_dotenv())
 
 ROOT = os.path.dirname(os.path.realpath(__file__))
 
-# TODO: add source
+# From: http://stackoverflow.com/a/7995979
 def is_valid_url(url):
     regex = re.compile(
         r'^https?://'  # http:// or https://
