@@ -15,7 +15,6 @@ ROOT = os.path.dirname(os.path.realpath(__file__))
 
 # TODO: add source
 def is_valid_url(url):
-    import re
     regex = re.compile(
         r'^https?://'  # http:// or https://
         r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,6}\.?|'  # domain...
