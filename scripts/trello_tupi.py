@@ -24,7 +24,7 @@ def is_valid_url(url):
         r'(?:/?|[/?]\S+)$', re.IGNORECASE)
     return url is not None and regex.search(url)
 
-# http://stackoverflow.com/questions/1820336/tokenize-a-string-keeping-delimiters-in-python
+# From: http://stackoverflow.com/questions/1820336/tokenize-a-string-keeping-delimiters-in-python
 def urlify(text):
     t = ''
     splitter = re.compile(r'(\s+|\S+|,|\.|\n|:|;)')
@@ -90,7 +90,6 @@ for d in data:
 
 if (len(tasks) > 0):
     today = datetime.datetime.today()
-    #today = datetime.datetime(2014, 12, 1)
     dates = get_last_whole_week(today)
     from_date = dates[0]
     to_date = dates[1]
@@ -115,8 +114,6 @@ if (len(tasks) > 0):
     params = dict()
 
     resp = requests.post(url=url, params=params)
-
-    #print resp.text
 
     print("All cards archived!")
 else:
