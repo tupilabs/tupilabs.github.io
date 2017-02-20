@@ -1,0 +1,243 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Tutorials</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                
+                <section>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/06/14/how-we-make-our-vector-illustrations">How we make our vector illustrations</a></h2>
+      <small>Jun 14, 2012
+        
+        in 
+            <a href="/tag/illustration">illustration</a>
+        
+        
+        | <a href="/tutorials">tutorials</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Hi there!</p>
+
+<p>In this blog post we will show how we make our vector illustrations. The whole process of drawing, scanning and adjusting the image levels is quite simple. The level adjustment step is required only if you think that the image is not legible enough. In some cases, you may prefer just using an eraser to remove some extra lines, shadows or stains.</p>
+
+
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/04/29/creating-a-pbsmpi-cluster-for-bioinformatics-part-2">Creating a PBS/MPI cluster for bioinformatics – Part 2</a></h2>
+      <small>Apr 29, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/bioinformatics">bioinformatics</a>
+        
+        
+        | <a href="/tutorials">tutorials</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>In the <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="Creating a PBS/MPI cluster for bioinformatics – Part 1">previous post</a> of this series we saw how to configure a basic network for our small cluster. Now it is time to work on the <strong>MPI</strong> stuff. Our cluster will be a <strong><a href="http://en.wikipedia.org/wiki/Beowulf_cluster" title="Beowulf Cluster Wiki entry">Beowulf cluster</a></strong>. This kind of cluster is composed of <strong>commodity computers</strong>, connected via network sharing resources and programs. And in the next post, we will see how to include a <em>batch queuing system</em> to control the resource utilization in our cluster.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Message_Passing_Interface" title="Message Passing Interface Wiki entry">MPI</a> is not a library. MPI is actually a standard. When you find an RESTful application, REST is only a standard, and you have different libraries that implement this standard (Jersey, JBoss Reast Easy, CodeIgniter+Rest Controllers, and so it goes). With MPI it is not different. There are different implementations of the MPI specification. We suggest you to read <a href="http://techtinkering.com/2009/12/02/setting-up-a-beowulf-cluster-using-open-mpi-on-linux/" title="Setting Up a Beowulf Cluster using OpenMPI on Linux">this tutorial</a> that, although it was written in 2009, it uses Debian (operational system we are using in BioUno cluster) and is very well written and concise. Basically, you have to install <a href="http://open-mpi.org/" title="OpenMPI">OpenMPI</a>, one of the existing MPI libraries. And if you followed the instructions in <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="Creating a PBS/MPI cluster for bioinformatics – Part 1">part 1</a> of this series, then you already have SSH correctly configured in your computers.</p>
+
+
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/04/17/creating-a-pbsmpi-cluster-for-bioinformatics-part-1">Creating a PBS/MPI cluster for bioinformatics - Part 1</a></h2>
+      <small>Apr 17, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/bioinformatics">bioinformatics</a>
+        
+        
+        | <a href="/tutorials">tutorials</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>This is a series of posts with the steps we are using to set up an internal cluster for <a href="http://en.wikipedia.org/wiki/Bioinformatics" title="Bioinformatics Wikipedia entry">bioinformatics</a> using <a href="http://en.wikipedia.org/wiki/Message_Passing_Interface" title="Message Passing Interface">MPI</a> and <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> for distributed jobs. Our goal with this series is help other nerds setting up similar environment. This cluster is not public yet, and we are using for development of <a href="http://www.biouno.org" title="BioUno">BioUno</a>. At moment we are writing code to integrate our <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> with <a href="http://mrbayes.sourceforge.net/" title="MrBayes">MrBayes</a> and <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Structure">Structure</a>.</p>
+
+<p>In this first post, we will see how to configure the network for each machine be able to see the other one, and how to configure SSH for connecting to the other nodes in the cluster. If you already know MrBayes and Structure, skip the Introduction and go to the <a href="#basic-network-configuration">basic network configuration topic</a>. We assume you have a intermediary knowledge of Linux, as many instructions in this series are vague. We always reference the original tutorial that we used. This series may be edited to stay up to date or for improvements.</p>
+
+
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/02/18/configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows">Configuring Jenkins Git Plug-in with BitBucket private repositories in Windows</a></h2>
+      <small>Feb 18, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>
+        
+        
+        | <a href="/tutorials">tutorials</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>
+ Tell me about writing a specific title. This is my first entry here in TupiLabs. Today I will show you how to configure
+ <a title="Jenkins" href="http://www.jenkins-ci.org">Jenkins</a> Git Plug-in, to retrieve sources from a private
+ repository hosted at <a title="BitBucket" href="http://www.bitbucket.org">BitBucket</a>. Phew. Ah, and all this using a
+ Windows server.
+</p>
+
+<p>
+ <strong><a href="#tldr">TL;DR</a></strong>: ssh -vT &lt;host&gt; displays where it is looking for your .ssh directory.
+ Probably you will want check permissions and the %HOME% environment variable too. In case your job is getting stuck,
+ click here to skip the introduction text.
+</p>
+
+<h2>Motivation</h2>
+
+<ul>
+ <li>At TupiLabs, we have repositories hosted at <a title="GitHub" href="http://www.github.com">GitHub </a>(public
+  repositories) and BitBucket (mix of public and private repositories).
+ </li>
+ <li>We use Jenkins for many activities. Not only as a build server, but as a <em>function</em> in our development
+  environment. We will talk about that later ;-)
+ </li>
+ <li>We use Jenkins, Mac and Windows for development.</li>
+ <li>We have jobs running at <a title="Linode"
+  href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4">Linode</a> with <a title="Ubuntu"
+  href="http://www.ubuntu.com">Ubuntu</a>+Jenkins+Git Plug-in+BitBucket.
+ </li>
+ <li>There aren&#8217;t many resources for configuring Jenkins and BitBucket in Windows.</li>
+ <li>I have a good friend of mine who would like to read about it. Heck! That&#8217;s enough to write about it :-D</li>
+</ul>
+
+
+    </section>
+  </article>
+</div>
+                    
+                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    
+                    
+                    <a class="item" href="/tutorials/2"><i class='right arrow icon'></i> Next Posts</a>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

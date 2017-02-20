@@ -1,0 +1,209 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs &mdash; Creating a PBS/MPI cluster for bioinformatics - Part 1</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Creating a PBS/MPI cluster for bioinformatics - Part 1</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <p>This is a series of posts with the steps we are using to set up an internal cluster for <a href="http://en.wikipedia.org/wiki/Bioinformatics" title="Bioinformatics Wikipedia entry">bioinformatics</a> using <a href="http://en.wikipedia.org/wiki/Message_Passing_Interface" title="Message Passing Interface">MPI</a> and <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> for distributed jobs. Our goal with this series is help other nerds setting up similar environment. This cluster is not public yet, and we are using for development of <a href="http://www.biouno.org" title="BioUno">BioUno</a>. At moment we are writing code to integrate our <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> with <a href="http://mrbayes.sourceforge.net/" title="MrBayes">MrBayes</a> and <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Structure">Structure</a>.</p>
+
+<p>In this first post, we will see how to configure the network for each machine be able to see the other one, and how to configure SSH for connecting to the other nodes in the cluster. If you already know MrBayes and Structure, skip the Introduction and go to the <a href="#basic-network-configuration">basic network configuration topic</a>. We assume you have a intermediary knowledge of Linux, as many instructions in this series are vague. We always reference the original tutorial that we used. This series may be edited to stay up to date or for improvements.</p>
+
+<!--more-->
+
+<h2>Introduction</h2>
+
+<p><strong>MrBayes</strong> is a tool for bayesian inference <strong>phylogeny</strong> using <a href="http://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo" title="Markov Chain Monte Carlo">MCMC (Monte Carlo Markov Chain)</a> methods. It is written in C and distributed under <a href="http://www.gnu.org/licenses/gpl.html" title="GNU General Public License">GNU General Public License</a>. In a cluster, probably you will want to run MrBayes from command line. it also supports MPI, what can permit your cluster to execute MrBayes using more computer power. We will use <a href="http://www.open-mpi.org/" title="OpenMPI">OpenMPI</a> as MPI implementation.</p>
+
+<p><a href="http://www.hhmi.org/research/investigators/pritchard_bio.html" title="Jonathan Pritchard">Jonathan Pritchard</a> runs <a href="http://pritch.bsd.uchicago.edu/index.html" title="Pritchard Lab">Pritchard Lab</a>, responsible for maintaining Structure and a lot of other useful <a href="http://pritch.bsd.uchicago.edu/software.html" title="Pritchard Lab software">tools</a>. Structure is used to investigate <strong>population structure</strong>. Structure is written in C, with an optional Java FrontEnd and is free but doesn&#8217;t make it clear which license it is licensed under.</p>
+
+<p>When running Structure in a cluster environment, probably you will want to run from command line too, just like MrBayes. However, it doesn&#8217;t use MPI for distributed computing. Instead we will use a job scheduler tool to invoke Structure on different computers using a different <strong>K</strong> parameter value. Then we will gather all result files to finish the process. We will use <a href="http://www.adaptivecomputing.com/products/open-source/torque/" title="Adaptive Computing Torque PBS">Torque</a> PBS implementation.</p>
+
+<p>The operational system used is <a href="http://www.debian.org/" title="Debian">Debian</a>, but the same instructions might work in other Linux distributions, specially those based on Debian, such as <a href="http://www.ubuntu.com/" title="Ubuntu Linux">Ubuntu</a> and <a href="http://linuxmint.com/" title="Linux Mint">Mint</a>.</p>
+
+<h2><a name="basic-network-configuration" style="color: black;">Basic network configuration</a></h2>
+
+<p>Your computers must be able to talk to each other. What means that at least <code>ping</code> must be working in both directions. In our cluster, we have all the nodes connected to a simple hub, configured within network 192.168.0.0/24. Each computer has its own static IP address. We have an old D-Link DL-524 router with wi-fi and cable ports. It is our gateway, DHCP and DNS servers.</p>
+
+<p>If you need help configuring the network addresses, try <a href="http://www.ibm.com/developerworks/linux/library/l-lan/index.html">this tutorial</a>.</p>
+
+<p>If your interfaces are ready, with addresses configured, and you are able to ping each machine by IP, it is time to set up the names. Edit /etc/hosts file and include the IP address of each machine and its alias. In our cluster we are also including an alias with the domain name. This can be useful with Torque PBS later.</p>
+
+<p><code># /etc/hosts
+127.0.0.1    master master.tupilabs.com localhost
+192.168.0.50 master master.tupilabs.com
+192.168.0.51 node01 node01.tupilabs.com
+</code></p>
+
+<p><code># /etc/hosts.equiv
+master.tupilabs.com
+node01.tupilabs.com
+</code></p>
+
+<p><code># /etc/resolv.conf
+nameserver 192.168.0.1
+</code></p>
+
+<p>Don&#8217;t forget to update your hostname and the name server address too.</p>
+
+<p><strong>master hostname</strong></p>
+
+<p><code># /etc/hostname
+master.tupilabs.com
+</code></p>
+
+<p><strong>node01 hostname</strong></p>
+
+<p><code># /etc/hostname
+node01.tupilabs.com
+</code></p>
+
+<p>If everything worked so far, you must be able to ping each machine by its name, with or without the domain name. If you need help configuring DNS in your linux, take a look at <a href="http://www.ibm.com/developerworks/linux/library/l-lan/index.html">this tutorial</a>. Furthermore, if you are using a notebook with Wi-fi, you may have two interfaces in your Linux. Sometimes the route table is not configured correctly for your network. Try running <code>route -n</code> and have a look at its output to make sure it&#8217;s all right too.</p>
+
+<h2>SSH</h2>
+
+<p>If you use <a href="http://www.github.com" title="GitHub">GitHub</a> or <a href="http://www.bitbucket.org" title="BitBucket">BitBucket</a>, probably you already own some SSH keys. Otherwise, you will need to create a <a href="http://en.wikipedia.org/wiki/Secure_Shell" title="Secure Shell">SSH</a> key pair. We will use SSH for administering our nodes and for executing jobs later.</p>
+
+<p><code>ssh-keygen -t rsa</code></p>
+
+<p>Run the command above to create a RSA key pair for you. When asked about passphrase, leave it blank. If everything worked fine, you will have your keys created in <code>$HOME/.ssh</code>. Copy the contents of <code>id_rsa.pub</code> to <code>authorized_keys</code>. And then copy all the files within .ssh to node01 machine (under the remote user home directory too).</p>
+
+<p>In order to check if your SSH set up is fine, try running ssh user@host.domain.com. Assuming that user is the user holding the .ssh directory, and host.domain.com is the hostname of the other machine. You should see the terminal at the remote machine. For troubleshooting your SSH key pair, use the <a href="http://help.github.com/linux-set-up-git/" title="GitHub Set Up Git at Linux">GitHub documentation here</a>. It is a good chance to create your first repository there too, if you hadn&#8217;t. We will use one later to store our biology data.</p>
+
+<h2>NFS</h2>
+
+<p><a href="http://en.wikipedia.org/wiki/Network_File_System" title="Network File System">NFS, or Network File System</a> is a service that once installed, can keep two folders synchronized between a NFS server and a NFS client. There are some tutorials that guide you through the steps to use your NFS synced folders to install tools like MrBayes and Structure. In our cluster here at TupiLabs, we won&#8217;t use this approach. Specially because our cluster is <strong>not homogeneous</strong> (yup, different hardware) and because we may need to test different versions on each node for development purpose. With NFS it would get trickier. But maybe you can find it useful trying that approach.</p>
+
+<p>We will use NFS to be able to <strong>retrieve the result files from all the slaves</strong> (one in our example) from a single directory in the master. It saves some time, but the same could be done with a simple script and <strong>scp</strong>. But we are <a href="http://en.wikipedia.org/wiki/Larry_Wall#Virtues_of_a_programmer" title="http://en.wikipedia.org/wiki/Larry_Wall#Virtues_of_a_programmer">lazy</a>.</p>
+
+<p>We won&#8217;t cover all the details for installing NFS in a Debian Linux as you may have some troubles setting it up, and we would be only duplicating information available somewhere else (and that is updated there and maybe would take longer to be updated ere) and this could be frustrating for you. Instead, we will give you the tutorial that we used. Here it is: <a href="https://help.ubuntu.com/community/NFSv4Howto" title="https://help.ubuntu.com/community/NFSv4Howto">https://help.ubuntu.com/community/NFSv4Howto</a></p>
+
+<p>. And a quick note, in case you find other tutorials telling you to use <strong>portmap</strong>, however there is a problem with dependencies in Debian repositories. Actually, <strong>rpcbind</strong> is supposed to replace it. So you don&#8217;t need it anyway.</p></p>
+<p>Here we will post our existing configuration too, as that might help you for troubleshooting your set up. At the master, we created <strong>/var/lib/biouno</strong> (to hold our data files), and <strong>/export/biouno</strong>. There is a fstab bind from this directory to <strong>/export/biouno</strong>. And in the slaves we created <strong>/export/biouno</strong>.</p>
+
+<p><strong>NFS master files</strong></p>
+
+<p><code># /etc/exports
+/export   192.168.0.0/255.255.255.0(rw,no_root_squash,no_subtree_check,crossmnt,fsid=0)
+</code></p>
+
+<p><code>$ /etc/fstab
+...
+...
+/var/lib/biouno /export/biouno  nonde   bind    0    0
+</code></p>
+
+<p><strong>NFS slave files</strong></p>
+
+<p><code># /etc/fstab
+192.168.0.50:/   /export    nfs    rw,nodev,nosuid,noauto    0    0
+</code></p>
+
+<p><code>$ /etc/rc.local
+mount 192.168.0.50:/
+</code></p>
+
+<p>There are some bug reports regarding Debian with Kernel 3.x freezing with NFS. It happened few times, but the server is using Linux Kernel 3.x, and the slave is using 2.x This is not crucial for BioUno right now, the main objective right now is write the code for MrBayes and Structure in Jenkins, using PBS and MPI.</p>
+
+<p>In the next post we will see how to set up MPI and MrBayes. Stay tuned!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

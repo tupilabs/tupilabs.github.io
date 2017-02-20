@@ -1,0 +1,125 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs &mdash; Fixing "XMLHttpRequest Origin is not allowed by Access-Control-Allow-Origin" in PHP and CodeIgniter</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Fixing "XMLHttpRequest Origin is not allowed by Access-Control-Allow-Origin" in PHP and CodeIgniter</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <p>Since it has been released, <a href="http://www.speaklikeabrazilian.com" title="SLBR">Speak Like A Brazilian</a> had a bug when users voted, but had accessed the site via <em>speaklikeabrazilian.com</em>, and not <em>www.speaklikeabrazilian.com</em> (the latter is the base_url in <em>application/config/config.php</em>).</p>
+
+<p>Looking at the developer console in Chrome, you could see that XMLHttpRequest was having trouble by, what looked in principle, like a security bug. Maybe a cross-domain issue.</p>
+
+<p>After searching the Internet, we&#8217;ve found what was causing this issue. Unfortunately I lost the link, but in a StackOverFlow discussion, one user said it had something to do with the CSRF check.</p>
+
+<p>A quick test, where we disabled the CSRF token verification, showed that he was right. But we couldn&#8217;t simply disable CSRF everywhere. So if you are facing similar issue, here&#8217;s the trick: Create a hook that disables CSRF verification only for a certain URL.</p>
+
+<p>It&#8217;s not a very nice approach, but as in Speak Like A Brazilian the votes are linked by IP, there&#8217;s no need to keep the CSRF token. Here&#8217;s the solution that worked for us.</p>
+
+<pre>
+&lt;?php if (!defined('BASEPATH')) exit('No direct script access allowed');<br/> <br/>/**<br/> * Security Class<br/> *<br/> * @package hooks<br/> * @description Disables CSRF token for certain pages.<br/> */<br/> <br/>class DisableCSRF<br/>{<br/><br/>        function disable_if_callback() <br/>        {    <br/>            if(stripos($_SERVER[&quot;REQUEST_URI&quot;],'/rating/expression') !== FALSE)<br/>            {<br/>                $CFG =&amp; load_class('Config', 'core');<br/>                $CFG-&gt;set_item('csrf_protection', FALSE);<br/>            }<br/>        } <br/>        <br/>}
+</pre>
+
+<p>And as a side note, we are still in honey moon with <a href="http://www.codeigniter.com">CodeIgniter</a>. We have just finished another project with it, and so far we haven&#8217;t been let down by this amazing framework. Hope it helps you, in case you have similar error.</p>
+
+<p>Happy St. Patricks Day! And happy coding!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

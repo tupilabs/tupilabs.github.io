@@ -1,0 +1,274 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Posts tagged with ideas</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <section>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/10/31/a-crm-for-open-source-projects">A CRM for Open Source projects</a></h2>
+      <small>Oct 31, 2012
+        
+        in 
+            <a href="/tag/ideas">ideas</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>
+ The idea is basically to create a simple CRM for Open Source projects. As there&#8217;s a great diversity of Open Source
+ tools, and depending on its nature (low level API, build server, office suite) the development team may need different
+ features, the ideal is that it has some kind of <strong>plug-in API</strong>, or <strong>modules</strong>.
+</p>
+
+<p>
+ It could help organizing donors, events, meetings, file exchange, among other things. And it would be useful if it was
+ a <a href="http://en.wikipedia.org/wiki/Software_as_a_service" title="SaaS definition at Wikipedia">SaaS</a> (and
+ cheap/free!).
+</p>
+
+<p>
+ The idea came after a tweet by <a href="http://www.reddit.com/agentdero" title='@agentdero'>@agentdero</a>.
+</p>
+
+<p><a href="img/posts/2012-10-31_a-crm-for-open-source-projects/twitter01.png"><img src="img/posts/2012-10-31_a-crm-for-open-source-projects/twitter01-300x297.png"
+ alt="" title="Tweet" width="300" height="297" class="size-medium wp-image-909" /></a></p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/10/22/create-a-cpan-map-like-for-jenkins-plug-ins">Create a Map of Jenkins Plug-ins (similar to Map of CPAN)</a></h2>
+      <small>Oct 22, 2012
+        
+        in 
+            <a href="/tag/perl">perl</a>, <a href="/tag/jenkins">jenkins</a>, <a href="/tag/ideas">ideas</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>There&#8217;s a plethora of plug-ins for <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a>, that&#8217;s well known. But there are way more modules in <a href="http://www.cpan.org" title="CPAN">CPAN</a>. One way to visualize all the modules in CPAN is with <a href="http://mapofcpan.org/" title="Map of CPAN">Map of CPAN</a>.</p>
+
+<p>The idea here is to create similar map for Jenkins plug-ins (Map of Jenkins plug-ins). It could use the plug-in type (plugin-labels) and show its growth through the time. That would be interesting, especially if it was possible to create a video (like this one below) showing what happened since the fork from <a href="http://hudson-ci.org/" title="Hudson CI">Hudson</a>.</p>
+
+<p class="center"><iframe src="http://player.vimeo.com/video/51893508" width="500" height="328" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
+
+<p><p><a href="http://vimeo.com/51893508">Map of CPAN – The Movie</a> from <a href="http://vimeo.com/grantm">Grant McLean</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
+<p>The code for the CPAN map generator is hosted at GitHub: <a href="https://github.com/grantm/cpan-map">https://github.com/grantm/cpan-map</a>. And it uses the <a href="http://en.wikipedia.org/wiki/Hilbert_curve" title="Hilbert curve">Hilbert curve</a> for ploting those geometric forms.</p>
+
+<hr/>
+
+<p><em>Update 26, oct. 2012</em></p>
+
+<p>The map generation is started with a Perl script cpan-map that downloads a tar.gz file from <a href="https://metacpan.org/" title="MetaCPAN">MetaCPAN</a> and creates a map of namespaces and its modules. Then it creates an image with Hilbert curves. It assigns different colors for each namespace.</p>
+
+<p>For Jenkins plug-ins map we could use <em>update-center.json</em> file, and group plug-ins by its label. We could get the author picture from Gravatar (like Map of CPAN), and use the same interface of Map of CPAN - it uses <a href="http://sammyjs.org/" title="SammyJS">sammy.js</a> and <a href="http://www.jquery.com" title="jQuery">jQuery</a>.</p>
+
+<p>Links for Hilbert curves and Java</p>
+
+<ul>
+    <li><a href="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html" title="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html"></a></li>
+    <li><a href="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html" title="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html"></a></li>
+</ul>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/10/20/recomendacoes-baseadas-em-fotos-do-pinterest">Recomendações baseadas em fotos do Instagram</a></h2>
+      <small>Oct 20, 2012
+        
+        in 
+            <a href="/tag/ideas">ideas</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Muita gente posta no Instagram fotos dos pratos que está comendo. Uma ideia seria utilizar uma base e um algoritmo de reconhecimento de padrões para identificar qual o prato. Tentar cruzar com informações do lugar da foto e, cruzando o tipo de prato (doce, salgado, chique, pobre, etc) com o valor dele e estabelecimento, recomendar ao usuário outros restaurantes.</p>
+
+<p>Digamos que alguém peça costela no Outback, tire uma foto e poste. O que esse sistema precisaria fazer é: </p>
+
+<ul>
+    <li>Classificar a comida</li>
+    <li>Extrair informações sobre o perfil do usuário</li>
+    <li>Encontrar informações sobre o estabelecimento atual</li>
+    <li>Com base nos dados que possui, recomendar pratos em outros estabelecimentos</li>
+</ul>
+
+<p>Com algum treinamento (see: <a href="http://reddit.com/r/machinelearning" title="Machine Learning subreddit">Machine Learning</a>), seria possível que o site recomendasse a esta pessoa experimentar a costela no AppleBees também. Já que o tipo de estabelecimento é semelhante, o prato e o valor também. Talvez o usuário pudesse pedir uma recomendação menos calórica mas semelhante (see: <a href="http://www.reddit.com/r/fuzzylogic/" title="Fuzzy Logic subreddit">Fuzzy</a>), ou mais barata (see: Tio Patinhas).</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/10/16/send-coverage-results-back-to-testlink">Send coverage results back to TestLink</a></h2>
+      <small>Oct 16, 2012
+        
+        in 
+            <a href="/tag/testlink">testlink</a>, <a href="/tag/ideas">ideas</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>This is an interesting case that I received via e-mail from G. M. after he read the post <a href="http://www.kinoshita.eti.br/2012/10/11/jenkins-testlink-and-gtest-in-5-minutes-or-so/" title="Jenkins, TestLink and GTest in 5 minutes (or so)"></a>. Basically, using an approach similar to the <a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin" title="Jenkins TestLink Plug-in">testlink-plugin for Jenkins</a>, one could send the coverage results to <a href="http://www.teamst.org" title="TestLink">TestLink</a>.</p>
+
+<p>TestLink has requirements x test case coverage information, and <a href="http://www.sonarsource.org/" title="Sonar">Sonar</a>, <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a>, <a href="http://cobertura.sourceforge.net/" title="Cobertura">Cobertura</a> and other tools give you source code x test coverage. Crossing these information could be interesting.</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/10/02/use-jenkins-plug-ins-api-in-apache-nutch">Use Jenkins plug-ins API in Apache Nutch</a></h2>
+      <small>Oct 02, 2012
+        
+        in 
+            <a href="/tag/nutch">nutch</a>, <a href="/tag/jenkins">jenkins</a>, <a href="/tag/ideas">ideas</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>I&#8217;m working in an <a href="http://nutch.apache.org" title="Apache Nutch">Apache Nutch</a> project that involves some new plug-ins and customization in existing parts parts of Nutch, however, after reading Nutch&#8217;s code base and learning about its plug-in architecture, I believe someone could use part of <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> API to enhance the plug-in API in Nutch.</p>
+<p>Nutch uses a similar concept, with the same name as in Jenkins, Extension Points. However, it&#8217;s quite hard to create a plug-in project separate from the core project (it uses Ivy and plug-ibs have some dependencies to the core project). And you have to extend certain classes and configure XML files to prepare your plug-in.</p>
+<p>Part of this could be automatically done with inheritance + Java annotations. I&#8217;ll have a cycle for Open Source in the next days, and will give it a try to see if that really makes sense.</p>
+    </section>
+  </article>
+</div>
+                    
+                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    
+                    
+                    <a class="item" href="/tag/ideas/2"><i class='right arrow icon'></i> Next Posts</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

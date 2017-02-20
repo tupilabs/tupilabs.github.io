@@ -1,0 +1,272 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Blog</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                
+                <section>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/11/24/create-a-tool-to-find-out-the-average-test-coverage-in-jenkins-plug-ins">Create a tool to find out the average test coverage in Jenkins plug-ins</a></h2>
+      <small>Nov 24, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/testing">testing</a>, <a href="/tag/ideas">ideas</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>
+ This idea popped up while chatting with <a href="https://github.com/darkrift" title="https://github.com/darkrift">Richard
+  Lavoie</a>. I was telling him about selenium tests for plug-ins, <a href="http://www.snakebite.org" title="SnakeBite">snakebite</a>
+ one thing leads to another, and then came the idea of measuring the coverage in plug-ins.
+</p>
+
+<p>
+ Basically, this tool would have to iterate over the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins"
+  title="Jenkins Plugins">600+ plug-ins</a>, and trigger a
+ <code>mvn test</code>
+ command. Then it would have to save the coverage information somewhere, and plot a graph, or generate some report about
+ it.
+</p>
+
+<p><img src="img/logos/jenkins.jpg" alt="" title="Jenkins CI" width="191" height="300"
+ class="aligncenter size-medium wp-image-918" /></p>
+<p>Depending on the machine, probably this tool could spawn more than 1 thread for doing this. Even then, it would
+ still take quite a while for processing all the plug-ins.</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/11/10/webinar-configurando-continuous-delivery-com-o-jenkins-enterprise-e-deployit">Webinar: Configurando Continuous Delivery com o Jenkins Enterprise e Deployit</a></h2>
+      <small>Nov 10, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Na semana passada a <a href="http://www.cloudbees.com" title="CloudBees">CloudBees</a> e a <a href="http://www.xebialabs.com" title="XebiaLabs">XebiaLabs</a> disponibilizaram o webinar &#8220;Setting up Continuous Delivery with Jenkins Enterprise and Deployit&#8221; (Configurando Continuous Delivery com o Jenkins Enterprise e Deployit). Nesse webinar eles apresentaram alguns plug-ins interessantes que estão presentes no Jenkins Enterprise, mas também mostraram um ótimo exemplo de pipeline com continuous delivery.</p>
+
+<p class='center'><iframe src="http://player.vimeo.com/video/53031852?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/53031852">Workshop Setting up Continuous Delivery with Jenkins Enterprise & Deployit 11-7-12 12.00 PM</a> from <a href="http://vimeo.com/xebialabs">XebiaLabs</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/11/10/webinar-setting-up-continuous-delivery-with-jenkins-enterprise-and-deployit">Webinar: Setting up Continuous Delivery with Jenkins Enterprise and Deployit</a></h2>
+      <small>Nov 10, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/news">news</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Last week <a href="http://www.cloudbees.com" title="CloudBees">CloudBees</a> and <a href="http://www.xebialabs.com" title="XebiaLabs">XebiaLabs</a> delivered the webinar Setting up Continuous Delivery with Jenkins Enterprise and Deployit. In this webinar they present some interesting plug-ins available in Jenkins Enterprise, but also demonstrate a great example of a continuous delivery pipeline.</p>
+
+<p class='center'><iframe src="http://player.vimeo.com/video/53031852?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/53031852">Workshop Setting up Continuous Delivery with Jenkins Enterprise & Deployit 11-7-12 12.00 PM</a> from <a href="http://vimeo.com/xebialabs">XebiaLabs</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/11/04/an-alternative-pbs-api-for-java">An alternative PBS API for Java</a></h2>
+      <small>Nov 04, 2012
+        
+        in 
+            <a href="/tag/bioinformatics">bioinformatics</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Last week we released a new API for <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> in Java - <a href="https://github.com/tupilabs/pbs-java-api" title="pbs-java-api">pbs-java-api</a>. There is an existing API that works very well (<a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a>), and we even got in touch and worked with the author before releasing this new API. So what&#8217;s the difference between the two API&#8217;s and when should I use one or the other?</p>
+
+<p>Here&#8217;s the main differences between the two API&#8217;s:</p>
+
+<ul>
+    <li>pbs4java uses <a href="http://en.wikipedia.org/wiki/Domain-driven_design" title="DDD">DDD</a>, while pbs-java-api has a more classical approach. We needed this to avoid serialization problems in Jenkins.</li>
+    <li>pbs-java-api is available from Maven Central</li>
+    <li>pbs-java-api tries to map the commands (qnodes, qstat, qsub, &#8230;). So you would call PBS.qsub(&#8230;) instead of Job#submit().</li>
+</ul>
+
+<p>That&#8217;s pretty much it, so you really don&#8217;t need to switch to pbs-java-api. We created this new API as we needed a non DDD API to be used with the Jenkins plug-in API and that was available from Maven Central.</p>
+
+<p>pbs-java-api - <a href="https://github.com/tupilabs/pbs-java-api">https://github.com/tupilabs/pbs-java-api</a></p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/10/31/a-crm-for-open-source-projects">A CRM for Open Source projects</a></h2>
+      <small>Oct 31, 2012
+        
+        in 
+            <a href="/tag/ideas">ideas</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>
+ The idea is basically to create a simple CRM for Open Source projects. As there&#8217;s a great diversity of Open Source
+ tools, and depending on its nature (low level API, build server, office suite) the development team may need different
+ features, the ideal is that it has some kind of <strong>plug-in API</strong>, or <strong>modules</strong>.
+</p>
+
+<p>
+ It could help organizing donors, events, meetings, file exchange, among other things. And it would be useful if it was
+ a <a href="http://en.wikipedia.org/wiki/Software_as_a_service" title="SaaS definition at Wikipedia">SaaS</a> (and
+ cheap/free!).
+</p>
+
+<p>
+ The idea came after a tweet by <a href="http://www.reddit.com/agentdero" title='@agentdero'>@agentdero</a>.
+</p>
+
+<p><a href="img/posts/2012-10-31_a-crm-for-open-source-projects/twitter01.png"><img src="img/posts/2012-10-31_a-crm-for-open-source-projects/twitter01-300x297.png"
+ alt="" title="Tweet" width="300" height="297" class="size-medium wp-image-909" /></a></p>
+    </section>
+  </article>
+</div>
+                    
+                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    
+                    <a class="item" href="/blog/9"><i class='left arrow icon'></i> Previous Posts</a>
+                    
+                    
+                    <a class="item" href="/blog/7"><i class='right arrow icon'></i> Next Posts</a>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

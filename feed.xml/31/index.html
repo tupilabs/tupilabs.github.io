@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>TupiLabs</title>
+        <link>/</link>
+        <atom:link href="/feed.xml/31" rel="self" type="application/rss+xml" />
+        
+        <description>Latest news from TupiLabs</description>
+        
+        <lastBuildDate>2017-02-20T22:12:37+13:00</lastBuildDate>
+        <pubDate>2017-02-20T22:12:37+13:00</pubDate>
+        <generator>PieCrust 2.0.0rc2</generator>
+        
+        
+        
+
+        
+        
+        
+        <item>
+            <title>Configuring Jenkins Git Plug-in with BitBucket private repositories in Windows</title>
+            <link>/2012/02/18/configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>jenkins</category>
+            
+            <pubDate>2012-02-18T04:14:36+13:00</pubDate>
+            <guid>/2012/02/18/configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows</guid>
+            <description><p>
+ Tell me about writing a specific title. This is my first entry here in TupiLabs. Today I will show you how to configure
+ <a title="Jenkins" href="http://www.jenkins-ci.org">Jenkins</a> Git Plug-in, to retrieve sources from a private
+ repository hosted at <a title="BitBucket" href="http://www.bitbucket.org">BitBucket</a>. Phew. Ah, and all this using a
+ Windows server.
+</p>
+
+<p>
+ <strong><a href="#tldr">TL;DR</a></strong>: ssh -vT &lt;host&gt; displays where it is looking for your .ssh directory.
+ Probably you will want check permissions and the %HOME% environment variable too. In case your job is getting stuck,
+ click here to skip the introduction text.
+</p>
+
+<h2>Motivation</h2>
+
+<ul>
+ <li>At TupiLabs, we have repositories hosted at <a title="GitHub" href="http://www.github.com">GitHub </a>(public
+  repositories) and BitBucket (mix of public and private repositories).
+ </li>
+ <li>We use Jenkins for many activities. Not only as a build server, but as a <em>function</em> in our development
+  environment. We will talk about that later ;-)
+ </li>
+ <li>We use Jenkins, Mac and Windows for development.</li>
+ <li>We have jobs running at <a title="Linode"
+  href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4">Linode</a> with <a title="Ubuntu"
+  href="http://www.ubuntu.com">Ubuntu</a>+Jenkins+Git Plug-in+BitBucket.
+ </li>
+ <li>There aren&#8217;t many resources for configuring Jenkins and BitBucket in Windows.</li>
+ <li>I have a good friend of mine who would like to read about it. Heck! That&#8217;s enough to write about it :-D</li>
+</ul>
+
+
+            
+            &lt;a href=&#34;/2012/02/18/configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows&#34;&gt;Read more...&lt;/a&gt;
+            
+            </description>
+        </item>
+        
+
+    </channel>
+</rss>

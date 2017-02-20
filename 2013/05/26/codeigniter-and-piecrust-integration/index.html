@@ -1,0 +1,178 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs &mdash; CodeIgniter and PieCrust integration</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>CodeIgniter and PieCrust integration</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <p>In of our largest web applications is <a href="http://www.speaklikeabrazilian.com">Speak Like A Brazilian</a>. 
+We&#8217;ve been working to Open Source it, but first we have to double check the security 
+aspects of this procedure, as well as review the source code.</p>
+<p>Recently we added a blog to Speak Like A Brazilian. Navigating in the Internet, we 
+found many tutorials for adding a blog engine to web applications using 
+<a href="http://ellislab.com/codeigniter">CodeIgniter</a>.</p>
+<p>Since the blog is limited to moderators or developers, we decided to use a 
+static content generator, preferably one that supported <em>Markdown</em>. 
+We opted for <a href="http://www.bolt80.com/piecrust">PieCrust</a>, and after few tests we were delighted by the 
+flexibility and modularity.</p>
+<!-- more -->
+
+<h2>Adding PieCrust to a CodeIgniter project</h2>
+<p>We will assume you have some basic knowledge on CodeIgniter and <em>PHP</em> (the latter 
+being less required for this post). If not, you can learn more about it on its website.</p>
+<p>Download CodeIgniter and unzip it (or import into your IDE workspace). Now 
+download PieCrust. Unzip it to <em>$CI_HOME/tools/piecrust</em> (the tools directory is 
+also used by other tools, like <em><a href="http://getsparks.org/">Sparks</a>)</em>.</p>
+<p>Copy the contents of <em>$CI_HOME/tools/piecrust/website/</em> to 
+<em>$CI_HOME/application/blog/</em>. This is where you&#8217;ll put your blog contents, 
+including posts, pages, <a href="//2013/05/26/creating-a-twig-macro-for-piecrust">macros</a> and templates.</p>
+<p>In <em>#CI_HOME/application/blog/_content/</em>, you&#8217;ll find the config.yml YAML file. This file contains your blog 
+configuration and is read by PieCrust when it bakes (compiles your website into HTML) and when it servers your 
+blog (using a bundled HTTP server).</p>
+<p>Change the contents of this file to look like the following: </p>
+<div class="highlight"><pre>site:
+    title: Your New PieCrust Website
+    description: A sample website running with PieCrust
+    author: Anonymous
+    pretty_urls: <span class="nb">false</span>
+<span class="nb">    </span>
+smartypants:
+    <span class="nb">enable</span>: <span class="nb">true</span>
+
+server:
+    config_variants:
+        default:
+            site:
+                base_url: http://localhost/codeigniter-piecrust-integration/
+
+baker:
+    skip_patterns:
+        - /^index.php/
+    config_variants:
+        default:
+            site:
+                base_url: http://localhost/codeigniter-piecrust-integration/
+        production:
+            site:
+                base_url: http://www.mywebsite.com/
+</pre></div>
+
+<p>The <em>server</em> entry is used when serving your blog, and the <em>baker</em> entry is used for compiling your pages into HTML. 
+By adding the base URL, you can add links to CodeIgniter pages from your blog. The next steps for your integration 
+will be prepare a build script to serve/bake your blog, and customize the template. </p>
+<p><img alt="CodeIgniter application" src="/2013/05/26/codeigniter-and-piecrust-integration/screenshot_01.png" /></p>
+<p>In Speak Like A Brazilian, we&#8217;ve created a similar template for our PieCrust blog, so that the user won&#8217;t notice he 
+is accessing a different application. You will notice in the screen shots that we have modified the default templates 
+in CodeIgniter and PieCrust to include a link to each other, so you&#8217;ll get the idea of how to use the site and blog 
+URL&#8217;s in your menus, pages, templates, etc.</p>
+<p><img alt="CodeIgniter application" src="/2013/05/26/codeigniter-and-piecrust-integration/screenshot_02.png" /></p>
+<h2>Summary</h2>
+<p>This approach may not be the best choice if you are developing a web site for a client, say, a photographer, that is 
+not used to git or Markdown. But for personal web sites, or other geek related web sites, it can be very hand. 
+Especially since by using PieCrust you can drop <em>WordPress</em> and <em>MySQL</em>, saving some memory in your web server.</p>
+<p>We have put up a simple application, with the integration described in this post in <a href="https://github.com/tupilabs/codeigniter-piecrust-integration">this GitHub repository</a>. 
+There is a simple Ant build.xml file, that may be helpful for you when cooking/baking your site. We also have a 
+<a href="http://jenkins-ci.org">Jenkins</a> instance monitoring Speak Like A Brazilian git repository, and publishing a new 
+version of the web site for each new commit to the master.</p>
+<p>Have fun :-) </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

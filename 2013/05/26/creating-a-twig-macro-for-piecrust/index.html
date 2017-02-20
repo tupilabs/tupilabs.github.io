@@ -1,0 +1,151 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs &mdash; Creating a Twig macro for PieCrust</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Creating a Twig macro for PieCrust</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <p>We have started using <a href="http://bolt80.com/piecrust/">PieCrust</a> in several of our 
+projects (the next one is <a href="http://biouno.org">BioUno</a>, watch the 
+<a href="https://github.com/biouno/biouno.org">GitHub repo</a> to see the changes needed).</p>
+<p>A recurrent task was adding a Tweet Button. So we thought it could help others 
+that are getting their feet wet in PieCrust.</p>
+<!--more-->
+
+<p>PieCrust Twig macros can be placed under <em>$WEBSITE_CONTENT_DIR/templates</em>. Where 
+the <em>$WEBSITE_CONTENT_DIR</em> is the <em>$ROOT_DIR/_content</em> of your project. Create a 
+new file there, with the name <em>macros_tweet.html</em> (or any other name), with the 
+following content.</p>
+<div class="highlight"><pre>{% macro button(base_url,counturl,url,text) %}
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tw_button&quot;</span> <span class="na">style=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;iframe</span>
+    <span class="na">allowtransparency=</span><span class="s">&quot;true&quot;</span>
+    <span class="na">frameborder=</span><span class="s">&quot;0&quot;</span>
+    <span class="na">scrolling=</span><span class="s">&quot;no&quot;</span>
+    <span class="na">src=</span><span class="s">&quot;http://platform.twitter.com/widgets/tweet_button.1368146021.html#_=1369516789398&amp;count=horizontal&amp;counturl=&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=&amp;size=m&amp;text=&amp;url=&quot;</span>
+    <span class="na">class=</span><span class="s">&quot;twitter-share-button twitter-count-horizontal&quot;</span>
+    <span class="na">title=</span><span class="s">&quot;Twitter Tweet Button&quot;</span>
+    <span class="na">data-twttr-rendered=</span><span class="s">&quot;true&quot;</span>
+    <span class="na">style=</span><span class="s">&quot;width: 107px; height: 20px;&quot;</span><span class="nt">&gt;&lt;/iframe&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+{% endmacro %}
+</pre></div>
+
+<p>Now add the following line in the templates/pages where you want to use this macro.</p>
+<div class="highlight"><pre><span class="cp">{%</span> <span class="k">import</span> <span class="s1">&#39;macros_tweet.html&#39;</span> <span class="nv">as</span> <span class="nv">tweet</span> <span class="cp">%}</span><span class="x"></span>
+</pre></div>
+
+<p>This imports your macro using the namespace tweet. So the button function will 
+be available as in the following example.</p>
+<div class="highlight"><pre><span class="cp">{{</span> <span class="nv">tweet.button</span><span class="o">(</span><span class="nv">site.base_url</span><span class="o">,</span> <span class="nv">page.url</span><span class="o">,</span> <span class="nv">page.url</span><span class="o">,</span> <span class="nv">page.title</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+
+<p>We&#8217;ll write about our CodeIgniter + PieCrust integration. In this integration we 
+create a custom variable, <em>site.base_url</em> that points to the web site URL 
+(http://www.mywebsite.com, for instance).</p>
+<p>The other parameters are the count URL (the number of tweets is based on this one), 
+the reference URL to be used in the tweet body and the page title, used as 
+tweet text too.</p>
+<p>For a complete example you can <a href="https://github.com/tupilabs/piecrust-tweet-button-macro">clone this repository</a>.</p>
+<p><em>ps: the Tweet button that you see on the top of this post is created with this same macro ;-)</em></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs &mdash; Configuring Jenkins Git Plug-in with BitBucket private repositories in Windows</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Configuring Jenkins Git Plug-in with BitBucket private repositories in Windows</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <p>
+ Tell me about writing a specific title. This is my first entry here in TupiLabs. Today I will show you how to configure
+ <a title="Jenkins" href="http://www.jenkins-ci.org">Jenkins</a> Git Plug-in, to retrieve sources from a private
+ repository hosted at <a title="BitBucket" href="http://www.bitbucket.org">BitBucket</a>. Phew. Ah, and all this using a
+ Windows server.
+</p>
+
+<p>
+ <strong><a href="#tldr">TL;DR</a></strong>: ssh -vT &lt;host&gt; displays where it is looking for your .ssh directory.
+ Probably you will want check permissions and the %HOME% environment variable too. In case your job is getting stuck,
+ click here to skip the introduction text.
+</p>
+
+<h2>Motivation</h2>
+
+<ul>
+ <li>At TupiLabs, we have repositories hosted at <a title="GitHub" href="http://www.github.com">GitHub </a>(public
+  repositories) and BitBucket (mix of public and private repositories).
+ </li>
+ <li>We use Jenkins for many activities. Not only as a build server, but as a <em>function</em> in our development
+  environment. We will talk about that later ;-)
+ </li>
+ <li>We use Jenkins, Mac and Windows for development.</li>
+ <li>We have jobs running at <a title="Linode"
+  href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4">Linode</a> with <a title="Ubuntu"
+  href="http://www.ubuntu.com">Ubuntu</a>+Jenkins+Git Plug-in+BitBucket.
+ </li>
+ <li>There aren&#8217;t many resources for configuring Jenkins and BitBucket in Windows.</li>
+ <li>I have a good friend of mine who would like to read about it. Heck! That&#8217;s enough to write about it :-D</li>
+</ul>
+
+<!--more-->
+
+<h2>Requirements</h2>
+
+<p>It&#8217;s really simple to set up your environment for this integration. All you&#8217;ll need is:</p>
+
+<ul>
+ <li>Jenkins</li>
+ <li>Jenkins Git Plug-in</li>
+ <li>An account in BitBucket with a private repository</li>
+ <li>msysgit (a.k.a. Git for Windows)</li>
+ <li>Windows XP or later</li>
+</ul>
+
+<p>I assume you are used with Jenkins, and that you are able to create a private repository in BitBucket and push
+ projects from the command line using git and SSH keys.</p>
+
+<h2>Righto so, hammer-time!</h2>
+
+<p>
+ Log in to BitBucket and, in case you don&#8217;t any private repositories yet, create one. The process to create a private
+ repository is the same to create a public one, except that you need to remember to select the <em>Private</em> check
+ box.
+</p>
+
+<p><a href="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/001.png"><img class="aligncenter size-medium wp-image-140" title="001"
+ src="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/001-300x240.png" alt="" width="300" height="240" /></a></p>
+<p>
+ Now you will need to configure Git for Windows. You can find the instructions for doing so at <a title="Win set up git"
+  href="http://help.github.com/win-set-up-git/">this</a> GitHub help page (strange use a GitHub help page, to configure
+ a BitBucket repository in Windows, no? :-) Few points to take note here. Install git in a directory with no spaces in
+ its name and, if possible, check the option to include all Git tools to your Windows Path (that can make things easier
+ later). The instructions in GitHub are equivalent, to what you have to do in BitBucket, specially include your keys to
+ your profile in BitBucket.
+</p>
+
+<p>
+ <a href="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/002.png"><img class="aligncenter size-medium wp-image-142" title="002"
+  src="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/002-300x145.png" alt="" width="300" height="145" /></a>
+</p>
+
+<p>
+ <a name="tldr"></a>At this point, you should have a private repository in BitBucket and your Windows machine configured
+ to access this repository. Git delegates authentication to SSH, using SSH keys. Push a sample project to BitBucket. We
+ will use this project later in Jenkins.
+</p>
+
+<p>
+ <a href="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/005.png"><img class="aligncenter size-medium wp-image-144" title="005"
+  src="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/005-300x261.png" alt="" width="300" height="261" /></a>
+</p>
+
+<p>The first time you connect to your private repository, you will notice git asks you to include it to the list of
+ known hosts. Write y/yes and git won&#8217;t ask you that again anymore. You have to take care, cause in case you haven&#8217;t
+ added (either manually, or running git in a prompt) the host to the list of known hosts, your Job in Jenkins may get
+ stuck.</p>
+
+<p>
+ Create a new user, <em>jenkins</em>, and add it to the Administrators group. Start Jenkins, install <a
+  title="Jenkins Git Plug-in" href="https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin">Jenkins Git Plug-in</a> (the
+ Wiki has a lot of interesting stuff).Configure Jenkins to execute as service and log on with the user you have just
+ created. Now log in to Windows using the jenkins user, and try to access your private repository from command line. You
+ can try a simple <em>git pull</em>.
+</p>
+
+<p>
+ <a href="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/011.png"><img class="aligncenter size-medium wp-image-147" title="011"
+  src="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/011-266x300.png" alt="" width="266" height="300" /></a>
+</p>
+
+<p>
+ Still logged in as jenkins, execute ssh -vT git@github.com. I know, I know, here I am again, mixing GitHub and
+ BitBucket :-) Pay attention to what is written to the console screen. Probably you&#8217;ll find a line similar to <em>debug1:
+  identity file /c/home/bruno/.ssh/identity type -1</em>. <em>/c/home/bruno/.ssh</em> is the repository where ssh is looking
+ for SSH keys.
+</p>
+
+<p>
+ This is not good. I know, that I have placed my user&#8217;s home directory to <em>c:homebruno</em> (my normal account ID is
+ <em>bruno</em>). When Jenkins is running as <em>jenkins</em> user, it may have trouble using that keys. So what I&#8217;m
+ going to do is move these keys somewhere else, like <em>c:optjenkins.ssh</em>, and will update my <em>HOME</em>
+ environment variable.
+</p>
+
+<p>
+ <em>HOME</em> environment variable? Yup. msysigt, or Git for Windows, uses MingW, which by its turn uses this
+ environment variable to create a virtual file structure similar to the one of *nix systems. Update the <em>HOME</em>
+ environment, open a new console (so that it will load the new value) and execute <em>ssh -vT git@github.com</em> again,
+ and confirm that it&#8217;s picking your new value. Time to log off <em>jenkins</em> user, and log on again with your normal
+ user.
+</p>
+
+<p>Create a new job in Jenkins and configure it to use your private repository in Jenkins. Execute it and, if
+ everything is fine, you will see something similar to the following screen.</p>
+
+<p>
+ <a href="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/0081.png"><img class="aligncenter size-medium wp-image-148" title="008"
+  src="img/posts/2012-02-18_configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows/0081-300x139.png" alt="" width="300" height="139" /></a>
+</p>
+
+<p>Not it&#8217;s time to install your plug-ins, prepare your scripts and put Jenkins to rock in and build awesome
+ software! I hope you found this post interesting. Feel free to send comments, suggestions or any kind of feedback :-)</p>
+
+<p>All the best, Bruno</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>
