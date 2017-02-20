@@ -1,0 +1,227 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Posts tagged with nestor-qa</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <section>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2016/09/14/how-to-use-a-context-menu-with-fancytree">How to use a context menu with FancyTree</a></h2>
+      <small>Sep 14, 2016
+        
+        in 
+            <a href="/tag/javascript">javascript</a>, <a href="/tag/fancytree">fancytree</a>, <a href="/tag/nestor-qa">nestor-qa</a>
+        
+        
+        | <a href="/tutorials">tutorials</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>There used to be several different ways, and even an almost official way to have a context menu in a <a href="https://github.com/mar10/fancytree/">FancyTree</a>. But it has long been decommissioned, and now the recommendation is to use a global context menu, instead of having a context menu only for the FancyTree. That does make sense, since if your application is already using a context menu library, there may be some inconsistencies with another library provided by FancyTree. Good engineering decision.</p>
+<h2>Requirements</h2>
+<p>In <a href="http://nestor-qa.org">Nestor QA</a>, we are using Bower to manage some of the project dependencies. The now recommended library for context menus, that is compatible with the FancyTree library, is <a href="https://github.com/mar10/jquery-ui-contextmenu">jquery-ui-contextmenu</a> (by the same author). However, I could not find it via <code>bower search</code>. So the first step is to install it using a GitHub tag.</p>
+<p><code>bower install --save ui-contextmenu=mar10/jquery-ui-contextmenu#84fb56c6760d1ebd8be3785cd6ff5b67c5c41453</code></p>
+<p>Where <em>84fb56c6760d1ebd8be3785cd6ff5b67c5c41453</em> is the commit hash for the latest tag, <em>v1.13.0</em>.</p>
+<p>Furthermore, as we also have RequireJS, we have to add the following entry under the <em>paths</em> entry.</p>
+<div class="highlight"><pre><span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;jquery-ui/menu&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/widgets/menu&#39;</span>
+<span class="p">},</span>
+
+<span class="nx">packages</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;uicontextmenu&#39;</span><span class="p">,</span>
+        <span class="nx">location</span><span class="o">:</span> <span class="s1">&#39;libs/ui-contextmenu/&#39;</span><span class="p">,</span>
+        <span class="nx">main</span><span class="o">:</span> <span class="s1">&#39;jquery.ui-contextmenu.min&#39;</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+
+<span class="nx">map</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;jquery-ui/menu&#39;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;keycode&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/keycode&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/position&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;safe-active-element&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/safe-active-element&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;unique-id&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/unique-id&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;version&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/version&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;widget&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/widget&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>You need to add a package as the ui-contextmenu requires jquery-ui/menu, and adding a path doesn&#8217;t seem to work correctly in this case. But you do need to add a path for the jquery-ui/menu dependency.</p>
+<p>Finally, jquery-ui/menu requires several other dependencies, that you can just add a map entry for RequireJS, and that&#8217;s it.</p>
+<h2>Creating the navigation tree</h2>
+<p>We are using FancyTree for the navigation tree, so the code may look a bit more complex than necessary, but if you abstract the logic for the Nestor QA application, you can see that it consists only of a <em>delegate</em> property, which is the CSS filter for elements that trigger the context menu; the menu items, and a select function invoked when you - as you correctly deduced - select a menu item.</p>
+<div class="highlight"><pre><span class="c1">// context menu</span>
+<span class="nx">el</span><span class="p">.</span><span class="nx">contextmenu</span><span class="p">({</span>
+    <span class="nx">delegate</span><span class="o">:</span> <span class="s2">&quot;.editable&quot;</span><span class="p">,</span>
+    <span class="nx">menu</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Edit&quot;</span><span class="p">,</span> 
+            <span class="nx">cmd</span><span class="o">:</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span> 
+            <span class="nx">uiIcon</span><span class="o">:</span> <span class="s2">&quot;ui-icon-pencil&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Delete&quot;</span><span class="p">,</span>
+            <span class="nx">cmd</span><span class="o">:</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span>
+            <span class="nx">uiIcon</span><span class="o">:</span> <span class="s2">&quot;ui-icon-trash&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">select</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">ui</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">nodeId</span> <span class="o">=</span> <span class="nx">ui</span><span class="p">.</span><span class="nx">target</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+        <span class="c1">// fancy tree HTML elements have the key as ft_$KEY</span>
+        <span class="kd">var</span> <span class="nx">underscoreIndex</span> <span class="o">=</span> <span class="nx">nodeId</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">underscoreIndex</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">length</span> <span class="o">=</span> <span class="nx">nodeId</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">nodeId</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">underscoreIndex</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">fancytree</span><span class="p">(</span><span class="s1">&#39;getNodeByKey&#39;</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">href</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">ui</span><span class="p">.</span><span class="nx">cmd</span> <span class="o">==</span> <span class="s1">&#39;edit&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">editHref</span> <span class="o">=</span> <span class="nx">href</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">href</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">5</span><span class="p">);</span>
+                <span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="nx">editHref</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">trigger</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">});</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">ui</span><span class="p">.</span><span class="nx">cmd</span> <span class="o">==</span> <span class="s1">&#39;delete&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">editHref</span> <span class="o">=</span> <span class="nx">href</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">href</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">5</span><span class="p">);</span>
+                <span class="kd">var</span> <span class="nx">deleteHref</span> <span class="o">=</span> <span class="nx">editHref</span> <span class="o">+</span> <span class="s1">&#39;/confirmDelete&#39;</span><span class="p">;</span>
+                <span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="nx">deleteHref</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">trigger</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">});</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Command &#39;</span> <span class="o">+</span> <span class="nx">ui</span><span class="p">.</span><span class="nx">cmd</span> <span class="o">+</span> <span class="s1">&#39; not recognized!&#39;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>But nevertheless the <code>el.fancytree('getNodeByKey', key);</code> call may be useful for you as well! Read more about the ui-context menu API in <a href="https://github.com/mar10/jquery-ui-contextmenu/wiki">their Wiki page</a>.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/09/14/how-to-use-a-context-menu-with-fancytree/contextmenuinaction.gif" class="thumbnail" data-lightbox='post' data-title='Context menu in action'>
+<img src="/2016/09/14/how-to-use-a-context-menu-with-fancytree/contextmenuinaction.gif" alt="Context menu in action" />
+</a>
+<figcaption>Context menu in action</figcaption>
+</figure>
+</div>
+</div>
+
+<p>Happy hacking!</p>
+    </section>
+  </article>
+</div>
+                    
+                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

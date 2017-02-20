@@ -1,0 +1,273 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Posts tagged with groovy</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <section>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2013/02/03/tupilabs-report-jan-27-feb-02">Tupilabs Report: Jan 27, Feb 02</a></h2>
+      <small>Feb 03, 2013
+        
+        in 
+            <a href="/tag/biouno">biouno</a>, <a href="/tag/cjan">cjan</a>, <a href="/tag/functional-programming">functional-programming</a>, <a href="/tag/groovy">groovy</a>, <a href="/tag/jenkins">jenkins</a>, <a href="/tag/paskuale">paskuale</a>, <a href="/tag/reddit">reddit</a>, <a href="/tag/tupilabs-report">tupilabs-report</a>
+        
+        
+        | <a href="/news">news</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>Wrote <a href="querying-a-rest-server-from-groovy-scripts-in-jenkins/" title="Querying a REST server from Groovy scripts in Jenkins">blog post</a> about loading extra libraries in Groovy Scripts in Jenkins</li>
+    <li>Working on <a href="http://www.cjan.org" title="CJAN">CJAN</a> project (scripts)</li>
+    <li>Working on <a href="http://www.paskuale.com" title="Paskuale">Paskuale</a> (Nutch plug-ins)</li>
+    <li>Working on <a href="http://www.biouno.org" title="BioUno">BioUno</a> (Structure plug-in and videos)</li>
+    <li>New Expressions in <a href="http://www.speaklikeabrazilian.com">Speak Like A Brazilian</a></li>
+    <li>Over <strong>100 subscribers</strong> in <a href='http://www.reddit.com/r/functionalprogramming'>r/functionalprogramming</a>. Go check it out! Yay!</li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2013/02/01/querying-a-rest-server-from-groovy-scripts-in-jenkins">Querying a REST server from Groovy scripts in Jenkins</a></h2>
+      <small>Feb 01, 2013
+        
+        in 
+            <a href="/tag/groovy">groovy</a>, <a href="/tag/jenkins">jenkins</a>
+        
+        
+        | <a href="/tutorials">tutorials</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>
+ This week, in a customer, I had to write a Groovy script to import some projects from an old installation. The SVN URL
+ had changed. Not only the domain, but now the SVN structure was broken in modules (i.e. instead of <em>/svn/&#8230;</em>
+ now there was <em>/repo1/&#8230;</em>, <em>/repo2/&#8230;</em>, etc).
+</p>
+
+<p>
+ The solution I found, was scan the SVN directory structure with Perl and produce a JSON file. Then I wrote a quick PHP
+ application (with <a href='http://www.slimframework.com/' title='Slim Framework'>Slim</a>) with an URL like <em>/repo?projectName=XYZ</em>,
+ that returned the new repository URL.
+</p>
+
+<p class='center'>
+ <a href="img/posts/2013-02-01_querying-a-rest-server-from-groovy-scripts-in-jenkins/3r20qs-1.jpg"><img src="img/posts/2013-02-01_querying-a-rest-server-from-groovy-scripts-in-jenkins/3r20qs-1-300x300.jpg"
+  alt="Overly Manly meme" width="300" height="300" class="aligncenter size-medium wp-image-1077" /></a>
+</p>
+
+<p>The last step was the hardest, since I needed to query the REST application. The script would get the current SVN
+ address from the SVN SCM, query the REST URL to get the new URL, and lastly update the job with the new URL.</p>
+
+<p>
+ The solution I found was copy the necessary jars to jenkins <em>lib/</em> folder, restart the server and execute my
+ script. Then stop the server, remove the jars and check the new SVN URL&#8217;s. Here&#8217;s the list of jars I had to copy.
+</p>
+
+<ul>
+ <li>http-builder</li>
+ <li>nekohtml-1.9.9</li>
+ <li>xml-resolver-1.2</li>
+ <li>httpclient</li>
+ <li>httpcore</li>
+ <li>xercesImpl</li>
+</ul>
+
+<p>
+ If you have a Maven project with your REST client, you can get a list of dependencies with
+ <code>mvn dependency:copy-dependencies</code>
+ . Then copy the jars to Jenkins class path.
+</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2013/01/30/tupilabs-report-jan-20-jan-26">Tupilabs Report: Jan 20, Jan 26</a></h2>
+      <small>Jan 30, 2013
+        
+        in 
+            <a href="/tag/groovy">groovy</a>, <a href="/tag/jenkins">jenkins</a>, <a href="/tag/tap4j">tap4j</a>, <a href="/tag/tupilabs-report">tupilabs-report</a>
+        
+        
+        | <a href="/news">news</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>Finished writing an article to <a href="http://www.mundoj.com.br" title="MundoJ">MundoJ</a> magazine about Jenkins</li>
+    <li>Prepared for Groovy Scripts for Jenkins (we will publish them in tupilabs GitHub soon!)</li>
+    <li>Released <a href="http://www.tap4j.org" title="tap4j">tap4j</a> 4.0.0!!! Yay!</li>
+    <li>Updated tap4j website and documentation</li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2013/01/17/escrevendo-scripts-groovy-para-o-jenkins-usando-o-eclipse-com-auto-complete">Escrevendo scripts Groovy para o Jenkins usando o Eclipse com auto complete</a></h2>
+      <small>Jan 17, 2013
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/eclipse">eclipse</a>, <a href="/tag/groovy">groovy</a>
+        
+        
+        | <a href="/tutorials">tutorials</a>
+        
+      </small>
+    </header>
+    <section>
+      <p><a href="http://groovy.codehaus.org/" title="Groovy">Groovy</a> é uma linguagem dinâmica e simples de usar. Ele é baseada no Java (mas mais simples) e roda dentro da JVM. Assim, você consegue executar trechos de código dentro da sua JVM e modificar objetos em tempo de execução, sem nem precisar compilar seus scripts.</p>
+
+<p>O <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> utiliza Groovy de diversas maneiras. Quando você escreve plug-ins, você pode usar Groovy tanto para o código quanto para a UI (a vantagem disso é que você pode depurar a tela, diferente do <a href="http://commons.apache.org/jelly/" title="Apache Commons Jelly">Jelly</a>). Há também diversos plug-ins que permitem que você execute Groovy ou algum DSL com Groovy (como o <a href="https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin" title="Jenkins Job DSL Plug-in">Job DSL Plug-in</a>). E há também o <a href="https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+CLI" title="Jenkins CLI">CLI</a> do Jenkins, um cliente que permite que você execute diversos comandos no Jenkins, entre eles o <code>groovysh</code>, um shell para Groovy, e o <code>groovy</code>, que permite que você envie um script para o Jenkins executar no master.</p>
+
+<p>Há um exemplo que vem com o Jenkins de um script groovy bem simples, que imprime todos os plug-ins instalados:</p>
+
+<p><code>println(Jenkins.instance.pluginManager.plugins)</code></p>
+<p><code>pluginManager</code> é o responsável por gerenciar plug-ins no Jenkins, e é um membro da classe Jenkins. Você pode ver mais sobre esta classe lendo o <a href="http://javadoc.jenkins-ci.org/" title="Jenkins Javadoc">Javadoc do projeto</a>. Ou se você utilizar <a href="http://www.eclipse.org" title="Eclipse IDE">Eclipse</a> (ou outro IDE) você pode utilizar auto complete e ir escrevendo seu código Groovy com auxílio do IDE :o).</p>
+
+<p class='center'><iframe width="420" height="315" src="http://www.youtube.com/embed/jmPJvJGEFb4" frameborder="0" allowfullscreen></iframe></p>
+
+<p>No vídeo acima você aprenderá como configurar seu Eclipse. O segredo é criar um projeto <a href="http://maven.apache.org" title="Apache Maven">Maven</a> + Groovy (com o plug-in Groovy para Eclipse) e incluir uma dependência para o projeto do Jenkins no seu pom.xml. Assim o Eclipse, utilizando Maven e Groovy, consegue usar o auto complete no seu código. Você pode digitar o começo do nome de uma classe e apertar <strong>CTRL + TAB</strong> para o Eclipse mostrar as opções e auto completar, ou clicar <strong>F3</strong> e ver o código-fonte no projeto Jenkins ou <strong>CTRL + T</strong> e ver a hierarquia (de onde herda, quem estende essa classe, etc).</p>
+
+<p>Aproveite este começo de ano (já que alguns dizem que o ano começo depois do carnaval) e automatize aquelas tarefas chatas como verificar se todos os jobs estão usando time-out (com o <a href="tupilabs-report-nov-04-nov-10/" title="Jenkins Build Timeout Plug-in">Build Timeout Plug-in</a>) ou para realizar migrações ou atualizações em plug-ins, jobs ou slaves.</p>
+    </section>
+  </article>
+</div>
+                    
+                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

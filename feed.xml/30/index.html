@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>TupiLabs</title>
+        <link>/</link>
+        <atom:link href="/feed.xml/30" rel="self" type="application/rss+xml" />
+        
+        <description>Latest news from TupiLabs</description>
+        
+        <lastBuildDate>2017-02-20T21:57:31+13:00</lastBuildDate>
+        <pubDate>2017-02-20T21:57:31+13:00</pubDate>
+        <generator>PieCrust 2.0.0rc2</generator>
+        
+        
+        
+
+        
+        
+        
+        <item>
+            <title>Redesigning Speak Like A Brazilian</title>
+            <link>/2012/08/29/redesigning-speak-like-a-brazilian</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>products</category>
+            
+            <category>slbr</category>
+            
+            <pubDate>2012-08-29T10:51:36+12:00</pubDate>
+            <guid>/2012/08/29/redesigning-speak-like-a-brazilian</guid>
+            <description><p>
+ <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a> started as a
+ weekend project submitted to <a href="http://news.ycombinator.com" title="Hacker News">Hacker News</a> and <a
+  href="http://www.reddit.com/" title="Reddit">Reddit</a>. There was an amazing feedback and thus we decided to dedicate
+ some time to a new version of SLBR. It is a web site to share Brazilian Portuguese expressions with other users.
+ Anybody can submit expressions, like or dislike expressions and share the expressions with friends via e-mail or social
+ networks.
+</p>
+
+<p>
+ <strong>TL;DR</strong> We added the feature to have an expression with many definitions, simplified the design of the
+ landing page and removed the need to register to submit expressions. Part of the work was based on user feedback, and
+ another part was based on the way that <a href="http://www.urbandictionary.com" title="Urban Dictionary">Urban
+  Dictionary</a> works.
+</p>
+
+<h2>What was done?</h2>
+
+<p>We started by the database model. Initially, expressions were thought as a single entity. An expression had a
+ text and its description. However, some users pointed that they could have more than one definition for the same
+ expression. We had to break the table into two, expressions and definitions.</p>
+
+<p>Time to rethink the landing page design. There are several articles that talk about the landing pages ([1], [2],
+ [3]). Here are some basic guidelines that we followed when redesigning SLBR.</p>
+
+<ul>
+ <li>Limit action</li>
+ <li>Buttons and call actions standing out</li>
+ <li>Enable sharing</li>
+</ul>
+
+<p style="">
+ <a href="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/old_1.png"><img src="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/old_1.png" alt=""
+  title="Old version" width="600" class="aligncenter size-medium wp-image-607" /></a>
+</p>
+
+<h3>Limit action</h3>
+
+<p>The old version had too much text, a video and a box with tweets. As well as the letters menu. We removed this
+ content, leaving only the letters menu, minus the Home and Login menu items. Now the user is presented with the search
+ box, the letters menu and the top ten expressions.</p>
+
+<p style="">
+ <a href="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_1.png"><img src="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_1.png" alt=""
+  title="New Version" width="600" class="aligncenter size-medium wp-image-611" /></a>
+</p>
+
+<h3>Buttons and call actions standing out</h3>
+
+<p>With less actions on the screen, the user experience will be better in SLBR. When the users sees the landing page
+ now, there is the search button standing out, with a bigger font size. There is also a menu with letters with simple
+ nagivation, and some expressions that give the users the picture of how the web site works.</p>
+
+<p style="">
+ <a href="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_2.png"><img src="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_2.png" alt=""
+  title="New Version" width="600" class="aligncenter size-medium wp-image-612" /></a>
+</p>
+
+<h3>Enable sharing</h3>
+
+<p>This was a recommendation in one of the web sites mentioned earlier but UD already did that too. A very simple
+ idea, and very easy to be put into practice too. We added a form that lets users share an expression via e-mail or via
+ social networks. Hopefully it will increase the number of expressions in SLBR.</p>
+
+<p style="">
+ <a href="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_3.png"><img src="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_3.png" alt=""
+  title="New Version" width="600" class="aligncenter size-medium wp-image-613" /></a>
+</p>
+
+<h2>Final thoughts</h2>
+
+<p>We have also made several changes to the layout of items, and some CSS and JS enhancements, like using hover in
+ some elements, modal windows to share and code to prevent a form being submitted twice.</p>
+
+<p>But one of the greatest enhancements was allow users to submit expressions without having to log in. Before this,
+ users were required to register in the web site in order to submit expression. That is just boring. After playing with
+ UD, we decided to give it a try.</p>
+
+<p>
+ We will monitor the web site stats to check the results of this redesign, but so far we are very happy with this new
+ version. The next step now is, probably, use <a href="http://jquerymobile.com/">jQuery Mobile</a> to create a simple
+ version of the web site for mobile users and promote the web site at local hostels.
+</p>
+
+<p>What do you think?</p>
+
+<h2>References</h2>
+
+<p>
+ [1] http://blog.hubspot.com/blog/tabid/6307/bid/7177/What-Is-a-Landing-Page-and-Why-Should-You-Care.aspx<br /> [2]
+ http://unbounce.com/landing-page-examples/your-landing-page-sucks/<br /> [3]
+ http://support.google.com/adwords/bin/answer.py?hl=en&answer=2404197
+</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>BOSC 2012 and BioUno</title>
+            <link>/2012/08/10/bosc-2012-and-biouno</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>jenkins</category>
+            
+            <category>bioinformatics</category>
+            
+            <category>events</category>
+            
+            <pubDate>2012-08-10T11:35:12+12:00</pubDate>
+            <guid>/2012/08/10/bosc-2012-and-biouno</guid>
+            <description><p>
+ Few weeks ago <em>TupiLabs</em> participated of <em><a href="http://www.open-bio.org/wiki/BOSC_2012"
+  title="BOSC 2012">BOSC 2012</a></em> , with a talk about <em><a href="http://www.biouno.org" title="BioUno">BioUno</a></em>
+ . BioUno is a project that applies techniques and tools from Continuous Integration in Bioinformatics, in special <em><a
+  href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a></em> . In the very beginning, the project was a &#8221; <em>hey,
+  look what I can do with Jenkins</em> &#8220;. Later on we defined that we would like to <em>create biology pipelines with
+  Jenkins</em> , using plug-ins. This was the topic of our talk in BOSC 2012 - <strong>Creating biology pipelines
+  with Jenkins</strong> . The main advantage of using Jenkins, is its <em>distributed environment with master and slaves</em> ,
+ the <em>plug-ins</em> and the <em>documentation and community available</em> .
+</p>
+
+<p>
+ <img src="img/products/biouno/ISMB2012.jpg" alt="" title="ISMB2012" width="204" height="193"
+  class="aligncenter size-full wp-image-599" /> <img src="img/products/biouno/BOSC.png" alt=""
+  title="BOSC_logo" width="161" height="115" class="aligncenter size-full wp-image-598" />
+</p>
+
+<p>
+ In the talk, we showed a demo using vanilla Jenkins, <a href="http://mrbayes.sourceforge.net/" title="MrBayes">MrBayes</a>
+ , with <a href="https://github.com/tupilabs/mrbayes-plugin" title="mrbayes-plugin">mrbayes-plugin</a> , and <a
+  href="http://www.r-project.org/" title="R Project">R</a> and ape for plotting, using <a
+  href="https://github.com/jenkinsci/r-plugin" title="r-plugin">r-plugin</a> . It was a very simple pipeline, without
+ using Cloud services or any NGS tool. What was great in BOSC 2012 is that we could catch up with people that work on <a
+  href="http://galaxy.psu.edu/" title="Galaxy">Galaxy</a> , <a href="http://www.taverna.org.uk/" title="Taverna">Taverna</a>
+ , <a href="http://mobyle.pasteur.fr/cgi-bin/portal.py#welcome" title="Mobyle">Mobyle</a> and other workflow management
+ systems, as well as lads from other interesting projects, like <a href="http://cloudgene.uibk.ac.at/" title="CloudGene">CloudGene</a>
+ (MapReduce interface for researchers, pretty cool). When we returned to Brazil, we had more items to include in BioUno
+ TODO list, but also a realization. That BioUno is not only a biology workflow management system. Its roles intersect
+ with Galaxy, Taverna and Mobyle, as a <em>workflow management system</em> , but also intersect with <a
+  href="http://biohpc.org/" title="BioHPC">BioHPC</a> , as a <em>bioinformatics computer management system</em> .
+</p>
+
+<p>
+ <a href="img/products/biouno/biouno_panel.jpg"><img src="img/products/biouno/biouno_panel.jpg" alt=""
+  title="BOSC 2012 BioUno" width="217" height="300" class="aligncenter size-medium wp-image-595" /></a>
+</p>
+
+<p>
+ With Jenkins you can start and monitor slaves remotely (in your local network or in a cloud), execute parts of your
+ build in one machine and serialize results back to the master, display graphs, monitor usage and execute other things
+ that give you the possibility to use Jenkins to <strong>create very customized pipelines</strong> . Sometimes a
+ researcher has to use tools like <a href="http://creskolab.uoregon.edu/stacks/" title="stacks">stacks</a> , <a
+  href="http://samtools.sourceforge.net/">samtools</a> , <a href="http://pritch.bsd.uchicago.edu/structure.html"
+  title="structure">structure</a> , <a href="http://beast.bio.ed.ac.uk/Main_Page" title="Beast">beast</a> and so it
+ goes. But sometimes he has need of a very specific routine, maybe for plotting something or adjusting data output from
+ one tool, before inputting it into the next tool in the pipeline. <em>These routines are not always worth a tool,
+  as they would be used very rarely</em> . This is possible with Jenkins. Or a job may demand five computers. Common computer
+ facilities would delegate the machine provision to cluster management systems, like <a
+  href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="PBS">PBS</a> , <a
+  href="http://en.wikipedia.org/wiki/Platform_LSF" title="LSF">LSF</a> or some <a
+  href="http://en.wikipedia.org/wiki/Cloud_computing" title="Cloud computing">cloud based system</a> . With Jenkins, you
+ can manage your computer, maybe even use <a href="http://puppetlabs.com/" title="Puppet">Puppet</a> to help you. We
+ have a long way ahead, we are reorganizing our servers at <a
+  href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4" title="Linode">Linode</a> to install <a
+  href="http://www.atlassian.com/software/jira/overview" title="JIRA">JIRA</a> and <a
+  href="http://www.atlassian.com/software/confluence/overview" title="Confluence">Confluence</a> , and have a more
+ Jenkins-like web site (as this is the principal tool in BioUno). And we are still creating plug-ins. If you have any
+ interested in the project, feel free to <a href="http://www.biouno.org/contact/" title="Contact BioUno">join us</a> ,
+ your help will be very welcome :-)
+</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Comparison of PBS cluster monitoring applications</title>
+            <link>/2012/06/30/comparison-of-pbs-cluster-monitoring-applications</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>jenkins</category>
+            
+            <category>bioinformatics</category>
+            
+            <pubDate>2012-06-30T02:55:42+12:00</pubDate>
+            <guid>/2012/06/30/comparison-of-pbs-cluster-monitoring-applications</guid>
+            <description><p>
+ While we worked on our <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/"
+  title="Creating a PBS/MPI cluster for bioinformatics – Part 1">small internal cluster</a> set up, we used <a
+  href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> for running structure
+ jobs in batch. This post has a simple comparison of web applications that can be used for monitoring a PBS cluster.
+ This is a very simple comparison, and the information may not be sufficient for you to decide whether you should use it
+ or not in your computer facility.
+</p>
+
+<p>
+ We found tools with a simple query in SourceForge.net. We looked up <em>pbs</em>, and selected three tools. They are <a
+  href="http://sourceforge.net/projects/pbsclusterviz/?source=directory" title="PBS Viz Cluster">PBS Viz Cluster
+  0.6a</a>, <a href="http://sourceforge.net/projects/torquemon/?source=directory" title="Torque Web Monitor">Torque Web
+  Monitor 1.0</a> and <a href="http://sourceforge.net/projects/myjam/?source=directory" title="myJAM">myJAM 2.4.7-3191</a>.
+ The hardware used is not being taken in account in this comparison, but for what it is worth, we have a Core i5 quad
+ core, with 6GB of memory and 400GB disk. The operational system is Debian Squeeze, and the web server an Apache.
+</p>
+
+
+            
+            &lt;a href=&#34;/2012/06/30/comparison-of-pbs-cluster-monitoring-applications&#34;&gt;Read more...&lt;/a&gt;
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Creating a PBS/MPI cluster for bioinformatics – Part 3</title>
+            <link>/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorial</category>
+            
+            <category>jenkins</category>
+            
+            <category>bioinformatics</category>
+            
+            <pubDate>2012-06-21T01:26:44+12:00</pubDate>
+            <guid>/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3</guid>
+            <description><p>This is the third and last part of this blog series. In this post we will install Structure (Pritchard Lab) and Torque PBS. We will configure a simple run in Structure using the two machines in our cluster.</p>
+
+<h2>Installing Structure</h2>
+
+<p>Installing structure is very simple. Download the latest version from <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Pritchard Lab">Prichard Lab page</a>, decompress it and move the executables to a folder in your $PATH (or use symlinks). Here I&#8217;m using <code>/usr/local/bin</code>, but to keep things in order, I renamed the <em>console</em> folder (from structure_linux_console.tar.gz) to <em>structure-console-2.3.3</em>, because I like to know the tool and its version without having to browse it. Then I moved it under <code>/opt/biouno</code>, where I keep the executables used by the cluster. Finally, I created the symlink <code>/usr/local/bin/structure</code> that points to <code>/opt/biouno/structure-console-2.3.3/structure</code>.</p>
+
+
+            
+            &lt;a href=&#34;/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3&#34;&gt;Read more...&lt;/a&gt;
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>How we make our vector illustrations</title>
+            <link>/2012/06/14/how-we-make-our-vector-illustrations</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>illustration</category>
+            
+            <pubDate>2012-06-14T16:56:26+12:00</pubDate>
+            <guid>/2012/06/14/how-we-make-our-vector-illustrations</guid>
+            <description><p>Hi there!</p>
+
+<p>In this blog post we will show how we make our vector illustrations. The whole process of drawing, scanning and adjusting the image levels is quite simple. The level adjustment step is required only if you think that the image is not legible enough. In some cases, you may prefer just using an eraser to remove some extra lines, shadows or stains.</p>
+
+
+            
+            &lt;a href=&#34;/2012/06/14/how-we-make-our-vector-illustrations&#34;&gt;Read more...&lt;/a&gt;
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Creating a PBS/MPI cluster for bioinformatics – Part 2</title>
+            <link>/2012/04/29/creating-a-pbsmpi-cluster-for-bioinformatics-part-2</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>jenkins</category>
+            
+            <category>bioinformatics</category>
+            
+            <pubDate>2012-04-29T16:51:12+12:00</pubDate>
+            <guid>/2012/04/29/creating-a-pbsmpi-cluster-for-bioinformatics-part-2</guid>
+            <description><p>In the <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="Creating a PBS/MPI cluster for bioinformatics – Part 1">previous post</a> of this series we saw how to configure a basic network for our small cluster. Now it is time to work on the <strong>MPI</strong> stuff. Our cluster will be a <strong><a href="http://en.wikipedia.org/wiki/Beowulf_cluster" title="Beowulf Cluster Wiki entry">Beowulf cluster</a></strong>. This kind of cluster is composed of <strong>commodity computers</strong>, connected via network sharing resources and programs. And in the next post, we will see how to include a <em>batch queuing system</em> to control the resource utilization in our cluster.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Message_Passing_Interface" title="Message Passing Interface Wiki entry">MPI</a> is not a library. MPI is actually a standard. When you find an RESTful application, REST is only a standard, and you have different libraries that implement this standard (Jersey, JBoss Reast Easy, CodeIgniter+Rest Controllers, and so it goes). With MPI it is not different. There are different implementations of the MPI specification. We suggest you to read <a href="http://techtinkering.com/2009/12/02/setting-up-a-beowulf-cluster-using-open-mpi-on-linux/" title="Setting Up a Beowulf Cluster using OpenMPI on Linux">this tutorial</a> that, although it was written in 2009, it uses Debian (operational system we are using in BioUno cluster) and is very well written and concise. Basically, you have to install <a href="http://open-mpi.org/" title="OpenMPI">OpenMPI</a>, one of the existing MPI libraries. And if you followed the instructions in <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="Creating a PBS/MPI cluster for bioinformatics – Part 1">part 1</a> of this series, then you already have SSH correctly configured in your computers.</p>
+
+
+            
+            &lt;a href=&#34;/2012/04/29/creating-a-pbsmpi-cluster-for-bioinformatics-part-2&#34;&gt;Read more...&lt;/a&gt;
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Creating a PBS/MPI cluster for bioinformatics - Part 1</title>
+            <link>/2012/04/17/creating-a-pbsmpi-cluster-for-bioinformatics-part-1</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>jenkins</category>
+            
+            <category>bioinformatics</category>
+            
+            <pubDate>2012-04-17T00:40:35+12:00</pubDate>
+            <guid>/2012/04/17/creating-a-pbsmpi-cluster-for-bioinformatics-part-1</guid>
+            <description><p>This is a series of posts with the steps we are using to set up an internal cluster for <a href="http://en.wikipedia.org/wiki/Bioinformatics" title="Bioinformatics Wikipedia entry">bioinformatics</a> using <a href="http://en.wikipedia.org/wiki/Message_Passing_Interface" title="Message Passing Interface">MPI</a> and <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> for distributed jobs. Our goal with this series is help other nerds setting up similar environment. This cluster is not public yet, and we are using for development of <a href="http://www.biouno.org" title="BioUno">BioUno</a>. At moment we are writing code to integrate our <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> with <a href="http://mrbayes.sourceforge.net/" title="MrBayes">MrBayes</a> and <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Structure">Structure</a>.</p>
+
+<p>In this first post, we will see how to configure the network for each machine be able to see the other one, and how to configure SSH for connecting to the other nodes in the cluster. If you already know MrBayes and Structure, skip the Introduction and go to the <a href="#basic-network-configuration">basic network configuration topic</a>. We assume you have a intermediary knowledge of Linux, as many instructions in this series are vague. We always reference the original tutorial that we used. This series may be edited to stay up to date or for improvements.</p>
+
+
+            
+            &lt;a href=&#34;/2012/04/17/creating-a-pbsmpi-cluster-for-bioinformatics-part-1&#34;&gt;Read more...&lt;/a&gt;
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Gray map when loading GMapez dynamically</title>
+            <link>/2012/04/11/gray-map-when-loading-gmapez-dynamically</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>google maps</category>
+            
+            <pubDate>2012-04-11T07:06:04+12:00</pubDate>
+            <guid>/2012/04/11/gray-map-when-loading-gmapez-dynamically</guid>
+            <description><p>If you are using <a title="GMapEz" href="http://n01se.net/gmapez/">GMapEz</a> and you load it dynamically, then you may face a problem having a gray area instead of your map. In our case, we were using GMapEz and <a title="JQuery Stepy" href="http://www.wbotelhos.com/stepy/">JQuery Stepy</a>. When the page was loaded, the first step didn&#8217;t have a map. When the user hit next, then a map was supposed to appear, but it was gray.</p>
+<p>What happens is that if the map is not displayed then you will have to call &#8216;checkResize&#8217; on GMapEz&#8217; map object.</p>
+<p>The first thing you need to do is expose the googlemap as a variable accessible from other scripts. For this, you will need to edit gmapez-x.js, including &#8216;var googlemap = null;&#8217; in the top of your script, and then modify the source as needed to create the object.</p>
+<p>Finally, when the map is displayed (in our case, on step number 2 of the form) you call googlemap.map.checkResize().</p>
+<p>This should fix your gray map :-)</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Slack line session tomorrow at Villa Lobos park</title>
+            <link>/2012/04/06/slack-line-session-tomorrow-at-villa-lobos-park</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>slackline</category>
+            
+            <pubDate>2012-04-06T22:28:57+12:00</pubDate>
+            <guid>/2012/04/06/slack-line-session-tomorrow-at-villa-lobos-park</guid>
+            <description><p>It&#8217;s a bit short notice, but we will be holding our first slack line session tomorrow morning at <a title="Parque Villa Lobos" href="http://www.ambiente.sp.gov.br/parquevillalobos/">Villa Lobos park</a>! Should you are around there, look for us, hop on the rope and let&#8217;s have some fun. While we are on the ground we can talk about geek things too :-)</p>
+<p>See you there!</p>
+<hr />
+<p>Yeah!  We made it!</p>
+<p>Thank&#8217;s to Bruno, Claudinha, Brian, Cibele, Luciana and our new fellows from DiBrasil Slackline.</p>
+<p>It was a perfect day.
+Cesar</p>
+<p>[nggallery id=1]</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Verifying if certain plug-in is installed and setting a new proxy in Jenkins using CLI</title>
+            <link>/2012/03/09/verifying-if-certain-plug-in-is-installed-and-setting-a-new-proxy-in-jenkins-using-cli</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>jenkins</category>
+            
+            <pubDate>2012-03-09T18:04:05+13:00</pubDate>
+            <guid>/2012/03/09/verifying-if-certain-plug-in-is-installed-and-setting-a-new-proxy-in-jenkins-using-cli</guid>
+            <description><p>What ho lads!</p>
+<p>Few days ago I was talking with Olivier Renault [1] about few things that he needs to deploy JinFeng [1] using a non-interactive command line. JinFeng is an integration and testing platform built on top of many Open Source tools, like TestLink [2] and Jenkins [3]. One of the features he needs is Test Steps in TestLink XML-RPC API (I&#8217;m working on this, and hopefully will be able to provide a patch for TestLink 1.9.4).
+
+            
+            &lt;a href=&#34;/2012/03/09/verifying-if-certain-plug-in-is-installed-and-setting-a-new-proxy-in-jenkins-using-cli&#34;&gt;Read more...&lt;/a&gt;
+            
+            </description>
+        </item>
+        
+
+    </channel>
+</rss>

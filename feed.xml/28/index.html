@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>TupiLabs</title>
+        <link>/</link>
+        <atom:link href="/feed.xml/28" rel="self" type="application/rss+xml" />
+        
+        <description>Latest news from TupiLabs</description>
+        
+        <lastBuildDate>2017-02-20T21:57:31+13:00</lastBuildDate>
+        <pubDate>2017-02-20T21:57:31+13:00</pubDate>
+        <generator>PieCrust 2.0.0rc2</generator>
+        
+        
+        
+
+        
+        
+        
+        <item>
+            <title>Create a Map of Jenkins Plug-ins (similar to Map of CPAN)</title>
+            <link>/2012/10/22/create-a-cpan-map-like-for-jenkins-plug-ins</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>perl</category>
+            
+            <category>jenkins</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2012-10-22T15:14:42+13:00</pubDate>
+            <guid>/2012/10/22/create-a-cpan-map-like-for-jenkins-plug-ins</guid>
+            <description><p>There&#8217;s a plethora of plug-ins for <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a>, that&#8217;s well known. But there are way more modules in <a href="http://www.cpan.org" title="CPAN">CPAN</a>. One way to visualize all the modules in CPAN is with <a href="http://mapofcpan.org/" title="Map of CPAN">Map of CPAN</a>.</p>
+
+<p>The idea here is to create similar map for Jenkins plug-ins (Map of Jenkins plug-ins). It could use the plug-in type (plugin-labels) and show its growth through the time. That would be interesting, especially if it was possible to create a video (like this one below) showing what happened since the fork from <a href="http://hudson-ci.org/" title="Hudson CI">Hudson</a>.</p>
+
+<p class="center"><iframe src="http://player.vimeo.com/video/51893508" width="500" height="328" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
+
+<p><p><a href="http://vimeo.com/51893508">Map of CPAN – The Movie</a> from <a href="http://vimeo.com/grantm">Grant McLean</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
+<p>The code for the CPAN map generator is hosted at GitHub: <a href="https://github.com/grantm/cpan-map">https://github.com/grantm/cpan-map</a>. And it uses the <a href="http://en.wikipedia.org/wiki/Hilbert_curve" title="Hilbert curve">Hilbert curve</a> for ploting those geometric forms.</p>
+
+<hr/>
+
+<p><em>Update 26, oct. 2012</em></p>
+
+<p>The map generation is started with a Perl script cpan-map that downloads a tar.gz file from <a href="https://metacpan.org/" title="MetaCPAN">MetaCPAN</a> and creates a map of namespaces and its modules. Then it creates an image with Hilbert curves. It assigns different colors for each namespace.</p>
+
+<p>For Jenkins plug-ins map we could use <em>update-center.json</em> file, and group plug-ins by its label. We could get the author picture from Gravatar (like Map of CPAN), and use the same interface of Map of CPAN - it uses <a href="http://sammyjs.org/" title="SammyJS">sammy.js</a> and <a href="http://www.jquery.com" title="jQuery">jQuery</a>.</p>
+
+<p>Links for Hilbert curves and Java</p>
+
+<ul>
+    <li><a href="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html" title="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html"></a></li>
+    <li><a href="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html" title="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html"></a></li>
+</ul>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Tupilabs Report: Oct 14, Oct 20</title>
+            <link>/2012/10/21/tupilabs-report-oct-14-oct-20</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>tupilabs-report</category>
+            
+            <pubDate>2012-10-21T01:52:17+13:00</pubDate>
+            <guid>/2012/10/21/tupilabs-report-oct-14-oct-20</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday in TupiLabs.</p>
+
+<ul>
+    <li>Released <a href="http://www.garagemvaga.com.br" title="GV 2.0">Garagem Vaga</a> 2.0</li>
+    <li>Released <a href="http://www.paskuale.com" title="Paskuale">Paskuale</a> 0.1</li>
+    <li>Created subreddit <a href="http://reddit.com/r/functionalprogramming" title="r/functionalprogramming">r/functionalprogramming</a> to collect links related to FP (some of the findings from that subreddit can go to <a href="http://commons.apache.org/functor" title="Apache Commons Functor">Apache Commons Functor</a>)</li>
+    <li>Created subreddit <a href="http://reddit.com/r/fuzzylogic" title="r/fuzzylogic">r/fuzzylogic</a> to collect links related to Fuzzy Logic (some of the findings from that subreddit can go to <a href="http://nebular.sf.net" title="nebular">nebular</a>)</li>
+    <li>Updated subreddit <a href="http://reddit.com/r/testanythingprotocol" title="r/testanythingprotocol">r/testanythingprotocol</a></li>
+    <li>Added more expressions to <a href="http://www.speaklikeabrazilian.com" title="SLBR">Speak Like A Brazilian</a></li>
+    <li>Added <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a> <strong>!slbr</strong> bang to <a href="http://www.duckduckgo.com" title="DuckDuckGo">DuckDuckGo</a> (<a href="search-speak-like-a-brazilian-using-duckduckgo/">post here</a>)</li>
+    <li>Released <a href="http://www.tap4j.org" title="tap4j">tap4j</a> <a href="tap4j-3-2-released/" title="tap4j 3.2 released">3.2</a></li>
+    <li>Posted a <a href="pt-br/recomendacoes-baseadas-em-fotos-do-pinterest/" title="Recomendações baseadas em fotos do Instagram">new idea</a> to TupiLabs (pt-BR)</li>
+    <li>Partly translated the <a href="pt-br/nosso-trabalho/" title="TupiLabs | Nosso trabalho">Work section to pt-BR</a></li>
+    <li><a href="pt-br/desenvolvendo-plug-ins-para-o-jenkins-hospedando-plug-ins-no-jenkins-ci-org-e-a-release-de-um-plug-in/" title="Desenvolvendo plug-ins para o Jenkins: Hospedando plug-ins no jenkins-ci.org e a release de um plug-in">New video</a> (pt-BR) about Jenkins plug-in development where we released TAP plug-in 1.6</li>
+    <li>Fixed <a href="https://issues.jenkins-ci.org/browse/JENKINS-15343" title="JENKINS-15343">JENKINS-15343</a></li>
+    <li>Fixed <a href="https://issues.jenkins-ci.org/browse/JENKINS-15497" title="JENKINS-15497">JENKINS-15497</a></li>
+    <li>Added support to <a href="https://wiki.jenkins-ci.org/display/JENKINS/Conditional+BuildStep+Plugin" title="Jenkins Conditional BuildStep Plug-in">Conditional BuildStep Plug-in</a> to Testopia and TestLink plug-ins</li>
+    <li>Released <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin" title="Jenkins TAP Plug-in">Jenkins TAP plug-in</a> 1.6</li>
+    <li>Released <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin" title="Jenkins TAP Plug-in">Jenkins TAP plug-in</a> 1.7 and fixed JENKINS- after reading about a bug in <a href="http://stackoverflow.com/questions/12858759/how-to-get-jenkins-display-tap-output-from-perlcritic">http://stackoverflow.com/questions/12858759/how-to-get-jenkins-display-tap-output-from-perlcritic</a></li>
+    <li>Released <a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin" title="Jenkins TestLink Plug-in">Jenkins TestLink plug-in</a> 3.1.8</li>
+    <li>Updated Wiki page for <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin" title="Jenkins TAP Plug-in">Jenkins TAP plug-in</a></li>
+    <li>Updated Wiki page for <a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin" title="Jenkins TestLink Plug-in">Jenkins TestLink plug-in</a></li>
+    <li>Started a new <strong>internal project for Human Resources professionals</strong> (to be released in November)</li>
+    <li>Helping to organize a <strong>conference for an awesome Open Source tool in Sao Paulo</strong> (to be announced soon!!! Stay tuned!)</li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a> :-D</p>
+
+<p>Have a great week!</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Recomendações baseadas em fotos do Instagram</title>
+            <link>/2012/10/20/recomendacoes-baseadas-em-fotos-do-pinterest</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2012-10-20T15:43:39+13:00</pubDate>
+            <guid>/2012/10/20/recomendacoes-baseadas-em-fotos-do-pinterest</guid>
+            <description><p>Muita gente posta no Instagram fotos dos pratos que está comendo. Uma ideia seria utilizar uma base e um algoritmo de reconhecimento de padrões para identificar qual o prato. Tentar cruzar com informações do lugar da foto e, cruzando o tipo de prato (doce, salgado, chique, pobre, etc) com o valor dele e estabelecimento, recomendar ao usuário outros restaurantes.</p>
+
+<p>Digamos que alguém peça costela no Outback, tire uma foto e poste. O que esse sistema precisaria fazer é: </p>
+
+<ul>
+    <li>Classificar a comida</li>
+    <li>Extrair informações sobre o perfil do usuário</li>
+    <li>Encontrar informações sobre o estabelecimento atual</li>
+    <li>Com base nos dados que possui, recomendar pratos em outros estabelecimentos</li>
+</ul>
+
+<p>Com algum treinamento (see: <a href="http://reddit.com/r/machinelearning" title="Machine Learning subreddit">Machine Learning</a>), seria possível que o site recomendasse a esta pessoa experimentar a costela no AppleBees também. Já que o tipo de estabelecimento é semelhante, o prato e o valor também. Talvez o usuário pudesse pedir uma recomendação menos calórica mas semelhante (see: <a href="http://www.reddit.com/r/fuzzylogic/" title="Fuzzy Logic subreddit">Fuzzy</a>), ou mais barata (see: Tio Patinhas).</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Busque no Speak Like A Brazilian usando DuckDuckGo</title>
+            <link>/2012/10/20/busque-no-speak-like-a-brazilian-usando-duckduckgo</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>speak-like-a-brazilian</category>
+            
+            <category>duckduckgo</category>
+            
+            <pubDate>2012-10-20T13:27:48+13:00</pubDate>
+            <guid>/2012/10/20/busque-no-speak-like-a-brazilian-usando-duckduckgo</guid>
+            <description><p><a href="http://www.duckduckgo.com" title="DuckDuckGo">DuckDuckGo</a> oferece um incrível serviço que permite que você busque em Wikis, jornais ou outros sites usando uma <a href="http://duckduckgo.com/bang.html" title="Bang!">Bang</a>. Basicamente, você digita <strong>!</strong> seguido pela bang e por fim o que você busca. Por exemplo: <strong>!answers when do the narwhals bacon?</strong>.</p>
+
+<p class='center'><img src="img/logos/duckduckgo.png" alt="" title="DuckDuckGo" width="202" height="160" class="alignnone size-full wp-image-825" /></p>
+
+<p>Assim o DuckDuckGo irá redirecionar você para os resultados no web site da bang que você usou. E adivinhe o quê? Agora você pode buscar no <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a> usango a bang <strong>!slbr</strong> no DuckDuckGo. Quer ver como isso funciona? Vá até <a href="http://www.duckduckgo.com" title="DuckDuckGo">www.duckduckgo.com</a> e busque por <strong>!slbr cara</strong></p>
+
+<p class='center'><img src="img/logos/slbr.png" alt="" title="SLBR" width="600" class="alignnone size-full wp-image-827" /></p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Search Speak Like A Brazilian using DuckDuckGo</title>
+            <link>/2012/10/20/search-speak-like-a-brazilian-using-duckduckgo</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>speak-like-a-brazilian</category>
+            
+            <category>duckduckgo</category>
+            
+            <pubDate>2012-10-20T13:22:30+13:00</pubDate>
+            <guid>/2012/10/20/search-speak-like-a-brazilian-using-duckduckgo</guid>
+            <description><p>
+ <a href="http://www.duckduckgo.com" title="DuckDuckGo">DuckDuckGo</a> offers an awesome service that lets you search
+ for items in Wikias, newspapers or other web sites using a <a href="http://duckduckgo.com/bang.html" title="Bang!">Bang</a>.
+ Basically, you enter <strong>!</strong> followed by the bang name and your search query. For example: <strong>!answers
+  when do the narwhals bacon?</strong>.
+</p>
+
+<p class='center'>
+ <img src="img/logos/duckduckgo.png" alt="" title="DuckDuckGo" width="202" height="160"
+  class="alignnone size-full wp-image-825" />
+</p>
+
+<p>
+ And then DuckDuckGo will redirect you to the results on the specific web site. And guess what? Now you can search <a
+  href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a> using the <strong>!slbr</strong>
+ bang in DuckDuckGo. Wanna see how it works? Go to <a href="http://www.duckduckgo.com" title="DuckDuckGo">www.duckduckgo.com</a>
+ and search for <strong>!slbr cara</strong>
+</p>
+
+<p class='center'>
+ <img src="img/logos/slbr.png" alt="" title="SLBR" width="600"
+  class="alignnone size-full wp-image-827" />
+</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Desenvolvendo plug-ins para o Jenkins: Hospedando plug-ins no jenkins-ci.org e a release de um plug-in</title>
+            <link>/2012/10/20/desenvolvendo-plug-ins-para-o-jenkins-hospedando-plug-ins-no-jenkins-ci-org-e-a-release-de-um-plug-in</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>jenkins</category>
+            
+            <pubDate>2012-10-20T12:03:19+13:00</pubDate>
+            <guid>/2012/10/20/desenvolvendo-plug-ins-para-o-jenkins-hospedando-plug-ins-no-jenkins-ci-org-e-a-release-de-um-plug-in</guid>
+            <description><p>No ar o terceiro vídeo sobre desenvolvimento de plug-ins para o Jenkins. Neste vídeo é explicado como fazer para hospedar plug-ins Open Source no <a href="http://www.jenkins-ci.org" title="Jenkins CI">jenkins-ci.org</a>. No final do vídeo a versão 1.6 do plug-in <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin" title="Jenkins TAP Plug-in">Jenkins TAP Plug-in</a> é lançada. Esperamos que mostrando como é simples e fácil lançar um plug-in mais pessoas se sintam motivadas para contribuir com seus plug-ins.</p>
+
+<p class='center'><iframe width="560" height="315" src="http://www.youtube.com/embed/e4goibMj1gU" frameborder="0" allowfullscreen></iframe></p>
+
+<p>Bom divertimento :D</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Untitled Page</title>
+            <link>/2012/10/20/tap4j-3-2-released</link>
+            
+            
+            
+            <pubDate>2012-10-20T00:00:00+13:00</pubDate>
+            <guid>/2012/10/20/tap4j-3-2-released</guid>
+            <description><p>title: &#8216;tap4j 3.2 released&#8217;
+id: 853
+author: kinow
+tags:
+    - tap
+    - tap4j
+    - news
+time: &#8216;17:32:51&#8217;
+category: blog
+layout: blog</p>
+<hr />
+<p><p><a href="http://www.tap4j.org" title="tap4j">tap4j</a> 3.2 is out. This release includes only minor code improvements and the update of TestNG and JUnit dependencies - they are used for the integration extensions. Also, the @author tags were removed, and the code is now formatted similar to the Apache Commons style guide.</p></p>
+<p>If you are using a Maven project, you can add the following to your pom.xml to use tap4j.</p>
+
+<pre><code>&lt;dependency>
+  &lt;groupid>org.tap4j&lt;/groupid>
+  &lt;artifactid>tap4j&lt;/artifactid>
+  &lt;version>3.2&lt;/version>
+&lt;/dependency></code></pre>
+
+<p>Find more about tap4j on <a href="http://www.tap4j.org" title="tap4j">http://www.tap4j.org</a></p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Portal do Software Público promove Prêmio de Ação Coletiva 2012</title>
+            <link>/2012/10/18/portal-do-software-publico-promote-premio-de-acao-coletiva-2012</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>news</category>
+            
+            <pubDate>2012-10-18T19:06:36+13:00</pubDate>
+            <guid>/2012/10/18/portal-do-software-publico-promote-premio-de-acao-coletiva-2012</guid>
+            <description><p>Contribuições para projetos do <a href="http://www.softwarepublico.gov.br/" title="SPB">Portal do Software Público</a> do dia 15 de Outubro até o final de Novembro estarão participando do <a href="http://www.softwarepublico.gov.br/reg_acao_coletiva2012" title="Prêmio Ação Coletiva 2012">Prêmio de Ação Coletiva 2012</a>. O prêmio é patrocinado pela <a href="http://www.intel.com" title="Intel">Intel</a>. Leia a <a href="http://www.softwarepublico.gov.br/news-item295" title="Notícia no SPB">notícia completa</a> no Portal do Software Público, ou confira a <a href="http://www.softwarepublico.gov.br/reg_acao_coletiva2012" title="Prêmio de Ação Coletiva 2012">página do prêmio</a>.</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Send coverage results back to TestLink</title>
+            <link>/2012/10/16/send-coverage-results-back-to-testlink</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>testlink</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2012-10-16T12:50:40+13:00</pubDate>
+            <guid>/2012/10/16/send-coverage-results-back-to-testlink</guid>
+            <description><p>This is an interesting case that I received via e-mail from G. M. after he read the post <a href="http://www.kinoshita.eti.br/2012/10/11/jenkins-testlink-and-gtest-in-5-minutes-or-so/" title="Jenkins, TestLink and GTest in 5 minutes (or so)"></a>. Basically, using an approach similar to the <a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin" title="Jenkins TestLink Plug-in">testlink-plugin for Jenkins</a>, one could send the coverage results to <a href="http://www.teamst.org" title="TestLink">TestLink</a>.</p>
+
+<p>TestLink has requirements x test case coverage information, and <a href="http://www.sonarsource.org/" title="Sonar">Sonar</a>, <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a>, <a href="http://cobertura.sourceforge.net/" title="Cobertura">Cobertura</a> and other tools give you source code x test coverage. Crossing these information could be interesting.</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Tupilabs Report: Oct 7, Oct 13</title>
+            <link>/2012/10/15/tupilabs-report-oct-7-oct-13</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>tupilabs-report</category>
+            
+            <pubDate>2012-10-15T22:03:12+13:00</pubDate>
+            <guid>/2012/10/15/tupilabs-report-oct-7-oct-13</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday in TupiLabs.</p>
+
+<ul>
+    <li>Added i18n with support to English and Portuguese to <a href="https://wiki.jenkins-ci.org/display/JENKINS/Testopia+Plugin" title="Jenkins Testopia Plug-in">Testopia Jenkins plug-in</a></li>
+    <li>Continued configuration of supercomputer for <a href="http://www.illumina.com/technology/paired_end_sequencing_assay.ilmn" title="Paired End Sequencing">paired-end sequence analysis</a>, and submitted the first <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="PBS">PBS</a> job! Yay!</li>
+    <li>More expressions <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">SLBR</a></li>
+    <li>Installed dual boot Win + Linux computer and prepared a Linux virtual machine too, for interfacing with the supercomputer</li>
+    <li>Talked with accountant and started the work to get TupiLabs CNPJ (national code for companies)</li>
+    <li>Organized Paskuale repositories in GitHub (were three, now it is just a single one)</li>
+    <li><a href="https://oss.sonatype.org/content/repositories/releases/com/tupilabs/" title="com.tupilabs in Sonatype">com.tupilabs repository in Sonatype</a>, to publish to Maven Central</li>
+    <li>Released <a href="https://github.com/tupilabs/testng-parser.git" title="TestNG Parser">TestNG Parser</a>, to be used in testopia-plugin and testlink-plugin</li>
+    <li>Added the first unit tests to SLBR (shame on us), with coverage and an Ant build script too</li>
+    <li>Recorded <a href="http://www.youtube.com/watch?v=gyq3S_EnssY&feature=plcp" title="Desenvolvendo plug-ins para o Jenkins: Depurando e escrevendo um publisher">second video</a> on Jenkins plugin development tutorials in Portuguese</li>
+    <li>testopia-plugin meeting with <a href="https://twitter.com/peterflorijn" title="Peter Florijn">Peter Florijn</a></li>
+    <li>Changes in <a href="http://www.tap4j.org" title="tap4j">tap4j</a>, preparing to release a new version. The project is now under <a href="https://github.com/tupilabs/" title="TupiLabs at GitHub">tupilabs at GitHub</a></li>
+    <li>Fixed the following issues in Jenkins TAP Plug-in: <a href="https://issues.jenkins-ci.org/browse/JENKINS-15419" title="JENKINS-15419">JENKINS-15419</a>, <a href="https://issues.jenkins-ci.org/browse/JENKINS-15497" title="JENKINS-15497">JENKINS-15497</a></li>
+    <li>Started to prepare a new release of <a href="http://nebular.sourceforge.net/" title="nebular">nebular</a>, the pure Java <a href="http://en.wikipedia.org/wiki/Fuzzy_logic" title="Fuzzy Logic">fuzzy</a> API</li>
+    <li>Started modeling PBS plug-in for Jenkins</li>
+    <li>Prepared paskuale domain name at <a href="http://www.namecheap.com/" title="NameCheap">NameCheap</a> and node at <a href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4" title="Linode">Linode</a></li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a> :D</p>
+
+<p>Have a great week!</p>
+            
+            </description>
+        </item>
+        
+
+    </channel>
+</rss>

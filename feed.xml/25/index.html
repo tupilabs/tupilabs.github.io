@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>TupiLabs</title>
+        <link>/</link>
+        <atom:link href="/feed.xml/25" rel="self" type="application/rss+xml" />
+        
+        <description>Latest news from TupiLabs</description>
+        
+        <lastBuildDate>2017-02-20T21:57:31+13:00</lastBuildDate>
+        <pubDate>2017-02-20T21:57:31+13:00</pubDate>
+        <generator>PieCrust 2.0.0rc2</generator>
+        
+        
+        
+
+        
+        
+        
+        <item>
+            <title>Fixing "XMLHttpRequest Origin is not allowed by Access-Control-Allow-Origin" in PHP and CodeIgniter</title>
+            <link>/2013/03/16/fixing-xmlhttprequest-origin-is-not-allowed-by-access-control-allow-origin-in-php-and-codeigniter</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>blog</category>
+            
+            <category>csrf</category>
+            
+            <category>javascript</category>
+            
+            <category>php</category>
+            
+            <category>speak-like-a-brazilian</category>
+            
+            <pubDate>2013-03-16T17:10:02+13:00</pubDate>
+            <guid>/2013/03/16/fixing-xmlhttprequest-origin-is-not-allowed-by-access-control-allow-origin-in-php-and-codeigniter</guid>
+            <description><p>Since it has been released, <a href="http://www.speaklikeabrazilian.com" title="SLBR">Speak Like A Brazilian</a> had a bug when users voted, but had accessed the site via <em>speaklikeabrazilian.com</em>, and not <em>www.speaklikeabrazilian.com</em> (the latter is the base_url in <em>application/config/config.php</em>).</p>
+
+<p>Looking at the developer console in Chrome, you could see that XMLHttpRequest was having trouble by, what looked in principle, like a security bug. Maybe a cross-domain issue.</p>
+
+<p>After searching the Internet, we&#8217;ve found what was causing this issue. Unfortunately I lost the link, but in a StackOverFlow discussion, one user said it had something to do with the CSRF check.</p>
+
+<p>A quick test, where we disabled the CSRF token verification, showed that he was right. But we couldn&#8217;t simply disable CSRF everywhere. So if you are facing similar issue, here&#8217;s the trick: Create a hook that disables CSRF verification only for a certain URL.</p>
+
+<p>It&#8217;s not a very nice approach, but as in Speak Like A Brazilian the votes are linked by IP, there&#8217;s no need to keep the CSRF token. Here&#8217;s the solution that worked for us.</p>
+
+<pre>
+&lt;?php if (!defined('BASEPATH')) exit('No direct script access allowed');<br/> <br/>/**<br/> * Security Class<br/> *<br/> * @package hooks<br/> * @description Disables CSRF token for certain pages.<br/> */<br/> <br/>class DisableCSRF<br/>{<br/><br/>        function disable_if_callback() <br/>        {    <br/>            if(stripos($_SERVER[&quot;REQUEST_URI&quot;],'/rating/expression') !== FALSE)<br/>            {<br/>                $CFG =&amp; load_class('Config', 'core');<br/>                $CFG-&gt;set_item('csrf_protection', FALSE);<br/>            }<br/>        } <br/>        <br/>}
+</pre>
+
+<p>And as a side note, we are still in honey moon with <a href="http://www.codeigniter.com">CodeIgniter</a>. We have just finished another project with it, and so far we haven&#8217;t been let down by this amazing framework. Hope it helps you, in case you have similar error.</p>
+
+<p>Happy St. Patricks Day! And happy coding!</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>TupiLabs Report: 03 Mar, 09 Mar</title>
+            <link>/2013/03/12/tupilabs-report-03-mar-09-mar</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>frege</category>
+            
+            <category>garagem-vaga</category>
+            
+            <category>illustration</category>
+            
+            <category>jenkins</category>
+            
+            <category>logo</category>
+            
+            <category>paskuale</category>
+            
+            <category>slbr</category>
+            
+            <category>tap</category>
+            
+            <category>testlink</category>
+            
+            <pubDate>2013-03-12T11:22:36+13:00</pubDate>
+            <guid>/2013/03/12/tupilabs-report-03-mar-09-mar</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>Some issues and pull requests for <a href="https://github.com/jenkinsci/testlink-plugin">Jenkins TestLink Plug-in</a></li>
+    <li>A new pull request and a weird bug reported via e-mail in <a href="https://github.com/jenkinsci/tap-plugin">Jenkins TAP Plug-in</a></li>
+    <li>New Likes at our <a href="https://www.facebook.com/SpeakLikeABrazilian">Facebook page for Speak Like A Brazilian</a>. Yay!!!</li>
+    <li>Vectorized some potential <a href="https://code.google.com/p/frege/">Frege logos</a> and sent to the project mailing list</li>
+    <li>We have finished a small <a href="http://en.wikipedia.org/wiki/Natural_language_processing">NLP</a> and <a href="http://en.wikipedia.org/wiki/Big_data">Big Data</a> prototype for a prospect. The presentation will happen in the next days at the customer site!</li>
+    <li>Research work for <a href="http://www.paskuale.org" title="Paskuale">Paskuale</a> backend</li>
+    <li><a href="http://www.garagemvaga.com.br">Garagem Vaga</a> received a new parking lot, and we are working on the marketing and promotion material</li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>TupiLabs Report: 24 Feb, 02 Mar</title>
+            <link>/2013/03/03/tupilabs-report-24-feb-02-mar</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>functional-programming</category>
+            
+            <category>jenkins</category>
+            
+            <category>reddit</category>
+            
+            <category>tap</category>
+            
+            <category>tap-plugin</category>
+            
+            <pubDate>2013-03-03T18:36:34+13:00</pubDate>
+            <guid>/2013/03/03/tupilabs-report-24-feb-02-mar</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>Worked on Jenkins TAP Plug-in <a href="https://issues.jenkins-ci.org/browse/JENKINS-16674" title="JENKINS-16674">JENKINS-16674</a></li>
+    <li>Worked on Jenkins TAP Plug-in <a href="https://issues.jenkins-ci.org/browse/JENKINS-16647" title="JENKINS-16674">JENKINS-16647</a></li>
+    <li>Worked on Jenkins TAP Plug-in <a href="https://issues.jenkins-ci.org/browse/JENKINS-16326" title="JENKINS-16674">JENKINS-16326</a></li>
+    <li>Worked on Jenkins TAP Plug-in <a href="https://issues.jenkins-ci.org/browse/JENKINS-16971" title="JENKINS-16674">JENKINS-16971</a></li>
+    <li>Worked on Jenkins TAP Plug-in <a href="https://issues.jenkins-ci.org/browse/JENKINS-16964" title="JENKINS-16674">JENKINS-16964</a></li>
+    <li>Worked on Jenkins TAP Plug-in <a href="https://issues.jenkins-ci.org/browse/JENKINS-16325" title="JENKINS-16674">JENKINS-16325</a></li>
+    <li>Worked on Jenkins TAP Plug-in <a href="https://issues.jenkins-ci.org/browse/JENKINS-16968" title="JENKINS-16674">JENKINS-16968</a></li>
+    <li>Worked on Jenkins TAP Plug-in <a href="https://issues.jenkins-ci.org/browse/JENKINS-15322" title="JENKINS-16674">JENKINS-15322</a></li>
+    <li>+1 user than <a href="http://www.reddit.com/r/jenkinsci" title="Jenkins Subreddit">r/jenkinsci</a> in <a href="http://www.reddit.com/r/functionalprogramming/" title="Functional Programming subreddit">r/functionalprogramming</a></li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>TupiLabs Report: 17 Feb, 23 Feb</title>
+            <link>/2013/02/26/tupilabs-report-17-feb-23-feb</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>biouno</category>
+            
+            <category>garagem-vaga</category>
+            
+            <pubDate>2013-02-26T22:59:59+13:00</pubDate>
+            <guid>/2013/02/26/tupilabs-report-17-feb-23-feb</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>Created parser to <a href="http://www.garagemvaga.com.br" title="Garagem Vaga">Garagem Vaga</a> logs, that tells us where users are looking for garages</li>
+    <li>Created <a href="http://biouno.org" title="BioUno">BioUno</a> organization at GitHub</li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Tupilabs Report: Feb 10, Feb 16</title>
+            <link>/2013/02/17/tupilabs-report-feb-10-feb-16</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>bioinformatics</category>
+            
+            <category>biotechnology</category>
+            
+            <category>biouno</category>
+            
+            <category>jenkins-en</category>
+            
+            <category>speak-like-a-brazilian</category>
+            
+            <category>tupilabs-report</category>
+            
+            <pubDate>2013-02-17T23:41:11+13:00</pubDate>
+            <guid>/2013/02/17/tupilabs-report-feb-10-feb-16</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>Migrated <a href="https://github.com/tupilabs/cvb">CVB</a> from SourceForge.net to GitHub, to start over the development</li>
+    <li>Created <a href="https://github.com/tupilabs/structure-harvester-plugin">Harvester Plug-in</a> project for BioUno</li>
+    <li>Created <a href="https://github.com/tupilabs/clumpp-plugin">Clumpp Plug-in</a> project for BioUno</li>
+    <li>Added <a href="http://en.wikipedia.org/wiki/Defuzzification">defuzzification functions</a> to <a href="http://nebular.sf.net">nebular</a></li>
+    <li>Released <a href="http://nebular.sf.net">nebular 0.3</a> to Maven central</li>
+    <li>Migrated <a href="https://github.com/tupilabs/bellmanzadeh">BellmanZadeh</a> from SourceForge.net to GitHub, to start over the development</li>
+    <li>Started a new prototype project with a prospect</li>
+    <li>New expressions in <a href="http://www.speaklikeabrazilian.com">Speak Like A Brazilian</a></li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Tupilabs Report: Feb 03, Feb 09</title>
+            <link>/2013/02/11/tupilabs-report-feb-03-feb-09</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>biouno</category>
+            
+            <category>functional-programming</category>
+            
+            <category>harvester</category>
+            
+            <category>illustration</category>
+            
+            <category>reddit</category>
+            
+            <category>speak-like-a-brazilian</category>
+            
+            <category>structure</category>
+            
+            <pubDate>2013-02-11T00:08:52+13:00</pubDate>
+            <guid>/2013/02/11/tupilabs-report-feb-03-feb-09</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>Wrote <a href="study-if-its-doable-to-parallelize-pacbiotoca/" title="Study if it’s doable to parallelize PacBioToCA">Study if it’s doable to parallelize PacBioToCA</a></li>
+    <li>Wrote <a href="exporting-data-in-r-format/" title="Exporting data in R format">Exporting data in R format</a></li>
+    <li>Working on <a href="http://www.biouno.org" title="BioUno">BioUno</a> (Harvester plug-in and videos)</li>
+    <li>New Expressions in <a href="http://www.speaklikeabrazilian.com">Speak Like A Brazilian</a></li>
+    <li>Added a Alonzo Church+Lambda background and community icon to <a href='http://www.reddit.com/r/functionalprogramming'>r/functionalprogramming</a></li>
+    <li>Created defuzzification functions in <a href="http://github.com/tupilabs/nebular">nebular</a>. We are almost ready for 2.0 release.</li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Exporting data in R format</title>
+            <link>/2013/02/09/exporting-data-in-r-format</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>jenkins</category>
+            
+            <category>r</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2013-02-09T12:32:54+13:00</pubDate>
+            <guid>/2013/02/09/exporting-data-in-r-format</guid>
+            <description><p>
+ <a href="www.quandl.com">Quandl</a> has now a feature that lets users export data as an R matrix, this way the data can
+ be easily <a href="http://www.quandl.com/help/r">loaded into R</a>. Damn awesome righto? Kudos to the guys from Quandl!
+</p>
+
+<p>
+ <code>read.csv('http://www.quandl.com/api/v1/datasets/OFDP/ALUMINIUM_21.csv?&utf8=â&trim_start=2012-01-03&trim_end=2013-02-07&sort_order=desc',
+  colClasses=c('Date'='Date'))</code>
+</p>
+
+<p class='center'>
+ <a href="img/logos/r_quandl.png"><img src="img/logos/r_quandl.png"
+  alt="r_quandl" width="150" height="145" class="aligncenter size-full wp-image-1096" /></a>
+</p>
+
+<p>Today&#8217;s idea is use Quandl approach in other applications. Jenkins exports some of its objects to its external
+ JSON API. And there are stats being collected from plug-ins (like the download statistics). I am curious to know if
+ there would have any gain in exporting parts of this data as R matrices and processing it directly with R.</p>
+
+<p>This could be used in a lot of different applications, perhaps even using Hadoop and R. Instead of writing
+ collectors to consume an RESTful service, you would simply write one R line to get the job done.</p>
+
+<p>R does very fine in plotting too, so I wouldn&#8217;t be surprised to at least see some prettier charts :o)</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Study if it's doable to parallelize PacBioToCA</title>
+            <link>/2013/02/05/study-if-its-doable-to-parallelize-pacbiotoca</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>bioinformatics</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2013-02-05T22:27:48+13:00</pubDate>
+            <guid>/2013/02/05/study-if-its-doable-to-parallelize-pacbiotoca</guid>
+            <description><p><a href="http://www.homolog.us/">Homolog.us</a> is an amazing site. The content is clear, rich and very entertaining (at least for those who like biology and technology). They have an active <a href="https://twitter.com/#!/homolog_us/">Twitter account</a>, they answer comments, they are on <a href="http://reddit.com/r/bioinformatics">reddit</a> too. <strong>These guys rock</strong>!</p>
+
+<p>Recently <a href="http://www.homolog.us/blogs/2013/02/05/pacbiotoca-for-error-correcting-pacbio-reads/">they wrote</a> about <a href="http://sourceforge.net/apps/mediawiki/wgs-assembler/index.php?title=PacBioToCA">PacBioToCA</a>, pointing out its lengthy execution. It&#8217;s common in biotechnology parallel execution with <a href="http://en.wikipedia.org/wiki/Open_MPI" title="">OpenMPI</a>, <a href="http://en.wikipedia.org/wiki/OpenMP">OpenMP</a> or other method like <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.</p>
+
+<p>One idea would be review the code, check if it&#8217;s doable some kind of parallelism and write about it. Perhaps rewriting it. They <a href="http://www.homolog.us/blogs/2013/02/05/lsc-an-alternative-to-pacbiotoca-for-error-correction-of-pacbio-reads/">already wrote</a> about another tool that competes with PacBioToCA. I told you that Homolog.us is amazing.</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Tupilabs Report: Jan 27, Feb 02</title>
+            <link>/2013/02/03/tupilabs-report-jan-27-feb-02</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>biouno</category>
+            
+            <category>cjan</category>
+            
+            <category>functional-programming</category>
+            
+            <category>groovy</category>
+            
+            <category>jenkins</category>
+            
+            <category>paskuale</category>
+            
+            <category>reddit</category>
+            
+            <category>tupilabs-report</category>
+            
+            <pubDate>2013-02-03T18:55:44+13:00</pubDate>
+            <guid>/2013/02/03/tupilabs-report-jan-27-feb-02</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>Wrote <a href="querying-a-rest-server-from-groovy-scripts-in-jenkins/" title="Querying a REST server from Groovy scripts in Jenkins">blog post</a> about loading extra libraries in Groovy Scripts in Jenkins</li>
+    <li>Working on <a href="http://www.cjan.org" title="CJAN">CJAN</a> project (scripts)</li>
+    <li>Working on <a href="http://www.paskuale.com" title="Paskuale">Paskuale</a> (Nutch plug-ins)</li>
+    <li>Working on <a href="http://www.biouno.org" title="BioUno">BioUno</a> (Structure plug-in and videos)</li>
+    <li>New Expressions in <a href="http://www.speaklikeabrazilian.com">Speak Like A Brazilian</a></li>
+    <li>Over <strong>100 subscribers</strong> in <a href='http://www.reddit.com/r/functionalprogramming'>r/functionalprogramming</a>. Go check it out! Yay!</li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Querying a REST server from Groovy scripts in Jenkins</title>
+            <link>/2013/02/01/querying-a-rest-server-from-groovy-scripts-in-jenkins</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>groovy</category>
+            
+            <category>jenkins</category>
+            
+            <pubDate>2013-02-01T19:25:49+13:00</pubDate>
+            <guid>/2013/02/01/querying-a-rest-server-from-groovy-scripts-in-jenkins</guid>
+            <description><p>
+ This week, in a customer, I had to write a Groovy script to import some projects from an old installation. The SVN URL
+ had changed. Not only the domain, but now the SVN structure was broken in modules (i.e. instead of <em>/svn/&#8230;</em>
+ now there was <em>/repo1/&#8230;</em>, <em>/repo2/&#8230;</em>, etc).
+</p>
+
+<p>
+ The solution I found, was scan the SVN directory structure with Perl and produce a JSON file. Then I wrote a quick PHP
+ application (with <a href='http://www.slimframework.com/' title='Slim Framework'>Slim</a>) with an URL like <em>/repo?projectName=XYZ</em>,
+ that returned the new repository URL.
+</p>
+
+<p class='center'>
+ <a href="img/posts/2013-02-01_querying-a-rest-server-from-groovy-scripts-in-jenkins/3r20qs-1.jpg"><img src="img/posts/2013-02-01_querying-a-rest-server-from-groovy-scripts-in-jenkins/3r20qs-1-300x300.jpg"
+  alt="Overly Manly meme" width="300" height="300" class="aligncenter size-medium wp-image-1077" /></a>
+</p>
+
+<p>The last step was the hardest, since I needed to query the REST application. The script would get the current SVN
+ address from the SVN SCM, query the REST URL to get the new URL, and lastly update the job with the new URL.</p>
+
+<p>
+ The solution I found was copy the necessary jars to jenkins <em>lib/</em> folder, restart the server and execute my
+ script. Then stop the server, remove the jars and check the new SVN URL&#8217;s. Here&#8217;s the list of jars I had to copy.
+</p>
+
+<ul>
+ <li>http-builder</li>
+ <li>nekohtml-1.9.9</li>
+ <li>xml-resolver-1.2</li>
+ <li>httpclient</li>
+ <li>httpcore</li>
+ <li>xercesImpl</li>
+</ul>
+
+<p>
+ If you have a Maven project with your REST client, you can get a list of dependencies with
+ <code>mvn dependency:copy-dependencies</code>
+ . Then copy the jars to Jenkins class path.
+</p>
+            
+            </description>
+        </item>
+        
+
+    </channel>
+</rss>

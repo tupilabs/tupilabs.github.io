@@ -1,0 +1,267 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs &mdash; Simple ETL with Talend and Docker for a Laravel website</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Simple ETL with Talend and Docker for a Laravel website</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <p>A couple of years ago when I worked at a credit bureau, I learned how important
+<a href="https://en.wikipedia.org/wiki/Data_management">Data Management</a> is for a company. There are
+several processes involved in data management, such as
+<a href="https://en.wikipedia.org/wiki/Record_linkage">Record Linkage</a>,
+<a href="https://en.wikipedia.org/wiki/Data_cleansing">Data Cleansing</a>,
+<a href="https://en.wikipedia.org/wiki/Master_data_management">Master Data Management</a> among others.</p>
+<p>One of the most common tasks in data management, common in many companies, is
+<a href="https://en.wikipedia.org/wiki/Extract,_transform,_load">ETL</a>. ETL stands for
+<strong>E</strong>xtract, <strong>T</strong>ransform, and <strong>L</strong>oad. Basically, it consists in retrieving existing data, doing
+some transformation (remove columns, add columns, sum values, etc), and then loading the result
+data back in to some other database.</p>
+<p>We just finished migrating <a href="https://speaklikeabrazilian.com">Speak Like A Brazilian</a> from
+Laravel 4.x to Laravel 5.x, and besides the necessary changes for adapting the existing code to
+the new version of the framework, we have also tackled other issues in the backlog,
+such as SSL, using a new e-mail service and a few changes in the database schema. Due to this
+last item, we had to do a small ETL.</p>
+<h2>Talend Open Source Data Integration</h2>
+<p>You can download the free and Open Source
+<a href="https://www.talend.com/download/talend-open-studio#t4">Talend Open Studio for Data Integration</a>.
+After installing it, you can read the documentation or watch some videos with short
+tutorials.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/talend.png" class="thumbnail" data-lightbox='post' data-title='Talend'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/talend.png" alt="Talend" />
+</a>
+<figcaption>Talend</figcaption>
+</figure>
+</div>
+</div>
+
+<p>But the interface can be quite intuitive, with drag and drop items, help pop up dialogue boxes, and
+a help available with the local tool. There are other tools such as Luigi and Pentaho Kettle that could
+have been used for the same task. It also supports several databases out of the box.</p>
+<p>Talend has other free and commercial tools, that can be used for other tasks and processes in
+Data Management, and solutions that can also work with Big Data.</p>
+<h2>On Using Docker</h2>
+<p>Since the database is quite small (&lt; 10 MB), using Docker seemed like a good idea to avoid
+installing MySQL or MariaDB locally and having to configure databases and move data around.</p>
+<p>But before starting containers, we needed a dump of the existing database.</p>
+<pre><code>mysqldump -u user -p pass &gt; slbr_20160403.sql
+</code></pre>
+<p>And now we could load the data into a new container, using the mysql:latest Docker image.</p>
+<p>Transfer the data from the server to local computer, and start a container where we will store and massage the data.</p>
+<pre><code>docker run -p 4406:3306 -v $PWD/Downloads/slbr:/opt/data -v $PWD/Development/php/workspace/speaklikeabrazilian.com/:/opt/slbr --name slbr -e MYSQL_ROOT_PASSWORD=nosecret -d mysql:latest
+</code></pre>
+<p>Then we need to jump into that container to run a few commands to load the data.</p>
+<pre><code>docker exec -ti slbr /bin/bash
+
+mysql -uroot -p -e "create database slbr"
+mysql -uroot -p slbr &lt; /opt/data/slbr_20160403.sql
+</code></pre>
+<p>Finally, make sure the application new database is ready as well.
+<a href="https://github.com/tupilabs/speaklikeabrazilian.com/tree/0617bcf47c2349dbae3219fea99222d1b01a3c4a">It is already using Docker Compose</a>,
+so all it takes is start the containers with the following command:</p>
+<pre><code>docker-compose up
+</code></pre>
+<p>And then create the database structure with initial data.</p>
+<pre><code>docker exec -ti speaklikeabraziliancom_front_1 /bin/bash
+
+php artisan migrate:install
+php artisan migrate:refresh --seed
+</code></pre>
+<p>Done, now the old database is running in one container of the mysql:latest image, listening to port 4406
+and the new database is running with Docker Compose, listening for connection on 3306.</p>
+<h2>Creating Talend jobs to migrate the data</h2>
+<p>We start by creating a blank project in Talend.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl001.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl001.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<p>And then creating the database connections for the two databases.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl002.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl002.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl003.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl003.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl004.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl004.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl005.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl005.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<p>Now it is just a matter of dragging and dropping the two connections on to the main canvas.
+After that, we still need one more component: a map or
+<a href="https://www.talendforge.org/tutorials/tutorial.php?idTuto=9">tMap</a>. This allows you to map
+columns between databases, doing transformations like running SQL functions or Java code.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl006.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl006.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl007.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl007.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<p>In our case, the database for Speak Like A Brazilian had a few columns removed. These columns
+were simply not mapped into the destination database. Running the job loaded the data, but excluding
+the old columns.</p>
+<p>There was also one column added with a defaul value, for which the tMap was also used.</p>
+<p>You can play with Talend, use row filters and other components to do different data modifications,
+and also use other features such as job schedule or combine with other Talend tools.</p>
+<p>We could have used Python, Shell, or other tools for the job, but using a tool tailored for
+ETL is quite handy and easy. Specially in case you ever need to do that again, against different
+databases. All it takes is just adjust the database connections and re-run the jobs.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

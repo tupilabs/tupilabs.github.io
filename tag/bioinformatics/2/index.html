@@ -1,0 +1,334 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Posts tagged with bioinformatics</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <section>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/11/04/an-alternative-pbs-api-for-java">An alternative PBS API for Java</a></h2>
+      <small>Nov 04, 2012
+        
+        in 
+            <a href="/tag/bioinformatics">bioinformatics</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Last week we released a new API for <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> in Java - <a href="https://github.com/tupilabs/pbs-java-api" title="pbs-java-api">pbs-java-api</a>. There is an existing API that works very well (<a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a>), and we even got in touch and worked with the author before releasing this new API. So what&#8217;s the difference between the two API&#8217;s and when should I use one or the other?</p>
+
+<p>Here&#8217;s the main differences between the two API&#8217;s:</p>
+
+<ul>
+    <li>pbs4java uses <a href="http://en.wikipedia.org/wiki/Domain-driven_design" title="DDD">DDD</a>, while pbs-java-api has a more classical approach. We needed this to avoid serialization problems in Jenkins.</li>
+    <li>pbs-java-api is available from Maven Central</li>
+    <li>pbs-java-api tries to map the commands (qnodes, qstat, qsub, &#8230;). So you would call PBS.qsub(&#8230;) instead of Job#submit().</li>
+</ul>
+
+<p>That&#8217;s pretty much it, so you really don&#8217;t need to switch to pbs-java-api. We created this new API as we needed a non DDD API to be used with the Jenkins plug-in API and that was available from Maven Central.</p>
+
+<p>pbs-java-api - <a href="https://github.com/tupilabs/pbs-java-api">https://github.com/tupilabs/pbs-java-api</a></p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/10/02/monitor-pbs-clusters-with-jenkins">Monitor PBS clusters with Jenkins</a></h2>
+      <small>Oct 02, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/bioinformatics">bioinformatics</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>It is not exactly an idea, it is more a requirement for <a href="http://www.biouno.org" title="BioUno">BioUno</a>. A common way of administering <a href="http://en.wikipedia.org/wiki/Batch_processing" title="Batch processing">Batch tasks</a> in computer clusters is using Batch servers such as <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="PBS">PBS</a>. The process to submit a job consist of executing a shell script with special &#8220;meta&#8221; comments that will tell the PBS about your job priority, CPU&#8217;s needed, etc.</p>
+
+<p><a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> has an awesome remoting API, that has been reworked since its first version in Hudson (it was part of the core IIRC), and can be used for other things. There is a Wiki page about <a href="https://wiki.jenkins-ci.org/display/JENKINS/Monitoring+external+jobs" title="Monitoring external jobs with Jenkins">Monitoring external jobs</a>.</p>
+
+<p>What we would need, is query the PBS server, running qstat + parameters locally in the cluster machine. So the requirements that I see:</p>
+
+<ul>
+<li>Learn more about the <a href="https://github.com/jenkinsci/remoting" title="Jenkins-CI remoting API">remoting</a> API in Jenkins (see <a href="http://kohsuke.org/tag/remoting/" title="Remoting by KK">http://kohsuke.org/tag/remoting/</a> too)</li>
+<li>Rework <a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a> or use a wrapper to an existing C API (I&#8217;ve read in the past about one, the Python PBS module is a wrapper for this API too)</li>
+<li>Learn about this technique for monitoring external jobs mentioned in that Wiki page</li>
+<li>Write glue code if needed</li>
+<li>Test with a <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="PBS cluster">PBS cluster</a></li>
+<li>Report the findings (paper?)</li>
+</ul>
+
+<p>Just food for thought :D</p>
+
+<p><strong>Edit:</strong> There is a <a href="https://wiki.jenkins-ci.org/label/JENKINS/plugin-cluster" title="plugin-cluster">label in Jenkins Wiki</a> with several plug-ins that could be used for reference</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/08/10/bosc-2012-and-biouno">BOSC 2012 and BioUno</a></h2>
+      <small>Aug 10, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/bioinformatics">bioinformatics</a>, <a href="/tag/events">events</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>
+ Few weeks ago <em>TupiLabs</em> participated of <em><a href="http://www.open-bio.org/wiki/BOSC_2012"
+  title="BOSC 2012">BOSC 2012</a></em> , with a talk about <em><a href="http://www.biouno.org" title="BioUno">BioUno</a></em>
+ . BioUno is a project that applies techniques and tools from Continuous Integration in Bioinformatics, in special <em><a
+  href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a></em> . In the very beginning, the project was a &#8221; <em>hey,
+  look what I can do with Jenkins</em> &#8220;. Later on we defined that we would like to <em>create biology pipelines with
+  Jenkins</em> , using plug-ins. This was the topic of our talk in BOSC 2012 - <strong>Creating biology pipelines
+  with Jenkins</strong> . The main advantage of using Jenkins, is its <em>distributed environment with master and slaves</em> ,
+ the <em>plug-ins</em> and the <em>documentation and community available</em> .
+</p>
+
+<p>
+ <img src="img/products/biouno/ISMB2012.jpg" alt="" title="ISMB2012" width="204" height="193"
+  class="aligncenter size-full wp-image-599" /> <img src="img/products/biouno/BOSC.png" alt=""
+  title="BOSC_logo" width="161" height="115" class="aligncenter size-full wp-image-598" />
+</p>
+
+<p>
+ In the talk, we showed a demo using vanilla Jenkins, <a href="http://mrbayes.sourceforge.net/" title="MrBayes">MrBayes</a>
+ , with <a href="https://github.com/tupilabs/mrbayes-plugin" title="mrbayes-plugin">mrbayes-plugin</a> , and <a
+  href="http://www.r-project.org/" title="R Project">R</a> and ape for plotting, using <a
+  href="https://github.com/jenkinsci/r-plugin" title="r-plugin">r-plugin</a> . It was a very simple pipeline, without
+ using Cloud services or any NGS tool. What was great in BOSC 2012 is that we could catch up with people that work on <a
+  href="http://galaxy.psu.edu/" title="Galaxy">Galaxy</a> , <a href="http://www.taverna.org.uk/" title="Taverna">Taverna</a>
+ , <a href="http://mobyle.pasteur.fr/cgi-bin/portal.py#welcome" title="Mobyle">Mobyle</a> and other workflow management
+ systems, as well as lads from other interesting projects, like <a href="http://cloudgene.uibk.ac.at/" title="CloudGene">CloudGene</a>
+ (MapReduce interface for researchers, pretty cool). When we returned to Brazil, we had more items to include in BioUno
+ TODO list, but also a realization. That BioUno is not only a biology workflow management system. Its roles intersect
+ with Galaxy, Taverna and Mobyle, as a <em>workflow management system</em> , but also intersect with <a
+  href="http://biohpc.org/" title="BioHPC">BioHPC</a> , as a <em>bioinformatics computer management system</em> .
+</p>
+
+<p>
+ <a href="img/products/biouno/biouno_panel.jpg"><img src="img/products/biouno/biouno_panel.jpg" alt=""
+  title="BOSC 2012 BioUno" width="217" height="300" class="aligncenter size-medium wp-image-595" /></a>
+</p>
+
+<p>
+ With Jenkins you can start and monitor slaves remotely (in your local network or in a cloud), execute parts of your
+ build in one machine and serialize results back to the master, display graphs, monitor usage and execute other things
+ that give you the possibility to use Jenkins to <strong>create very customized pipelines</strong> . Sometimes a
+ researcher has to use tools like <a href="http://creskolab.uoregon.edu/stacks/" title="stacks">stacks</a> , <a
+  href="http://samtools.sourceforge.net/">samtools</a> , <a href="http://pritch.bsd.uchicago.edu/structure.html"
+  title="structure">structure</a> , <a href="http://beast.bio.ed.ac.uk/Main_Page" title="Beast">beast</a> and so it
+ goes. But sometimes he has need of a very specific routine, maybe for plotting something or adjusting data output from
+ one tool, before inputting it into the next tool in the pipeline. <em>These routines are not always worth a tool,
+  as they would be used very rarely</em> . This is possible with Jenkins. Or a job may demand five computers. Common computer
+ facilities would delegate the machine provision to cluster management systems, like <a
+  href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="PBS">PBS</a> , <a
+  href="http://en.wikipedia.org/wiki/Platform_LSF" title="LSF">LSF</a> or some <a
+  href="http://en.wikipedia.org/wiki/Cloud_computing" title="Cloud computing">cloud based system</a> . With Jenkins, you
+ can manage your computer, maybe even use <a href="http://puppetlabs.com/" title="Puppet">Puppet</a> to help you. We
+ have a long way ahead, we are reorganizing our servers at <a
+  href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4" title="Linode">Linode</a> to install <a
+  href="http://www.atlassian.com/software/jira/overview" title="JIRA">JIRA</a> and <a
+  href="http://www.atlassian.com/software/confluence/overview" title="Confluence">Confluence</a> , and have a more
+ Jenkins-like web site (as this is the principal tool in BioUno). And we are still creating plug-ins. If you have any
+ interested in the project, feel free to <a href="http://www.biouno.org/contact/" title="Contact BioUno">join us</a> ,
+ your help will be very welcome :-)
+</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/06/30/comparison-of-pbs-cluster-monitoring-applications">Comparison of PBS cluster monitoring applications</a></h2>
+      <small>Jun 30, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/bioinformatics">bioinformatics</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>
+ While we worked on our <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/"
+  title="Creating a PBS/MPI cluster for bioinformatics – Part 1">small internal cluster</a> set up, we used <a
+  href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> for running structure
+ jobs in batch. This post has a simple comparison of web applications that can be used for monitoring a PBS cluster.
+ This is a very simple comparison, and the information may not be sufficient for you to decide whether you should use it
+ or not in your computer facility.
+</p>
+
+<p>
+ We found tools with a simple query in SourceForge.net. We looked up <em>pbs</em>, and selected three tools. They are <a
+  href="http://sourceforge.net/projects/pbsclusterviz/?source=directory" title="PBS Viz Cluster">PBS Viz Cluster
+  0.6a</a>, <a href="http://sourceforge.net/projects/torquemon/?source=directory" title="Torque Web Monitor">Torque Web
+  Monitor 1.0</a> and <a href="http://sourceforge.net/projects/myjam/?source=directory" title="myJAM">myJAM 2.4.7-3191</a>.
+ The hardware used is not being taken in account in this comparison, but for what it is worth, we have a Core i5 quad
+ core, with 6GB of memory and 400GB disk. The operational system is Debian Squeeze, and the web server an Apache.
+</p>
+
+
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3">Creating a PBS/MPI cluster for bioinformatics – Part 3</a></h2>
+      <small>Jun 21, 2012
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/bioinformatics">bioinformatics</a>
+        
+        
+        | <a href="/tutorial">tutorial</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>This is the third and last part of this blog series. In this post we will install Structure (Pritchard Lab) and Torque PBS. We will configure a simple run in Structure using the two machines in our cluster.</p>
+
+<h2>Installing Structure</h2>
+
+<p>Installing structure is very simple. Download the latest version from <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Pritchard Lab">Prichard Lab page</a>, decompress it and move the executables to a folder in your $PATH (or use symlinks). Here I&#8217;m using <code>/usr/local/bin</code>, but to keep things in order, I renamed the <em>console</em> folder (from structure_linux_console.tar.gz) to <em>structure-console-2.3.3</em>, because I like to know the tool and its version without having to browse it. Then I moved it under <code>/opt/biouno</code>, where I keep the executables used by the cluster. Finally, I created the symlink <code>/usr/local/bin/structure</code> that points to <code>/opt/biouno/structure-console-2.3.3/structure</code>.</p>
+
+
+    </section>
+  </article>
+</div>
+                    
+                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    
+                    <a class="item" href="/tag/bioinformatics/3"><i class='left arrow icon'></i> Previous Posts</a>
+                    
+                    
+                    <a class="item" href="/tag/bioinformatics"><i class='right arrow icon'></i> Next Posts</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

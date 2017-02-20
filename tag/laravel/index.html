@@ -1,0 +1,507 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Posts tagged with laravel</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <section>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2016/04/20/redesigning-speak-like-a-brazilian">Redesigning Speak Like A Brazilian</a></h2>
+      <small>Apr 20, 2016
+        
+        in 
+            <a href="/tag/css">css</a>, <a href="/tag/laravel">laravel</a>, <a href="/tag/speak-like-a-brazilian">speak-like-a-brazilian</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Three weeks ago we released a new version of <a href="http://speaklikeabrazilian.com">Speak Like A Brazilian</a>.
+Most changes are not visible to users, mainly improvements to the framework used to build it
+(<a href="http://laravel.com">Laravel</a>).</p>
+<p>But one major change that is visible to users is the new layout and CSS, powered by
+<a href="http://semantic-ui.com/">Semantic UI</a>, which replaces <a href="http://getbootstrap.com/">Bootstrap</a>.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/20/redesigning-speak-like-a-brazilian/shotversion21.jpg" class="thumbnail" data-lightbox='post' data-title='Screenshot SLBR v2.1'>
+<img src="/2016/04/20/redesigning-speak-like-a-brazilian/shotversion21.jpg" alt="Talend" />
+</a>
+<figcaption>Screenshot SLBR v2.1</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/20/redesigning-speak-like-a-brazilian/shotversion22.jpg" class="thumbnail" data-lightbox='post' data-title='Screenshot SLBR v2.2'>
+<img src="/2016/04/20/redesigning-speak-like-a-brazilian/shotversion22.jpg" alt="Talend" />
+</a>
+<figcaption>Screenshot SLBR v2.2</figcaption>
+</figure>
+</div>
+</div>
+
+<p>The frameworks have some parts that overlap, but Semantic UI has more components that can
+be easily used. There are tons of examples, plug-ins and snippets of code for Bootstrap, but
+sometimes they do not match your current layout, or become deprecated with new releases.</p>
+<p>This was the main reason for using Semantic UI instead of Bootstrap. Coincidentally, the next
+major change in Speak Like A Brazilian is adding semantic web tags to the site. These tags are
+useful for search engines, for displaying extra information in search results, but also for
+linked data sites to index our content.</p>
+<p>Stay tuned!</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2016/04/09/using-nikto-to-scan-a-website-for-vulnerabilities">Using Nikto to scan a website for vulnerabilities</a></h2>
+      <small>Apr 09, 2016
+        
+        in 
+            <a href="/tag/laravel">laravel</a>, <a href="/tag/security">security</a>, <a href="/tag/nikto">nikto</a>, <a href="/tag/speak-like-a-brazilian">speak-like-a-brazilian</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p><a href="https://www.cirt.net/Nikto2">Nikto</a> is a web server scanner, written in Perl and licensed under
+GNU GPL. The <a href="https://github.com/sullo/nikto.git">source code</a> is available at GitHub.</p>
+<p>We released a new version of <a href="https://speaklikeabrazilian.com">Speak Like A Brazilian</a> last week,
+upgrading from Laravel 4.x to 5.x. Once we had a release candidate (RC) tag
+ready we deployed it and ran Nikto to check for issues in the server.</p>
+<p>The default settings are enough for an initial test, but you can take a look at
+<em>nikto &#8212;help</em> for other interesting parameters.</p>
+<div class="highlight"><pre>nikto -host https://speaklikeabrazilian.com
+</pre></div>
+
+<p>Here are the results of the scanning.</p>
+<div class="highlight"><pre>- Nikto v2.1.4
+---------------------------------------------------------------------------
++ Target IP:          45.56.78.89
++ Target Hostname:    speaklikeabrazilian.com
++ Target Port:        80
++ Start Time:         2016-04-08 12:57:02
+---------------------------------------------------------------------------
++ Server: nginx
++ Retrieved x-powered-by header: PHP/5.5.9-1ubuntu4.14
++ No CGI Directories found <span class="o">(</span>use <span class="s1">&#39;-C all&#39;</span> to force check all possible <span class="nb">dirs</span><span class="o">)</span>
++ robots.txt contains <span class="m">11</span> entries which should be manually viewed.
++ ETag header found on server, fields: 0x5704861f 0xef 
++ OSVDB-3092: /new: This may be interesting...
++ OSVDB-3092: /new/: This might be interesting...
++ OSVDB-3093: /.htaccess: Contains authorization information
++ OSVDB-3092: /de/: This might be interesting... potential country code <span class="o">(</span>Germany<span class="o">)</span>
++ OSVDB-3092: /it/: This might be interesting... potential country code <span class="o">(</span>Italy<span class="o">)</span>
++ OSVDB-3092: /jp/: This might be interesting... potential country code <span class="o">(</span>Japan<span class="o">)</span>
++ OSVDB-3092: /pt/: This might be interesting... potential country code <span class="o">(</span>Portugal<span class="o">)</span>
++ OSVDB-3092: /es/: This might be interesting... potential country code <span class="o">(</span>Spain<span class="o">)</span>
++ <span class="m">6448</span> items checked: <span class="m">39</span> error<span class="o">(</span>s<span class="o">)</span> and <span class="m">11</span> item<span class="o">(</span>s<span class="o">)</span> reported on remote host
++ End Time:           2016-04-08 13:29:41 <span class="o">(</span><span class="m">1959</span> seconds<span class="o">)</span>
+---------------------------------------------------------------------------
++ <span class="m">1</span> host<span class="o">(</span>s<span class="o">)</span> tested
+</pre></div>
+
+<p>There list had a few false positives, but two outstanding issues could be easily fixed.
+First the .htaccess file.</p>
+<div class="highlight"><pre><span class="c"># File: speaklikeabrazilian.vhost.conf</span>
+<span class="c"># From: https://www.nginx.com/resources/wiki/start/topics/recipes/dokuwiki/</span>
+<span class="c"># Block access to .htaccess files</span>
+location ~ /<span class="se">\.</span>ht <span class="o">{</span>
+    deny  all<span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>And the second one is to hide the PHP server signature.</p>
+<div class="highlight"><pre><span class="c"># File: php.ini</span>
+<span class="c"># From: http://www.techbrown.com/hide-server-signature-of-nginx-php-version-on-linux.shtml</span>
+<span class="nv">expose_php</span> <span class="o">=</span> Off
+</pre></div>
+
+<p>It is not polite to run Nikto (or most other scanners to be honest) on web sites that you
+do not maintain. Some sites are behind firewalls and IDS (Intrustion Detection System) systems
+that may block Nikto. When that happens, you can liaise with your Ops team and schedule an
+internal run on an application you develop or maintain.</p>
+<p>Nikto may help you finding flaws in your server and deployment. The next step now for Speak Like A
+Brazilian now is running the new code through
+<a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP&#8217;s ZAP Proxy</a>,
+which can analyse the HTTP requests for possible bugs.</p>
+<p>Happy hacking!</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website">Simple ETL with Talend and Docker for a Laravel website</a></h2>
+      <small>Apr 07, 2016
+        
+        in 
+            <a href="/tag/etl">etl</a>, <a href="/tag/talend">talend</a>, <a href="/tag/laravel">laravel</a>, <a href="/tag/docker">docker</a>, <a href="/tag/speak-like-a-brazilian">speak-like-a-brazilian</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>A couple of years ago when I worked at a credit bureau, I learned how important
+<a href="https://en.wikipedia.org/wiki/Data_management">Data Management</a> is for a company. There are
+several processes involved in data management, such as
+<a href="https://en.wikipedia.org/wiki/Record_linkage">Record Linkage</a>,
+<a href="https://en.wikipedia.org/wiki/Data_cleansing">Data Cleansing</a>,
+<a href="https://en.wikipedia.org/wiki/Master_data_management">Master Data Management</a> among others.</p>
+<p>One of the most common tasks in data management, common in many companies, is
+<a href="https://en.wikipedia.org/wiki/Extract,_transform,_load">ETL</a>. ETL stands for
+<strong>E</strong>xtract, <strong>T</strong>ransform, and <strong>L</strong>oad. Basically, it consists in retrieving existing data, doing
+some transformation (remove columns, add columns, sum values, etc), and then loading the result
+data back in to some other database.</p>
+<p>We just finished migrating <a href="https://speaklikeabrazilian.com">Speak Like A Brazilian</a> from
+Laravel 4.x to Laravel 5.x, and besides the necessary changes for adapting the existing code to
+the new version of the framework, we have also tackled other issues in the backlog,
+such as SSL, using a new e-mail service and a few changes in the database schema. Due to this
+last item, we had to do a small ETL.</p>
+<h2>Talend Open Source Data Integration</h2>
+<p>You can download the free and Open Source
+<a href="https://www.talend.com/download/talend-open-studio#t4">Talend Open Studio for Data Integration</a>.
+After installing it, you can read the documentation or watch some videos with short
+tutorials.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/talend.png" class="thumbnail" data-lightbox='post' data-title='Talend'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/talend.png" alt="Talend" />
+</a>
+<figcaption>Talend</figcaption>
+</figure>
+</div>
+</div>
+
+<p>But the interface can be quite intuitive, with drag and drop items, help pop up dialogue boxes, and
+a help available with the local tool. There are other tools such as Luigi and Pentaho Kettle that could
+have been used for the same task. It also supports several databases out of the box.</p>
+<p>Talend has other free and commercial tools, that can be used for other tasks and processes in
+Data Management, and solutions that can also work with Big Data.</p>
+<h2>On Using Docker</h2>
+<p>Since the database is quite small (&lt; 10 MB), using Docker seemed like a good idea to avoid
+installing MySQL or MariaDB locally and having to configure databases and move data around.</p>
+<p>But before starting containers, we needed a dump of the existing database.</p>
+<pre><code>mysqldump -u user -p pass &gt; slbr_20160403.sql
+</code></pre>
+<p>And now we could load the data into a new container, using the mysql:latest Docker image.</p>
+<p>Transfer the data from the server to local computer, and start a container where we will store and massage the data.</p>
+<pre><code>docker run -p 4406:3306 -v $PWD/Downloads/slbr:/opt/data -v $PWD/Development/php/workspace/speaklikeabrazilian.com/:/opt/slbr --name slbr -e MYSQL_ROOT_PASSWORD=nosecret -d mysql:latest
+</code></pre>
+<p>Then we need to jump into that container to run a few commands to load the data.</p>
+<pre><code>docker exec -ti slbr /bin/bash
+
+mysql -uroot -p -e "create database slbr"
+mysql -uroot -p slbr &lt; /opt/data/slbr_20160403.sql
+</code></pre>
+<p>Finally, make sure the application new database is ready as well.
+<a href="https://github.com/tupilabs/speaklikeabrazilian.com/tree/0617bcf47c2349dbae3219fea99222d1b01a3c4a">It is already using Docker Compose</a>,
+so all it takes is start the containers with the following command:</p>
+<pre><code>docker-compose up
+</code></pre>
+<p>And then create the database structure with initial data.</p>
+<pre><code>docker exec -ti speaklikeabraziliancom_front_1 /bin/bash
+
+php artisan migrate:install
+php artisan migrate:refresh --seed
+</code></pre>
+<p>Done, now the old database is running in one container of the mysql:latest image, listening to port 4406
+and the new database is running with Docker Compose, listening for connection on 3306.</p>
+<h2>Creating Talend jobs to migrate the data</h2>
+<p>We start by creating a blank project in Talend.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl001.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl001.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<p>And then creating the database connections for the two databases.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl002.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl002.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl003.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl003.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl004.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl004.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl005.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl005.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<p>Now it is just a matter of dragging and dropping the two connections on to the main canvas.
+After that, we still need one more component: a map or
+<a href="https://www.talendforge.org/tutorials/tutorial.php?idTuto=9">tMap</a>. This allows you to map
+columns between databases, doing transformations like running SQL functions or Java code.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl006.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl006.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl007.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl007.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<p>In our case, the database for Speak Like A Brazilian had a few columns removed. These columns
+were simply not mapped into the destination database. Running the job loaded the data, but excluding
+the old columns.</p>
+<p>There was also one column added with a defaul value, for which the tMap was also used.</p>
+<p>You can play with Talend, use row filters and other components to do different data modifications,
+and also use other features such as job schedule or combine with other Talend tools.</p>
+<p>We could have used Python, Shell, or other tools for the job, but using a tool tailored for
+ETL is quite handy and easy. Specially in case you ever need to do that again, against different
+databases. All it takes is just adjust the database connections and re-run the jobs.</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent">On using Laravel with the repository pattern and Eloquent</a></h2>
+      <small>Aug 11, 2014
+        
+        in 
+            <a href="/tag/laravel">laravel</a>, <a href="/tag/php">php</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p><a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of concerns</a> is a design principle, and 
+states that each part of a software addresses a separate concern. Different patterns and abstractions 
+can be used for that like MVC, DAOs and repositories.</p>
+<p>Repositories help in the abstraction of the data layer. It provides an interface for retrieving data, 
+independent of the implementation, acting like a collection of objects.</p>
+<figure style='text-align: center'>
+<img src="/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent/RepositoryDiagram.png" alt="From: http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html"/>
+<figcaption>Fig1. - Repositories <i>http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html</i></figcaption>
+</figure>
+
+<p>In <a href="http://nestor-qa.org">Nestor-QA</a> I had implemented repositories using some Java code I had in my 
+mind, without paying too much attention to the abstraction layers. Two weeks ago, while working on some 
+complicated issue in Nestor I noticed that the repositories in Nestor had been implemented using the 
+Eloquent classes.</p>
+<p>Eloquent is a library used in Laravel for data abstraction. It provides access to databases like MySQL 
+and SQLite, kind like DAOs (and sometimes like repositories too). However, for Nestor being a test 
+management tool, we are trying to be platform and framework independent. Here&#8217;s the old repository code in 
+action: </p>
+<div class="highlight"><pre><span class="x">class DbProjectRepository implements ProjectRepository {</span>
+
+<span class="x">    public function all()</span>
+<span class="x">    {</span>
+<span class="x">        return Project::where(&#39;project_statuses_id&#39;, &#39;&lt;&gt;&#39;, 2)-&gt;get();</span>
+<span class="x">    }</span>
+
+<span class="x">    // ...</span>
+
+<span class="x">}</span>
+</pre></div>
+
+<p>As you can see, we were returning the result of the get() method from Eloquent. Another big mistake was 
+using these objects in the views. In the end we were not only using data layer elements in the wrong place, 
+but we also had many queries to render an UI. </p>
+<div class="highlight"><pre><span class="x">abstract class DbBaseRepository extends BaseRepository {</span>
+
+<span class="x">    protected $model;</span>
+
+<span class="x">    public function __construct($model)</span>
+<span class="x">    {</span>
+<span class="x">        $this-&gt;model = $model;</span>
+<span class="x">    }</span>
+
+<span class="x">    public function all()</span>
+<span class="x">    {</span>
+<span class="x">        return $this-&gt;model-&gt;all()-&gt;toArray();</span>
+<span class="x">    }</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</pre></div>
+
+<p>After searching for a while, I found a <a href="https://github.com/samgreenwood/swapshop/tree/master/app/Swapshop/Repositories">nice example</a> 
+of a class design for repositories, where the return type is always an array. In the views you will 
+have the array and keys, and in case someday you decide moving to another framework, you can leave the 
+views unchanged (hopefully :-). Neat, no?</p>
+<p><img alt="Ahn ahn" src="/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent/SA1HWow.gif" /></p>
+<p>Happy hacking</p>
+    </section>
+  </article>
+</div>
+                    
+                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>

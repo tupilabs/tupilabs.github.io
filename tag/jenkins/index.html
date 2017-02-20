@@ -1,0 +1,281 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Innovation and Open Source">
+    <meta name="author" content="">
+    <title>TupiLabs</title>
+    <meta name="description" content="">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" type="text/css" href="/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/site.css">
+</head>
+<body>
+    <!-- Following Menu -->
+    <div class="ui large top fixed menu">
+        <div class="ui container">
+            <a class="item" href="/"><i class="home icon"></i> Home</a>
+            <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+            <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+            <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+            <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+            <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+            <div class="right menu">
+                <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui container">
+            <div class="ui large stackable menu">
+                <a class="item" href="/"><i class="home icon"></i> Home</a>
+                <a class="item" href="/work"><i class="terminal icon"></i> Work</a>
+                <a class="item" href="/tutorials"><i class="book icon"></i> Tutorials</a>
+                <a class="item" href="/blog"><i class="newspaper icon"></i> Blog</a>
+                <a class="item" href="/courses"><i class="student icon"></i> Courses</a>
+                <a class="item" href="/lab"><i class="lab icon"></i> Lab</a>
+                <div class="right menu">
+                    <a class="item" href="/contact"><i class="mail outline icon"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+<div class="ui basic segment" id="blog">
+    <div class="ui stackable grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <h1>Posts tagged with jenkins</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <section>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2014/06/15/continuation-passing-style">Continuation Passing Style</a></h2>
+      <small>Jun 15, 2014
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/functional%20programming">functional programming</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <h3>Continuation Passing Style</h3>
+<p>In <a href="http://en.wikipedia.org/wiki/Continuation-passing_style">Continuation Passing Style</a> (CPS), the program is comprised of several <strong>continuations</strong>. The methods in CPS programming do not return a value, rather, they pass control (including the current context) to the next continuation.</p>
+<p>Each continuation receives a context, which stores the state of the current chain of continuations at a
+given time, and can alter this context and call the next continuation. There can exist different types of 
+continuations too, for handling exceptions, suspending the program, or simply calling other continuations. </p>
+<p>In some functional programming languages CPS is supported and can be used in conjunction with <a href="http://en.wikipedia.org/wiki/Tail_call">tail-call optimization</a> to try to <a href="http://en.wikipedia.org/wiki/Continuation-passing_style#CPS_and_tail_calls">control the call stack size</a>.</p>
+<h3>Use cases of CPS in Java</h3>
+<p>Apache Commons contains a component in its sandbox, <a href="http://commons.apache.org/sandbox/commons-javaflow">Apache Commons JavaFlow</a>, that hasn&#8217;t been updated in a while, but that supports continuations in Java. 
+It requires the code to be instrumented, and provides ways to restore the execution of the code.</p>
+<p>The <a href="https://github.com/jenkinsci/workflow-plugin">Jenkins Workflow Plug-in</a> was presented during the <a href="http://www.cloudbees.com/jenkins/juc-2014/boston">Jenkins User Conference 2014 in Boston</a>. The plug-in has several Maven modules, among is the <strong>cps</strong> Maven module. This maven module provides CPS to the plugin. If you take a look at the team page of the JavaFlow project, you will find it interesting that Kohsuke Kawaguchi (Jenkins creator) is listed there too :-) </p>
+<p>From what I could tell, the Jenkins Workflow Plug-in utilizes CPS to break down the workflow execution in 
+several continuations, that are persisted to the disk and can be resumed in case the job execution is 
+interrupted.</p>
+<p>There are several differences between the cps module and Apache Commons Javaflow - such that in the latter the running code needs to be instrumented. I haven&#8217;t investigated all of them yet, but it sounds very interesting! I&#8217;m waiting for one of those rainy weekends so that I can spend many hours reading the code of the two and taking notes.</p>
+<h3>Final thoughts</h3>
+<p>CPS is a very interesting concept, and while probably the enterprise Java developer is not going to use it for his every day corporate web application (though some FP programmers might be using it), it is an 
+interesting technique that can probably be applied in some specific scenarios - as it was in the Jenkins 
+Workflow Plug-in.</p>
+<p>There are <strong>optimizations available for CPS</strong> <a href="http://stackoverflow.com/questions/14781875/choosing-between-continuation-passing-style-and-memoization">1</a><a href="http://research.microsoft.com/pubs/64044/compilingwithcontinuationscontinued.pdf">2</a> too, so I believe the workflow-plugin has space for more innovation, and lots of fun for hackers.</p>
+<p>Happy hacking!</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2014/01/29/configurando-o-jenkins-para-usar-o-active-directory">Configurando o Jenkins para usar o Active Directory</a></h2>
+      <small>Jan 29, 2014
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>
+        
+        
+        | <a href="/tutorials">tutorials</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Depois de ver algumas mensagens na <a href="https://groups.google.com/forum/#!forum/jenkinsci-br">lista do Jenkins em Portugu&ecirc;s</a> 
+decidir escrever este post para ajudar quem quiser configurar o <a href="http://jenkins-ci.org">Jenkins</a> para usar o 
+<a href="http://en.wikipedia.org/wiki/Active_Directory">Microsoft Active Directory</a>.</p>
+<p>O Jenkins j&aacute; possui autentica&ccedil;&atilde;o e uma base de usu&aacute;rios pr&oacute;pria. O que faremos &eacute; apenas utilizar o Active Directory (AD) 
+como a base de usu&aacute;rios. Para isso basta instalar o 
+<a href="http://wiki.jenkins-ci.org/display/JENKINS/Active+Directory+Plugin">Jenkins Active Directory plugin</a> e reiniciar. </p>
+<p><img alt="Plug-in do AD" src="/2014/01/29/configurando-o-jenkins-para-usar-o-active-directory/ad_jenkins_001.png" /></p>
+<p>Agora precisamos configurar o Jenkins para acessar o Active Directory. V&aacute; at&eacute; <em>Gerenciar Jenkins / Configurar Seguran&ccedil;a Global</em> 
+e em Controle de Acesso, selecione &quot;Active Directory&quot;. Entre o dom&iacute;nio e os dados para se conectar no AD. Caso voc&ecirc; n&atilde;o saiba 
+os dados do seu AD, pergunte para algu&eacute;m de infraestrutura ou tente se conectar ao AD com algum cliente de LDAP.</p>
+<p><img alt="Configurando o Plug-in" src="/2014/01/29/configurando-o-jenkins-para-usar-o-active-directory/ad_jenkins_002.png" /></p>
+<p>Pronto! Agora basta voc&ecirc; escolher o modelo de autoriza&ccedil;&atilde;o. Na maioria das vezes utilizo a estrat&eacute;gia baseada em matriz por 
+projeto. Se voc&ecirc; utilizar a mesma, adicione o nome de usu&aacute;rio de rede e atribua as permiss&otilde;es corretas.</p>
+<p>Espero que ajude, boa divers&atilde;o!</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2013/09/12/add_tags_to_jenkins_builds_or_export_specific_builds">Add tags to Jenkins builds or export specific builds</a></h2>
+      <small>Sep 12, 2013
+        
+        in 
+            <a href="/tag/ideas">ideas</a>, <a href="/tag/jenkins">jenkins</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>This idea is from <a href="http://twitter.com/abayer">@abayer</a>, from these following tweets: </p>
+<p><img alt="Tweet 1" src="/2013/09/12/add_tags_to_jenkins_builds_or_export_specific_builds/tweet_001.png" /></p>
+<p>And: </p>
+<p><img alt="Tweet 2" src="/2013/09/12/add_tags_to_jenkins_builds_or_export_specific_builds/tweet_002.png" /></p>
+<p>We could simply add tags to builds, and then create some place that would list 
+the builds (or other things) that are tagged appropriately. Or we could add a way 
+to define whicih builds should be exported to some tool, and then via the plug-in 
+API maybe, post to this external tool.</p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2013/08/27/jenkins-sao-paulo-meetup-promoting-material">Jenkins Sao Paulo Meetup promoting material</a></h2>
+      <small>Aug 27, 2013
+        
+        in 
+            <a href="/tag/jenkins">jenkins</a>, <a href="/tag/events">events</a>, <a href="/tag/illustrations">illustrations</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>Sao Paulo is going to host the Jenkins Meetup 2013. It is the second 
+time the event occurs, and we bet this year&#8217;s event will be even more 
+awesome!</p>
+<p>You can help the event by promoting it within your organization, with your 
+friends, family and co-workers. Feel free to use the following banners to help 
+spreading the word about the event.</p>
+<p>The event is free but if you are going to attend it, please answer 
+the <a href="http://www.meetup.com/jenkinsmeetup/events/133598002/">meetup RSVP</a>. 
+The <strong><a href="http://www.cloudbees.com/forms/jenkins-user-conference-call-papers.cb">Call for papers</a></strong> 
+is open too, send your case, tutorial, lighting talk or other suggestions.</p>
+<p>Furthermore, let us know if you are interested in sponsoring the event. 
+We have compiled a <a href="public_files/sponsor_jenkins.pdf">sponsorship program (PDF)</a>. </p>
+<p><img alt="CodeIgniter application" src="/2013/08/27/jenkins-sao-paulo-meetup-promoting-material/banner_175x150.png" /></p>
+<p><img alt="CodeIgniter application" src="/2013/08/27/jenkins-sao-paulo-meetup-promoting-material/banner_300x250.png" /></p>
+<p><img alt="CodeIgniter application" src="/2013/08/27/jenkins-sao-paulo-meetup-promoting-material/banner_700x90.png" /></p>
+    </section>
+  </article>
+</div>
+                    
+                    <div class="ui padded segment">
+  <article>
+    <header>
+      <h2><a href="/2013/07/24/add-support-to-promoted-builds-on-build-pipeline-plugin">Add support to Promoted Builds on Build Pipeline Plug-in</a></h2>
+      <small>Jul 24, 2013
+        
+        in 
+            <a href="/tag/ideas">ideas</a>, <a href="/tag/jenkins">jenkins</a>
+        
+        
+        | <a href="/blog">blog</a>
+        
+      </small>
+    </header>
+    <section>
+      <p>From <a href="https://code.google.com/p/build-pipeline-plugin/issues/detail?id=80">https://code.google.com/p/build-pipeline-plugin/issues/detail?id=80</a></p>
+<p>Jenkins <a href="https://wiki.jenkins-ci.org/display/JENKINS/Build+Pipeline+Plugin">Build Pipeline Plug-in</a>, 
+by <a href="http://www.centrumsystems.com.au/">Centrum Systems</a> (Australia), is an excellent 
+plug-in, used by many users (over 6000 downloads according to 
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Build+Pipeline+Plugin">last report</a>).</p>
+<p>However, it does not work well with the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Promoted+Builds+Plugin">Jenkins Promoted Builds Plug-in</a>, 
+another great plug-in (over 4100 downloads <a href="https://wiki.jenkins-ci.org/display/JENKINS/Promoted+Builds+Plugin">last month</a>).</p>
+<p>It means that <em>users are not able to create pipelines based on promotion</em> (promoted pipelines?). 
+This contribution would be awesome, <strong>useful</strong> and help a lot of users (maybe over 10000? :-)</p>
+    </section>
+  </article>
+</div>
+                    
+                </section>
+                <hr class="ui divider" />
+                <div class="ui pagination menu">
+                    
+                    <a class="item" href="/tag/jenkins/2"><i class='left arrow icon'></i> Previous Posts</a>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+        
+        
+<div class="ui inverted vertical footer segment">
+  <div class="ui container">
+    <div class="ui stackable inverted divided equal height stackable grid">
+      <div class="three wide column">
+        <h4 class="ui inverted header">Resources</h4>
+        <div class="ui inverted link list">
+          <a href="/about" class="item">About</a>
+          <a href="/contact" class="item">Contact Us</a>
+        </div>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">Follow Us</h4>
+        <div class="ui inverted link list">
+          <a href="https://github.com/tupilabs" class="item"><i class="github icon"></i> GitHub</a>
+          <a href="https://www.twitter.com/tupilabs" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="https://www.facebook.com/pages/TupiLabs/367986299948160" class="item"><i class="facebook icon"></i> FaceBook</a>
+          <a href="http://www.youtube.com/user/TupiLabs" class="item"><i class="youtube icon"></i> YouTube</a>
+        </div>
+      </div>
+      <div class="seven wide column">
+        <h4 class="ui inverted header">Check out our lab!</h4>
+        <p>Before projects are incubated in TupiLabs, we implement small proof of concepts in our
+          <a href="/lab">lab</a>.
+          You can check out what we are working on, and help us to make it better by telling us what
+          you think.</p>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="/jquery.min.js"></script>
+    <script src="/semantic.min.js"></script>
+    <script src="/site.js"></script>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-27590622-1', 'auto');
+    ga('send', 'pageview');
+    
+    </script>
+</body>
+</html>
