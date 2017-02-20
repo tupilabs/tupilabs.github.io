@@ -1,4 +1,4 @@
 _cache/
 _counter/
-deploy.sh
+/blog/
 .env
