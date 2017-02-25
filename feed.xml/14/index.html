@@ -10,13 +10,42 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-02-20T22:12:37+13:00</lastBuildDate>
-        <pubDate>2017-02-20T22:12:37+13:00</pubDate>
+        <lastBuildDate>2017-02-26T01:13:12+13:00</lastBuildDate>
+        <pubDate>2017-02-26T01:13:12+13:00</pubDate>
         <generator>PieCrust 2.0.0rc2</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>TupiLabs Report: 28 Sep, 04 Oct</title>
+            <link>/2014/10/11/tupilabs-report-28-sep-04-oct</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>tupilabs-report</category>
+            
+            <pubDate>2014-10-11T11:19:03+13:00</pubDate>
+            <guid>/2014/10/11/tupilabs-report-28-sep-04-oct</guid>
+            <description><p>This is a weekly report that we publish every week, with news from 28-Sep to 04-Oct. </p>
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/JENA-786">https://issues.apache.org/jira/browse/JENA-786</a></li>
+<li><a href="https://github.com/fennb/phirehose/pull/67#event-171810027">https://github.com/fennb/phirehose/pull/67#event-171810027</a></li>
+<li><a href="https://issues.apache.org/jira/browse/LANG-1042">https://issues.apache.org/jira/browse/LANG-1042</a></li>
+<li>Managed to get QUnit and Maven running together in <a href="https://github.com/biouno/uno-choice-plugin/">BioUno Unochoice Plug-in build</a></li>
+<li>Wrote initial JS tests for unochoice-plugin</li>
+</ul>
+<p>We are working <a href="for_you/">for you</a></p>
+<p>Have a great week! :-) </p>
+            
+            </description>
+        </item>
         
         
         
@@ -357,84 +386,6 @@ some projects have been keeping us busy :)</p>
 
             
             &lt;a href=&#34;/2014/08/13/dmc-latam-2014-dia-1&#34;&gt;Read more...&lt;/a&gt;
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>On using Laravel with the repository pattern and Eloquent</title>
-            <link>/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>laravel</category>
-            
-            <category>php</category>
-            
-            <pubDate>2014-08-11T21:27:03+12:00</pubDate>
-            <guid>/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent</guid>
-            <description><p><a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of concerns</a> is a design principle, and 
-states that each part of a software addresses a separate concern. Different patterns and abstractions 
-can be used for that like MVC, DAOs and repositories.</p>
-<p>Repositories help in the abstraction of the data layer. It provides an interface for retrieving data, 
-independent of the implementation, acting like a collection of objects.</p>
-<figure style='text-align: center'>
-<img src="/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent/RepositoryDiagram.png" alt="From: http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html"/>
-<figcaption>Fig1. - Repositories <i>http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html</i></figcaption>
-</figure>
-
-<p>In <a href="http://nestor-qa.org">Nestor-QA</a> I had implemented repositories using some Java code I had in my 
-mind, without paying too much attention to the abstraction layers. Two weeks ago, while working on some 
-complicated issue in Nestor I noticed that the repositories in Nestor had been implemented using the 
-Eloquent classes.</p>
-<p>Eloquent is a library used in Laravel for data abstraction. It provides access to databases like MySQL 
-and SQLite, kind like DAOs (and sometimes like repositories too). However, for Nestor being a test 
-management tool, we are trying to be platform and framework independent. Here&#8217;s the old repository code in 
-action: </p>
-<div class="highlight"><pre><span class="x">class DbProjectRepository implements ProjectRepository {</span>
-
-<span class="x">    public function all()</span>
-<span class="x">    {</span>
-<span class="x">        return Project::where(&#39;project_statuses_id&#39;, &#39;&lt;&gt;&#39;, 2)-&gt;get();</span>
-<span class="x">    }</span>
-
-<span class="x">    // ...</span>
-
-<span class="x">}</span>
-</pre></div>
-
-<p>As you can see, we were returning the result of the get() method from Eloquent. Another big mistake was 
-using these objects in the views. In the end we were not only using data layer elements in the wrong place, 
-but we also had many queries to render an UI. </p>
-<div class="highlight"><pre><span class="x">abstract class DbBaseRepository extends BaseRepository {</span>
-
-<span class="x">    protected $model;</span>
-
-<span class="x">    public function __construct($model)</span>
-<span class="x">    {</span>
-<span class="x">        $this-&gt;model = $model;</span>
-<span class="x">    }</span>
-
-<span class="x">    public function all()</span>
-<span class="x">    {</span>
-<span class="x">        return $this-&gt;model-&gt;all()-&gt;toArray();</span>
-<span class="x">    }</span>
-
-<span class="x">    // ...</span>
-<span class="x">}</span>
-</pre></div>
-
-<p>After searching for a while, I found a <a href="https://github.com/samgreenwood/swapshop/tree/master/app/Swapshop/Repositories">nice example</a> 
-of a class design for repositories, where the return type is always an array. In the views you will 
-have the array and keys, and in case someday you decide moving to another framework, you can leave the 
-views unchanged (hopefully :-). Neat, no?</p>
-<p><img alt="Ahn ahn" src="/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent/SA1HWow.gif" /></p>
-<p>Happy hacking</p>
             
             </description>
         </item>

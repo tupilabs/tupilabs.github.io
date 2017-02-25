@@ -10,13 +10,73 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-02-20T22:12:37+13:00</lastBuildDate>
-        <pubDate>2017-02-20T22:12:37+13:00</pubDate>
+        <lastBuildDate>2017-02-26T01:13:12+13:00</lastBuildDate>
+        <pubDate>2017-02-26T01:13:12+13:00</pubDate>
         <generator>PieCrust 2.0.0rc2</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Querying a REST server from Groovy scripts in Jenkins</title>
+            <link>/2013/02/01/querying-a-rest-server-from-groovy-scripts-in-jenkins</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>groovy</category>
+            
+            <category>jenkins</category>
+            
+            <pubDate>2013-02-01T19:25:49+13:00</pubDate>
+            <guid>/2013/02/01/querying-a-rest-server-from-groovy-scripts-in-jenkins</guid>
+            <description><p>
+ This week, in a customer, I had to write a Groovy script to import some projects from an old installation. The SVN URL
+ had changed. Not only the domain, but now the SVN structure was broken in modules (i.e. instead of <em>/svn/&#8230;</em>
+ now there was <em>/repo1/&#8230;</em>, <em>/repo2/&#8230;</em>, etc).
+</p>
+
+<p>
+ The solution I found, was scan the SVN directory structure with Perl and produce a JSON file. Then I wrote a quick PHP
+ application (with <a href='http://www.slimframework.com/' title='Slim Framework'>Slim</a>) with an URL like <em>/repo?projectName=XYZ</em>,
+ that returned the new repository URL.
+</p>
+
+<p class='center'>
+ <a href="img/posts/2013-02-01_querying-a-rest-server-from-groovy-scripts-in-jenkins/3r20qs-1.jpg"><img src="img/posts/2013-02-01_querying-a-rest-server-from-groovy-scripts-in-jenkins/3r20qs-1-300x300.jpg"
+  alt="Overly Manly meme" width="300" height="300" class="aligncenter size-medium wp-image-1077" /></a>
+</p>
+
+<p>The last step was the hardest, since I needed to query the REST application. The script would get the current SVN
+ address from the SVN SCM, query the REST URL to get the new URL, and lastly update the job with the new URL.</p>
+
+<p>
+ The solution I found was copy the necessary jars to jenkins <em>lib/</em> folder, restart the server and execute my
+ script. Then stop the server, remove the jars and check the new SVN URL&#8217;s. Here&#8217;s the list of jars I had to copy.
+</p>
+
+<ul>
+ <li>http-builder</li>
+ <li>nekohtml-1.9.9</li>
+ <li>xml-resolver-1.2</li>
+ <li>httpclient</li>
+ <li>httpcore</li>
+ <li>xercesImpl</li>
+</ul>
+
+<p>
+ If you have a Maven project with your REST client, you can get a list of dependencies with
+ <code>mvn dependency:copy-dependencies</code>
+ . Then copy the jars to Jenkins class path.
+</p>
+            
+            </description>
+        </item>
         
         
         
@@ -333,39 +393,6 @@
     <li>Worked on TestLink issue TL 4977 - See <a href="http://mantis.testlink.org" title="http://mantis.testlink.org">TestLink mantis</a> for further details.</li>
     <li>Worked on TestLink issue TL 5345 - See <a href="http://mantis.testlink.org" title="http://mantis.testlink.org">TestLink mantis</a> for further details.</li>
     <li>Added some expressions to <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a>.</li>
-</ul>
-
-<p>We are working <a href="for_you/" title="For you">for you</a></p>
-
-<p>Have a great week! :D</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Tupilabs Report: Nov 04, Nov 10</title>
-            <link>/2012/11/10/tupilabs-report-nov-04-nov-10</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2012-11-10T15:58:41+13:00</pubDate>
-            <guid>/2012/11/10/tupilabs-report-nov-04-nov-10</guid>
-            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
-
-<ul>
-    <li>Released <a href="https://github.com/tupilabs/pbs-java-api" title="pbs-java-api">pbs-java-api</a> 0.2</li>
-    <li>Added more docs & tools to <a href="http://biouno.org" title="BioUno">biouno.org</a></li>
-    <li>Finished a RAD analysis using <a href="http://creskolab.uoregon.edu/stacks/" title="Stacks">Stacks</a></li>
-    <li>Visited <a href="http://www.ime.usp.br" title="IME-USP">IME-USP</a> to check JUE 2012 SP venue</li>
-    <li>Got more banners online at supporters websites for <a href="http://www.cloudbees.com/jenkins-user-conference-2012-sao-paulo.cb" title="JUE 2012 SP">JUE 2012 SP</a></li>
-    <li>Dealt with trademark issues in one of our processes at <a href="http://www.inpi.gov.br" title="INPI">INPI</a></li>
 </ul>
 
 <p>We are working <a href="for_you/" title="For you">for you</a></p>

@@ -10,13 +10,199 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-02-20T22:12:37+13:00</lastBuildDate>
-        <pubDate>2017-02-20T22:12:37+13:00</pubDate>
+        <lastBuildDate>2017-02-26T01:13:12+13:00</lastBuildDate>
+        <pubDate>2017-02-26T01:13:12+13:00</pubDate>
         <generator>PieCrust 2.0.0rc2</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Simple ETL with Talend and Docker for a Laravel website</title>
+            <link>/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>etl</category>
+            
+            <category>talend</category>
+            
+            <category>laravel</category>
+            
+            <category>docker</category>
+            
+            <category>speak-like-a-brazilian</category>
+            
+            <pubDate>2016-04-07T16:10:03+12:00</pubDate>
+            <guid>/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website</guid>
+            <description><p>A couple of years ago when I worked at a credit bureau, I learned how important
+<a href="https://en.wikipedia.org/wiki/Data_management">Data Management</a> is for a company. There are
+several processes involved in data management, such as
+<a href="https://en.wikipedia.org/wiki/Record_linkage">Record Linkage</a>,
+<a href="https://en.wikipedia.org/wiki/Data_cleansing">Data Cleansing</a>,
+<a href="https://en.wikipedia.org/wiki/Master_data_management">Master Data Management</a> among others.</p>
+<p>One of the most common tasks in data management, common in many companies, is
+<a href="https://en.wikipedia.org/wiki/Extract,_transform,_load">ETL</a>. ETL stands for
+<strong>E</strong>xtract, <strong>T</strong>ransform, and <strong>L</strong>oad. Basically, it consists in retrieving existing data, doing
+some transformation (remove columns, add columns, sum values, etc), and then loading the result
+data back in to some other database.</p>
+<p>We just finished migrating <a href="https://speaklikeabrazilian.com">Speak Like A Brazilian</a> from
+Laravel 4.x to Laravel 5.x, and besides the necessary changes for adapting the existing code to
+the new version of the framework, we have also tackled other issues in the backlog,
+such as SSL, using a new e-mail service and a few changes in the database schema. Due to this
+last item, we had to do a small ETL.</p>
+<h2>Talend Open Source Data Integration</h2>
+<p>You can download the free and Open Source
+<a href="https://www.talend.com/download/talend-open-studio#t4">Talend Open Studio for Data Integration</a>.
+After installing it, you can read the documentation or watch some videos with short
+tutorials.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/talend.png" class="thumbnail" data-lightbox='post' data-title='Talend'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/talend.png" alt="Talend" />
+</a>
+<figcaption>Talend</figcaption>
+</figure>
+</div>
+</div>
+
+<p>But the interface can be quite intuitive, with drag and drop items, help pop up dialogue boxes, and
+a help available with the local tool. There are other tools such as Luigi and Pentaho Kettle that could
+have been used for the same task. It also supports several databases out of the box.</p>
+<p>Talend has other free and commercial tools, that can be used for other tasks and processes in
+Data Management, and solutions that can also work with Big Data.</p>
+<h2>On Using Docker</h2>
+<p>Since the database is quite small (&lt; 10 MB), using Docker seemed like a good idea to avoid
+installing MySQL or MariaDB locally and having to configure databases and move data around.</p>
+<p>But before starting containers, we needed a dump of the existing database.</p>
+<pre><code>mysqldump -u user -p pass &gt; slbr_20160403.sql
+</code></pre>
+<p>And now we could load the data into a new container, using the mysql:latest Docker image.</p>
+<p>Transfer the data from the server to local computer, and start a container where we will store and massage the data.</p>
+<pre><code>docker run -p 4406:3306 -v $PWD/Downloads/slbr:/opt/data -v $PWD/Development/php/workspace/speaklikeabrazilian.com/:/opt/slbr --name slbr -e MYSQL_ROOT_PASSWORD=nosecret -d mysql:latest
+</code></pre>
+<p>Then we need to jump into that container to run a few commands to load the data.</p>
+<pre><code>docker exec -ti slbr /bin/bash
+
+mysql -uroot -p -e "create database slbr"
+mysql -uroot -p slbr &lt; /opt/data/slbr_20160403.sql
+</code></pre>
+<p>Finally, make sure the application new database is ready as well.
+<a href="https://github.com/tupilabs/speaklikeabrazilian.com/tree/0617bcf47c2349dbae3219fea99222d1b01a3c4a">It is already using Docker Compose</a>,
+so all it takes is start the containers with the following command:</p>
+<pre><code>docker-compose up
+</code></pre>
+<p>And then create the database structure with initial data.</p>
+<pre><code>docker exec -ti speaklikeabraziliancom_front_1 /bin/bash
+
+php artisan migrate:install
+php artisan migrate:refresh --seed
+</code></pre>
+<p>Done, now the old database is running in one container of the mysql:latest image, listening to port 4406
+and the new database is running with Docker Compose, listening for connection on 3306.</p>
+<h2>Creating Talend jobs to migrate the data</h2>
+<p>We start by creating a blank project in Talend.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl001.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl001.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<p>And then creating the database connections for the two databases.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl002.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl002.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl003.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl003.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl004.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl004.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl005.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl005.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<p>Now it is just a matter of dragging and dropping the two connections on to the main canvas.
+After that, we still need one more component: a map or
+<a href="https://www.talendforge.org/tutorials/tutorial.php?idTuto=9">tMap</a>. This allows you to map
+columns between databases, doing transformations like running SQL functions or Java code.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl006.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl006.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl007.png" class="thumbnail" data-lightbox='post' data-title='ETL with Talend and Docker'>
+<img src="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website/etl007.png" alt="ETL with Talend and Docker" />
+</a>
+<figcaption>ETL with Talend and Docker</figcaption>
+</figure>
+</div>
+</div>
+
+<p>In our case, the database for Speak Like A Brazilian had a few columns removed. These columns
+were simply not mapped into the destination database. Running the job loaded the data, but excluding
+the old columns.</p>
+<p>There was also one column added with a defaul value, for which the tMap was also used.</p>
+<p>You can play with Talend, use row filters and other components to do different data modifications,
+and also use other features such as job schedule or combine with other Talend tools.</p>
+<p>We could have used Python, Shell, or other tools for the job, but using a tool tailored for
+ETL is quite handy and easy. Specially in case you ever need to do that again, against different
+databases. All it takes is just adjust the database connections and re-run the jobs.</p>
+            
+            </description>
+        </item>
         
         
         
@@ -511,57 +697,6 @@
 </li>
 <li>
 <p><a href="http://stackoverflow.com/questions/33230782/jenkins-active-choices-plug-in-with-alias-names/35233603#35233603">http://stackoverflow.com/questions/33230782/jenkins-active-choices-plug-in-with-alias-names/35233603#35233603</a></p>
-</li>
-</ul>
-<p>We are working <a href="http://tupilabs.com/for_you/">for you</a></p>
-<p>Have a great week! :-) </p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>TupiLabs Report: 24-Jan, 30-Jan</title>
-            <link>/2016/01/31/tupilabs-report-24-jan-30-jan</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2016-01-31T00:11:06+13:00</pubDate>
-            <guid>/2016/01/31/tupilabs-report-24-jan-30-jan</guid>
-            <description><p>This is our weekly Open Source report with news from 24-Jan to 30-Jan. </p>
-<ul>
-<li>
-<p><a href="https://github.com/kinow/crawlers-noticias">https://github.com/kinow/crawlers-noticias</a></p>
-</li>
-<li>
-<p><a href="https://github.com/nicolasfauchereau/paleopy/pull/5">https://github.com/nicolasfauchereau/paleopy/pull/5</a></p>
-</li>
-<li>
-<p><a href="https://github.com/kinow/graphgists">https://github.com/kinow/graphgists</a></p>
-</li>
-<li>
-<p><a href="https://issues.apache.org/jira/browse/JENA-1080">https://issues.apache.org/jira/browse/JENA-1080</a></p>
-</li>
-<li>
-<p><a href="https://github.com/jenkinsci/active-choices-plugin/commit/2ee4d3412da98bb132990bb1d790f8dd5bdf453c">https://github.com/jenkinsci/active-choices-plugin/commit/2ee4d3412da98bb132990bb1d790f8dd5bdf453c</a></p>
-</li>
-<li>
-<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-32680">https://issues.jenkins-ci.org/browse/JENKINS-32680</a></p>
-</li>
-<li>
-<p><a href="https://github.com/SonarSource/sonar-php/pull/96">https://github.com/SonarSource/sonar-php/pull/96</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mozillascience/PaperBadger/pull/152">https://github.com/mozillascience/PaperBadger/pull/152</a></p>
-</li>
-<li>
-<p><a href="https://issues.apache.org/jira/browse/CSV-167">https://issues.apache.org/jira/browse/CSV-167</a></p>
 </li>
 </ul>
 <p>We are working <a href="http://tupilabs.com/for_you/">for you</a></p>
