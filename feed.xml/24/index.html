@@ -10,13 +10,43 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-03-05T01:04:14+13:00</lastBuildDate>
-        <pubDate>2017-03-05T01:04:14+13:00</pubDate>
+        <lastBuildDate>2017-03-12T00:23:27+13:00</lastBuildDate>
+        <pubDate>2017-03-12T00:23:27+13:00</pubDate>
         <generator>PieCrust 2.0.0rc2</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Pagination not working in Wordpress blog with WP-PageNavi</title>
+            <link>/2013/04/14/pagination-not-working-in-wordpress-blog-with-wp-pagenavi</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>wordpress</category>
+            
+            <category>php</category>
+            
+            <pubDate>2013-04-14T23:41:03+12:00</pubDate>
+            <guid>/2013/04/14/pagination-not-working-in-wordpress-blog-with-wp-pagenavi</guid>
+            <description><p>TupiLabs website uses <a href="http://www.wordpress.org" title="Wordpress">Wordpress</a> as backing <a href="http://en.wikipedia.org/wiki/Content_management_system" title="CMS Wikipedia post">CMS</a> and blog, and here we have a modified <a href="http://www.rootstheme.com/" title="Roots Theme for Wordpress">Roots theme</a> with bunch of plug-ins and settings. The pagination of the posts is done with <a href="http://wordpress.org/extend/plugins/wp-pagenavi/" title="WP-Pagenavi">WP-Pagenavi</a> plug-in. When we received a message from <strong>José</strong> saying that the pagination was broken, we thought it had something to do with <a href="http://wpml.org/" title="WPML">WPML</a>, a translation plug-in, used to maintain both languages (en and pt_BR) in the site.</p>
+
+<p>Later we figured out what was causing this error. The error happened only in <strong>pages that list categories</strong> (blog, news and ideas). In these pages, the function <em>query_posts</em> was being used, and after googling a while we found out that there was an extra argument for pagination.</p>
+
+<p><code>query_posts(array('category_name' =&gt; 'blog'));</code></p>
+<p>Changing the line above to:</p>
+
+<p><code>query_posts(array('category_name' =&gt; 'blog', 'paged' =&gt; get_query_var('page')));</code></p>
+<p>Fixed the issue. We also use plug-ins for cache, so we had to purge the pages from the cache in order to see the results. Hope that helps you, in case you have similar problem. Cheers.</p>
+            
+            </description>
+        </item>
         
         
         
@@ -396,31 +426,6 @@ series&#8230;&#8221;</quote></p>
  <a href="http://cogroo.sourceforge.net/"><img src="img/logos/cogroo.png" alt="cogroo"
   width="300" height="300" class="aligncenter size-medium wp-image-1157" /></a>
 </p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Hook do SVN para criar um novo job no Jenkins não está funcionando com o Eclipse</title>
-            <link>/2013/03/18/svn-hook-to-create-a-new-job-in-jenkins-2</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>eclipse</category>
-            
-            <category>jenkins</category>
-            
-            <category>subversion</category>
-            
-            <pubDate>2013-03-18T15:55:29+13:00</pubDate>
-            <guid>/2013/03/18/svn-hook-to-create-a-new-job-in-jenkins-2</guid>
-            <description><p>Havíamos preparado um build pipeline usando SVN, hooks e Jenkins. Além do tradicional hook para disparar jobs no Jenkins, havíamos criado um hook para criar novos jobs no Jenkins, baseados em um template Groovy para cada branch. Basicamente, este script estava casando o commit log do Subversion com &#8220;^A new branch&#8221;. Estava funcionando bem, exceto para desenvolvedores Eclipse. Novos branches criados com o Eclipse não estavam disparando o hook corretamente. Depois de debugar um pouco, descobrimos que o Eclipse usa comandos diferentes para criar novos branches no SVN.</p>
-<p>Em caso você tenha um pipeline semelhante, você será forçado ou a utilizar diferentes expressões, ou pedir aos desenvolvedores que utilizem a linha de comando para criar novos branches (adotamos a opção #2 :=)</p>
             
             </description>
         </item>

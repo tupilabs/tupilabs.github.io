@@ -10,13 +10,37 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-03-05T01:04:14+13:00</lastBuildDate>
-        <pubDate>2017-03-05T01:04:14+13:00</pubDate>
+        <lastBuildDate>2017-03-12T00:23:27+13:00</lastBuildDate>
+        <pubDate>2017-03-12T00:23:27+13:00</pubDate>
         <generator>PieCrust 2.0.0rc2</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Gray map when loading GMapez dynamically</title>
+            <link>/2012/04/11/gray-map-when-loading-gmapez-dynamically</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>google maps</category>
+            
+            <pubDate>2012-04-11T07:06:04+12:00</pubDate>
+            <guid>/2012/04/11/gray-map-when-loading-gmapez-dynamically</guid>
+            <description><p>If you are using <a title="GMapEz" href="http://n01se.net/gmapez/">GMapEz</a> and you load it dynamically, then you may face a problem having a gray area instead of your map. In our case, we were using GMapEz and <a title="JQuery Stepy" href="http://www.wbotelhos.com/stepy/">JQuery Stepy</a>. When the page was loaded, the first step didn&#8217;t have a map. When the user hit next, then a map was supposed to appear, but it was gray.</p>
+<p>What happens is that if the map is not displayed then you will have to call &#8216;checkResize&#8217; on GMapEz&#8217; map object.</p>
+<p>The first thing you need to do is expose the googlemap as a variable accessible from other scripts. For this, you will need to edit gmapez-x.js, including &#8216;var googlemap = null;&#8217; in the top of your script, and then modify the source as needed to create the object.</p>
+<p>Finally, when the map is displayed (in our case, on step number 2 of the form) you call googlemap.map.checkResize().</p>
+<p>This should fix your gray map :-)</p>
+            
+            </description>
+        </item>
         
         
         
