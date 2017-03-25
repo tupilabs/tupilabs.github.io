@@ -10,13 +10,47 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-03-19T19:57:42+13:00</lastBuildDate>
-        <pubDate>2017-03-19T19:57:42+13:00</pubDate>
+        <lastBuildDate>2017-03-26T00:13:44+13:00</lastBuildDate>
+        <pubDate>2017-03-26T00:13:44+13:00</pubDate>
         <generator>PieCrust 2.0.0rc2</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Increasing logging level in Tomcat to solve org.apache.catalina.core.StandardContext listenerStart error</title>
+            <link>/2013/10/25/increasing-logging-level-in-tomcat-to-solve-org.apache.catalina.core.StandardContext%20listenerStart-error</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>tomcat</category>
+            
+            <category>java</category>
+            
+            <pubDate>2013-10-25T17:19:03+13:00</pubDate>
+            <guid>/2013/10/25/increasing-logging-level-in-tomcat-to-solve-org.apache.catalina.core.StandardContext%20listenerStart-error</guid>
+            <description><p>Sometimes during the deployment of new applications in <a href="http://tomcat.apache.org">Tomcat</a> 
+you may see errors like &#8216;org.apache.catalina.core.StandardContext listenerStart&#8217; in your 
+startup log.</p>
+<p>This may be caused due to many reasons (missing classes, including javax.servlet.* jars with 
+your application, etc), but the reason is not displayed in the startup log.</p>
+<p>But you can find out what is causing this error by adding <strong>logging.properties</strong> to your 
+$TOMCAT_HOME/conf directory, with the following content:</p>
+<pre><code>org.apache.catalina.core.ContainerBase.[Catalina].level = DEBUG
+org.apache.catalina.core.ContainerBase.[Catalina].handlers = java.util.logging.ConsoleHandler
+</code></pre>
+<p>After that you should be able to see the whole exception and figure out what is 
+causing your application to fail.</p>
+<p>Happy hacking!</p>
+            
+            </description>
+        </item>
         
         
         
@@ -280,63 +314,6 @@ API maybe, post to this external tool.</p>
 <li><a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin">Jenkins TAP Plug-in</a> 1.15 released!</li>
 </ul>
 <p>Ah! And on September the 7th it was <strong>Brazil independence day! Vai Brasil!</strong></p>
-<p>We are working <a href="for_you/">for you</a></p>
-<p>Have a great week! :-)</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>TupiLabs Report: 25 Aug, 31 Aug</title>
-            <link>/2013/09/02/tupilabs-report-25-aug-31-aug</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2013-09-02T14:52:03+12:00</pubDate>
-            <guid>/2013/09/02/tupilabs-report-25-aug-31-aug</guid>
-            <description><p>Here&#8217;s the list of the cool things that happened at <strong>TupiLabs</strong> since last Sunday.</p>
-<ul>
-<li>New expressions added to <a href="http://www.speaklikeabrazilian.com">Speak Like A Brazilian</a></li>
-<li>Rewriting parts of <strong><a href="http://cafehostel.com.br">Cafe Hostel</a></strong> to include more tests and reduce duplicities.</li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-13592">https://issues.jenkins-ci.org/browse/JENKINS-13592</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-15289">https://issues.jenkins-ci.org/browse/JENKINS-15289</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-13534">https://issues.jenkins-ci.org/browse/JENKINS-13534</a></li>
-<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/CCM+Plugin">Jenkins CCM Plug-in 3.0.1</a></li>
-<li><a href="https://github.com/jenkinsci/nunit-plugin/pull/5">https://github.com/jenkinsci/nunit-plugin/pull/5</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-9965">https://issues.jenkins-ci.org/browse/JENKINS-9965</a></li>
-<li><a href="http://freedomsponsors.org/core/issue/122/nunit-plugin-does-not-display-graph-when-fingerprinting-is-used-on-the-xml-report">http://freedomsponsors.org/core/issue/122/nunit-plugin-does-not-display-graph-when-fingerprinting-is-used-on-the-xml-report</a></li>
-<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/NUnit+Plugin">Jenkins NUnit Plug-in 0.15</a></li>
-<li><a href="https://github.com/kinow/testlink-java-api/issues/10">https://github.com/kinow/testlink-java-api/issues/10</a></li>
-<li><a href="https://github.com/kinow/testlink-java-api/issues/18">https://github.com/kinow/testlink-java-api/issues/18</a></li>
-<li><a href="https://github.com/kinow/testlink-java-api/pull/19">https://github.com/kinow/testlink-java-api/pull/19</a></li>
-<li><a href="https://github.com/kinow/testlink-java-api/issues/16">https://github.com/kinow/testlink-java-api/issues/16</a></li>
-<li><a href="https://github.com/kinow/testlink-java-api/issues/21">https://github.com/kinow/testlink-java-api/issues/21</a></li>
-<li><a href="https://github.com/kinow/testlink-java-api/issues/17">https://github.com/kinow/testlink-java-api/issues/17</a></li>
-<li><a href="https://github.com/kinow/testlink-java-api/issues/6">https://github.com/kinow/testlink-java-api/issues/6</a></li>
-<li><a href="http://testlinkjavaapi.sourceforge.net/">testlink-java-api</a>-1.9.7-0</li>
-<li><a href="https://github.com/tupilabs/tap4j/issues/1">https://github.com/tupilabs/tap4j/issues/1</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-19369">https://issues.jenkins-ci.org/browse/JENKINS-19369</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17608">https://issues.jenkins-ci.org/browse/JENKINS-17608</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-15790">https://issues.jenkins-ci.org/browse/JENKINS-15790</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-18636">https://issues.jenkins-ci.org/browse/JENKINS-18636</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-18067">https://issues.jenkins-ci.org/browse/JENKINS-18067</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17801">https://issues.jenkins-ci.org/browse/JENKINS-17801</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-19390">https://issues.jenkins-ci.org/browse/JENKINS-19390</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-19209">https://issues.jenkins-ci.org/browse/JENKINS-19209</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-18871">https://issues.jenkins-ci.org/browse/JENKINS-18871</a></li>
-<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17146">https://issues.jenkins-ci.org/browse/JENKINS-17146</a></li>
-<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin">Jenkins TestLink Plug-in</a> 3.6</li>
-<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/CCM+Plugin">Updated CCM Plug-in Wiki</a></li>
-<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin">Updated TestLink Plug-in Wiki</a></li>
-<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/NUnit+Plugin">Updated NUnit Plug-in Wiki</a></li>
-</ul>
 <p>We are working <a href="for_you/">for you</a></p>
 <p>Have a great week! :-)</p>
             
