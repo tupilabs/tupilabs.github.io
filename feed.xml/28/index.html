@@ -10,13 +10,45 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-03-26T00:13:44+13:00</lastBuildDate>
-        <pubDate>2017-03-26T00:13:44+13:00</pubDate>
-        <generator>PieCrust 2.0.0rc2</generator>
+        <lastBuildDate>2017-04-02T11:53:21+12:00</lastBuildDate>
+        <pubDate>2017-04-02T11:53:21+12:00</pubDate>
+        <generator>PieCrust 2.0.0</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>An alternative PBS API for Java</title>
+            <link>/2012/11/04/an-alternative-pbs-api-for-java</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>bioinformatics</category>
+            
+            <pubDate>2012-11-04T19:26:51+13:00</pubDate>
+            <guid>/2012/11/04/an-alternative-pbs-api-for-java</guid>
+            <description><p>Last week we released a new API for <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> in Java - <a href="https://github.com/tupilabs/pbs-java-api" title="pbs-java-api">pbs-java-api</a>. There is an existing API that works very well (<a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a>), and we even got in touch and worked with the author before releasing this new API. So what&#8217;s the difference between the two API&#8217;s and when should I use one or the other?</p>
+
+<p>Here&#8217;s the main differences between the two API&#8217;s:</p>
+
+<ul>
+    <li>pbs4java uses <a href="http://en.wikipedia.org/wiki/Domain-driven_design" title="DDD">DDD</a>, while pbs-java-api has a more classical approach. We needed this to avoid serialization problems in Jenkins.</li>
+    <li>pbs-java-api is available from Maven Central</li>
+    <li>pbs-java-api tries to map the commands (qnodes, qstat, qsub, &#8230;). So you would call PBS.qsub(&#8230;) instead of Job#submit().</li>
+</ul>
+
+<p>That&#8217;s pretty much it, so you really don&#8217;t need to switch to pbs-java-api. We created this new API as we needed a non DDD API to be used with the Jenkins plug-in API and that was available from Maven Central.</p>
+
+<p>pbs-java-api - <a href="https://github.com/tupilabs/pbs-java-api">https://github.com/tupilabs/pbs-java-api</a></p>
+            
+            </description>
+        </item>
         
         
         
@@ -420,50 +452,6 @@
 <p>Assim o DuckDuckGo irá redirecionar você para os resultados no web site da bang que você usou. E adivinhe o quê? Agora você pode buscar no <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a> usango a bang <strong>!slbr</strong> no DuckDuckGo. Quer ver como isso funciona? Vá até <a href="http://www.duckduckgo.com" title="DuckDuckGo">www.duckduckgo.com</a> e busque por <strong>!slbr cara</strong></p>
 
 <p class='center'><img src="img/logos/slbr.png" alt="" title="SLBR" width="600" class="alignnone size-full wp-image-827" /></p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Search Speak Like A Brazilian using DuckDuckGo</title>
-            <link>/2012/10/20/search-speak-like-a-brazilian-using-duckduckgo</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>speak-like-a-brazilian</category>
-            
-            <category>duckduckgo</category>
-            
-            <pubDate>2012-10-20T13:22:30+13:00</pubDate>
-            <guid>/2012/10/20/search-speak-like-a-brazilian-using-duckduckgo</guid>
-            <description><p>
- <a href="http://www.duckduckgo.com" title="DuckDuckGo">DuckDuckGo</a> offers an awesome service that lets you search
- for items in Wikias, newspapers or other web sites using a <a href="http://duckduckgo.com/bang.html" title="Bang!">Bang</a>.
- Basically, you enter <strong>!</strong> followed by the bang name and your search query. For example: <strong>!answers
-  when do the narwhals bacon?</strong>.
-</p>
-
-<p class='center'>
- <img src="img/logos/duckduckgo.png" alt="" title="DuckDuckGo" width="202" height="160"
-  class="alignnone size-full wp-image-825" />
-</p>
-
-<p>
- And then DuckDuckGo will redirect you to the results on the specific web site. And guess what? Now you can search <a
-  href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a> using the <strong>!slbr</strong>
- bang in DuckDuckGo. Wanna see how it works? Go to <a href="http://www.duckduckgo.com" title="DuckDuckGo">www.duckduckgo.com</a>
- and search for <strong>!slbr cara</strong>
-</p>
-
-<p class='center'>
- <img src="img/logos/slbr.png" alt="" title="SLBR" width="600"
-  class="alignnone size-full wp-image-827" />
-</p>
             
             </description>
         </item>
