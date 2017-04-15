@@ -10,13 +10,85 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-04-02T11:53:21+12:00</lastBuildDate>
-        <pubDate>2017-04-02T11:53:21+12:00</pubDate>
+        <lastBuildDate>2017-04-16T00:06:10+12:00</lastBuildDate>
+        <pubDate>2017-04-16T00:06:10+12:00</pubDate>
         <generator>PieCrust 2.0.0</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Comparison of PBS cluster monitoring applications</title>
+            <link>/2012/06/30/comparison-of-pbs-cluster-monitoring-applications</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>jenkins</category>
+            
+            <category>bioinformatics</category>
+            
+            <pubDate>2012-06-30T02:55:42+12:00</pubDate>
+            <guid>/2012/06/30/comparison-of-pbs-cluster-monitoring-applications</guid>
+            <description><p>
+ While we worked on our <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/"
+  title="Creating a PBS/MPI cluster for bioinformatics – Part 1">small internal cluster</a> set up, we used <a
+  href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> for running structure
+ jobs in batch. This post has a simple comparison of web applications that can be used for monitoring a PBS cluster.
+ This is a very simple comparison, and the information may not be sufficient for you to decide whether you should use it
+ or not in your computer facility.
+</p>
+
+<p>
+ We found tools with a simple query in SourceForge.net. We looked up <em>pbs</em>, and selected three tools. They are <a
+  href="http://sourceforge.net/projects/pbsclusterviz/?source=directory" title="PBS Viz Cluster">PBS Viz Cluster
+  0.6a</a>, <a href="http://sourceforge.net/projects/torquemon/?source=directory" title="Torque Web Monitor">Torque Web
+  Monitor 1.0</a> and <a href="http://sourceforge.net/projects/myjam/?source=directory" title="myJAM">myJAM 2.4.7-3191</a>.
+ The hardware used is not being taken in account in this comparison, but for what it is worth, we have a Core i5 quad
+ core, with 6GB of memory and 400GB disk. The operational system is Debian Squeeze, and the web server an Apache.
+</p>
+
+
+            
+            &lt;a href=&#34;/2012/06/30/comparison-of-pbs-cluster-monitoring-applications&#34;&gt;Read more...&lt;/a&gt;
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Creating a PBS/MPI cluster for bioinformatics – Part 3</title>
+            <link>/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorial</category>
+            
+            <category>jenkins</category>
+            
+            <category>bioinformatics</category>
+            
+            <pubDate>2012-06-21T01:26:44+12:00</pubDate>
+            <guid>/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3</guid>
+            <description><p>This is the third and last part of this blog series. In this post we will install Structure (Pritchard Lab) and Torque PBS. We will configure a simple run in Structure using the two machines in our cluster.</p>
+
+<h2>Installing Structure</h2>
+
+<p>Installing structure is very simple. Download the latest version from <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Pritchard Lab">Prichard Lab page</a>, decompress it and move the executables to a folder in your $PATH (or use symlinks). Here I&#8217;m using <code>/usr/local/bin</code>, but to keep things in order, I renamed the <em>console</em> folder (from structure_linux_console.tar.gz) to <em>structure-console-2.3.3</em>, because I like to know the tool and its version without having to browse it. Then I moved it under <code>/opt/biouno</code>, where I keep the executables used by the cluster. Finally, I created the symlink <code>/usr/local/bin/structure</code> that points to <code>/opt/biouno/structure-console-2.3.3/structure</code>.</p>
+
+
+            
+            &lt;a href=&#34;/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3&#34;&gt;Read more...&lt;/a&gt;
+            
+            </description>
+        </item>
         
         
         
