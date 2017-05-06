@@ -10,13 +10,115 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-04-23T01:31:30+12:00</lastBuildDate>
-        <pubDate>2017-04-23T01:31:30+12:00</pubDate>
+        <lastBuildDate>2017-05-07T00:27:03+12:00</lastBuildDate>
+        <pubDate>2017-05-07T00:27:03+12:00</pubDate>
         <generator>PieCrust 2.0.0</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>JUC SP 2012 - Jenkins User Conference São Paulo (Call For Papers)</title>
+            <link>/2012/10/24/juc-sp-2012-jenkins-user-conference-sao-paulo-call-for-papers</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>events</category>
+            
+            <category>jenkins</category>
+            
+            <category>news</category>
+            
+            <pubDate>2012-10-24T23:31:54+13:00</pubDate>
+            <guid>/2012/10/24/juc-sp-2012-jenkins-user-conference-sao-paulo-call-for-papers</guid>
+            <description><p>
+ O primeiro encontro de usuários <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> no Brasil vai
+ acontecer em São Paulo, em Dezembro. Neste evento você vai poder conhecer mais sobre integração contínua, builds em
+ diferentes linguagens de programação (Java, PHP, Ruby, Python, entre outras), cloud, boas práticas e muitos casos sobre
+ o uso de Jenkins. Você vai também poder conversar com pessoal da <a href="http://www.cloudbees.com" title="CloudBees">CloudBees</a>,
+ <a href="http://www.tupilabs.com" title="TupiLabs">TupiLabs</a> e de outras empresas que participarão do evento.
+</p>
+
+<p class='center'>
+ <img src="img/logos/jenkins.jpg" alt="" title="Jenkins CI" width="148" height="204"
+  class="alignnone size-full wp-image-467" />
+</p>
+
+<p>
+ O call for papers já está aberto, então se você tem um caso interessante, ou gostaria de falar sobre algum tópico de
+ integração contínua, automatização, cloud computing e Jenkins, <strong>envie sua proposta</strong>: <a
+  href="http://www.meetup.com/jenkinsmeetup/events/91744672/" title="JUC SP 2012 CFP">http://www.meetup.com/jenkinsmeetup/events/91744672/</a>
+</p>
+
+<p>
+ Você pode submeter palestras e lighting talks, mas também estamos organizando um hackathon com o pessoal do projeto do
+ Jenkins (aqueles que você encontra sempre pelo canal IRC <a href="http://webchat.freenode.net/?channels=jenkins"
+  title="#jenkins @ IRC FreeNode">#jenkins na Freenode</a>) e com alguns dos participantes. Se você tiver uma idéia para
+ o Hackathon, como uma feature nova, ou algum bug que você sempre quis ter corrigido, pode entrar em contato comigo e
+ enviar sua sugestão. Sua idéia pode ser realizada lá no hackathon, contribuindo com o projeto e com a comunidade :-)
+</p>
+
+<ul>
+ <li>Call For Papers: <a href="http://www.meetup.com/jenkinsmeetup/events/91744672/" title="JUC SP 2012 CFP">http://www.meetup.com/jenkinsmeetup/events/91744672/</a></li>
+ <li>Fonte: <a href="pt-br/juc-sp-2012-jenkins-user-conference-sao-paulo-call-for-papers"
+  title="pt-br/juc-sp-2012-jenkins-user-conference-sao-paulo-call-for-papers">pt-br/juc-sp-2012-jenkins-user-conference-sao-paulo-call-for-papers</a></li>
+ <li>Mais informações: <a href="http://www.meetup.com/jenkinsmeetup/events/91744672/" title="JUC 2012">http://www.meetup.com/jenkinsmeetup/events/91744672/</a></li>
+ <ul>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Create a Map of Jenkins Plug-ins (similar to Map of CPAN)</title>
+            <link>/2012/10/22/create-a-cpan-map-like-for-jenkins-plug-ins</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>perl</category>
+            
+            <category>jenkins</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2012-10-22T15:14:42+13:00</pubDate>
+            <guid>/2012/10/22/create-a-cpan-map-like-for-jenkins-plug-ins</guid>
+            <description><p>There&#8217;s a plethora of plug-ins for <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a>, that&#8217;s well known. But there are way more modules in <a href="http://www.cpan.org" title="CPAN">CPAN</a>. One way to visualize all the modules in CPAN is with <a href="http://mapofcpan.org/" title="Map of CPAN">Map of CPAN</a>.</p>
+
+<p>The idea here is to create similar map for Jenkins plug-ins (Map of Jenkins plug-ins). It could use the plug-in type (plugin-labels) and show its growth through the time. That would be interesting, especially if it was possible to create a video (like this one below) showing what happened since the fork from <a href="http://hudson-ci.org/" title="Hudson CI">Hudson</a>.</p>
+
+<p class="center"><iframe src="http://player.vimeo.com/video/51893508" width="500" height="328" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
+
+<p><p><a href="http://vimeo.com/51893508">Map of CPAN – The Movie</a> from <a href="http://vimeo.com/grantm">Grant McLean</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
+<p>The code for the CPAN map generator is hosted at GitHub: <a href="https://github.com/grantm/cpan-map">https://github.com/grantm/cpan-map</a>. And it uses the <a href="http://en.wikipedia.org/wiki/Hilbert_curve" title="Hilbert curve">Hilbert curve</a> for ploting those geometric forms.</p>
+
+<hr/>
+
+<p><em>Update 26, oct. 2012</em></p>
+
+<p>The map generation is started with a Perl script cpan-map that downloads a tar.gz file from <a href="https://metacpan.org/" title="MetaCPAN">MetaCPAN</a> and creates a map of namespaces and its modules. Then it creates an image with Hilbert curves. It assigns different colors for each namespace.</p>
+
+<p>For Jenkins plug-ins map we could use <em>update-center.json</em> file, and group plug-ins by its label. We could get the author picture from Gravatar (like Map of CPAN), and use the same interface of Map of CPAN - it uses <a href="http://sammyjs.org/" title="SammyJS">sammy.js</a> and <a href="http://www.jquery.com" title="jQuery">jQuery</a>.</p>
+
+<p>Links for Hilbert curves and Java</p>
+
+<ul>
+    <li><a href="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html" title="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html"></a></li>
+    <li><a href="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html" title="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html"></a></li>
+</ul>
+            
+            </description>
+        </item>
         
         
         
@@ -268,75 +370,6 @@ layout: blog</p>
             <description><p>This is an interesting case that I received via e-mail from G. M. after he read the post <a href="http://www.kinoshita.eti.br/2012/10/11/jenkins-testlink-and-gtest-in-5-minutes-or-so/" title="Jenkins, TestLink and GTest in 5 minutes (or so)"></a>. Basically, using an approach similar to the <a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin" title="Jenkins TestLink Plug-in">testlink-plugin for Jenkins</a>, one could send the coverage results to <a href="http://www.teamst.org" title="TestLink">TestLink</a>.</p>
 
 <p>TestLink has requirements x test case coverage information, and <a href="http://www.sonarsource.org/" title="Sonar">Sonar</a>, <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a>, <a href="http://cobertura.sourceforge.net/" title="Cobertura">Cobertura</a> and other tools give you source code x test coverage. Crossing these information could be interesting.</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Tupilabs Report: Oct 7, Oct 13</title>
-            <link>/2012/10/15/tupilabs-report-oct-7-oct-13</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2012-10-15T22:03:12+13:00</pubDate>
-            <guid>/2012/10/15/tupilabs-report-oct-7-oct-13</guid>
-            <description><p>Here’s the list of the cool things we did since last Sunday in TupiLabs.</p>
-
-<ul>
-    <li>Added i18n with support to English and Portuguese to <a href="https://wiki.jenkins-ci.org/display/JENKINS/Testopia+Plugin" title="Jenkins Testopia Plug-in">Testopia Jenkins plug-in</a></li>
-    <li>Continued configuration of supercomputer for <a href="http://www.illumina.com/technology/paired_end_sequencing_assay.ilmn" title="Paired End Sequencing">paired-end sequence analysis</a>, and submitted the first <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="PBS">PBS</a> job! Yay!</li>
-    <li>More expressions <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">SLBR</a></li>
-    <li>Installed dual boot Win + Linux computer and prepared a Linux virtual machine too, for interfacing with the supercomputer</li>
-    <li>Talked with accountant and started the work to get TupiLabs CNPJ (national code for companies)</li>
-    <li>Organized Paskuale repositories in GitHub (were three, now it is just a single one)</li>
-    <li><a href="https://oss.sonatype.org/content/repositories/releases/com/tupilabs/" title="com.tupilabs in Sonatype">com.tupilabs repository in Sonatype</a>, to publish to Maven Central</li>
-    <li>Released <a href="https://github.com/tupilabs/testng-parser.git" title="TestNG Parser">TestNG Parser</a>, to be used in testopia-plugin and testlink-plugin</li>
-    <li>Added the first unit tests to SLBR (shame on us), with coverage and an Ant build script too</li>
-    <li>Recorded <a href="http://www.youtube.com/watch?v=gyq3S_EnssY&feature=plcp" title="Desenvolvendo plug-ins para o Jenkins: Depurando e escrevendo um publisher">second video</a> on Jenkins plugin development tutorials in Portuguese</li>
-    <li>testopia-plugin meeting with <a href="https://twitter.com/peterflorijn" title="Peter Florijn">Peter Florijn</a></li>
-    <li>Changes in <a href="http://www.tap4j.org" title="tap4j">tap4j</a>, preparing to release a new version. The project is now under <a href="https://github.com/tupilabs/" title="TupiLabs at GitHub">tupilabs at GitHub</a></li>
-    <li>Fixed the following issues in Jenkins TAP Plug-in: <a href="https://issues.jenkins-ci.org/browse/JENKINS-15419" title="JENKINS-15419">JENKINS-15419</a>, <a href="https://issues.jenkins-ci.org/browse/JENKINS-15497" title="JENKINS-15497">JENKINS-15497</a></li>
-    <li>Started to prepare a new release of <a href="http://nebular.sourceforge.net/" title="nebular">nebular</a>, the pure Java <a href="http://en.wikipedia.org/wiki/Fuzzy_logic" title="Fuzzy Logic">fuzzy</a> API</li>
-    <li>Started modeling PBS plug-in for Jenkins</li>
-    <li>Prepared paskuale domain name at <a href="http://www.namecheap.com/" title="NameCheap">NameCheap</a> and node at <a href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4" title="Linode">Linode</a></li>
-</ul>
-
-<p>We are working <a href="for_you/" title="For you">for you</a> :D</p>
-
-<p>Have a great week!</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Jenkins Testopia Plug-in 1.2 released</title>
-            <link>/2012/10/15/jenkins-testopia-plug-in-1-2-released</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>jenkins</category>
-            
-            <category>news</category>
-            
-            <pubDate>2012-10-15T21:16:11+13:00</pubDate>
-            <guid>/2012/10/15/jenkins-testopia-plug-in-1-2-released</guid>
-            <description><p>Yesterday a new version of <a href="https://wiki.jenkins-ci.org/display/JENKINS/Testopia+Plugin" title="Jenkins Testopia Plug-in">Jenkins Testopia Plug-in</a> was released. This version includes code to avoid printing null when a value returned from Testopia is null. Instead, it now prints an empty String (i.e.: &#8220;&#8221;).</p>
-
-<p>It has been included i18n support too, with English, Brazilian Portuguese and Dutch (thanks to <a href="http://www.twitter.com/peterflorijn" title="Peter Florijn">Peter Florijn</a>) languages. If you use Testopia Plug-in and would like to contribute translating the plug-in, send a <a href="https://www.github.com/jenkinsci/testopia-plugin" title="Jenkins Testopia Plug-in">pull request</a>.</p>
-
-<p>Check the latest changes and read more about the plug-in on its <a href="https://wiki.jenkins-ci.org/display/JENKINS/Testopia+Plugin" title="Jenkins Testopia Plug-in">Wiki page</a>.</p>
             
             </description>
         </item>
