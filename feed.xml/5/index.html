@@ -10,13 +10,126 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-06-11T00:07:58+12:00</lastBuildDate>
-        <pubDate>2017-06-11T00:07:58+12:00</pubDate>
+        <lastBuildDate>2017-06-18T10:00:47+12:00</lastBuildDate>
+        <pubDate>2017-06-18T10:00:47+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>How to use a context menu with FancyTree</title>
+            <link>/2016/09/14/how-to-use-a-context-menu-with-fancytree</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>javascript</category>
+            
+            <category>fancytree</category>
+            
+            <category>nestor-qa</category>
+            
+            <pubDate>2016-09-14T20:50:03+12:00</pubDate>
+            <guid>/2016/09/14/how-to-use-a-context-menu-with-fancytree</guid>
+            <description><p>There used to be several different ways, and even an almost official way to have a context menu in a <a href="https://github.com/mar10/fancytree/">FancyTree</a>. But it has long been decommissioned, and now the recommendation is to use a global context menu, instead of having a context menu only for the FancyTree. That does make sense, since if your application is already using a context menu library, there may be some inconsistencies with another library provided by FancyTree. Good engineering decision.</p>
+<h2>Requirements</h2>
+<p>In <a href="http://nestor-qa.org">Nestor QA</a>, we are using Bower to manage some of the project dependencies. The now recommended library for context menus, that is compatible with the FancyTree library, is <a href="https://github.com/mar10/jquery-ui-contextmenu">jquery-ui-contextmenu</a> (by the same author). However, I could not find it via <code>bower search</code>. So the first step is to install it using a GitHub tag.</p>
+<p><code>bower install --save ui-contextmenu=mar10/jquery-ui-contextmenu#84fb56c6760d1ebd8be3785cd6ff5b67c5c41453</code></p>
+<p>Where <em>84fb56c6760d1ebd8be3785cd6ff5b67c5c41453</em> is the commit hash for the latest tag, <em>v1.13.0</em>.</p>
+<p>Furthermore, as we also have RequireJS, we have to add the following entry under the <em>paths</em> entry.</p>
+<div class="highlight"><pre><span></span><span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;jquery-ui/menu&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/widgets/menu&#39;</span>
+<span class="p">},</span>
+
+<span class="nx">packages</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;uicontextmenu&#39;</span><span class="p">,</span>
+        <span class="nx">location</span><span class="o">:</span> <span class="s1">&#39;libs/ui-contextmenu/&#39;</span><span class="p">,</span>
+        <span class="nx">main</span><span class="o">:</span> <span class="s1">&#39;jquery.ui-contextmenu.min&#39;</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+
+<span class="nx">map</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s1">&#39;jquery-ui/menu&#39;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;keycode&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/keycode&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;position&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/position&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;safe-active-element&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/safe-active-element&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;unique-id&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/unique-id&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;version&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/version&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;widget&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/widget&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>You need to add a package as the ui-contextmenu requires jquery-ui/menu, and adding a path doesn&#8217;t seem to work correctly in this case. But you do need to add a path for the jquery-ui/menu dependency.</p>
+<p>Finally, jquery-ui/menu requires several other dependencies, that you can just add a map entry for RequireJS, and that&#8217;s it.</p>
+<h2>Creating the navigation tree</h2>
+<p>We are using FancyTree for the navigation tree, so the code may look a bit more complex than necessary, but if you abstract the logic for the Nestor QA application, you can see that it consists only of a <em>delegate</em> property, which is the CSS filter for elements that trigger the context menu; the menu items, and a select function invoked when you - as you correctly deduced - select a menu item.</p>
+<div class="highlight"><pre><span></span><span class="c1">// context menu</span>
+<span class="nx">el</span><span class="p">.</span><span class="nx">contextmenu</span><span class="p">({</span>
+    <span class="nx">delegate</span><span class="o">:</span> <span class="s2">&quot;.editable&quot;</span><span class="p">,</span>
+    <span class="nx">menu</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Edit&quot;</span><span class="p">,</span> 
+            <span class="nx">cmd</span><span class="o">:</span> <span class="s2">&quot;edit&quot;</span><span class="p">,</span> 
+            <span class="nx">uiIcon</span><span class="o">:</span> <span class="s2">&quot;ui-icon-pencil&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Delete&quot;</span><span class="p">,</span>
+            <span class="nx">cmd</span><span class="o">:</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span>
+            <span class="nx">uiIcon</span><span class="o">:</span> <span class="s2">&quot;ui-icon-trash&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">select</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">ui</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">nodeId</span> <span class="o">=</span> <span class="nx">ui</span><span class="p">.</span><span class="nx">target</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+        <span class="c1">// fancy tree HTML elements have the key as ft_$KEY</span>
+        <span class="kd">var</span> <span class="nx">underscoreIndex</span> <span class="o">=</span> <span class="nx">nodeId</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">underscoreIndex</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">length</span> <span class="o">=</span> <span class="nx">nodeId</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">nodeId</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">underscoreIndex</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nx">length</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">el</span><span class="p">.</span><span class="nx">fancytree</span><span class="p">(</span><span class="s1">&#39;getNodeByKey&#39;</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">href</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">href</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">ui</span><span class="p">.</span><span class="nx">cmd</span> <span class="o">==</span> <span class="s1">&#39;edit&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">editHref</span> <span class="o">=</span> <span class="nx">href</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">href</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">5</span><span class="p">);</span>
+                <span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="nx">editHref</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">trigger</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">});</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">ui</span><span class="p">.</span><span class="nx">cmd</span> <span class="o">==</span> <span class="s1">&#39;delete&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">editHref</span> <span class="o">=</span> <span class="nx">href</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">href</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">5</span><span class="p">);</span>
+                <span class="kd">var</span> <span class="nx">deleteHref</span> <span class="o">=</span> <span class="nx">editHref</span> <span class="o">+</span> <span class="s1">&#39;/confirmDelete&#39;</span><span class="p">;</span>
+                <span class="nx">Backbone</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">navigate</span><span class="p">(</span><span class="nx">deleteHref</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">trigger</span><span class="o">:</span> <span class="kc">false</span>
+                <span class="p">});</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Command &#39;</span> <span class="o">+</span> <span class="nx">ui</span><span class="p">.</span><span class="nx">cmd</span> <span class="o">+</span> <span class="s1">&#39; not recognized!&#39;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>But nevertheless the <code>el.fancytree('getNodeByKey', key);</code> call may be useful for you as well! Read more about the ui-context menu API in <a href="https://github.com/mar10/jquery-ui-contextmenu/wiki">their Wiki page</a>.</p>
+<div class='row'>
+<div class="span6 offset3" style='text-align: center;'>
+<figure>
+<a href="/2016/09/14/how-to-use-a-context-menu-with-fancytree/contextmenuinaction.gif" class="thumbnail" data-lightbox='post' data-title='Context menu in action'>
+<img src="/2016/09/14/how-to-use-a-context-menu-with-fancytree/contextmenuinaction.gif" alt="Context menu in action" />
+</a>
+<figcaption>Context menu in action</figcaption>
+</figure>
+</div>
+</div>
+
+<p>Happy hacking!</p>
+            
+            </description>
+        </item>
         
         
         
@@ -610,75 +723,6 @@
 </li>
 <li>
 <p>Released gtest-tap-listener 0.6 <a href="https://github.com/kinow/gtest-tap-listener/tree/0.6">https://github.com/kinow/gtest-tap-listener/tree/0.6</a></p>
-</li>
-</ul>
-<p>We are working <a href="http://tupilabs.com/for_you/">for you</a></p>
-<p>Have a great week! :-) </p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>TupiLabs Report: 03-Jul, 09-Jul</title>
-            <link>/2016/07/10/tupilabs-report-03-jul-09-jul</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2016-07-10T00:11:06+12:00</pubDate>
-            <guid>/2016/07/10/tupilabs-report-03-jul-09-jul</guid>
-            <description><p>This is our weekly Open Source report with news from 03-Jul to 09-Jul. </p>
-<ul>
-<li>
-<p><a href="https://github.com/biouno/pbs-plugin/issues/15">https://github.com/biouno/pbs-plugin/issues/15</a></p>
-</li>
-<li>
-<p><a href="https://github.com/biouno/pbs-plugin/issues/14">https://github.com/biouno/pbs-plugin/issues/14</a></p>
-</li>
-<li>
-<p><a href="https://github.com/biojava/logo/pull/8">https://github.com/biojava/logo/pull/8</a></p>
-</li>
-<li>
-<p><a href="https://github.com/kinow/pccora/issues/5">https://github.com/kinow/pccora/issues/5</a></p>
-</li>
-<li>
-<p><a href="https://github.com/kinow/pccora/issues/6">https://github.com/kinow/pccora/issues/6</a></p>
-</li>
-<li>
-<p>Created <a href="https://github.com/biouno/biouno.github.io/wiki/Quirks-for-writing-pages-and-blog-posts">https://github.com/biouno/biouno.github.io/wiki/Quirks-for-writing-pages-and-blog-posts</a> documentation for GitHub pages in BioUno</p>
-</li>
-<li>
-<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-29716">https://issues.jenkins-ci.org/browse/JENKINS-29716</a></p>
-</li>
-<li>
-<p><a href="https://github.com/ropensci/reproducibility-guide/pull/92">https://github.com/ropensci/reproducibility-guide/pull/92</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mar10/fancytree/issues/581">https://github.com/mar10/fancytree/issues/581</a></p>
-</li>
-<li>
-<p><a href="https://github.com/nestor-qa/nestor/issues/101">https://github.com/nestor-qa/nestor/issues/101</a></p>
-</li>
-<li>
-<p><a href="https://github.com/nestor-qa/nestor/issues/102">https://github.com/nestor-qa/nestor/issues/102</a></p>
-</li>
-<li>
-<p><a href="https://github.com/nestor-qa/nestor/issues/103">https://github.com/nestor-qa/nestor/issues/103</a></p>
-</li>
-<li>
-<p><a href="https://github.com/nestor-qa/nestor/issues/104">https://github.com/nestor-qa/nestor/issues/104</a></p>
-</li>
-<li>
-<p><a href="https://github.com/nestor-qa/nestor/issues/105">https://github.com/nestor-qa/nestor/issues/105</a></p>
-</li>
-<li>
-<p><a href="https://github.com/nestor-qa/nestor/issues/106">https://github.com/nestor-qa/nestor/issues/106</a></p>
 </li>
 </ul>
 <p>We are working <a href="http://tupilabs.com/for_you/">for you</a></p>

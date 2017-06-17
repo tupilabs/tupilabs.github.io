@@ -65,7 +65,7 @@ that are getting their feet wet in PieCrust.</p>
 the <em>$WEBSITE_CONTENT_DIR</em> is the <em>$ROOT_DIR/_content</em> of your project. Create a 
 new file there, with the name <em>macros_tweet.html</em> (or any other name), with the 
 following content.</p>
-<div class="highlight"><pre>{% macro button(base_url,counturl,url,text) %}
+<div class="highlight"><pre><span></span>{% macro button(base_url,counturl,url,text) %}
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tw_button&quot;</span> <span class="na">style=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;iframe</span>
     <span class="na">allowtransparency=</span><span class="s">&quot;true&quot;</span>
@@ -81,12 +81,12 @@ following content.</p>
 </pre></div>
 
 <p>Now add the following line in the templates/pages where you want to use this macro.</p>
-<div class="highlight"><pre><span class="cp">{%</span> <span class="k">import</span> <span class="s1">&#39;macros_tweet.html&#39;</span> <span class="nv">as</span> <span class="nv">tweet</span> <span class="cp">%}</span><span class="x"></span>
+<div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">import</span> <span class="s1">&#39;macros_tweet.html&#39;</span> <span class="nv">as</span> <span class="nv">tweet</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 
 <p>This imports your macro using the namespace tweet. So the button function will 
 be available as in the following example.</p>
-<div class="highlight"><pre><span class="cp">{{</span> <span class="nv">tweet.button</span><span class="o">(</span><span class="nv">site.base_url</span><span class="o">,</span> <span class="nv">page.url</span><span class="o">,</span> <span class="nv">page.url</span><span class="o">,</span> <span class="nv">page.title</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
+<div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">tweet.button</span><span class="o">(</span><span class="nv">site.base_url</span><span class="o">,</span> <span class="nv">page.url</span><span class="o">,</span> <span class="nv">page.url</span><span class="o">,</span> <span class="nv">page.title</span><span class="o">)</span> <span class="cp">}}</span><span class="x"></span>
 </pre></div>
 
 <p>We&#8217;ll write about our CodeIgniter + PieCrust integration. In this integration we 
