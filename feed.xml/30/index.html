@@ -10,13 +10,107 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-06-25T01:35:48+12:00</lastBuildDate>
-        <pubDate>2017-06-25T01:35:48+12:00</pubDate>
+        <lastBuildDate>2017-07-09T15:30:15+12:00</lastBuildDate>
+        <pubDate>2017-07-09T15:30:15+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Create a Map of Jenkins Plug-ins (similar to Map of CPAN)</title>
+            <link>/2012/10/22/create-a-cpan-map-like-for-jenkins-plug-ins</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>perl</category>
+            
+            <category>jenkins</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2012-10-22T15:14:42+13:00</pubDate>
+            <guid>/2012/10/22/create-a-cpan-map-like-for-jenkins-plug-ins</guid>
+            <description><p>There&#8217;s a plethora of plug-ins for <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a>, that&#8217;s well known. But there are way more modules in <a href="http://www.cpan.org" title="CPAN">CPAN</a>. One way to visualize all the modules in CPAN is with <a href="http://mapofcpan.org/" title="Map of CPAN">Map of CPAN</a>.</p>
+
+<p>The idea here is to create similar map for Jenkins plug-ins (Map of Jenkins plug-ins). It could use the plug-in type (plugin-labels) and show its growth through the time. That would be interesting, especially if it was possible to create a video (like this one below) showing what happened since the fork from <a href="http://hudson-ci.org/" title="Hudson CI">Hudson</a>.</p>
+
+<p class="center"><iframe src="http://player.vimeo.com/video/51893508" width="500" height="328" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
+
+<p><p><a href="http://vimeo.com/51893508">Map of CPAN – The Movie</a> from <a href="http://vimeo.com/grantm">Grant McLean</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
+<p>The code for the CPAN map generator is hosted at GitHub: <a href="https://github.com/grantm/cpan-map">https://github.com/grantm/cpan-map</a>. And it uses the <a href="http://en.wikipedia.org/wiki/Hilbert_curve" title="Hilbert curve">Hilbert curve</a> for ploting those geometric forms.</p>
+
+<hr/>
+
+<p><em>Update 26, oct. 2012</em></p>
+
+<p>The map generation is started with a Perl script cpan-map that downloads a tar.gz file from <a href="https://metacpan.org/" title="MetaCPAN">MetaCPAN</a> and creates a map of namespaces and its modules. Then it creates an image with Hilbert curves. It assigns different colors for each namespace.</p>
+
+<p>For Jenkins plug-ins map we could use <em>update-center.json</em> file, and group plug-ins by its label. We could get the author picture from Gravatar (like Map of CPAN), and use the same interface of Map of CPAN - it uses <a href="http://sammyjs.org/" title="SammyJS">sammy.js</a> and <a href="http://www.jquery.com" title="jQuery">jQuery</a>.</p>
+
+<p>Links for Hilbert curves and Java</p>
+
+<ul>
+    <li><a href="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html" title="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html"></a></li>
+    <li><a href="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html" title="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html"></a></li>
+</ul>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Tupilabs Report: Oct 14, Oct 20</title>
+            <link>/2012/10/21/tupilabs-report-oct-14-oct-20</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>tupilabs-report</category>
+            
+            <pubDate>2012-10-21T01:52:17+13:00</pubDate>
+            <guid>/2012/10/21/tupilabs-report-oct-14-oct-20</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday in TupiLabs.</p>
+
+<ul>
+    <li>Released <a href="http://www.garagemvaga.com.br" title="GV 2.0">Garagem Vaga</a> 2.0</li>
+    <li>Released <a href="http://www.paskuale.com" title="Paskuale">Paskuale</a> 0.1</li>
+    <li>Created subreddit <a href="http://reddit.com/r/functionalprogramming" title="r/functionalprogramming">r/functionalprogramming</a> to collect links related to FP (some of the findings from that subreddit can go to <a href="http://commons.apache.org/functor" title="Apache Commons Functor">Apache Commons Functor</a>)</li>
+    <li>Created subreddit <a href="http://reddit.com/r/fuzzylogic" title="r/fuzzylogic">r/fuzzylogic</a> to collect links related to Fuzzy Logic (some of the findings from that subreddit can go to <a href="http://nebular.sf.net" title="nebular">nebular</a>)</li>
+    <li>Updated subreddit <a href="http://reddit.com/r/testanythingprotocol" title="r/testanythingprotocol">r/testanythingprotocol</a></li>
+    <li>Added more expressions to <a href="http://www.speaklikeabrazilian.com" title="SLBR">Speak Like A Brazilian</a></li>
+    <li>Added <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a> <strong>!slbr</strong> bang to <a href="http://www.duckduckgo.com" title="DuckDuckGo">DuckDuckGo</a> (<a href="search-speak-like-a-brazilian-using-duckduckgo/">post here</a>)</li>
+    <li>Released <a href="http://www.tap4j.org" title="tap4j">tap4j</a> <a href="tap4j-3-2-released/" title="tap4j 3.2 released">3.2</a></li>
+    <li>Posted a <a href="pt-br/recomendacoes-baseadas-em-fotos-do-pinterest/" title="Recomendações baseadas em fotos do Instagram">new idea</a> to TupiLabs (pt-BR)</li>
+    <li>Partly translated the <a href="pt-br/nosso-trabalho/" title="TupiLabs | Nosso trabalho">Work section to pt-BR</a></li>
+    <li><a href="pt-br/desenvolvendo-plug-ins-para-o-jenkins-hospedando-plug-ins-no-jenkins-ci-org-e-a-release-de-um-plug-in/" title="Desenvolvendo plug-ins para o Jenkins: Hospedando plug-ins no jenkins-ci.org e a release de um plug-in">New video</a> (pt-BR) about Jenkins plug-in development where we released TAP plug-in 1.6</li>
+    <li>Fixed <a href="https://issues.jenkins-ci.org/browse/JENKINS-15343" title="JENKINS-15343">JENKINS-15343</a></li>
+    <li>Fixed <a href="https://issues.jenkins-ci.org/browse/JENKINS-15497" title="JENKINS-15497">JENKINS-15497</a></li>
+    <li>Added support to <a href="https://wiki.jenkins-ci.org/display/JENKINS/Conditional+BuildStep+Plugin" title="Jenkins Conditional BuildStep Plug-in">Conditional BuildStep Plug-in</a> to Testopia and TestLink plug-ins</li>
+    <li>Released <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin" title="Jenkins TAP Plug-in">Jenkins TAP plug-in</a> 1.6</li>
+    <li>Released <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin" title="Jenkins TAP Plug-in">Jenkins TAP plug-in</a> 1.7 and fixed JENKINS- after reading about a bug in <a href="http://stackoverflow.com/questions/12858759/how-to-get-jenkins-display-tap-output-from-perlcritic">http://stackoverflow.com/questions/12858759/how-to-get-jenkins-display-tap-output-from-perlcritic</a></li>
+    <li>Released <a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin" title="Jenkins TestLink Plug-in">Jenkins TestLink plug-in</a> 3.1.8</li>
+    <li>Updated Wiki page for <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin" title="Jenkins TAP Plug-in">Jenkins TAP plug-in</a></li>
+    <li>Updated Wiki page for <a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin" title="Jenkins TestLink Plug-in">Jenkins TestLink plug-in</a></li>
+    <li>Started a new <strong>internal project for Human Resources professionals</strong> (to be released in November)</li>
+    <li>Helping to organize a <strong>conference for an awesome Open Source tool in Sao Paulo</strong> (to be announced soon!!! Stay tuned!)</li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a> :-D</p>
+
+<p>Have a great week!</p>
+            
+            </description>
+        </item>
         
         
         
@@ -263,60 +357,6 @@ layout: blog</p>
 <p>We are working <a href="for_you/" title="For you">for you</a> :D</p>
 
 <p>Have a great week!</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Jenkins Testopia Plug-in 1.2 released</title>
-            <link>/2012/10/15/jenkins-testopia-plug-in-1-2-released</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>jenkins</category>
-            
-            <category>news</category>
-            
-            <pubDate>2012-10-15T21:16:11+13:00</pubDate>
-            <guid>/2012/10/15/jenkins-testopia-plug-in-1-2-released</guid>
-            <description><p>Yesterday a new version of <a href="https://wiki.jenkins-ci.org/display/JENKINS/Testopia+Plugin" title="Jenkins Testopia Plug-in">Jenkins Testopia Plug-in</a> was released. This version includes code to avoid printing null when a value returned from Testopia is null. Instead, it now prints an empty String (i.e.: &#8220;&#8221;).</p>
-
-<p>It has been included i18n support too, with English, Brazilian Portuguese and Dutch (thanks to <a href="http://www.twitter.com/peterflorijn" title="Peter Florijn">Peter Florijn</a>) languages. If you use Testopia Plug-in and would like to contribute translating the plug-in, send a <a href="https://www.github.com/jenkinsci/testopia-plugin" title="Jenkins Testopia Plug-in">pull request</a>.</p>
-
-<p>Check the latest changes and read more about the plug-in on its <a href="https://wiki.jenkins-ci.org/display/JENKINS/Testopia+Plugin" title="Jenkins Testopia Plug-in">Wiki page</a>.</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Preparing a new release of tap4j</title>
-            <link>/2012/10/12/preparing-a-new-release-of-tap4j</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>tap</category>
-            
-            <category>tap4j</category>
-            
-            <category>news</category>
-            
-            <pubDate>2012-10-12T21:39:32+13:00</pubDate>
-            <guid>/2012/10/12/preparing-a-new-release-of-tap4j</guid>
-            <description><p>We are preparing a new release of <a href="http://www.tap4j.org" title="tap4j">tap4j</a> in the upcoming days. It&#8217;s been a while since last release, and it is one of our favorite Java projects. tap4j is a complete implementation of the <a href="http://www.testanything.org" title="Test Anything Protocol">Test Anything Protocol</a> (TAP) for Java. This test protocol has been created with <a href="http://www.perl.org" title="Perl">Perl</a> 1, about 1988, and can be extended with <a href="http://www.yaml.org" title="YAML">YAML</a>.</p>
-
-<p>This release will include only code enhancements, like javadoc, TODO/TBD/FIXME tags and code styles improvements. The repository has been migrated from under kinow unto <a href="https://github.com/tupilabs/tap4j" title="TupiLabs at GitHub">tupilabs at GitHub</a>. The issue tracking from SourceForge.net has been replaced by <a href="https://www.github.com/tupilabs/tap4j/issues" title="tap4j issues at GitHub">GitHub</a>, as it is easier to manage Pull Requests and issues at the same place. And we also replaced CloudBees Open Source tap4j project by <a href="http://buildhive.cloudbees.com" title="CloudBees BuildHive">CloudBees BuildHive</a>, as it also has a nice integration with GitHub.</p>
-
-<p>Stay tuned, a new release is coming :D</p>
             
             </description>
         </item>

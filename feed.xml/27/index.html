@@ -10,13 +10,107 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-06-25T01:35:48+12:00</lastBuildDate>
-        <pubDate>2017-06-25T01:35:48+12:00</pubDate>
+        <lastBuildDate>2017-07-09T15:30:15+12:00</lastBuildDate>
+        <pubDate>2017-07-09T15:30:15+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Fixing "XMLHttpRequest Origin is not allowed by Access-Control-Allow-Origin" in PHP and CodeIgniter</title>
+            <link>/2013/03/16/fixing-xmlhttprequest-origin-is-not-allowed-by-access-control-allow-origin-in-php-and-codeigniter</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>blog</category>
+            
+            <category>csrf</category>
+            
+            <category>javascript</category>
+            
+            <category>php</category>
+            
+            <category>speak-like-a-brazilian</category>
+            
+            <pubDate>2013-03-16T17:10:02+13:00</pubDate>
+            <guid>/2013/03/16/fixing-xmlhttprequest-origin-is-not-allowed-by-access-control-allow-origin-in-php-and-codeigniter</guid>
+            <description><p>Since it has been released, <a href="http://www.speaklikeabrazilian.com" title="SLBR">Speak Like A Brazilian</a> had a bug when users voted, but had accessed the site via <em>speaklikeabrazilian.com</em>, and not <em>www.speaklikeabrazilian.com</em> (the latter is the base_url in <em>application/config/config.php</em>).</p>
+
+<p>Looking at the developer console in Chrome, you could see that XMLHttpRequest was having trouble by, what looked in principle, like a security bug. Maybe a cross-domain issue.</p>
+
+<p>After searching the Internet, we&#8217;ve found what was causing this issue. Unfortunately I lost the link, but in a StackOverFlow discussion, one user said it had something to do with the CSRF check.</p>
+
+<p>A quick test, where we disabled the CSRF token verification, showed that he was right. But we couldn&#8217;t simply disable CSRF everywhere. So if you are facing similar issue, here&#8217;s the trick: Create a hook that disables CSRF verification only for a certain URL.</p>
+
+<p>It&#8217;s not a very nice approach, but as in Speak Like A Brazilian the votes are linked by IP, there&#8217;s no need to keep the CSRF token. Here&#8217;s the solution that worked for us.</p>
+
+<pre>
+&lt;?php if (!defined('BASEPATH')) exit('No direct script access allowed');<br/> <br/>/**<br/> * Security Class<br/> *<br/> * @package hooks<br/> * @description Disables CSRF token for certain pages.<br/> */<br/> <br/>class DisableCSRF<br/>{<br/><br/>        function disable_if_callback() <br/>        {    <br/>            if(stripos($_SERVER[&quot;REQUEST_URI&quot;],'/rating/expression') !== FALSE)<br/>            {<br/>                $CFG =&amp; load_class('Config', 'core');<br/>                $CFG-&gt;set_item('csrf_protection', FALSE);<br/>            }<br/>        } <br/>        <br/>}
+</pre>
+
+<p>And as a side note, we are still in honey moon with <a href="http://www.codeigniter.com">CodeIgniter</a>. We have just finished another project with it, and so far we haven&#8217;t been let down by this amazing framework. Hope it helps you, in case you have similar error.</p>
+
+<p>Happy St. Patricks Day! And happy coding!</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>TupiLabs Report: 03 Mar, 09 Mar</title>
+            <link>/2013/03/12/tupilabs-report-03-mar-09-mar</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>frege</category>
+            
+            <category>garagem-vaga</category>
+            
+            <category>illustration</category>
+            
+            <category>jenkins</category>
+            
+            <category>logo</category>
+            
+            <category>paskuale</category>
+            
+            <category>slbr</category>
+            
+            <category>tap</category>
+            
+            <category>testlink</category>
+            
+            <pubDate>2013-03-12T11:22:36+13:00</pubDate>
+            <guid>/2013/03/12/tupilabs-report-03-mar-09-mar</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>Some issues and pull requests for <a href="https://github.com/jenkinsci/testlink-plugin">Jenkins TestLink Plug-in</a></li>
+    <li>A new pull request and a weird bug reported via e-mail in <a href="https://github.com/jenkinsci/tap-plugin">Jenkins TAP Plug-in</a></li>
+    <li>New Likes at our <a href="https://www.facebook.com/SpeakLikeABrazilian">Facebook page for Speak Like A Brazilian</a>. Yay!!!</li>
+    <li>Vectorized some potential <a href="https://code.google.com/p/frege/">Frege logos</a> and sent to the project mailing list</li>
+    <li>We have finished a small <a href="http://en.wikipedia.org/wiki/Natural_language_processing">NLP</a> and <a href="http://en.wikipedia.org/wiki/Big_data">Big Data</a> prototype for a prospect. The presentation will happen in the next days at the customer site!</li>
+    <li>Research work for <a href="http://www.paskuale.org" title="Paskuale">Paskuale</a> backend</li>
+    <li><a href="http://www.garagemvaga.com.br">Garagem Vaga</a> received a new parking lot, and we are working on the marketing and promotion material</li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+            
+            </description>
+        </item>
         
         
         
@@ -358,83 +452,6 @@
  <code>mvn dependency:copy-dependencies</code>
  . Then copy the jars to Jenkins class path.
 </p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Tupilabs Report: Jan 20, Jan 26</title>
-            <link>/2013/01/30/tupilabs-report-jan-20-jan-26</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>groovy</category>
-            
-            <category>jenkins</category>
-            
-            <category>tap4j</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2013-01-30T23:51:20+13:00</pubDate>
-            <guid>/2013/01/30/tupilabs-report-jan-20-jan-26</guid>
-            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
-
-<ul>
-    <li>Finished writing an article to <a href="http://www.mundoj.com.br" title="MundoJ">MundoJ</a> magazine about Jenkins</li>
-    <li>Prepared for Groovy Scripts for Jenkins (we will publish them in tupilabs GitHub soon!)</li>
-    <li>Released <a href="http://www.tap4j.org" title="tap4j">tap4j</a> 4.0.0!!! Yay!</li>
-    <li>Updated tap4j website and documentation</li>
-</ul>
-
-<p>We are working <a href="for_you/" title="For you">for you</a></p>
-
-<p>Have a great week! :D</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Tupilabs Report: Jan 13, Jan 19</title>
-            <link>/2013/01/20/tupilabs-report-jan-13-jan-19</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>jenkins</category>
-            
-            <category>tap</category>
-            
-            <category>tap4j</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2013-01-20T23:40:25+13:00</pubDate>
-            <guid>/2013/01/20/tupilabs-report-jan-13-jan-19</guid>
-            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
-
-<ul>
-    <li><a href="pt-br/escrevendo-scripts-groovy-para-o-jenkins-usando-o-eclipse-com-auto-complete/">Blog entry</a> in Brazilian Portuguese on Groovy and Jenkins.</li>
-        <li>Revived <a href="http://www.tap4j.org">tap4j.org</a> website after the server migration.</li>
-        <li>Finished <a href="https://github.com/tupilabs/tap4j-parent">new parser</a> in tap4j, much more simple and clean.</li>
-        <li>Worked on more issues for <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin">Jenkins TAP Plug-in</a>.</li>
-        <li>Separated <a href="https://github.com/tupilabs/tap4j-parent">tap4j</a> in maven modules</li>
-        <li>We have over 65 members in <a href="http://www.reddit.com/r/functionalprogramming">functional programming subreddit</a>! Yay!</li>
-        <li>More expressions created at <a href="http://www.speaklikeabrazilian.com">Speak Like A Brazilian</a>.</li>
-</ul>
-
-<p>We are working <a href="for_you/" title="For you">for you</a></p>
-
-<p>Have a great week! :D</p>
             
             </description>
         </item>

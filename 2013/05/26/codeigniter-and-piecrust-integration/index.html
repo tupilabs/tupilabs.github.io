@@ -79,14 +79,14 @@ including posts, pages, <a href="//2013/05/26/creating-a-twig-macro-for-piecrust
 configuration and is read by PieCrust when it bakes (compiles your website into HTML) and when it servers your 
 blog (using a bundled HTTP server).</p>
 <p>Change the contents of this file to look like the following: </p>
-<div class="highlight"><pre><span></span>site:
+<div class="highlight"><pre>site:
     title: Your New PieCrust Website
     description: A sample website running with PieCrust
     author: Anonymous
     pretty_urls: <span class="nb">false</span>
-
+<span class="nb">    </span>
 smartypants:
-    enable: <span class="nb">true</span>
+    <span class="nb">enable</span>: <span class="nb">true</span>
 
 server:
     config_variants:

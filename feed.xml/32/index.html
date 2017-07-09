@@ -10,13 +10,210 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-06-25T01:35:48+12:00</lastBuildDate>
-        <pubDate>2017-06-25T01:35:48+12:00</pubDate>
+        <lastBuildDate>2017-07-09T15:30:15+12:00</lastBuildDate>
+        <pubDate>2017-07-09T15:30:15+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Redesigning Speak Like A Brazilian</title>
+            <link>/2012/08/29/redesigning-speak-like-a-brazilian</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>products</category>
+            
+            <category>slbr</category>
+            
+            <pubDate>2012-08-29T10:51:36+12:00</pubDate>
+            <guid>/2012/08/29/redesigning-speak-like-a-brazilian</guid>
+            <description><p>
+ <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a> started as a
+ weekend project submitted to <a href="http://news.ycombinator.com" title="Hacker News">Hacker News</a> and <a
+  href="http://www.reddit.com/" title="Reddit">Reddit</a>. There was an amazing feedback and thus we decided to dedicate
+ some time to a new version of SLBR. It is a web site to share Brazilian Portuguese expressions with other users.
+ Anybody can submit expressions, like or dislike expressions and share the expressions with friends via e-mail or social
+ networks.
+</p>
+
+<p>
+ <strong>TL;DR</strong> We added the feature to have an expression with many definitions, simplified the design of the
+ landing page and removed the need to register to submit expressions. Part of the work was based on user feedback, and
+ another part was based on the way that <a href="http://www.urbandictionary.com" title="Urban Dictionary">Urban
+  Dictionary</a> works.
+</p>
+
+<h2>What was done?</h2>
+
+<p>We started by the database model. Initially, expressions were thought as a single entity. An expression had a
+ text and its description. However, some users pointed that they could have more than one definition for the same
+ expression. We had to break the table into two, expressions and definitions.</p>
+
+<p>Time to rethink the landing page design. There are several articles that talk about the landing pages ([1], [2],
+ [3]). Here are some basic guidelines that we followed when redesigning SLBR.</p>
+
+<ul>
+ <li>Limit action</li>
+ <li>Buttons and call actions standing out</li>
+ <li>Enable sharing</li>
+</ul>
+
+<p style="">
+ <a href="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/old_1.png"><img src="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/old_1.png" alt=""
+  title="Old version" width="600" class="aligncenter size-medium wp-image-607" /></a>
+</p>
+
+<h3>Limit action</h3>
+
+<p>The old version had too much text, a video and a box with tweets. As well as the letters menu. We removed this
+ content, leaving only the letters menu, minus the Home and Login menu items. Now the user is presented with the search
+ box, the letters menu and the top ten expressions.</p>
+
+<p style="">
+ <a href="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_1.png"><img src="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_1.png" alt=""
+  title="New Version" width="600" class="aligncenter size-medium wp-image-611" /></a>
+</p>
+
+<h3>Buttons and call actions standing out</h3>
+
+<p>With less actions on the screen, the user experience will be better in SLBR. When the users sees the landing page
+ now, there is the search button standing out, with a bigger font size. There is also a menu with letters with simple
+ nagivation, and some expressions that give the users the picture of how the web site works.</p>
+
+<p style="">
+ <a href="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_2.png"><img src="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_2.png" alt=""
+  title="New Version" width="600" class="aligncenter size-medium wp-image-612" /></a>
+</p>
+
+<h3>Enable sharing</h3>
+
+<p>This was a recommendation in one of the web sites mentioned earlier but UD already did that too. A very simple
+ idea, and very easy to be put into practice too. We added a form that lets users share an expression via e-mail or via
+ social networks. Hopefully it will increase the number of expressions in SLBR.</p>
+
+<p style="">
+ <a href="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_3.png"><img src="img/posts/2012-08-29_redesigning-speak-like-a-brazilian/new_3.png" alt=""
+  title="New Version" width="600" class="aligncenter size-medium wp-image-613" /></a>
+</p>
+
+<h2>Final thoughts</h2>
+
+<p>We have also made several changes to the layout of items, and some CSS and JS enhancements, like using hover in
+ some elements, modal windows to share and code to prevent a form being submitted twice.</p>
+
+<p>But one of the greatest enhancements was allow users to submit expressions without having to log in. Before this,
+ users were required to register in the web site in order to submit expression. That is just boring. After playing with
+ UD, we decided to give it a try.</p>
+
+<p>
+ We will monitor the web site stats to check the results of this redesign, but so far we are very happy with this new
+ version. The next step now is, probably, use <a href="http://jquerymobile.com/">jQuery Mobile</a> to create a simple
+ version of the web site for mobile users and promote the web site at local hostels.
+</p>
+
+<p>What do you think?</p>
+
+<h2>References</h2>
+
+<p>
+ [1] http://blog.hubspot.com/blog/tabid/6307/bid/7177/What-Is-a-Landing-Page-and-Why-Should-You-Care.aspx<br /> [2]
+ http://unbounce.com/landing-page-examples/your-landing-page-sucks/<br /> [3]
+ http://support.google.com/adwords/bin/answer.py?hl=en&answer=2404197
+</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>BOSC 2012 and BioUno</title>
+            <link>/2012/08/10/bosc-2012-and-biouno</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>jenkins</category>
+            
+            <category>bioinformatics</category>
+            
+            <category>events</category>
+            
+            <pubDate>2012-08-10T11:35:12+12:00</pubDate>
+            <guid>/2012/08/10/bosc-2012-and-biouno</guid>
+            <description><p>
+ Few weeks ago <em>TupiLabs</em> participated of <em><a href="http://www.open-bio.org/wiki/BOSC_2012"
+  title="BOSC 2012">BOSC 2012</a></em> , with a talk about <em><a href="http://www.biouno.org" title="BioUno">BioUno</a></em>
+ . BioUno is a project that applies techniques and tools from Continuous Integration in Bioinformatics, in special <em><a
+  href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a></em> . In the very beginning, the project was a &#8221; <em>hey,
+  look what I can do with Jenkins</em> &#8220;. Later on we defined that we would like to <em>create biology pipelines with
+  Jenkins</em> , using plug-ins. This was the topic of our talk in BOSC 2012 - <strong>Creating biology pipelines
+  with Jenkins</strong> . The main advantage of using Jenkins, is its <em>distributed environment with master and slaves</em> ,
+ the <em>plug-ins</em> and the <em>documentation and community available</em> .
+</p>
+
+<p>
+ <img src="img/products/biouno/ISMB2012.jpg" alt="" title="ISMB2012" width="204" height="193"
+  class="aligncenter size-full wp-image-599" /> <img src="img/products/biouno/BOSC.png" alt=""
+  title="BOSC_logo" width="161" height="115" class="aligncenter size-full wp-image-598" />
+</p>
+
+<p>
+ In the talk, we showed a demo using vanilla Jenkins, <a href="http://mrbayes.sourceforge.net/" title="MrBayes">MrBayes</a>
+ , with <a href="https://github.com/tupilabs/mrbayes-plugin" title="mrbayes-plugin">mrbayes-plugin</a> , and <a
+  href="http://www.r-project.org/" title="R Project">R</a> and ape for plotting, using <a
+  href="https://github.com/jenkinsci/r-plugin" title="r-plugin">r-plugin</a> . It was a very simple pipeline, without
+ using Cloud services or any NGS tool. What was great in BOSC 2012 is that we could catch up with people that work on <a
+  href="http://galaxy.psu.edu/" title="Galaxy">Galaxy</a> , <a href="http://www.taverna.org.uk/" title="Taverna">Taverna</a>
+ , <a href="http://mobyle.pasteur.fr/cgi-bin/portal.py#welcome" title="Mobyle">Mobyle</a> and other workflow management
+ systems, as well as lads from other interesting projects, like <a href="http://cloudgene.uibk.ac.at/" title="CloudGene">CloudGene</a>
+ (MapReduce interface for researchers, pretty cool). When we returned to Brazil, we had more items to include in BioUno
+ TODO list, but also a realization. That BioUno is not only a biology workflow management system. Its roles intersect
+ with Galaxy, Taverna and Mobyle, as a <em>workflow management system</em> , but also intersect with <a
+  href="http://biohpc.org/" title="BioHPC">BioHPC</a> , as a <em>bioinformatics computer management system</em> .
+</p>
+
+<p>
+ <a href="img/products/biouno/biouno_panel.jpg"><img src="img/products/biouno/biouno_panel.jpg" alt=""
+  title="BOSC 2012 BioUno" width="217" height="300" class="aligncenter size-medium wp-image-595" /></a>
+</p>
+
+<p>
+ With Jenkins you can start and monitor slaves remotely (in your local network or in a cloud), execute parts of your
+ build in one machine and serialize results back to the master, display graphs, monitor usage and execute other things
+ that give you the possibility to use Jenkins to <strong>create very customized pipelines</strong> . Sometimes a
+ researcher has to use tools like <a href="http://creskolab.uoregon.edu/stacks/" title="stacks">stacks</a> , <a
+  href="http://samtools.sourceforge.net/">samtools</a> , <a href="http://pritch.bsd.uchicago.edu/structure.html"
+  title="structure">structure</a> , <a href="http://beast.bio.ed.ac.uk/Main_Page" title="Beast">beast</a> and so it
+ goes. But sometimes he has need of a very specific routine, maybe for plotting something or adjusting data output from
+ one tool, before inputting it into the next tool in the pipeline. <em>These routines are not always worth a tool,
+  as they would be used very rarely</em> . This is possible with Jenkins. Or a job may demand five computers. Common computer
+ facilities would delegate the machine provision to cluster management systems, like <a
+  href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="PBS">PBS</a> , <a
+  href="http://en.wikipedia.org/wiki/Platform_LSF" title="LSF">LSF</a> or some <a
+  href="http://en.wikipedia.org/wiki/Cloud_computing" title="Cloud computing">cloud based system</a> . With Jenkins, you
+ can manage your computer, maybe even use <a href="http://puppetlabs.com/" title="Puppet">Puppet</a> to help you. We
+ have a long way ahead, we are reorganizing our servers at <a
+  href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4" title="Linode">Linode</a> to install <a
+  href="http://www.atlassian.com/software/jira/overview" title="JIRA">JIRA</a> and <a
+  href="http://www.atlassian.com/software/confluence/overview" title="Confluence">Confluence</a> , and have a more
+ Jenkins-like web site (as this is the principal tool in BioUno). And we are still creating plug-ins. If you have any
+ interested in the project, feel free to <a href="http://www.biouno.org/contact/" title="Contact BioUno">join us</a> ,
+ your help will be very welcome :-)
+</p>
+            
+            </description>
+        </item>
         
         
         
@@ -243,59 +440,6 @@ Cesar</p>
 
             
             &lt;a href=&#34;/2012/03/09/verifying-if-certain-plug-in-is-installed-and-setting-a-new-proxy-in-jenkins-using-cli&#34;&gt;Read more...&lt;/a&gt;
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Configuring Jenkins Git Plug-in with BitBucket private repositories in Windows</title>
-            <link>/2012/02/18/configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>tutorials</category>
-            
-            <category>jenkins</category>
-            
-            <pubDate>2012-02-18T04:14:36+13:00</pubDate>
-            <guid>/2012/02/18/configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows</guid>
-            <description><p>
- Tell me about writing a specific title. This is my first entry here in TupiLabs. Today I will show you how to configure
- <a title="Jenkins" href="http://www.jenkins-ci.org">Jenkins</a> Git Plug-in, to retrieve sources from a private
- repository hosted at <a title="BitBucket" href="http://www.bitbucket.org">BitBucket</a>. Phew. Ah, and all this using a
- Windows server.
-</p>
-
-<p>
- <strong><a href="#tldr">TL;DR</a></strong>: ssh -vT &lt;host&gt; displays where it is looking for your .ssh directory.
- Probably you will want check permissions and the %HOME% environment variable too. In case your job is getting stuck,
- click here to skip the introduction text.
-</p>
-
-<h2>Motivation</h2>
-
-<ul>
- <li>At TupiLabs, we have repositories hosted at <a title="GitHub" href="http://www.github.com">GitHub </a>(public
-  repositories) and BitBucket (mix of public and private repositories).
- </li>
- <li>We use Jenkins for many activities. Not only as a build server, but as a <em>function</em> in our development
-  environment. We will talk about that later ;-)
- </li>
- <li>We use Jenkins, Mac and Windows for development.</li>
- <li>We have jobs running at <a title="Linode"
-  href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4">Linode</a> with <a title="Ubuntu"
-  href="http://www.ubuntu.com">Ubuntu</a>+Jenkins+Git Plug-in+BitBucket.
- </li>
- <li>There aren&#8217;t many resources for configuring Jenkins and BitBucket in Windows.</li>
- <li>I have a good friend of mine who would like to read about it. Heck! That&#8217;s enough to write about it :-D</li>
-</ul>
-
-
-            
-            &lt;a href=&#34;/2012/02/18/configuring-jenkins-git-plug-in-with-bitbucket-private-repositories-in-windows&#34;&gt;Read more...&lt;/a&gt;
             
             </description>
         </item>

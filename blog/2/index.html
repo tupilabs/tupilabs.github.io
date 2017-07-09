@@ -90,7 +90,7 @@ Eloquent classes.</p>
 and SQLite, kind like DAOs (and sometimes like repositories too). However, for Nestor being a test 
 management tool, we are trying to be platform and framework independent. Here&#8217;s the old repository code in 
 action: </p>
-<div class="highlight"><pre><span></span><span class="x">class DbProjectRepository implements ProjectRepository {</span>
+<div class="highlight"><pre><span class="x">class DbProjectRepository implements ProjectRepository {</span>
 
 <span class="x">    public function all()</span>
 <span class="x">    {</span>
@@ -105,7 +105,7 @@ action: </p>
 <p>As you can see, we were returning the result of the get() method from Eloquent. Another big mistake was 
 using these objects in the views. In the end we were not only using data layer elements in the wrong place, 
 but we also had many queries to render an UI. </p>
-<div class="highlight"><pre><span></span><span class="x">abstract class DbBaseRepository extends BaseRepository {</span>
+<div class="highlight"><pre><span class="x">abstract class DbBaseRepository extends BaseRepository {</span>
 
 <span class="x">    protected $model;</span>
 
