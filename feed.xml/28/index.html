@@ -10,13 +10,39 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-07-23T00:39:26+12:00</lastBuildDate>
-        <pubDate>2017-07-23T00:39:26+12:00</pubDate>
+        <lastBuildDate>2017-07-30T01:54:47+12:00</lastBuildDate>
+        <pubDate>2017-07-30T01:54:47+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Study if it's doable to parallelize PacBioToCA</title>
+            <link>/2013/02/05/study-if-its-doable-to-parallelize-pacbiotoca</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>bioinformatics</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2013-02-05T22:27:48+13:00</pubDate>
+            <guid>/2013/02/05/study-if-its-doable-to-parallelize-pacbiotoca</guid>
+            <description><p><a href="http://www.homolog.us/">Homolog.us</a> is an amazing site. The content is clear, rich and very entertaining (at least for those who like biology and technology). They have an active <a href="https://twitter.com/#!/homolog_us/">Twitter account</a>, they answer comments, they are on <a href="http://reddit.com/r/bioinformatics">reddit</a> too. <strong>These guys rock</strong>!</p>
+
+<p>Recently <a href="http://www.homolog.us/blogs/2013/02/05/pacbiotoca-for-error-correcting-pacbio-reads/">they wrote</a> about <a href="http://sourceforge.net/apps/mediawiki/wgs-assembler/index.php?title=PacBioToCA">PacBioToCA</a>, pointing out its lengthy execution. It&#8217;s common in biotechnology parallel execution with <a href="http://en.wikipedia.org/wiki/Open_MPI" title="">OpenMPI</a>, <a href="http://en.wikipedia.org/wiki/OpenMP">OpenMP</a> or other method like <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.</p>
+
+<p>One idea would be review the code, check if it&#8217;s doable some kind of parallelism and write about it. Perhaps rewriting it. They <a href="http://www.homolog.us/blogs/2013/02/05/lsc-an-alternative-to-pacbiotoca-for-error-correction-of-pacbio-reads/">already wrote</a> about another tool that competes with PacBioToCA. I told you that Homolog.us is amazing.</p>
+            
+            </description>
+        </item>
         
         
         
@@ -369,47 +395,6 @@
 <p>We are working <a href="for_you/" title="For you">for you</a></p>
 
 <p>Have a great week! :D</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Create a tool to find out the average test coverage in Jenkins plug-ins</title>
-            <link>/2012/11/24/create-a-tool-to-find-out-the-average-test-coverage-in-jenkins-plug-ins</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>jenkins</category>
-            
-            <category>testing</category>
-            
-            <category>ideas</category>
-            
-            <pubDate>2012-11-24T18:52:09+13:00</pubDate>
-            <guid>/2012/11/24/create-a-tool-to-find-out-the-average-test-coverage-in-jenkins-plug-ins</guid>
-            <description><p>
- This idea popped up while chatting with <a href="https://github.com/darkrift" title="https://github.com/darkrift">Richard
-  Lavoie</a>. I was telling him about selenium tests for plug-ins, <a href="http://www.snakebite.org" title="SnakeBite">snakebite</a>
- one thing leads to another, and then came the idea of measuring the coverage in plug-ins.
-</p>
-
-<p>
- Basically, this tool would have to iterate over the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins"
-  title="Jenkins Plugins">600+ plug-ins</a>, and trigger a
- <code>mvn test</code>
- command. Then it would have to save the coverage information somewhere, and plot a graph, or generate some report about
- it.
-</p>
-
-<p><img src="img/logos/jenkins.jpg" alt="" title="Jenkins CI" width="191" height="300"
- class="aligncenter size-medium wp-image-918" /></p>
-<p>Depending on the machine, probably this tool could spawn more than 1 thread for doing this. Even then, it would
- still take quite a while for processing all the plug-ins.</p>
             
             </description>
         </item>

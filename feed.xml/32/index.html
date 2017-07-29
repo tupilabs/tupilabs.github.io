@@ -10,13 +10,38 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-07-23T00:39:26+12:00</lastBuildDate>
-        <pubDate>2017-07-23T00:39:26+12:00</pubDate>
+        <lastBuildDate>2017-07-30T01:54:47+12:00</lastBuildDate>
+        <pubDate>2017-07-30T01:54:47+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>The slides from JUC SF are coming</title>
+            <link>/2012/10/02/the-slides-from-juc-sf-are-coming</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>jenkins</category>
+            
+            <category>events</category>
+            
+            <pubDate>2012-10-02T03:52:15+13:00</pubDate>
+            <guid>/2012/10/02/the-slides-from-juc-sf-are-coming</guid>
+            <description><p>Watch the news for more upcoming slides from JUC SF (Jenkins User Conference San Francisco). You can already check <a href="http://www.kohsuke.org" title="Kohsuke Kawaguchi">Kohsuke Kawaguchi</a>&#8216;s slides. The link is for the <a href="http://www.reddit.com" title="Reddit, take this poor man's soul">reddit</a> thread, so you can comment there and give karma to @agentdero who posted the link.</p>
+<p><a href="http://www.reddit.com/r/jenkinsci/comments/10pyv8/jenkins_state_of_the_union_slides_from_juc_sf_2012/" title="KK slides SF">http://www.reddit.com/r/jenkinsci/comments/10pyv8/jenkins_state_of_the_union_slides_from_juc_sf_2012/</a></p>
+<p>Another interesting news is that now CloudBees Jenkins can deploy to GoogleAppEngine. I believe that in the near future BuildHive will have integration with other platforms and will be able to build software written in many programming languages too.</p>
+<p><a href="http://www.reddit.com/r/jenkinsci/comments/10rsp1/cloudbees_jenkins_can_now_deploy_to_google_app/" title="http://www.reddit.com/r/jenkinsci/comments/10rsp1/cloudbees_jenkins_can_now_deploy_to_google_app/">http://www.reddit.com/r/jenkinsci/comments/10rsp1/cloudbees_jenkins_can_now_deploy_to_google_app/</a></p>
+            
+            </description>
+        </item>
         
         
         
@@ -436,30 +461,6 @@
 
             
             &lt;a href=&#34;/2012/04/17/creating-a-pbsmpi-cluster-for-bioinformatics-part-1&#34;&gt;Read more...&lt;/a&gt;
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Gray map when loading GMapez dynamically</title>
-            <link>/2012/04/11/gray-map-when-loading-gmapez-dynamically</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>google maps</category>
-            
-            <pubDate>2012-04-11T07:06:04+12:00</pubDate>
-            <guid>/2012/04/11/gray-map-when-loading-gmapez-dynamically</guid>
-            <description><p>If you are using <a title="GMapEz" href="http://n01se.net/gmapez/">GMapEz</a> and you load it dynamically, then you may face a problem having a gray area instead of your map. In our case, we were using GMapEz and <a title="JQuery Stepy" href="http://www.wbotelhos.com/stepy/">JQuery Stepy</a>. When the page was loaded, the first step didn&#8217;t have a map. When the user hit next, then a map was supposed to appear, but it was gray.</p>
-<p>What happens is that if the map is not displayed then you will have to call &#8216;checkResize&#8217; on GMapEz&#8217; map object.</p>
-<p>The first thing you need to do is expose the googlemap as a variable accessible from other scripts. For this, you will need to edit gmapez-x.js, including &#8216;var googlemap = null;&#8217; in the top of your script, and then modify the source as needed to create the object.</p>
-<p>Finally, when the map is displayed (in our case, on step number 2 of the form) you call googlemap.map.checkResize().</p>
-<p>This should fix your gray map :-)</p>
             
             </description>
         </item>
