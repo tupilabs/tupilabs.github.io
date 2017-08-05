@@ -10,13 +10,59 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-07-30T01:54:47+12:00</lastBuildDate>
-        <pubDate>2017-07-30T01:54:47+12:00</pubDate>
+        <lastBuildDate>2017-08-06T00:06:06+12:00</lastBuildDate>
+        <pubDate>2017-08-06T00:06:06+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Exporting data in R format</title>
+            <link>/2013/02/09/exporting-data-in-r-format</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>jenkins</category>
+            
+            <category>r</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2013-02-09T12:32:54+13:00</pubDate>
+            <guid>/2013/02/09/exporting-data-in-r-format</guid>
+            <description><p>
+ <a href="www.quandl.com">Quandl</a> has now a feature that lets users export data as an R matrix, this way the data can
+ be easily <a href="http://www.quandl.com/help/r">loaded into R</a>. Damn awesome righto? Kudos to the guys from Quandl!
+</p>
+
+<p>
+ <code>read.csv('http://www.quandl.com/api/v1/datasets/OFDP/ALUMINIUM_21.csv?&utf8=â&trim_start=2012-01-03&trim_end=2013-02-07&sort_order=desc',
+  colClasses=c('Date'='Date'))</code>
+</p>
+
+<p class='center'>
+ <a href="img/logos/r_quandl.png"><img src="img/logos/r_quandl.png"
+  alt="r_quandl" width="150" height="145" class="aligncenter size-full wp-image-1096" /></a>
+</p>
+
+<p>Today&#8217;s idea is use Quandl approach in other applications. Jenkins exports some of its objects to its external
+ JSON API. And there are stats being collected from plug-ins (like the download statistics). I am curious to know if
+ there would have any gain in exporting parts of this data as R matrices and processing it directly with R.</p>
+
+<p>This could be used in a lot of different applications, perhaps even using Hadoop and R. Instead of writing
+ collectors to consume an RESTful service, you would simply write one R line to get the job done.</p>
+
+<p>R does very fine in plotting too, so I wouldn&#8217;t be surprised to at least see some prettier charts :o)</p>
+            
+            </description>
+        </item>
         
         
         
@@ -345,51 +391,6 @@
     <li>Programme for <a href="http://www.meetup.com/jenkinsmeetup/events/91744672/" title="Jenkins Meetup São Paulo">Jenkins Meetup São Paulo</a></li>
     <li><a href="http://www.reddit.com/r/functionalprogramming" title="r/functionalprogramming">r/functionalprogramming</a> got 5 new readers! Yay!</li>
     <li>We helped to organize <a href="http://www.meetup.com/jenkinsmeetup/events/91744672/" title="Jenkins Meetup São Paulo">Jenkins Meetup São Paulo</a>, that took place yesterday, Dec 1st at USP (Thanks again to CloudBees and CCSL-IME-USP)</li>
-</ul>
-
-<p>We are working <a href="for_you/" title="For you">for you</a></p>
-
-<p>Have a great week! :D</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Tupilabs Report: Nov 18, Nov 24</title>
-            <link>/2012/11/25/tupilabs-report-nov-18-nov-24</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2012-11-25T14:59:17+13:00</pubDate>
-            <guid>/2012/11/25/tupilabs-report-nov-18-nov-24</guid>
-            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
-
-<ul>
-    <li>Added more Brazilian Portuguese expressions to <a href="http://www.speaklikeabrazilian.com" title="SLBR">Speak Like A Brazilian</a></li>
-    <li>Added &#8220;Add video&#8221; button in landing page, for each expression in <a href="http://www.speaklikeabrazilian.com" title="SLBR">Speak Like A Brazilian</a>.</li>
-    <li>Quick code clean up in <a href="http://www.speaklikeabrazilian.com" title="SLBR">Speak Like A Brazilian</a></li>
-    <li>+6 readers to <a href="http://www.reddit.com/r/functionalprogramming">r/functionalprogramming</a></li>
-    <li>Wrote more code to a PHP web application for one our customers :-)</li>
-    <li>Submitted more links to <a href="http://www.reddit.com/r/functionalprogramming">r/functionalprogramming</a></li>
-    <li><a href="http://twitpic.com/bg4bqc">T-Shirt</a> for Jenkins Meetup São Paulo</li>
-    <li>Finished our talk to <a href="www.meetup.com/jenkinsmeetup/events/91744672/" title="Jenkins Meetup São Paulo">Jenkins Meetup São Paulo</a></li>
-    <li>Renewed <a href="http://www.biouno.org" title="BioUno">biouno.org</a> domain name</li>
-    <li>Submitted more links to <a href="http://www.reddit.com/r/testanythingprotocol">r/testanythingprotocol</a></li>
-    <li><a href="http://www.tap4j.org" title="tap4j">tap4j</a> github issue <a href="https://github.com/tupilabs/tap4j/issues/6">#6</a></li>
-    <li>Released <a href="http://www.tap4j.org">tap4j</a> <a href="https://oss.sonatype.org/content/repositories/releases/org/tap4j/tap4j/3.3/" title="tap4j-3.3">3.3</a></li>
-    <li><a href="https://issues.jenkins-ci.org/browse/JENKINS-15645">JENKINS-15645</a></li>
-    <li><a href="https://issues.jenkins-ci.org/browse/JENKINS-15813">JENKINS-15813</a></li>
-    <li><a href="https://issues.jenkins-ci.org/browse/JENKINS-15791">JENKINS-15791</a></li>
-    <li><a href="https://issues.jenkins-ci.org/browse/JENKINS-15914">JENKINS-15914</a></li>
-    <li><a href="https://issues.jenkins-ci.org/browse/JENKINS-15401">JENKINS-15401</a></li>
-    <li><a href="https://issues.jenkins-ci.org/browse/JENKINS-15907">JENKINS-15907</a></li>
 </ul>
 
 <p>We are working <a href="for_you/" title="For you">for you</a></p>

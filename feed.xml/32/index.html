@@ -10,13 +10,39 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-07-30T01:54:47+12:00</lastBuildDate>
-        <pubDate>2017-07-30T01:54:47+12:00</pubDate>
+        <lastBuildDate>2017-08-06T00:06:06+12:00</lastBuildDate>
+        <pubDate>2017-08-06T00:06:06+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Use Jenkins plug-ins API in Apache Nutch</title>
+            <link>/2012/10/02/use-jenkins-plug-ins-api-in-apache-nutch</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>nutch</category>
+            
+            <category>jenkins</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2012-10-02T03:57:57+13:00</pubDate>
+            <guid>/2012/10/02/use-jenkins-plug-ins-api-in-apache-nutch</guid>
+            <description><p>I&#8217;m working in an <a href="http://nutch.apache.org" title="Apache Nutch">Apache Nutch</a> project that involves some new plug-ins and customization in existing parts parts of Nutch, however, after reading Nutch&#8217;s code base and learning about its plug-in architecture, I believe someone could use part of <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> API to enhance the plug-in API in Nutch.</p>
+<p>Nutch uses a similar concept, with the same name as in Jenkins, Extension Points. However, it&#8217;s quite hard to create a plug-in project separate from the core project (it uses Ivy and plug-ibs have some dependencies to the core project). And you have to extend certain classes and configure XML files to prepare your plug-in.</p>
+<p>Part of this could be automatically done with inheritance + Java annotations. I&#8217;ll have a cycle for Open Source in the next days, and will give it a try to see if that really makes sense.</p>
+            
+            </description>
+        </item>
         
         
         
@@ -433,34 +459,6 @@
 
             
             &lt;a href=&#34;/2012/04/29/creating-a-pbsmpi-cluster-for-bioinformatics-part-2&#34;&gt;Read more...&lt;/a&gt;
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Creating a PBS/MPI cluster for bioinformatics - Part 1</title>
-            <link>/2012/04/17/creating-a-pbsmpi-cluster-for-bioinformatics-part-1</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>tutorials</category>
-            
-            <category>jenkins</category>
-            
-            <category>bioinformatics</category>
-            
-            <pubDate>2012-04-17T00:40:35+12:00</pubDate>
-            <guid>/2012/04/17/creating-a-pbsmpi-cluster-for-bioinformatics-part-1</guid>
-            <description><p>This is a series of posts with the steps we are using to set up an internal cluster for <a href="http://en.wikipedia.org/wiki/Bioinformatics" title="Bioinformatics Wikipedia entry">bioinformatics</a> using <a href="http://en.wikipedia.org/wiki/Message_Passing_Interface" title="Message Passing Interface">MPI</a> and <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> for distributed jobs. Our goal with this series is help other nerds setting up similar environment. This cluster is not public yet, and we are using for development of <a href="http://www.biouno.org" title="BioUno">BioUno</a>. At moment we are writing code to integrate our <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> with <a href="http://mrbayes.sourceforge.net/" title="MrBayes">MrBayes</a> and <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Structure">Structure</a>.</p>
-
-<p>In this first post, we will see how to configure the network for each machine be able to see the other one, and how to configure SSH for connecting to the other nodes in the cluster. If you already know MrBayes and Structure, skip the Introduction and go to the <a href="#basic-network-configuration">basic network configuration topic</a>. We assume you have a intermediary knowledge of Linux, as many instructions in this series are vague. We always reference the original tutorial that we used. This series may be edited to stay up to date or for improvements.</p>
-
-
-            
-            &lt;a href=&#34;/2012/04/17/creating-a-pbsmpi-cluster-for-bioinformatics-part-1&#34;&gt;Read more...&lt;/a&gt;
             
             </description>
         </item>

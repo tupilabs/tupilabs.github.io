@@ -10,13 +10,48 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-07-30T01:54:47+12:00</lastBuildDate>
-        <pubDate>2017-07-30T01:54:47+12:00</pubDate>
+        <lastBuildDate>2017-08-06T00:06:06+12:00</lastBuildDate>
+        <pubDate>2017-08-06T00:06:06+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Untitled Page</title>
+            <link>/2012/10/20/tap4j-3-2-released</link>
+            
+            
+            
+            <pubDate>2012-10-20T00:00:00+13:00</pubDate>
+            <guid>/2012/10/20/tap4j-3-2-released</guid>
+            <description><p>title: &#8216;tap4j 3.2 released&#8217;
+id: 853
+author: kinow
+tags:
+    - tap
+    - tap4j
+    - news
+time: &#8216;17:32:51&#8217;
+category: blog
+layout: blog</p>
+<hr />
+<p><p><a href="http://www.tap4j.org" title="tap4j">tap4j</a> 3.2 is out. This release includes only minor code improvements and the update of TestNG and JUnit dependencies - they are used for the integration extensions. Also, the @author tags were removed, and the code is now formatted similar to the Apache Commons style guide.</p></p>
+<p>If you are using a Maven project, you can add the following to your pom.xml to use tap4j.</p>
+
+<pre><code>&lt;dependency>
+  &lt;groupid>org.tap4j&lt;/groupid>
+  &lt;artifactid>tap4j&lt;/artifactid>
+  &lt;version>3.2&lt;/version>
+&lt;/dependency></code></pre>
+
+<p>Find more about tap4j on <a href="http://www.tap4j.org" title="tap4j">http://www.tap4j.org</a></p>
+            
+            </description>
+        </item>
         
         
         
@@ -294,32 +329,6 @@
 <p>Just food for thought :D</p>
 
 <p><strong>Edit:</strong> There is a <a href="https://wiki.jenkins-ci.org/label/JENKINS/plugin-cluster" title="plugin-cluster">label in Jenkins Wiki</a> with several plug-ins that could be used for reference</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Use Jenkins plug-ins API in Apache Nutch</title>
-            <link>/2012/10/02/use-jenkins-plug-ins-api-in-apache-nutch</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>nutch</category>
-            
-            <category>jenkins</category>
-            
-            <category>ideas</category>
-            
-            <pubDate>2012-10-02T03:57:57+13:00</pubDate>
-            <guid>/2012/10/02/use-jenkins-plug-ins-api-in-apache-nutch</guid>
-            <description><p>I&#8217;m working in an <a href="http://nutch.apache.org" title="Apache Nutch">Apache Nutch</a> project that involves some new plug-ins and customization in existing parts parts of Nutch, however, after reading Nutch&#8217;s code base and learning about its plug-in architecture, I believe someone could use part of <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> API to enhance the plug-in API in Nutch.</p>
-<p>Nutch uses a similar concept, with the same name as in Jenkins, Extension Points. However, it&#8217;s quite hard to create a plug-in project separate from the core project (it uses Ivy and plug-ibs have some dependencies to the core project). And you have to extend certain classes and configure XML files to prepare your plug-in.</p>
-<p>Part of this could be automatically done with inheritance + Java annotations. I&#8217;ll have a cycle for Open Source in the next days, and will give it a try to see if that really makes sense.</p>
             
             </description>
         </item>
