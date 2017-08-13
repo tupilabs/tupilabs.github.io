@@ -10,13 +10,37 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-08-06T00:06:06+12:00</lastBuildDate>
-        <pubDate>2017-08-06T00:06:06+12:00</pubDate>
+        <lastBuildDate>2017-08-13T14:34:06+12:00</lastBuildDate>
+        <pubDate>2017-08-13T14:34:06+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Desenvolvendo plug-ins para o Jenkins: Hospedando plug-ins no jenkins-ci.org e a release de um plug-in</title>
+            <link>/2012/10/20/desenvolvendo-plug-ins-para-o-jenkins-hospedando-plug-ins-no-jenkins-ci-org-e-a-release-de-um-plug-in</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>jenkins</category>
+            
+            <pubDate>2012-10-20T12:03:19+13:00</pubDate>
+            <guid>/2012/10/20/desenvolvendo-plug-ins-para-o-jenkins-hospedando-plug-ins-no-jenkins-ci-org-e-a-release-de-um-plug-in</guid>
+            <description><p>No ar o terceiro vídeo sobre desenvolvimento de plug-ins para o Jenkins. Neste vídeo é explicado como fazer para hospedar plug-ins Open Source no <a href="http://www.jenkins-ci.org" title="Jenkins CI">jenkins-ci.org</a>. No final do vídeo a versão 1.6 do plug-in <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin" title="Jenkins TAP Plug-in">Jenkins TAP Plug-in</a> é lançada. Esperamos que mostrando como é simples e fácil lançar um plug-in mais pessoas se sintam motivadas para contribuir com seus plug-ins.</p>
+
+<p class='center'><iframe width="560" height="315" src="http://www.youtube.com/embed/e4goibMj1gU" frameborder="0" allowfullscreen></iframe></p>
+
+<p>Bom divertimento :D</p>
+            
+            </description>
+        </item>
         
         
         
@@ -290,45 +314,6 @@ layout: blog</p>
 <p>We are working <a href="for_you/" title="For you">for you</a> :-)</p>
 
 <p>Have a great week!</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Monitor PBS clusters with Jenkins</title>
-            <link>/2012/10/02/monitor-pbs-clusters-with-jenkins</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>jenkins</category>
-            
-            <category>bioinformatics</category>
-            
-            <pubDate>2012-10-02T23:30:08+13:00</pubDate>
-            <guid>/2012/10/02/monitor-pbs-clusters-with-jenkins</guid>
-            <description><p>It is not exactly an idea, it is more a requirement for <a href="http://www.biouno.org" title="BioUno">BioUno</a>. A common way of administering <a href="http://en.wikipedia.org/wiki/Batch_processing" title="Batch processing">Batch tasks</a> in computer clusters is using Batch servers such as <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="PBS">PBS</a>. The process to submit a job consist of executing a shell script with special &#8220;meta&#8221; comments that will tell the PBS about your job priority, CPU&#8217;s needed, etc.</p>
-
-<p><a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> has an awesome remoting API, that has been reworked since its first version in Hudson (it was part of the core IIRC), and can be used for other things. There is a Wiki page about <a href="https://wiki.jenkins-ci.org/display/JENKINS/Monitoring+external+jobs" title="Monitoring external jobs with Jenkins">Monitoring external jobs</a>.</p>
-
-<p>What we would need, is query the PBS server, running qstat + parameters locally in the cluster machine. So the requirements that I see:</p>
-
-<ul>
-<li>Learn more about the <a href="https://github.com/jenkinsci/remoting" title="Jenkins-CI remoting API">remoting</a> API in Jenkins (see <a href="http://kohsuke.org/tag/remoting/" title="Remoting by KK">http://kohsuke.org/tag/remoting/</a> too)</li>
-<li>Rework <a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a> or use a wrapper to an existing C API (I&#8217;ve read in the past about one, the Python PBS module is a wrapper for this API too)</li>
-<li>Learn about this technique for monitoring external jobs mentioned in that Wiki page</li>
-<li>Write glue code if needed</li>
-<li>Test with a <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="PBS cluster">PBS cluster</a></li>
-<li>Report the findings (paper?)</li>
-</ul>
-
-<p>Just food for thought :D</p>
-
-<p><strong>Edit:</strong> There is a <a href="https://wiki.jenkins-ci.org/label/JENKINS/plugin-cluster" title="plugin-cluster">label in Jenkins Wiki</a> with several plug-ins that could be used for reference</p>
             
             </description>
         </item>

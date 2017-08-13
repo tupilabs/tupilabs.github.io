@@ -10,13 +10,55 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-08-06T00:06:06+12:00</lastBuildDate>
-        <pubDate>2017-08-06T00:06:06+12:00</pubDate>
+        <lastBuildDate>2017-08-13T14:34:06+12:00</lastBuildDate>
+        <pubDate>2017-08-13T14:34:06+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>TupiLabs Report: 14 Jul, 20 Jul</title>
+            <link>/2013/07/22/tupilabs-report-14-jul-20-jul</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>tupilabs-report</category>
+            
+            <pubDate>2013-07-22T16:38:00+12:00</pubDate>
+            <guid>/2013/07/22/tupilabs-report-14-jul-20-jul</guid>
+            <description><p>Here&#8217;s the list of the cool things that happened at <strong>TupiLabs</strong> since last Sunday.</p>
+<ul>
+<li>More work on the <strong>Hostel system</strong> we are creating for a customer</li>
+<li>80% done in <a href="http://paskuale.com">Paskuale</a> frontend</li>
+<li>Preparing presentation for <a href="http://www.dmc-latam.com/palestrantes">DMC-Latam 2013</a></li>
+<li>More work on <strong>Jenkins Meetup Sao Paulo 2013</strong>, now we have the <a href="http://www.cloudbees.com/forms/jenkins-user-conference-call-papers.cb">CFP</a> in place :o)</li>
+<li>Writing an article on a build-pattern for <a href="http://cbsoft2013.unb.br/miniplop">MiniPlop 2013</a></li>
+<li>Added more expressions to <a href="http://www.speaklikeabrazilian.com/">Speak Like A Brazilian</a></li>
+<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17947">JENKINS-17947</a></li>
+<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17504">JENKINS-17504</a></li>
+<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17941">JENKINS-17941</a></li>
+<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17855">JENKINS-17855</a></li>
+<li><a href="https://issues.jenkins-ci.org/browse/JENKINS-17859">JENKINS-17859</a></li>
+<li><a href="https://github.com/tupilabs/tap4j/issues/12">tap4j issue 12</a></li>
+<li><a href="https://github.com/tupilabs/tap4j/issues/14">tap4j issue 14</a></li>
+<li><a href="https://github.com/Frege/frege/issues/11">frege issue 11</a></li>
+<li><strong>Released <a href="http://tap4j.org">tap4j</a>-4.0.2</strong></li>
+<li><strong>Released <a href="http://tap4j.org">tap4j</a>-4.0.3</strong></li>
+<li>Updated <a href="http://tap4j.org">tap4j</a> website</li>
+<li><strong>Released <a href="https://wiki.jenkins-ci.org/display/JENKINS/TAP+Plugin">Jenkins TAP Plug-in</a>-1.11</strong></li>
+</ul>
+<p>We are working <a href="for_you/">for you</a></p>
+<p>Have a great week! :-)</p>
+            
+            </description>
+        </item>
         
         
         
@@ -334,36 +376,6 @@ flexibility and modularity.</p>
 
             
             &lt;a href=&#34;/2013/05/26/codeigniter-and-piecrust-integration&#34;&gt;Read more...&lt;/a&gt;
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Escaping Twig macros in Geshi</title>
-            <link>/2013/05/26/escaping-twig-macros-in-geshi</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>php</category>
-            
-            <pubDate>2013-05-26T19:29:00+12:00</pubDate>
-            <guid>/2013/05/26/escaping-twig-macros-in-geshi</guid>
-            <description><p>While writing the <a href="//2013/05/26/creating-a-twig-macro-for-piecrust">last post</a>, I had some trouble trying to escape a Twig macro 
-when using Geshi for syntax highlighting. Here&#8217;s the trick to escape it: 
-<em><a href="http://twig.sensiolabs.org/doc/tags/raw.html">raw</a></em>.</p>
-<p>The <em>raw</em> Twig tag prints the subsequent tags without interpreting it.</p>
-<div class="highlight"><pre><span class="cp">{%</span><span class="k">geshi</span> <span class="s1">&#39;twig&#39;</span><span class="cp">%}</span><span class="x"></span>
-<span class="x">{ %raw%}</span><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">button</span><span class="o">(..</span><span class="p">.</span><span class="o">)</span> <span class="cp">%}</span><span class="x">{ %endraw%}</span>
-<span class="x">&lt;p&gt;Some random HTML code...&lt;/p&gt;</span><span class="cp">{%</span> <span class="k">raw</span><span class="cp">%}{%</span> <span class="k">endmacro</span> <span class="cp">%}</span><span class="x">{ %endraw%}</span>
-<span class="cp">{%</span><span class="k">endgeshi</span><span class="cp">%}</span><span class="x"></span>
-</pre></div>
-
-<p><em>We had to add an extra space between { and %. Can you figure out why? :-)</em></p>
             
             </description>
         </item>
