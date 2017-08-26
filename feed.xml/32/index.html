@@ -10,13 +10,49 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-08-20T22:15:49+12:00</lastBuildDate>
-        <pubDate>2017-08-20T22:15:49+12:00</pubDate>
+        <lastBuildDate>2017-08-27T01:33:42+12:00</lastBuildDate>
+        <pubDate>2017-08-27T01:33:42+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Apache JMeter 2.8 released!</title>
+            <link>/2012/10/07/apache-jmeter-2-8-released</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>announce</category>
+            
+            <pubDate>2012-10-07T20:33:09+13:00</pubDate>
+            <guid>/2012/10/07/apache-jmeter-2-8-released</guid>
+            <description><p>
+ As announced in Apache announce <a href="http://www.apache.org/foundation/mailinglists.html"
+  title="Apache Mailing Lists">mailing list</a>, <a href="http://jmeter.apache.org" title="JMeter">JMeter</a> 2.8 has
+ been released last week. Take a look at <a href="http://jmeter.apache.org/changes.html"
+  title="http://jmeter.apache.org/changes.html">http://jmeter.apache.org/changes.html</a> for a complete list of changes
+ in the current version.
+</p>
+
+<p><img src="img/logos/jmeter.jpg" alt="" title="JMeter" width="221" height="102"
+ class="aligncenter size-full wp-image-768" /></p>
+<p>
+ Among the changes, the &#8220;<strong>Thread Group: New Option Delay thread creation until needed</strong>&#8221; has great impact
+ over the execution of performance tests with many threads. Basically, instead of creating the whole thread pool before
+ running your tests, now JMeter creates the threads as needed, avoiding unnecessary threads and saving a lot of memory.
+</p>
+
+<p>Have fun! And kudos to the JMeter team!</p>
+            
+            </description>
+        </item>
         
         
         
@@ -450,36 +486,6 @@
 
             
             &lt;a href=&#34;/2012/06/30/comparison-of-pbs-cluster-monitoring-applications&#34;&gt;Read more...&lt;/a&gt;
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Creating a PBS/MPI cluster for bioinformatics – Part 3</title>
-            <link>/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>tutorial</category>
-            
-            <category>jenkins</category>
-            
-            <category>bioinformatics</category>
-            
-            <pubDate>2012-06-21T01:26:44+12:00</pubDate>
-            <guid>/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3</guid>
-            <description><p>This is the third and last part of this blog series. In this post we will install Structure (Pritchard Lab) and Torque PBS. We will configure a simple run in Structure using the two machines in our cluster.</p>
-
-<h2>Installing Structure</h2>
-
-<p>Installing structure is very simple. Download the latest version from <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Pritchard Lab">Prichard Lab page</a>, decompress it and move the executables to a folder in your $PATH (or use symlinks). Here I&#8217;m using <code>/usr/local/bin</code>, but to keep things in order, I renamed the <em>console</em> folder (from structure_linux_console.tar.gz) to <em>structure-console-2.3.3</em>, because I like to know the tool and its version without having to browse it. Then I moved it under <code>/opt/biouno</code>, where I keep the executables used by the cluster. Finally, I created the symlink <code>/usr/local/bin/structure</code> that points to <code>/opt/biouno/structure-console-2.3.3/structure</code>.</p>
-
-
-            
-            &lt;a href=&#34;/2012/06/21/creating-a-pbsmpi-cluster-for-bioinformatics-part-3&#34;&gt;Read more...&lt;/a&gt;
             
             </description>
         </item>
