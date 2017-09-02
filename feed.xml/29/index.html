@@ -10,13 +10,50 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-08-27T01:33:42+12:00</lastBuildDate>
-        <pubDate>2017-08-27T01:33:42+12:00</pubDate>
+        <lastBuildDate>2017-09-03T06:55:14+12:00</lastBuildDate>
+        <pubDate>2017-09-03T06:55:14+12:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Escrevendo scripts Groovy para o Jenkins usando o Eclipse com auto complete</title>
+            <link>/2013/01/17/escrevendo-scripts-groovy-para-o-jenkins-usando-o-eclipse-com-auto-complete</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>jenkins</category>
+            
+            <category>eclipse</category>
+            
+            <category>groovy</category>
+            
+            <pubDate>2013-01-17T13:05:29+13:00</pubDate>
+            <guid>/2013/01/17/escrevendo-scripts-groovy-para-o-jenkins-usando-o-eclipse-com-auto-complete</guid>
+            <description><p><a href="http://groovy.codehaus.org/" title="Groovy">Groovy</a> é uma linguagem dinâmica e simples de usar. Ele é baseada no Java (mas mais simples) e roda dentro da JVM. Assim, você consegue executar trechos de código dentro da sua JVM e modificar objetos em tempo de execução, sem nem precisar compilar seus scripts.</p>
+
+<p>O <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> utiliza Groovy de diversas maneiras. Quando você escreve plug-ins, você pode usar Groovy tanto para o código quanto para a UI (a vantagem disso é que você pode depurar a tela, diferente do <a href="http://commons.apache.org/jelly/" title="Apache Commons Jelly">Jelly</a>). Há também diversos plug-ins que permitem que você execute Groovy ou algum DSL com Groovy (como o <a href="https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin" title="Jenkins Job DSL Plug-in">Job DSL Plug-in</a>). E há também o <a href="https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+CLI" title="Jenkins CLI">CLI</a> do Jenkins, um cliente que permite que você execute diversos comandos no Jenkins, entre eles o <code>groovysh</code>, um shell para Groovy, e o <code>groovy</code>, que permite que você envie um script para o Jenkins executar no master.</p>
+
+<p>Há um exemplo que vem com o Jenkins de um script groovy bem simples, que imprime todos os plug-ins instalados:</p>
+
+<p><code>println(Jenkins.instance.pluginManager.plugins)</code></p>
+<p><code>pluginManager</code> é o responsável por gerenciar plug-ins no Jenkins, e é um membro da classe Jenkins. Você pode ver mais sobre esta classe lendo o <a href="http://javadoc.jenkins-ci.org/" title="Jenkins Javadoc">Javadoc do projeto</a>. Ou se você utilizar <a href="http://www.eclipse.org" title="Eclipse IDE">Eclipse</a> (ou outro IDE) você pode utilizar auto complete e ir escrevendo seu código Groovy com auxílio do IDE :o).</p>
+
+<p class='center'><iframe width="420" height="315" src="http://www.youtube.com/embed/jmPJvJGEFb4" frameborder="0" allowfullscreen></iframe></p>
+
+<p>No vídeo acima você aprenderá como configurar seu Eclipse. O segredo é criar um projeto <a href="http://maven.apache.org" title="Apache Maven">Maven</a> + Groovy (com o plug-in Groovy para Eclipse) e incluir uma dependência para o projeto do Jenkins no seu pom.xml. Assim o Eclipse, utilizando Maven e Groovy, consegue usar o auto complete no seu código. Você pode digitar o começo do nome de uma classe e apertar <strong>CTRL + TAB</strong> para o Eclipse mostrar as opções e auto completar, ou clicar <strong>F3</strong> e ver o código-fonte no projeto Jenkins ou <strong>CTRL + T</strong> e ver a hierarquia (de onde herda, quem estende essa classe, etc).</p>
+
+<p>Aproveite este começo de ano (já que alguns dizem que o ano começo depois do carnaval) e automatize aquelas tarefas chatas como verificar se todos os jobs estão usando time-out (com o <a href="tupilabs-report-nov-04-nov-10/" title="Jenkins Build Timeout Plug-in">Build Timeout Plug-in</a>) ou para realizar migrações ou atualizações em plug-ins, jobs ou slaves.</p>
+            
+            </description>
+        </item>
         
         
         
@@ -333,30 +370,6 @@
             <pubDate>2012-11-10T12:27:59+13:00</pubDate>
             <guid>/2012/11/10/webinar-configurando-continuous-delivery-com-o-jenkins-enterprise-e-deployit</guid>
             <description><p>Na semana passada a <a href="http://www.cloudbees.com" title="CloudBees">CloudBees</a> e a <a href="http://www.xebialabs.com" title="XebiaLabs">XebiaLabs</a> disponibilizaram o webinar &#8220;Setting up Continuous Delivery with Jenkins Enterprise and Deployit&#8221; (Configurando Continuous Delivery com o Jenkins Enterprise e Deployit). Nesse webinar eles apresentaram alguns plug-ins interessantes que estão presentes no Jenkins Enterprise, mas também mostraram um ótimo exemplo de pipeline com continuous delivery.</p>
-
-<p class='center'><iframe src="http://player.vimeo.com/video/53031852?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/53031852">Workshop Setting up Continuous Delivery with Jenkins Enterprise & Deployit 11-7-12 12.00 PM</a> from <a href="http://vimeo.com/xebialabs">XebiaLabs</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Webinar: Setting up Continuous Delivery with Jenkins Enterprise and Deployit</title>
-            <link>/2012/11/10/webinar-setting-up-continuous-delivery-with-jenkins-enterprise-and-deployit</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>jenkins</category>
-            
-            <category>news</category>
-            
-            <pubDate>2012-11-10T12:25:20+13:00</pubDate>
-            <guid>/2012/11/10/webinar-setting-up-continuous-delivery-with-jenkins-enterprise-and-deployit</guid>
-            <description><p>Last week <a href="http://www.cloudbees.com" title="CloudBees">CloudBees</a> and <a href="http://www.xebialabs.com" title="XebiaLabs">XebiaLabs</a> delivered the webinar Setting up Continuous Delivery with Jenkins Enterprise and Deployit. In this webinar they present some interesting plug-ins available in Jenkins Enterprise, but also demonstrate a great example of a continuous delivery pipeline.</p>
 
 <p class='center'><iframe src="http://player.vimeo.com/video/53031852?badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/53031852">Workshop Setting up Continuous Delivery with Jenkins Enterprise & Deployit 11-7-12 12.00 PM</a> from <a href="http://vimeo.com/xebialabs">XebiaLabs</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
             
