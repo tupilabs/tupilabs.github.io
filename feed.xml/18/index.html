@@ -10,13 +10,91 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-09-21T22:56:16+12:00</lastBuildDate>
-        <pubDate>2017-09-21T22:56:16+12:00</pubDate>
+        <lastBuildDate>2017-09-30T21:21:39+13:00</lastBuildDate>
+        <pubDate>2017-09-30T21:21:39+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>On using Laravel with the repository pattern and Eloquent</title>
+            <link>/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>laravel</category>
+            
+            <category>php</category>
+            
+            <pubDate>2014-08-11T21:27:03+12:00</pubDate>
+            <guid>/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent</guid>
+            <description><p><a href="http://en.wikipedia.org/wiki/Separation_of_concerns">Separation of concerns</a> is a design principle, and 
+states that each part of a software addresses a separate concern. Different patterns and abstractions 
+can be used for that like MVC, DAOs and repositories.</p>
+<p>Repositories help in the abstraction of the data layer. It provides an interface for retrieving data, 
+independent of the implementation, acting like a collection of objects.</p>
+<figure style='text-align: center'>
+<img src="/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent/RepositoryDiagram.png" alt="From: http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html"/>
+<figcaption>Fig1. - Repositories <i>http://blog.8thlight.com/mike-ebert/2013/03/23/the-repository-pattern.html</i></figcaption>
+</figure>
+
+<p>In <a href="http://nestor-qa.org">Nestor-QA</a> I had implemented repositories using some Java code I had in my 
+mind, without paying too much attention to the abstraction layers. Two weeks ago, while working on some 
+complicated issue in Nestor I noticed that the repositories in Nestor had been implemented using the 
+Eloquent classes.</p>
+<p>Eloquent is a library used in Laravel for data abstraction. It provides access to databases like MySQL 
+and SQLite, kind like DAOs (and sometimes like repositories too). However, for Nestor being a test 
+management tool, we are trying to be platform and framework independent. Here&#8217;s the old repository code in 
+action: </p>
+<div class="highlight"><pre><span class="x">class DbProjectRepository implements ProjectRepository {</span>
+
+<span class="x">    public function all()</span>
+<span class="x">    {</span>
+<span class="x">        return Project::where(&#39;project_statuses_id&#39;, &#39;&lt;&gt;&#39;, 2)-&gt;get();</span>
+<span class="x">    }</span>
+
+<span class="x">    // ...</span>
+
+<span class="x">}</span>
+</pre></div>
+
+<p>As you can see, we were returning the result of the get() method from Eloquent. Another big mistake was 
+using these objects in the views. In the end we were not only using data layer elements in the wrong place, 
+but we also had many queries to render an UI. </p>
+<div class="highlight"><pre><span class="x">abstract class DbBaseRepository extends BaseRepository {</span>
+
+<span class="x">    protected $model;</span>
+
+<span class="x">    public function __construct($model)</span>
+<span class="x">    {</span>
+<span class="x">        $this-&gt;model = $model;</span>
+<span class="x">    }</span>
+
+<span class="x">    public function all()</span>
+<span class="x">    {</span>
+<span class="x">        return $this-&gt;model-&gt;all()-&gt;toArray();</span>
+<span class="x">    }</span>
+
+<span class="x">    // ...</span>
+<span class="x">}</span>
+</pre></div>
+
+<p>After searching for a while, I found a <a href="https://github.com/samgreenwood/swapshop/tree/master/app/Swapshop/Repositories">nice example</a> 
+of a class design for repositories, where the return type is always an array. In the views you will 
+have the array and keys, and in case someday you decide moving to another framework, you can leave the 
+views unchanged (hopefully :-). Neat, no?</p>
+<p><img alt="Ahn ahn" src="/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent/SA1HWow.gif" /></p>
+<p>Happy hacking</p>
+            
+            </description>
+        </item>
         
         
         
@@ -304,47 +382,6 @@
 </ul>
 <p>We are working <a href="for_you/">for you</a></p>
 <p>Have a great week! :-) </p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Continuation Passing Style</title>
-            <link>/2014/06/15/continuation-passing-style</link>
-            
-            <author>Bruno P. Kinoshita</author>
-            <dc:creator>Bruno P. Kinoshita</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>jenkins</category>
-            
-            <category>functional programming</category>
-            
-            <pubDate>2014-06-15T15:00:03+12:00</pubDate>
-            <guid>/2014/06/15/continuation-passing-style</guid>
-            <description><h3>Continuation Passing Style</h3>
-<p>In <a href="http://en.wikipedia.org/wiki/Continuation-passing_style">Continuation Passing Style</a> (CPS), the program is comprised of several <strong>continuations</strong>. The methods in CPS programming do not return a value, rather, they pass control (including the current context) to the next continuation.</p>
-<p>Each continuation receives a context, which stores the state of the current chain of continuations at a
-given time, and can alter this context and call the next continuation. There can exist different types of 
-continuations too, for handling exceptions, suspending the program, or simply calling other continuations. </p>
-<p>In some functional programming languages CPS is supported and can be used in conjunction with <a href="http://en.wikipedia.org/wiki/Tail_call">tail-call optimization</a> to try to <a href="http://en.wikipedia.org/wiki/Continuation-passing_style#CPS_and_tail_calls">control the call stack size</a>.</p>
-<h3>Use cases of CPS in Java</h3>
-<p>Apache Commons contains a component in its sandbox, <a href="http://commons.apache.org/sandbox/commons-javaflow">Apache Commons JavaFlow</a>, that hasn&#8217;t been updated in a while, but that supports continuations in Java. 
-It requires the code to be instrumented, and provides ways to restore the execution of the code.</p>
-<p>The <a href="https://github.com/jenkinsci/workflow-plugin">Jenkins Workflow Plug-in</a> was presented during the <a href="http://www.cloudbees.com/jenkins/juc-2014/boston">Jenkins User Conference 2014 in Boston</a>. The plug-in has several Maven modules, among is the <strong>cps</strong> Maven module. This maven module provides CPS to the plugin. If you take a look at the team page of the JavaFlow project, you will find it interesting that Kohsuke Kawaguchi (Jenkins creator) is listed there too :-) </p>
-<p>From what I could tell, the Jenkins Workflow Plug-in utilizes CPS to break down the workflow execution in 
-several continuations, that are persisted to the disk and can be resumed in case the job execution is 
-interrupted.</p>
-<p>There are several differences between the cps module and Apache Commons Javaflow - such that in the latter the running code needs to be instrumented. I haven&#8217;t investigated all of them yet, but it sounds very interesting! I&#8217;m waiting for one of those rainy weekends so that I can spend many hours reading the code of the two and taking notes.</p>
-<h3>Final thoughts</h3>
-<p>CPS is a very interesting concept, and while probably the enterprise Java developer is not going to use it for his every day corporate web application (though some FP programmers might be using it), it is an 
-interesting technique that can probably be applied in some specific scenarios - as it was in the Jenkins 
-Workflow Plug-in.</p>
-<p>There are <strong>optimizations available for CPS</strong> <a href="http://stackoverflow.com/questions/14781875/choosing-between-continuation-passing-style-and-memoization">1</a><a href="http://research.microsoft.com/pubs/64044/compilingwithcontinuationscontinued.pdf">2</a> too, so I believe the workflow-plugin has space for more innovation, and lots of fun for hackers.</p>
-<p>Happy hacking!</p>
             
             </description>
         </item>
