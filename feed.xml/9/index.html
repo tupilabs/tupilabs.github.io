@@ -10,13 +10,100 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-09-30T21:21:39+13:00</lastBuildDate>
-        <pubDate>2017-09-30T21:21:39+13:00</pubDate>
+        <lastBuildDate>2017-10-01T17:27:40+13:00</lastBuildDate>
+        <pubDate>2017-10-01T17:27:40+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Using Nikto to scan a website for vulnerabilities</title>
+            <link>/2016/04/09/using-nikto-to-scan-a-website-for-vulnerabilities</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>laravel</category>
+            
+            <category>security</category>
+            
+            <category>nikto</category>
+            
+            <category>speak-like-a-brazilian</category>
+            
+            <pubDate>2016-04-09T19:29:03+12:00</pubDate>
+            <guid>/2016/04/09/using-nikto-to-scan-a-website-for-vulnerabilities</guid>
+            <description><p><a href="https://www.cirt.net/Nikto2">Nikto</a> is a web server scanner, written in Perl and licensed under
+GNU GPL. The <a href="https://github.com/sullo/nikto.git">source code</a> is available at GitHub.</p>
+<p>We released a new version of <a href="https://speaklikeabrazilian.com">Speak Like A Brazilian</a> last week,
+upgrading from Laravel 4.x to 5.x. Once we had a release candidate (RC) tag
+ready we deployed it and ran Nikto to check for issues in the server.</p>
+<p>The default settings are enough for an initial test, but you can take a look at
+<em>nikto &#8212;help</em> for other interesting parameters.</p>
+<div class="highlight"><pre>nikto -host https://speaklikeabrazilian.com
+</pre></div>
+
+<p>Here are the results of the scanning.</p>
+<div class="highlight"><pre>- Nikto v2.1.4
+---------------------------------------------------------------------------
++ Target IP:          45.56.78.89
++ Target Hostname:    speaklikeabrazilian.com
++ Target Port:        80
++ Start Time:         2016-04-08 12:57:02
+---------------------------------------------------------------------------
++ Server: nginx
++ Retrieved x-powered-by header: PHP/5.5.9-1ubuntu4.14
++ No CGI Directories found <span class="o">(</span>use <span class="s1">&#39;-C all&#39;</span> to force check all possible <span class="nb">dirs</span><span class="o">)</span>
++ robots.txt contains <span class="m">11</span> entries which should be manually viewed.
++ ETag header found on server, fields: 0x5704861f 0xef 
++ OSVDB-3092: /new: This may be interesting...
++ OSVDB-3092: /new/: This might be interesting...
++ OSVDB-3093: /.htaccess: Contains authorization information
++ OSVDB-3092: /de/: This might be interesting... potential country code <span class="o">(</span>Germany<span class="o">)</span>
++ OSVDB-3092: /it/: This might be interesting... potential country code <span class="o">(</span>Italy<span class="o">)</span>
++ OSVDB-3092: /jp/: This might be interesting... potential country code <span class="o">(</span>Japan<span class="o">)</span>
++ OSVDB-3092: /pt/: This might be interesting... potential country code <span class="o">(</span>Portugal<span class="o">)</span>
++ OSVDB-3092: /es/: This might be interesting... potential country code <span class="o">(</span>Spain<span class="o">)</span>
++ <span class="m">6448</span> items checked: <span class="m">39</span> error<span class="o">(</span>s<span class="o">)</span> and <span class="m">11</span> item<span class="o">(</span>s<span class="o">)</span> reported on remote host
++ End Time:           2016-04-08 13:29:41 <span class="o">(</span><span class="m">1959</span> seconds<span class="o">)</span>
+---------------------------------------------------------------------------
++ <span class="m">1</span> host<span class="o">(</span>s<span class="o">)</span> tested
+</pre></div>
+
+<p>There list had a few false positives, but two outstanding issues could be easily fixed.
+First the .htaccess file.</p>
+<div class="highlight"><pre><span class="c"># File: speaklikeabrazilian.vhost.conf</span>
+<span class="c"># From: https://www.nginx.com/resources/wiki/start/topics/recipes/dokuwiki/</span>
+<span class="c"># Block access to .htaccess files</span>
+location ~ /<span class="se">\.</span>ht <span class="o">{</span>
+    deny  all<span class="p">;</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>And the second one is to hide the PHP server signature.</p>
+<div class="highlight"><pre><span class="c"># File: php.ini</span>
+<span class="c"># From: http://www.techbrown.com/hide-server-signature-of-nginx-php-version-on-linux.shtml</span>
+<span class="nv">expose_php</span> <span class="o">=</span> Off
+</pre></div>
+
+<p>It is not polite to run Nikto (or most other scanners to be honest) on web sites that you
+do not maintain. Some sites are behind firewalls and IDS (Intrustion Detection System) systems
+that may block Nikto. When that happens, you can liaise with your Ops team and schedule an
+internal run on an application you develop or maintain.</p>
+<p>Nikto may help you finding flaws in your server and deployment. The next step now for Speak Like A
+Brazilian now is running the new code through
+<a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP&#8217;s ZAP Proxy</a>,
+which can analyse the HTTP requests for possible bugs.</p>
+<p>Happy hacking!</p>
+            
+            </description>
+        </item>
         
         
         
@@ -610,93 +697,6 @@ databases. All it takes is just adjust the database connections and re-run the j
 </li>
 <li>
 <p><a href="https://github.com/kinow/nz-osm-server/issues/10">https://github.com/kinow/nz-osm-server/issues/10</a></p>
-</li>
-</ul>
-<p>We are working <a href="http://tupilabs.com/for_you/">for you</a></p>
-<p>Have a great week! :-) </p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>TupiLabs Report: 31-Jan, 06-Feb</title>
-            <link>/2016/02/07/tupilabs-report-31-jan-06-feb</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2016-02-07T00:11:06+13:00</pubDate>
-            <guid>/2016/02/07/tupilabs-report-31-jan-06-feb</guid>
-            <description><p>This is our weekly Open Source report with news from 31-Jan to 06-Feb. </p>
-<ul>
-<li>
-<p>Neo4J graphgist <a href="http://portal.graphgist.org/graph_gists/6f59dd63-7c64-4e1f-8f07-355f8bd4f585">http://portal.graphgist.org/graph_gists/6f59dd63-7c64-4e1f-8f07-355f8bd4f585</a></p>
-</li>
-<li>
-<p><a href="https://github.com/biouno/clumpp-plugin/issues/2">https://github.com/biouno/clumpp-plugin/issues/2</a></p>
-</li>
-<li>
-<p><a href="https://github.com/biouno/clumpp-plugin/issues/2">https://github.com/biouno/clumpp-plugin/issues/2</a></p>
-</li>
-<li>
-<p><a href="https://github.com/biouno/distruct-plugin/issues/2">https://github.com/biouno/distruct-plugin/issues/2</a></p>
-</li>
-<li>
-<p>BioUno CLUMPP Plug-in 0.8-1</p>
-</li>
-<li>
-<p>BioUno distruct Plug-in 0.4</p>
-</li>
-<li>
-<p><a href="https://github.com/biouno/distruct-plugin/issues/3">https://github.com/biouno/distruct-plugin/issues/3</a></p>
-</li>
-<li>
-<p><a href="https://github.com/biouno/distruct-plugin/issues/3">https://github.com/biouno/distruct-plugin/issues/3</a></p>
-</li>
-<li>
-<p><a href="https://issues.apache.org/jira/browse/IO-491">https://issues.apache.org/jira/browse/IO-491</a></p>
-</li>
-<li>
-<p><a href="https://issues.apache.org/jira/browse/IO-483">https://issues.apache.org/jira/browse/IO-483</a></p>
-</li>
-<li>
-<p><a href="https://github.com/apache/commons-vfs/pull/10">https://github.com/apache/commons-vfs/pull/10</a></p>
-</li>
-<li>
-<p><a href="https://issues.apache.org/jira/browse/VFS-189">https://issues.apache.org/jira/browse/VFS-189</a></p>
-</li>
-<li>
-<p><a href="https://github.com/tupilabs/tap4j/pull/40">https://github.com/tupilabs/tap4j/pull/40</a></p>
-</li>
-<li>
-<p>Released tap4j 4.2.0 www.tap4j.org</p>
-</li>
-<li>
-<p><a href="https://github.com/tupilabs/tap4j/issues/15">https://github.com/tupilabs/tap4j/issues/15</a></p>
-</li>
-<li>
-<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-29476">https://issues.jenkins-ci.org/browse/JENKINS-29476</a></p>
-</li>
-<li>
-<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-32461">https://issues.jenkins-ci.org/browse/JENKINS-32461</a></p>
-</li>
-<li>
-<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-32566">https://issues.jenkins-ci.org/browse/JENKINS-32566</a></p>
-</li>
-<li>
-<p><a href="http://stackoverflow.com/questions/34041120/how-read-active-choices-parameter-value-in-another-active-chocices-parameters-g/35233339#35233339">http://stackoverflow.com/questions/34041120/how-read-active-choices-parameter-value-in-another-active-chocices-parameters-g/35233339#35233339</a></p>
-</li>
-<li>
-<p><a href="http://stackoverflow.com/questions/33230782/jenkins-active-choices-plug-in-with-alias-names/35233603#35233603">http://stackoverflow.com/questions/33230782/jenkins-active-choices-plug-in-with-alias-names/35233603#35233603</a></p>
-</li>
-<li>
-<p><a href="http://stackoverflow.com/questions/33230782/jenkins-active-choices-plug-in-with-alias-names/35233603#35233603">http://stackoverflow.com/questions/33230782/jenkins-active-choices-plug-in-with-alias-names/35233603#35233603</a></p>
 </li>
 </ul>
 <p>We are working <a href="http://tupilabs.com/for_you/">for you</a></p>
