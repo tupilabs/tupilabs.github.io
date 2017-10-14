@@ -10,13 +10,90 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-10-01T17:27:40+13:00</lastBuildDate>
-        <pubDate>2017-10-01T17:27:40+13:00</pubDate>
+        <lastBuildDate>2017-10-15T10:32:30+13:00</lastBuildDate>
+        <pubDate>2017-10-15T10:32:30+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>TupiLabs Report: 07 Apr, 13 Apr</title>
+            <link>/2013/04/14/tupilabs-report-07-apr-13-apr</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>jenkins</category>
+            
+            <category>jenkins-plugin</category>
+            
+            <category>jenkins-testlink</category>
+            
+            <category>pagination</category>
+            
+            <category>speak-like-a-brazilian</category>
+            
+            <category>testlink</category>
+            
+            <category>testlink-java-api</category>
+            
+            <category>wp-pagenavi</category>
+            
+            <pubDate>2013-04-14T23:41:31+12:00</pubDate>
+            <guid>/2013/04/14/tupilabs-report-07-apr-13-apr</guid>
+            <description><p>Here’s the list of the cool things that happened at TupiLabs since last Sunday.
+<ul>
+    <li><span style="line-height: 13px;">Released <a href="http://search.maven.org/#artifactdetails%7Cbr.eti.kinoshita%7Ctestlink-java-api%7C1.9.6-1%7Cjar">testlink-java-api 1.9.6-1</a></span></li>
+    <li>Released <a href="https://wiki.jenkins-ci.org/display/JENKINS/TestLink+Plugin">Jenkins TestLink Plug-in</a> 3.3</li>
+    <li>Sent a request of merge for <a href="http://www.teamst.org">TestLink</a> gitorious</li>
+    <li>testlink-java-api <a href="https://github.com/kinow/testlink-java-api/issues/6">#6</a></li>
+    <li>testlink-java-api <a href="https://github.com/kinow/testlink-java-api/issues/5">#5</a></li>
+    <li>Updated <a href="http://testlinkjavaapi.sf.net">testlink-java-api SourceForge.net website</a></li>
+    <li>Added more expressions to <a href="http://www.speaklikeabrazilian.com">Speak Like A Brazilian</a></li>
+    <li>Meeting with prospect for a <a href="http://www.jenkins-ci.org">Jenkins</a> project</li>
+    <li>Fixed bug in TupiLabs website with paginations (big thanks to <strong>José</strong> for that!, see <a title="Pagination not working in WordPress blog with WP-PageNavi" href="pagination-not-working-in-wordpress-blog-with-wp-pagenavi/">this post</a> for details)</li>
+</ul>
+We are working <a title="For you" href="for_you/">for you</a></p>
+<p>Have a great week!</p>
+            
+            </description>
+        </item>
+        
+        
+        
+        <item>
+            <title>Pagination not working in Wordpress blog with WP-PageNavi</title>
+            <link>/2013/04/14/pagination-not-working-in-wordpress-blog-with-wp-pagenavi</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>wordpress</category>
+            
+            <category>php</category>
+            
+            <pubDate>2013-04-14T23:41:03+12:00</pubDate>
+            <guid>/2013/04/14/pagination-not-working-in-wordpress-blog-with-wp-pagenavi</guid>
+            <description><p>TupiLabs website uses <a href="http://www.wordpress.org" title="Wordpress">Wordpress</a> as backing <a href="http://en.wikipedia.org/wiki/Content_management_system" title="CMS Wikipedia post">CMS</a> and blog, and here we have a modified <a href="http://www.rootstheme.com/" title="Roots Theme for Wordpress">Roots theme</a> with bunch of plug-ins and settings. The pagination of the posts is done with <a href="http://wordpress.org/extend/plugins/wp-pagenavi/" title="WP-Pagenavi">WP-Pagenavi</a> plug-in. When we received a message from <strong>José</strong> saying that the pagination was broken, we thought it had something to do with <a href="http://wpml.org/" title="WPML">WPML</a>, a translation plug-in, used to maintain both languages (en and pt_BR) in the site.</p>
+
+<p>Later we figured out what was causing this error. The error happened only in <strong>pages that list categories</strong> (blog, news and ideas). In these pages, the function <em>query_posts</em> was being used, and after googling a while we found out that there was an extra argument for pagination.</p>
+
+<p><code>query_posts(array('category_name' =&gt; 'blog'));</code></p>
+<p>Changing the line above to:</p>
+
+<p><code>query_posts(array('category_name' =&gt; 'blog', 'paged' =&gt; get_query_var('page')));</code></p>
+<p>Fixed the issue. We also use plug-ins for cache, so we had to purge the pages from the cache in order to see the results. Hope that helps you, in case you have similar problem. Cheers.</p>
+            
+            </description>
+        </item>
         
         
         
@@ -361,66 +438,6 @@ series&#8230;&#8221;</quote></p>
 <p>We are working <a href="for_you/" title="For you">for you</a></p>
 
 <p>Have a great week!</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Add stemming to Cogroo</title>
-            <link>/2013/03/19/add-stemming-to-cogroo</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>cogroo</category>
-            
-            <category>ideas</category>
-            
-            <category>nlp</category>
-            
-            <pubDate>2013-03-19T22:05:58+13:00</pubDate>
-            <guid>/2013/03/19/add-stemming-to-cogroo</guid>
-            <description><p>
- <a href="http://cogroo.sourceforge.net/">Cogroo</a> is used by <a href="http://www.openoffice.org">OpenOffice&#8217;s</a>
- spell and grammar checker, as well as in some other solutions. At moment it doesn&#8217;t support stemming (see today&#8217;s <a
-  href="http://sourceforge.net/mailarchive/message.php?msg_id=30619973">mailing list posts</a> about this), but other
- tools like <a href="http://www.nltk.org">nltk</a> do. There&#8217;s also a nice <a
-  href="http://en.wikipedia.org/wiki/Stemming">Wiki page</a> about it.
-</p>
-
-<p class='center'>
- <a href="http://cogroo.sourceforge.net/"><img src="img/logos/cogroo.png" alt="cogroo"
-  width="300" height="300" class="aligncenter size-medium wp-image-1157" /></a>
-</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Hook do SVN para criar um novo job no Jenkins não está funcionando com o Eclipse</title>
-            <link>/2013/03/18/svn-hook-to-create-a-new-job-in-jenkins-2</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>eclipse</category>
-            
-            <category>jenkins</category>
-            
-            <category>subversion</category>
-            
-            <pubDate>2013-03-18T15:55:29+13:00</pubDate>
-            <guid>/2013/03/18/svn-hook-to-create-a-new-job-in-jenkins-2</guid>
-            <description><p>Havíamos preparado um build pipeline usando SVN, hooks e Jenkins. Além do tradicional hook para disparar jobs no Jenkins, havíamos criado um hook para criar novos jobs no Jenkins, baseados em um template Groovy para cada branch. Basicamente, este script estava casando o commit log do Subversion com &#8220;^A new branch&#8221;. Estava funcionando bem, exceto para desenvolvedores Eclipse. Novos branches criados com o Eclipse não estavam disparando o hook corretamente. Depois de debugar um pouco, descobrimos que o Eclipse usa comandos diferentes para criar novos branches no SVN.</p>
-<p>Em caso você tenha um pipeline semelhante, você será forçado ou a utilizar diferentes expressões, ou pedir aos desenvolvedores que utilizem a linha de comando para criar novos branches (adotamos a opção #2 :=)</p>
             
             </description>
         </item>
