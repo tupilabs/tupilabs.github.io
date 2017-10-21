@@ -10,13 +10,43 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-10-15T10:32:30+13:00</lastBuildDate>
-        <pubDate>2017-10-15T10:32:30+13:00</pubDate>
+        <lastBuildDate>2017-10-22T00:01:26+13:00</lastBuildDate>
+        <pubDate>2017-10-22T00:01:26+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Escaping Twig macros in Geshi</title>
+            <link>/2013/05/26/escaping-twig-macros-in-geshi</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>php</category>
+            
+            <pubDate>2013-05-26T19:29:00+12:00</pubDate>
+            <guid>/2013/05/26/escaping-twig-macros-in-geshi</guid>
+            <description><p>While writing the <a href="//2013/05/26/creating-a-twig-macro-for-piecrust">last post</a>, I had some trouble trying to escape a Twig macro 
+when using Geshi for syntax highlighting. Here&#8217;s the trick to escape it: 
+<em><a href="http://twig.sensiolabs.org/doc/tags/raw.html">raw</a></em>.</p>
+<p>The <em>raw</em> Twig tag prints the subsequent tags without interpreting it.</p>
+<div class="highlight"><pre><span class="cp">{%</span><span class="k">geshi</span> <span class="s1">&#39;twig&#39;</span><span class="cp">%}</span><span class="x"></span>
+<span class="x">{ %raw%}</span><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">button</span><span class="o">(..</span><span class="p">.</span><span class="o">)</span> <span class="cp">%}</span><span class="x">{ %endraw%}</span>
+<span class="x">&lt;p&gt;Some random HTML code...&lt;/p&gt;</span><span class="cp">{%</span> <span class="k">raw</span><span class="cp">%}{%</span> <span class="k">endmacro</span> <span class="cp">%}</span><span class="x">{ %endraw%}</span>
+<span class="cp">{%</span><span class="k">endgeshi</span><span class="cp">%}</span><span class="x"></span>
+</pre></div>
+
+<p><em>We had to add an extra space between { and %. Can you figure out why? :-)</em></p>
+            
+            </description>
+        </item>
         
         
         
@@ -326,61 +356,6 @@ using <a href="http://jenkins-ci.org">Jenkins</a>.</li>
 <p><img src="http://nutch.apache.org/images/nutch_logo_tm.gif" width="121" height="48" class="aligncenter" /></p>
 
 <p><blockquote>Apache Nutch is an open source web-search software project. Nutch is a project of the Apache Software Foundation and is part of the larger Apache community of developers and users</blockquote></p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Instalando git na sua empresa</title>
-            <link>/2013/04/30/instalando-git-na-sua-empresa</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>git</category>
-            
-            <pubDate>2013-04-30T11:02:41+12:00</pubDate>
-            <guid>/2013/04/30/instalando-git-na-sua-empresa</guid>
-            <description><p>
- Aos poucos empresas estão começando a adotar <em><a href="http://en.wikipedia.org/wiki/Git_(software)" title="git">git</a></em>
- no lugar do <em><a href="http://en.wikipedia.org/wiki/Apache_Subversion">Subversion</a></em> e do <em><a
-  href="http://en.wikipedia.org/wiki/Concurrent_Versions_System" title="CVS">CVS</a></em> (yuck). Com o git o <em>merge</em>
- dos projetos ficou mais fácil e limpo (principalmente com cherry pick e rebase). Além da adoção da maioria dos projetos
- e desenvolvedores Open Source do <a href="http://www.github.com" title="GitHub">GitHub</a> para criação de repositórios
- públicos de código-fonte.
-</p>
-
-<p>
- <a href="img/logos/git-logo.png"><img src="img/logos/git-logo-300x125.png"
-  alt="git-logo" width="300" height="125" class="aligncenter size-medium wp-image-1241" /></a>
-</p>
-
-<p>
- Recentemente fui em uma reunião em uma empresa em São Paulo e conheci o Nilton. Ele trabalha com infra, mas suas
- atividades as vezes parecem chegar bem próximas às de desenvolvedores e testadores. Ele mantém o site <a
-  href="http://www.linuxpro.com.br" title="LinuxPro">LinuxPro</a> e publica sempre o que conteúdo atualizado e simples
- de entender sobre Linux, infra e outros assuntos geek :D
-</p>
-
-<p>
- Em um dos últimos posts ele fez um <strong><a
-  href="http://www.linuxpro.com.br/blog/2013/04/install-gitlab-ubuntu/" title="Install GitLab Ubuntu">ótimo screen
-   cast sobre como instalar o GitLab</a></strong>, uma ferramenta que, além de instalar um servidor git, ainda possui interface Web <strong>muito
-  semelhante à do GitHub</strong>. A instalação é bem fácil, apesar que tive problemas ao instalar o GitLab em uma rede sem
- acesso SSH externo (algumas <em>gems</em> usadas pela GitLab precisavam clonar repositórios do GitHub via SSH).
-</p>
-
-<p>
- Quando mencionei pro Nilton o problema que tive ele ainda lembrou que há na <a href="http://bitnami.com/stack/gitlab"
-  title="GitLab @ BitNami">BitNami</a> uma versão ainda mais fácil de rodar já com tudo pronto. Então, o que está
- esperando? Adiciona o <a href="http://www.linuxpro.com.br" title="LinuxPro">LinuxPro</a> nos seus favoritos e <a
-  href="http://www.speaklikeabrazilian.com/expression/define?e=Bora" title="bora">bora</a> aprender mais git e mostrar
- pros desenvolvedores do seu time.
-</p>
             
             </description>
         </item>
