@@ -10,13 +10,59 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-11-19T23:15:39+13:00</lastBuildDate>
-        <pubDate>2017-11-19T23:15:39+13:00</pubDate>
+        <lastBuildDate>2017-11-26T00:36:51+13:00</lastBuildDate>
+        <pubDate>2017-11-26T00:36:51+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Create a Map of Jenkins Plug-ins (similar to Map of CPAN)</title>
+            <link>/2012/10/22/create-a-cpan-map-like-for-jenkins-plug-ins</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>perl</category>
+            
+            <category>jenkins</category>
+            
+            <category>ideas</category>
+            
+            <pubDate>2012-10-22T15:14:42+13:00</pubDate>
+            <guid>/2012/10/22/create-a-cpan-map-like-for-jenkins-plug-ins</guid>
+            <description><p>There&#8217;s a plethora of plug-ins for <a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a>, that&#8217;s well known. But there are way more modules in <a href="http://www.cpan.org" title="CPAN">CPAN</a>. One way to visualize all the modules in CPAN is with <a href="http://mapofcpan.org/" title="Map of CPAN">Map of CPAN</a>.</p>
+
+<p>The idea here is to create similar map for Jenkins plug-ins (Map of Jenkins plug-ins). It could use the plug-in type (plugin-labels) and show its growth through the time. That would be interesting, especially if it was possible to create a video (like this one below) showing what happened since the fork from <a href="http://hudson-ci.org/" title="Hudson CI">Hudson</a>.</p>
+
+<p class="center"><iframe src="http://player.vimeo.com/video/51893508" width="500" height="328" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></p>
+
+<p><p><a href="http://vimeo.com/51893508">Map of CPAN – The Movie</a> from <a href="http://vimeo.com/grantm">Grant McLean</a> on <a href="http://vimeo.com">Vimeo</a>.</p></p>
+<p>The code for the CPAN map generator is hosted at GitHub: <a href="https://github.com/grantm/cpan-map">https://github.com/grantm/cpan-map</a>. And it uses the <a href="http://en.wikipedia.org/wiki/Hilbert_curve" title="Hilbert curve">Hilbert curve</a> for ploting those geometric forms.</p>
+
+<hr/>
+
+<p><em>Update 26, oct. 2012</em></p>
+
+<p>The map generation is started with a Perl script cpan-map that downloads a tar.gz file from <a href="https://metacpan.org/" title="MetaCPAN">MetaCPAN</a> and creates a map of namespaces and its modules. Then it creates an image with Hilbert curves. It assigns different colors for each namespace.</p>
+
+<p>For Jenkins plug-ins map we could use <em>update-center.json</em> file, and group plug-ins by its label. We could get the author picture from Gravatar (like Map of CPAN), and use the same interface of Map of CPAN - it uses <a href="http://sammyjs.org/" title="SammyJS">sammy.js</a> and <a href="http://www.jquery.com" title="jQuery">jQuery</a>.</p>
+
+<p>Links for Hilbert curves and Java</p>
+
+<ul>
+    <li><a href="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html" title="http://introcs.cs.princeton.edu/java/32class/Hilbert.java.html"></a></li>
+    <li><a href="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html" title="http://www.cs.utexas.edu/~vbb/misc/sfc/Oindex.html"></a></li>
+</ul>
+            
+            </description>
+        </item>
         
         
         
@@ -311,32 +357,6 @@ layout: blog</p>
 <p>We are working <a href="for_you/" title="For you">for you</a> :D</p>
 
 <p>Have a great week!</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Jenkins Testopia Plug-in 1.2 released</title>
-            <link>/2012/10/15/jenkins-testopia-plug-in-1-2-released</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>jenkins</category>
-            
-            <category>news</category>
-            
-            <pubDate>2012-10-15T21:16:11+13:00</pubDate>
-            <guid>/2012/10/15/jenkins-testopia-plug-in-1-2-released</guid>
-            <description><p>Yesterday a new version of <a href="https://wiki.jenkins-ci.org/display/JENKINS/Testopia+Plugin" title="Jenkins Testopia Plug-in">Jenkins Testopia Plug-in</a> was released. This version includes code to avoid printing null when a value returned from Testopia is null. Instead, it now prints an empty String (i.e.: &#8220;&#8221;).</p>
-
-<p>It has been included i18n support too, with English, Brazilian Portuguese and Dutch (thanks to <a href="http://www.twitter.com/peterflorijn" title="Peter Florijn">Peter Florijn</a>) languages. If you use Testopia Plug-in and would like to contribute translating the plug-in, send a <a href="https://www.github.com/jenkinsci/testopia-plugin" title="Jenkins Testopia Plug-in">pull request</a>.</p>
-
-<p>Check the latest changes and read more about the plug-in on its <a href="https://wiki.jenkins-ci.org/display/JENKINS/Testopia+Plugin" title="Jenkins Testopia Plug-in">Wiki page</a>.</p>
             
             </description>
         </item>
