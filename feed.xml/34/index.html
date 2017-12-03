@@ -10,13 +10,58 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-11-26T00:36:51+13:00</lastBuildDate>
-        <pubDate>2017-11-26T00:36:51+13:00</pubDate>
+        <lastBuildDate>2017-12-03T20:47:43+13:00</lastBuildDate>
+        <pubDate>2017-12-03T20:47:43+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Integrando Nutch 2.x, MySQL e Solr</title>
+            <link>/2012/09/15/integrando-nutch-2-x-mysql-e-solr</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>tutorials</category>
+            
+            <category>nutch</category>
+            
+            <pubDate>2012-09-15T23:03:15+12:00</pubDate>
+            <guid>/2012/09/15/integrando-nutch-2-x-mysql-e-solr</guid>
+            <description><p><em>Esse post é uma tradução do post: <a href="http://www.kinoshita.eti.br/2012/09/14/integrating-nutch-2-x-mysql-and-solr/" title="Original post in English">http://www.kinoshita.eti.br/2012/09/14/integrating-nutch-2-x-mysql-and-solr/</a></em></p>
+
+<p>No momento estamos trabalhando em um projeto usando <a href="http://nutch.apache.org" title="Apache Nutch">Apache Nutch</a> 2.x, <a href="http://hadoop.apache.org" title="Apache Hadoop">Apache Hadoop</a>, <a href="http://solr.apache.org" title="Apache Solr">Apache Solr</a> 4 e um monte de outras ferramentas/módulos/API&#8217;s/etc legais. Depois de seguir as instruções encontradas em <a href="http://nlp.solutions.asia/?p=180" title="http://nlp.solutions.asia/?p=180">http://nlp.solutions.asia/?p=180</a>, consegui conectar Apache Nutch, MySQL e Apache Solr.</p>
+
+<p><img src="http://www.kinoshita.eti.br/wp-content/uploads/2012/09/mysql_hadoop_solr_nutch.png" alt="mysql_hadoop_solr_nutch" title="mysql_hadoop_solr_nutch" width="800" class="aligncenter size-medium wp-image-994" /></p>
+
+<p>Resumindo:</p>
+
+<ul>
+<li>Criar um banco de dados para guardar seus dados</li>
+<li>Usar SQLDataStore e adicionar a configuração para seu servidor MySQL</li>
+<li>Atualizar a configuração do Apache Nutch</li>
+<li>Atualizar o esquema Solr</li>
+</ul>
+
+<p>Agora nosso Apache Nutch usa MySQL como <em>data store</em> (o local onde se armazena o resultados do processo de crawling, como a URL, conteúdo, texto, metadata, e assim por diante). Isso é ótimo, mas há mais um passo faltando no esquema Solr disponibilizado no post do blog.</p>
+
+<p>Devido ao bug <a href="https://issues.apache.org/jira/browse/SOLR-3432" title="SOLR-3432">SOLR-3432</a>, depois de seguir o tutorial e substituir o esquema original, você não conseguirá deletar todo o índice. Depois de seguir as instruções nos comentários do bug, e adicionar a seguinte entrada no arquivo schema.xml isso voltou a funcionar.</p>
+
+<p><code>&lt;field name="<em>version</em>" type="long" indexed="true" stored="true"/&gt;</code></p>
+<p>Reinicie o Apache Solr e execute o seguinte comando e o seu índice estará reiniciado.</p>
+
+<p><code>curl http://localhost:8983/solr/collection1/update?commit=true -H "Content-Type: text/xml" --data-binary "<delete><query><em>:</em></query></delete>"</code></p>
+<p>Espero que ajude se você estiver criando um ambiente semelhante.</p>
+
+<p>Até mais! -B</p>
+            
+            </description>
+        </item>
         
         
         
@@ -416,30 +461,6 @@
 <p>It was a perfect day.
 Cesar</p>
 <p>[nggallery id=1]</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Verifying if certain plug-in is installed and setting a new proxy in Jenkins using CLI</title>
-            <link>/2012/03/09/verifying-if-certain-plug-in-is-installed-and-setting-a-new-proxy-in-jenkins-using-cli</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>jenkins</category>
-            
-            <pubDate>2012-03-09T18:04:05+13:00</pubDate>
-            <guid>/2012/03/09/verifying-if-certain-plug-in-is-installed-and-setting-a-new-proxy-in-jenkins-using-cli</guid>
-            <description><p>What ho lads!</p>
-<p>Few days ago I was talking with Olivier Renault [1] about few things that he needs to deploy JinFeng [1] using a non-interactive command line. JinFeng is an integration and testing platform built on top of many Open Source tools, like TestLink [2] and Jenkins [3]. One of the features he needs is Test Steps in TestLink XML-RPC API (I&#8217;m working on this, and hopefully will be able to provide a patch for TestLink 1.9.4).
-
-            
-            &lt;a href=&#34;/2012/03/09/verifying-if-certain-plug-in-is-installed-and-setting-a-new-proxy-in-jenkins-using-cli&#34;&gt;Read more...&lt;/a&gt;
             
             </description>
         </item>

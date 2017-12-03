@@ -10,13 +10,54 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-11-26T00:36:51+13:00</lastBuildDate>
-        <pubDate>2017-11-26T00:36:51+13:00</pubDate>
+        <lastBuildDate>2017-12-03T20:47:43+13:00</lastBuildDate>
+        <pubDate>2017-12-03T20:47:43+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Continuation Passing Style</title>
+            <link>/2014/06/15/continuation-passing-style</link>
+            
+            <author>Bruno P. Kinoshita</author>
+            <dc:creator>Bruno P. Kinoshita</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>jenkins</category>
+            
+            <category>functional programming</category>
+            
+            <pubDate>2014-06-15T15:00:03+12:00</pubDate>
+            <guid>/2014/06/15/continuation-passing-style</guid>
+            <description><h3>Continuation Passing Style</h3>
+<p>In <a href="http://en.wikipedia.org/wiki/Continuation-passing_style">Continuation Passing Style</a> (CPS), the program is comprised of several <strong>continuations</strong>. The methods in CPS programming do not return a value, rather, they pass control (including the current context) to the next continuation.</p>
+<p>Each continuation receives a context, which stores the state of the current chain of continuations at a
+given time, and can alter this context and call the next continuation. There can exist different types of 
+continuations too, for handling exceptions, suspending the program, or simply calling other continuations. </p>
+<p>In some functional programming languages CPS is supported and can be used in conjunction with <a href="http://en.wikipedia.org/wiki/Tail_call">tail-call optimization</a> to try to <a href="http://en.wikipedia.org/wiki/Continuation-passing_style#CPS_and_tail_calls">control the call stack size</a>.</p>
+<h3>Use cases of CPS in Java</h3>
+<p>Apache Commons contains a component in its sandbox, <a href="http://commons.apache.org/sandbox/commons-javaflow">Apache Commons JavaFlow</a>, that hasn&#8217;t been updated in a while, but that supports continuations in Java. 
+It requires the code to be instrumented, and provides ways to restore the execution of the code.</p>
+<p>The <a href="https://github.com/jenkinsci/workflow-plugin">Jenkins Workflow Plug-in</a> was presented during the <a href="http://www.cloudbees.com/jenkins/juc-2014/boston">Jenkins User Conference 2014 in Boston</a>. The plug-in has several Maven modules, among is the <strong>cps</strong> Maven module. This maven module provides CPS to the plugin. If you take a look at the team page of the JavaFlow project, you will find it interesting that Kohsuke Kawaguchi (Jenkins creator) is listed there too :-) </p>
+<p>From what I could tell, the Jenkins Workflow Plug-in utilizes CPS to break down the workflow execution in 
+several continuations, that are persisted to the disk and can be resumed in case the job execution is 
+interrupted.</p>
+<p>There are several differences between the cps module and Apache Commons Javaflow - such that in the latter the running code needs to be instrumented. I haven&#8217;t investigated all of them yet, but it sounds very interesting! I&#8217;m waiting for one of those rainy weekends so that I can spend many hours reading the code of the two and taking notes.</p>
+<h3>Final thoughts</h3>
+<p>CPS is a very interesting concept, and while probably the enterprise Java developer is not going to use it for his every day corporate web application (though some FP programmers might be using it), it is an 
+interesting technique that can probably be applied in some specific scenarios - as it was in the Jenkins 
+Workflow Plug-in.</p>
+<p>There are <strong>optimizations available for CPS</strong> <a href="http://stackoverflow.com/questions/14781875/choosing-between-continuation-passing-style-and-memoization">1</a><a href="http://research.microsoft.com/pubs/64044/compilingwithcontinuationscontinued.pdf">2</a> too, so I believe the workflow-plugin has space for more innovation, and lots of fun for hackers.</p>
+<p>Happy hacking!</p>
+            
+            </description>
+        </item>
         
         
         
@@ -329,46 +370,6 @@
 </ul>
 <p>We are working <a href="for_you/">for you</a></p>
 <p>Have a great week! :-) </p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>TupiLabs Report: 30 Mar, 05 Apr</title>
-            <link>/2014/04/06/tupilabs-report-30-mar-05-apr</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2014-04-06T20:04:03+12:00</pubDate>
-            <guid>/2014/04/06/tupilabs-report-30-mar-05-apr</guid>
-            <description><p>This is a weekly report that we publish every week, with news from Monday till Sunday. </p>
-<ul>
-<li>More work on the <em>laravel branch</em> of <a href="http://speaklikeabrazilian.com">Speak Like A Brazilian</a>. Soon a new release that will be ready for a mobile app too.</li>
-<li><a href="https://github.com/thegenemyers/DEXTRACTOR/issues/1#issuecomment-39029735">https://github.com/thegenemyers/DEXTRACTOR/issues/1#issuecomment-39029735</a></li>
-<li>We participated in another <a href="http://nestor-qa.org">Nestor-QA</a> meeting</li>
-<li>The Nestor-QA project got a Twitter account - <a href="http://twitter.com/qanestor">qanestor</a></li>
-<li>Nestor-QA 0.9 was released</li>
-<li><a href="https://github.com/nestor-qa/nestor/issues/39">https://github.com/nestor-qa/nestor/issues/39</a></li>
-<li><a href="https://github.com/biouno/uno-choice-plugin/issues/1">https://github.com/biouno/uno-choice-plugin/issues/1</a></li>
-<li><a href="https://github.com/biouno/uno-choice-plugin/issues/3">https://github.com/biouno/uno-choice-plugin/issues/3</a></li>
-<li><a href="http://jira.codehaus.org/browse/MDEPLOY-177">http://jira.codehaus.org/browse/MDEPLOY-177</a></li>
-<li>Released <a href="https://github.com/biouno/uno-choice-plugin">BioUno Uno-Choice 0.3 Plug-in</a> for the <a href="http://biouno.org">BioUno</a> project</li>
-<li>Released <a href="https://github.com/biouno/uno-choice-plugin">BioUno Uno-Choice 0.4 Plug-in</a> for the <a href="http://biouno.org">BioUno</a> project</li>
-<li>We have fully automated the BioUno backend <a href="http://biouno.org/jenkins-update-site.html">update site</a></li>
-<li>Released several version of the <a href="https://github.com/biouno/clumpp-plugin">BioUno CLUMPP Plug-in</a> while working on a bio pipeline</li>
-<li><a href="https://github.com/biouno/uno-choice-plugin/issues/4">https://github.com/biouno/uno-choice-plugin/issues/4</a></li>
-<li>Finished our biology pipeline in population genetics, using Structure, Harvester, CLUMPP and Distruct. Soon a paper will be out, stay tuned.</li>
-<li>Enhancing the Apache Commons docs - <a href="https://issues.apache.org/jira/browse/WEAVER-1">https://issues.apache.org/jira/browse/WEAVER-1</a></li>
-</ul>
-<p>We are working <a href="for_you/">for you</a></p>
-<p>Have a great week! :-)</p>
             
             </description>
         </item>
