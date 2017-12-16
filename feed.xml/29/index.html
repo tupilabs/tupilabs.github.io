@@ -10,13 +10,38 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2017-12-10T09:59:30+13:00</lastBuildDate>
-        <pubDate>2017-12-10T09:59:30+13:00</pubDate>
+        <lastBuildDate>2017-12-17T11:50:42+13:00</lastBuildDate>
+        <pubDate>2017-12-17T11:50:42+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Hook do SVN para criar um novo job no Jenkins não está funcionando com o Eclipse</title>
+            <link>/2013/03/18/svn-hook-to-create-a-new-job-in-jenkins-2</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>eclipse</category>
+            
+            <category>jenkins</category>
+            
+            <category>subversion</category>
+            
+            <pubDate>2013-03-18T15:55:29+13:00</pubDate>
+            <guid>/2013/03/18/svn-hook-to-create-a-new-job-in-jenkins-2</guid>
+            <description><p>Havíamos preparado um build pipeline usando SVN, hooks e Jenkins. Além do tradicional hook para disparar jobs no Jenkins, havíamos criado um hook para criar novos jobs no Jenkins, baseados em um template Groovy para cada branch. Basicamente, este script estava casando o commit log do Subversion com &#8220;^A new branch&#8221;. Estava funcionando bem, exceto para desenvolvedores Eclipse. Novos branches criados com o Eclipse não estavam disparando o hook corretamente. Depois de debugar um pouco, descobrimos que o Eclipse usa comandos diferentes para criar novos branches no SVN.</p>
+<p>Em caso você tenha um pipeline semelhante, você será forçado ou a utilizar diferentes expressões, ou pedir aos desenvolvedores que utilizem a linha de comando para criar novos branches (adotamos a opção #2 :=)</p>
+            
+            </description>
+        </item>
         
         
         
@@ -418,32 +443,6 @@
  collectors to consume an RESTful service, you would simply write one R line to get the job done.</p>
 
 <p>R does very fine in plotting too, so I wouldn&#8217;t be surprised to at least see some prettier charts :o)</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Study if it's doable to parallelize PacBioToCA</title>
-            <link>/2013/02/05/study-if-its-doable-to-parallelize-pacbiotoca</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>bioinformatics</category>
-            
-            <category>ideas</category>
-            
-            <pubDate>2013-02-05T22:27:48+13:00</pubDate>
-            <guid>/2013/02/05/study-if-its-doable-to-parallelize-pacbiotoca</guid>
-            <description><p><a href="http://www.homolog.us/">Homolog.us</a> is an amazing site. The content is clear, rich and very entertaining (at least for those who like biology and technology). They have an active <a href="https://twitter.com/#!/homolog_us/">Twitter account</a>, they answer comments, they are on <a href="http://reddit.com/r/bioinformatics">reddit</a> too. <strong>These guys rock</strong>!</p>
-
-<p>Recently <a href="http://www.homolog.us/blogs/2013/02/05/pacbiotoca-for-error-correcting-pacbio-reads/">they wrote</a> about <a href="http://sourceforge.net/apps/mediawiki/wgs-assembler/index.php?title=PacBioToCA">PacBioToCA</a>, pointing out its lengthy execution. It&#8217;s common in biotechnology parallel execution with <a href="http://en.wikipedia.org/wiki/Open_MPI" title="">OpenMPI</a>, <a href="http://en.wikipedia.org/wiki/OpenMP">OpenMP</a> or other method like <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.</p>
-
-<p>One idea would be review the code, check if it&#8217;s doable some kind of parallelism and write about it. Perhaps rewriting it. They <a href="http://www.homolog.us/blogs/2013/02/05/lsc-an-alternative-to-pacbiotoca-for-error-correction-of-pacbio-reads/">already wrote</a> about another tool that competes with PacBioToCA. I told you that Homolog.us is amazing.</p>
             
             </description>
         </item>
