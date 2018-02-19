@@ -10,13 +10,39 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2018-02-11T00:25:23+13:00</lastBuildDate>
-        <pubDate>2018-02-11T00:25:23+13:00</pubDate>
+        <lastBuildDate>2018-02-19T22:02:44+13:00</lastBuildDate>
+        <pubDate>2018-02-19T22:02:44+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>SVN hook to create a new job in Jenkins not working with Eclipse</title>
+            <link>/2013/03/18/svn-hook-to-create-a-new-job-in-jenkins</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>eclipse</category>
+            
+            <category>jenkins</category>
+            
+            <category>subversion</category>
+            
+            <pubDate>2013-03-18T15:55:29+13:00</pubDate>
+            <guid>/2013/03/18/svn-hook-to-create-a-new-job-in-jenkins</guid>
+            <description><p>We had prepared a build pipeline using SVN, hooks and Jenkins. Besides the traditional hook to trigger jobs in Jenkins, we had created a hook to create new jobs in Jenkins, based on a Groovy template for every new branch. Basically, it was matching the Subversion commit log against &#8220;^A new branch&#8221;. It was working nice, except for Eclipse developers. New branches created with Eclipse weren&#8217;t triggering the hook correctly. After a little debug, we found out that Eclipse uses different commands to create a new branch.</p>
+
+<p>In case you are creating similar pipeline, you&#8217;ll be forced to either use different expressions or ask the developers to use the command line to create new branches.</p>
+            
+            </description>
+        </item>
         
         
         
@@ -418,53 +444,6 @@
 <p>Recently <a href="http://www.homolog.us/blogs/2013/02/05/pacbiotoca-for-error-correcting-pacbio-reads/">they wrote</a> about <a href="http://sourceforge.net/apps/mediawiki/wgs-assembler/index.php?title=PacBioToCA">PacBioToCA</a>, pointing out its lengthy execution. It&#8217;s common in biotechnology parallel execution with <a href="http://en.wikipedia.org/wiki/Open_MPI" title="">OpenMPI</a>, <a href="http://en.wikipedia.org/wiki/OpenMP">OpenMP</a> or other method like <a href="http://en.wikipedia.org/wiki/MapReduce">MapReduce</a>.</p>
 
 <p>One idea would be review the code, check if it&#8217;s doable some kind of parallelism and write about it. Perhaps rewriting it. They <a href="http://www.homolog.us/blogs/2013/02/05/lsc-an-alternative-to-pacbiotoca-for-error-correction-of-pacbio-reads/">already wrote</a> about another tool that competes with PacBioToCA. I told you that Homolog.us is amazing.</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Tupilabs Report: Jan 27, Feb 02</title>
-            <link>/2013/02/03/tupilabs-report-jan-27-feb-02</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>news</category>
-            
-            <category>biouno</category>
-            
-            <category>cjan</category>
-            
-            <category>functional-programming</category>
-            
-            <category>groovy</category>
-            
-            <category>jenkins</category>
-            
-            <category>paskuale</category>
-            
-            <category>reddit</category>
-            
-            <category>tupilabs-report</category>
-            
-            <pubDate>2013-02-03T18:55:44+13:00</pubDate>
-            <guid>/2013/02/03/tupilabs-report-jan-27-feb-02</guid>
-            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
-
-<ul>
-    <li>Wrote <a href="querying-a-rest-server-from-groovy-scripts-in-jenkins/" title="Querying a REST server from Groovy scripts in Jenkins">blog post</a> about loading extra libraries in Groovy Scripts in Jenkins</li>
-    <li>Working on <a href="http://www.cjan.org" title="CJAN">CJAN</a> project (scripts)</li>
-    <li>Working on <a href="http://www.paskuale.com" title="Paskuale">Paskuale</a> (Nutch plug-ins)</li>
-    <li>Working on <a href="http://www.biouno.org" title="BioUno">BioUno</a> (Structure plug-in and videos)</li>
-    <li>New Expressions in <a href="http://www.speaklikeabrazilian.com">Speak Like A Brazilian</a></li>
-    <li>Over <strong>100 subscribers</strong> in <a href='http://www.reddit.com/r/functionalprogramming'>r/functionalprogramming</a>. Go check it out! Yay!</li>
-</ul>
-
-<p>We are working <a href="for_you/" title="For you">for you</a></p>
-
-<p>Have a great week! :D</p>
             
             </description>
         </item>
