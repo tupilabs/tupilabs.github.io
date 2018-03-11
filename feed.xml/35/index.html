@@ -10,13 +10,52 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2018-03-04T00:54:54+13:00</lastBuildDate>
-        <pubDate>2018-03-04T00:54:54+13:00</pubDate>
+        <lastBuildDate>2018-03-11T19:25:20+13:00</lastBuildDate>
+        <pubDate>2018-03-11T19:25:20+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Monitor PBS clusters with Jenkins</title>
+            <link>/2012/10/02/monitor-pbs-clusters-with-jenkins</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>blog</category>
+            
+            <category>jenkins</category>
+            
+            <category>bioinformatics</category>
+            
+            <pubDate>2012-10-02T23:30:08+13:00</pubDate>
+            <guid>/2012/10/02/monitor-pbs-clusters-with-jenkins</guid>
+            <description><p>It is not exactly an idea, it is more a requirement for <a href="http://www.biouno.org" title="BioUno">BioUno</a>. A common way of administering <a href="http://en.wikipedia.org/wiki/Batch_processing" title="Batch processing">Batch tasks</a> in computer clusters is using Batch servers such as <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="PBS">PBS</a>. The process to submit a job consist of executing a shell script with special &#8220;meta&#8221; comments that will tell the PBS about your job priority, CPU&#8217;s needed, etc.</p>
+
+<p><a href="http://www.jenkins-ci.org" title="Jenkins CI">Jenkins</a> has an awesome remoting API, that has been reworked since its first version in Hudson (it was part of the core IIRC), and can be used for other things. There is a Wiki page about <a href="https://wiki.jenkins-ci.org/display/JENKINS/Monitoring+external+jobs" title="Monitoring external jobs with Jenkins">Monitoring external jobs</a>.</p>
+
+<p>What we would need, is query the PBS server, running qstat + parameters locally in the cluster machine. So the requirements that I see:</p>
+
+<ul>
+<li>Learn more about the <a href="https://github.com/jenkinsci/remoting" title="Jenkins-CI remoting API">remoting</a> API in Jenkins (see <a href="http://kohsuke.org/tag/remoting/" title="Remoting by KK">http://kohsuke.org/tag/remoting/</a> too)</li>
+<li>Rework <a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a> or use a wrapper to an existing C API (I&#8217;ve read in the past about one, the Python PBS module is a wrapper for this API too)</li>
+<li>Learn about this technique for monitoring external jobs mentioned in that Wiki page</li>
+<li>Write glue code if needed</li>
+<li>Test with a <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="PBS cluster">PBS cluster</a></li>
+<li>Report the findings (paper?)</li>
+</ul>
+
+<p>Just food for thought :D</p>
+
+<p><strong>Edit:</strong> There is a <a href="https://wiki.jenkins-ci.org/label/JENKINS/plugin-cluster" title="plugin-cluster">label in Jenkins Wiki</a> with several plug-ins that could be used for reference</p>
+            
+            </description>
+        </item>
         
         
         
@@ -431,34 +470,6 @@
 
             
             &lt;a href=&#34;/2012/06/14/how-we-make-our-vector-illustrations&#34;&gt;Read more...&lt;/a&gt;
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>Creating a PBS/MPI cluster for bioinformatics – Part 2</title>
-            <link>/2012/04/29/creating-a-pbsmpi-cluster-for-bioinformatics-part-2</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>tutorials</category>
-            
-            <category>jenkins</category>
-            
-            <category>bioinformatics</category>
-            
-            <pubDate>2012-04-29T16:51:12+12:00</pubDate>
-            <guid>/2012/04/29/creating-a-pbsmpi-cluster-for-bioinformatics-part-2</guid>
-            <description><p>In the <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="Creating a PBS/MPI cluster for bioinformatics – Part 1">previous post</a> of this series we saw how to configure a basic network for our small cluster. Now it is time to work on the <strong>MPI</strong> stuff. Our cluster will be a <strong><a href="http://en.wikipedia.org/wiki/Beowulf_cluster" title="Beowulf Cluster Wiki entry">Beowulf cluster</a></strong>. This kind of cluster is composed of <strong>commodity computers</strong>, connected via network sharing resources and programs. And in the next post, we will see how to include a <em>batch queuing system</em> to control the resource utilization in our cluster.</p>
-
-<p><a href="http://en.wikipedia.org/wiki/Message_Passing_Interface" title="Message Passing Interface Wiki entry">MPI</a> is not a library. MPI is actually a standard. When you find an RESTful application, REST is only a standard, and you have different libraries that implement this standard (Jersey, JBoss Reast Easy, CodeIgniter+Rest Controllers, and so it goes). With MPI it is not different. There are different implementations of the MPI specification. We suggest you to read <a href="http://techtinkering.com/2009/12/02/setting-up-a-beowulf-cluster-using-open-mpi-on-linux/" title="Setting Up a Beowulf Cluster using OpenMPI on Linux">this tutorial</a> that, although it was written in 2009, it uses Debian (operational system we are using in BioUno cluster) and is very well written and concise. Basically, you have to install <a href="http://open-mpi.org/" title="OpenMPI">OpenMPI</a>, one of the existing MPI libraries. And if you followed the instructions in <a href="creating-a-pbsmpi-cluster-for-bioinformatics-part-1/" title="Creating a PBS/MPI cluster for bioinformatics – Part 1">part 1</a> of this series, then you already have SSH correctly configured in your computers.</p>
-
-
-            
-            &lt;a href=&#34;/2012/04/29/creating-a-pbsmpi-cluster-for-bioinformatics-part-2&#34;&gt;Read more...&lt;/a&gt;
             
             </description>
         </item>
