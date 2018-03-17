@@ -10,13 +10,43 @@
         
         <description>Latest news from TupiLabs</description>
         
-        <lastBuildDate>2018-03-11T19:25:20+13:00</lastBuildDate>
-        <pubDate>2018-03-11T19:25:20+13:00</pubDate>
+        <lastBuildDate>2018-03-18T00:36:07+13:00</lastBuildDate>
+        <pubDate>2018-03-18T00:36:07+13:00</pubDate>
         <generator>PieCrust 2.1.1</generator>
         
         
         
 
+        
+        
+        
+        <item>
+            <title>Tupilabs Report: Dec 2, Dec 8</title>
+            <link>/2012/12/09/tupilabs-report-dec-2-dec-8</link>
+            
+            <author>kinow</author>
+            <dc:creator>kinow</dc:creator>
+            
+            <category>news</category>
+            
+            <category>tupilabs-report</category>
+            
+            <pubDate>2012-12-09T22:52:35+13:00</pubDate>
+            <guid>/2012/12/09/tupilabs-report-dec-2-dec-8</guid>
+            <description><p>Here’s the list of the cool things we did since last Sunday at TupiLabs.</p>
+
+<ul>
+    <li>More prospects clients, especially with <a href="http://www.jenkins-ci.org" title="JenkinsCI">Jenkins</a> and <a href="http://hadoop.apache.org" title="Hadoop">Hadoop</a> and Big Data, Yay! (busy week with meetings and presentations)</li>
+        <li>Raw material produced for <a href="http://www.meetup.com/jenkinsmeetup/events/91744672/" title="Jenkins Meetup São Paulo">Jenkins Meetup São Paulo</a> sent to the events list, so other meetups can use this material too.</li>
+        <li>Migrated <a href="http://www.speaklikeabrazilian.com" title="Speak Like A Brazilian">Speak Like A Brazilian</a> to <a href="http://www.linode.com/?r=6bd4d380e0421dab1a6ceb40ee0b6379da682de4" title="Linode">Linode</a></li>
+</ul>
+
+<p>We are working <a href="for_you/" title="For you">for you</a></p>
+
+<p>Have a great week! :D</p>
+            
+            </description>
+        </item>
         
         
         
@@ -392,38 +422,6 @@
  index_radtags.pl -D pe_radtags -c -t</code></p>
 <p>If you used the right parameters, and didn&#8217;t see errors in the console, your data should be available in the web
  interface now. Easy, no? :-)</p>
-            
-            </description>
-        </item>
-        
-        
-        
-        <item>
-            <title>An alternative PBS API for Java</title>
-            <link>/2012/11/04/an-alternative-pbs-api-for-java</link>
-            
-            <author>kinow</author>
-            <dc:creator>kinow</dc:creator>
-            
-            <category>blog</category>
-            
-            <category>bioinformatics</category>
-            
-            <pubDate>2012-11-04T19:26:51+13:00</pubDate>
-            <guid>/2012/11/04/an-alternative-pbs-api-for-java</guid>
-            <description><p>Last week we released a new API for <a href="http://en.wikipedia.org/wiki/Portable_Batch_System" title="Portable Batch System">PBS</a> in Java - <a href="https://github.com/tupilabs/pbs-java-api" title="pbs-java-api">pbs-java-api</a>. There is an existing API that works very well (<a href="http://code.google.com/p/pbs4java/" title="pbs4java">pbs4java</a>), and we even got in touch and worked with the author before releasing this new API. So what&#8217;s the difference between the two API&#8217;s and when should I use one or the other?</p>
-
-<p>Here&#8217;s the main differences between the two API&#8217;s:</p>
-
-<ul>
-    <li>pbs4java uses <a href="http://en.wikipedia.org/wiki/Domain-driven_design" title="DDD">DDD</a>, while pbs-java-api has a more classical approach. We needed this to avoid serialization problems in Jenkins.</li>
-    <li>pbs-java-api is available from Maven Central</li>
-    <li>pbs-java-api tries to map the commands (qnodes, qstat, qsub, &#8230;). So you would call PBS.qsub(&#8230;) instead of Job#submit().</li>
-</ul>
-
-<p>That&#8217;s pretty much it, so you really don&#8217;t need to switch to pbs-java-api. We created this new API as we needed a non DDD API to be used with the Jenkins plug-in API and that was available from Maven Central.</p>
-
-<p>pbs-java-api - <a href="https://github.com/tupilabs/pbs-java-api">https://github.com/tupilabs/pbs-java-api</a></p>
             
             </description>
         </item>
