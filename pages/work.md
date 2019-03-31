@@ -110,7 +110,7 @@ format: html
                             <div class="meta">Open Source Project</div>
                             <div class="description">
                                 <p>tap4j is a <a href="http://testanything.org">TAP (Test Anything Protocol)</a> implementation for Java. It supports JUnit and TestNG too.</p>
-                                <p><a href="http://tap4j.org">Project Link</a></p>
+                                <p><a href="https://tupilabs.github.io/tap4j">Project Link</a></p>
                             </div>
                         </div>
                     </div>
