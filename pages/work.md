@@ -20,7 +20,7 @@ format: html
                             <div class="meta">Product</div>
                             <div class="description">
                                 <p>Speak Like A Brazilian is a simple Laravel 5 web site, using a MariaDB database to store expressions, much like Urban Dictionary, but from several idioms to Brazilian Portuguese. The site focuses on daily expressions, slangs and what cannot be found in dictionaries. Its FaceBook page has over 1000+ followers (organic).</p>
-                                <p><a href="http://speaklikeabrazilian.com">Project Link</a></p>
+                                <p><a href="https://speaklikeabrazilian.com/">Project Link</a></p>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@ format: html
                             <div class="meta">Open Source Community</div>
                             <div class="description">
                                 <p>A community focused on creating solutions for life sciences, and writing tools to help researchers. Started in 2012 in Sao Paulo, and has now several users downloading Jenkins Plug-ins, Java libraries and accessing the web site. Part of the Mozilla Science community, and presented in international conferences (ISMB-BOSC). A scientific paper is almost ready for publication.</p>
-                                <p><a href="http://biouno.org">Project Link</a></p>
+                                <p><a href="http://biouno.org/">Project Link</a></p>
                             </div>
                         </div>
                     </div>
