@@ -130,10 +130,10 @@ format: html
                     </div>
                     <div class="card">
                         <div class="content">
-                            <div class="header">CJAN.org</div>
+                            <div class="header">CJAN</div>
                             <div class="meta">Open Source Community</div>
                             <div class="description">
-                                <p>Still in the <a href="{{ site.root }}lab">lab</a>, the idea is to create something similar to CPANTesters. Users will be able to upload test results using a Maven Plug-in. The plug-in collects the environment settings and the test results. This way, developers using the libraries are able to tell if the time zone, locale, or platform are supported or not before deploying code with the library.</p>
+                                <p>Decommissioned as java.net died, and a centralized hub similar to CPAN does not seem to have good support from community. The idea was to create something similar to CPANTesters. Users will be able to upload test results using a Maven Plug-in. The plug-in collects the environment settings and the test results. This way, developers using the libraries are able to tell if the time zone, locale, or platform are supported or not before deploying code with the library.</p>
                             </div>
                         </div>
                     </div>
