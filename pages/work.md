@@ -26,16 +26,6 @@ format: html
                     </div>
                     <div class="card">
                         <div class="content">
-                            <div class="header">ASF Releases Aggregator</div>
-                            <div class="meta">Open Source Bot</div>
-                            <div class="description">
-                                <p>Twitter <a href="https://twitter.com/asf_releases">@asf_releases aggregator</a>. Parses markmail e-mails messages sent to Apache mailing lists with ANNOUNCE and ANNOUNCEMENT in the title, tweeting about it. Scheduled to run as a cron job.</p>
-                                <p><a href="https://github.com/tupilabs/asf_releases_aggregator">Project Link</a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="content">
                             <div class="header">BioUno</div>
                             <div class="meta">Open Source Community</div>
                             <div class="description">
@@ -144,6 +134,16 @@ format: html
                             <div class="meta">Open Source Community</div>
                             <div class="description">
                                 <p>Still in the <a href="{{ site.root }}lab">lab</a>, the idea is to create something similar to CPANTesters. Users will be able to upload test results using a Maven Plug-in. The plug-in collects the environment settings and the test results. This way, developers using the libraries are able to tell if the time zone, locale, or platform are supported or not before deploying code with the library.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">ASF Releases Aggregator</div>
+                            <div class="meta">Open Source Bot</div>
+                            <div class="description">
+                                <p>Twitter <a href="https://twitter.com/asf_releases">@asf_releases aggregator</a>. Parses markmail e-mails messages sent to Apache mailing lists with ANNOUNCE and ANNOUNCEMENT in the title, tweeting about it. Scheduled to run as a cron job.</p>
+                                <p><a href="https://github.com/tupilabs/asf_releases_aggregator">Project Link</a></p>
                             </div>
                         </div>
                     </div>
