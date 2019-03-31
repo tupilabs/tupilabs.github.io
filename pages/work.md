@@ -126,16 +126,6 @@ format: html
                             </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="content">
-                            <div class="header">CJAN.org</div>
-                            <div class="meta">Open Source Community</div>
-                            <div class="description">
-                                <p>Still in the <a href="{{ site.root }}lab">lab</a>, the idea is to create something similar to CPANTesters. Users will be able to upload test results using a Maven Plug-in. The plug-in collects the environment settings and the test results. This way, developers using the libraries are able to tell if the time zone, locale, or platform are supported or not before deploying code with the library.</p>
-                                <p><a href="http://cjan.org">Project Link</a></p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <h2>Decommissioned</h2>
                 <div class="ui cards">
@@ -145,6 +135,15 @@ format: html
                             <div class="meta">Product (decommissioned)</div>
                             <div class="description">
                                 <p>Garagem Vaga was our first product. Developed in PHP with CodeIgniter, using Google Maps and MySQL as database. It provided a map with parking spaces published by users. The business model, which worked well in the UK, didn't work in Brazil.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">CJAN.org</div>
+                            <div class="meta">Open Source Community</div>
+                            <div class="description">
+                                <p>Still in the <a href="{{ site.root }}lab">lab</a>, the idea is to create something similar to CPANTesters. Users will be able to upload test results using a Maven Plug-in. The plug-in collects the environment settings and the test results. This way, developers using the libraries are able to tell if the time zone, locale, or platform are supported or not before deploying code with the library.</p>
                             </div>
                         </div>
                     </div>
