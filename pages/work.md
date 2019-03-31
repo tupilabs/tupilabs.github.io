@@ -19,7 +19,7 @@ format: html
                             <div class="header">Speak Like A Brazilian</div>
                             <div class="meta">Product</div>
                             <div class="description">
-                                <p>Speak Like A Brazilian is a simple Laravel 5 web site, using a MariaDB database to store expressions, much like Urban Dictionary, but from several idioms to Brazilian Portuguese. The site focuses on daily expressions, slangs and what cannot be found in dictionaries. Its FaceBook page has over 1000+ followers (organic).</p>
+                                <p>Speak Like A Brazilian is a Jekyll static site with semantic web metadata tags. Previously it used PHP Laravel 5 and a MariaDB database to store expressions, much like Urban Dictionary, but from several idioms to Brazilian Portuguese. The site focuses on daily expressions, slangs and what cannot be found in dictionaries. Its FaceBook page has over 1000+ followers (organic).</p>
                                 <p><a href="https://speaklikeabrazilian.com/">Project Link</a></p>
                             </div>
                         </div>
