@@ -45,20 +45,13 @@
         </div>
         
         
-        
 
-<div class="ui basic segment" id="blog">
-    <div class="ui stackable grid container">
-        <div class="row">
-            <div class="sixteen wide column">
-                <h1>Posts tagged with speak-like-a-brazilian</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="sixteen wide column">
-                <section>
-                    
-                    <div class="ui padded segment">
+
+<h2>Posts tagged with speak-like-a-brazilian</h2>
+
+<section>
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2016/04/20/redesigning-speak-like-a-brazilian">Redesigning Speak Like A Brazilian</a></h2>
@@ -111,8 +104,8 @@ linked data sites to index our content.</p>
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2016/04/09/using-nikto-to-scan-a-website-for-vulnerabilities">Using Nikto to scan a website for vulnerabilities</a></h2>
@@ -134,16 +127,16 @@ upgrading from Laravel 4.x to 5.x. Once we had a release candidate (RC) tag
 ready we deployed it and ran Nikto to check for issues in the server.</p>
 <p>The default settings are enough for an initial test, but you can take a look at
 <em>nikto &#8212;help</em> for other interesting parameters.</p>
-<div class="highlight"><pre>nikto -host https://speaklikeabrazilian.com
+<div class="highlight"><pre><span></span>nikto -host https://speaklikeabrazilian.com
 </pre></div>
 
 <p>Here are the results of the scanning.</p>
-<div class="highlight"><pre>- Nikto v2.1.4
+<div class="highlight"><pre><span></span>- Nikto v2.1.4
 ---------------------------------------------------------------------------
-+ Target IP:          45.56.78.89
++ Target IP:          <span class="m">45</span>.56.78.89
 + Target Hostname:    speaklikeabrazilian.com
-+ Target Port:        80
-+ Start Time:         2016-04-08 12:57:02
++ Target Port:        <span class="m">80</span>
++ Start Time:         <span class="m">2016</span>-04-08 <span class="m">12</span>:57:02
 ---------------------------------------------------------------------------
 + Server: nginx
 + Retrieved x-powered-by header: PHP/5.5.9-1ubuntu4.14
@@ -159,24 +152,24 @@ ready we deployed it and ran Nikto to check for issues in the server.</p>
 + OSVDB-3092: /pt/: This might be interesting... potential country code <span class="o">(</span>Portugal<span class="o">)</span>
 + OSVDB-3092: /es/: This might be interesting... potential country code <span class="o">(</span>Spain<span class="o">)</span>
 + <span class="m">6448</span> items checked: <span class="m">39</span> error<span class="o">(</span>s<span class="o">)</span> and <span class="m">11</span> item<span class="o">(</span>s<span class="o">)</span> reported on remote host
-+ End Time:           2016-04-08 13:29:41 <span class="o">(</span><span class="m">1959</span> seconds<span class="o">)</span>
++ End Time:           <span class="m">2016</span>-04-08 <span class="m">13</span>:29:41 <span class="o">(</span><span class="m">1959</span> seconds<span class="o">)</span>
 ---------------------------------------------------------------------------
 + <span class="m">1</span> host<span class="o">(</span>s<span class="o">)</span> tested
 </pre></div>
 
 <p>There list had a few false positives, but two outstanding issues could be easily fixed.
 First the .htaccess file.</p>
-<div class="highlight"><pre><span class="c"># File: speaklikeabrazilian.vhost.conf</span>
-<span class="c"># From: https://www.nginx.com/resources/wiki/start/topics/recipes/dokuwiki/</span>
-<span class="c"># Block access to .htaccess files</span>
+<div class="highlight"><pre><span></span><span class="c1"># File: speaklikeabrazilian.vhost.conf</span>
+<span class="c1"># From: https://www.nginx.com/resources/wiki/start/topics/recipes/dokuwiki/</span>
+<span class="c1"># Block access to .htaccess files</span>
 location ~ /<span class="se">\.</span>ht <span class="o">{</span>
     deny  all<span class="p">;</span>
 <span class="o">}</span>
 </pre></div>
 
 <p>And the second one is to hide the PHP server signature.</p>
-<div class="highlight"><pre><span class="c"># File: php.ini</span>
-<span class="c"># From: http://www.techbrown.com/hide-server-signature-of-nginx-php-version-on-linux.shtml</span>
+<div class="highlight"><pre><span></span><span class="c1"># File: php.ini</span>
+<span class="c1"># From: http://www.techbrown.com/hide-server-signature-of-nginx-php-version-on-linux.shtml</span>
 <span class="nv">expose_php</span> <span class="o">=</span> Off
 </pre></div>
 
@@ -192,8 +185,8 @@ which can analyse the HTTP requests for possible bugs.</p>
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2016/04/07/simple-etl-with-talend-and-docker-for-a-laravel-website">Simple ETL with Talend and Docker for a Laravel website</a></h2>
@@ -370,8 +363,8 @@ databases. All it takes is just adjust the database connections and re-run the j
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2013/05/09/tupilabs-report-28-apr-04-may">TupiLabs Report: 28 Apr, 04 May</a></h2>
@@ -401,8 +394,8 @@ databases. All it takes is just adjust the database connections and re-run the j
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2013/04/30/tupilabs-report-14-apr-20-apr">TupiLabs Report: 14 Apr, 20 Apr</a></h2>
@@ -440,20 +433,13 @@ databases. All it takes is just adjust the database connections and re-run the j
     </section>
   </article>
 </div>
-                    
-                </section>
-                <hr class="ui divider" />
-                <div class="ui pagination menu">
-                    
-                    <a class="item" href="/tag/speak-like-a-brazilian/2"><i class='left arrow icon'></i> Previous Posts</a>
-                    
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-        
+    
+</section>
+<section>
+    
+    <div class="next"><a href="/tag/speak-like-a-brazilian/2">Previous Posts</a></div>
+</section>
+
         
         
 <div class="ui inverted vertical footer segment">

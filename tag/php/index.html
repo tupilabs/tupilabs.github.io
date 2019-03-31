@@ -45,20 +45,13 @@
         </div>
         
         
-        
 
-<div class="ui basic segment" id="blog">
-    <div class="ui stackable grid container">
-        <div class="row">
-            <div class="sixteen wide column">
-                <h1>Posts tagged with php</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="sixteen wide column">
-                <section>
-                    
-                    <div class="ui padded segment">
+
+<h2>Posts tagged with php</h2>
+
+<section>
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent">On using Laravel with the repository pattern and Eloquent</a></h2>
@@ -91,7 +84,7 @@ Eloquent classes.</p>
 and SQLite, kind like DAOs (and sometimes like repositories too). However, for Nestor being a test 
 management tool, we are trying to be platform and framework independent. Here&#8217;s the old repository code in 
 action: </p>
-<div class="highlight"><pre><span class="x">class DbProjectRepository implements ProjectRepository {</span>
+<div class="highlight"><pre><span></span><span class="x">class DbProjectRepository implements ProjectRepository {</span>
 
 <span class="x">    public function all()</span>
 <span class="x">    {</span>
@@ -106,7 +99,7 @@ action: </p>
 <p>As you can see, we were returning the result of the get() method from Eloquent. Another big mistake was 
 using these objects in the views. In the end we were not only using data layer elements in the wrong place, 
 but we also had many queries to render an UI. </p>
-<div class="highlight"><pre><span class="x">abstract class DbBaseRepository extends BaseRepository {</span>
+<div class="highlight"><pre><span></span><span class="x">abstract class DbBaseRepository extends BaseRepository {</span>
 
 <span class="x">    protected $model;</span>
 
@@ -133,8 +126,8 @@ views unchanged (hopefully :-). Neat, no?</p>
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2013/06/09/tupilabs-report-02-jun-08-jun">TupiLabs Report: 02 Jun, 08 Jun</a></h2>
@@ -161,8 +154,8 @@ views unchanged (hopefully :-). Neat, no?</p>
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2013/06/02/tupilabs-report-26-may-01-jun">TupiLabs Report: 26 May, 01 Jun</a></h2>
@@ -193,8 +186,8 @@ TupiLabs website.</li>
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2013/05/26/codeigniter-and-piecrust-integration">CodeIgniter and PieCrust integration</a></h2>
@@ -223,8 +216,8 @@ flexibility and modularity.</p>
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2013/05/26/escaping-twig-macros-in-geshi">Escaping Twig macros in Geshi</a></h2>
@@ -243,7 +236,7 @@ flexibility and modularity.</p>
 when using Geshi for syntax highlighting. Here&#8217;s the trick to escape it: 
 <em><a href="http://twig.sensiolabs.org/doc/tags/raw.html">raw</a></em>.</p>
 <p>The <em>raw</em> Twig tag prints the subsequent tags without interpreting it.</p>
-<div class="highlight"><pre><span class="cp">{%</span><span class="k">geshi</span> <span class="s1">&#39;twig&#39;</span><span class="cp">%}</span><span class="x"></span>
+<div class="highlight"><pre><span></span><span class="cp">{%</span><span class="k">geshi</span> <span class="s1">&#39;twig&#39;</span><span class="cp">%}</span><span class="x"></span>
 <span class="x">{ %raw%}</span><span class="cp">{%</span> <span class="k">macro</span> <span class="nv">button</span><span class="o">(..</span><span class="p">.</span><span class="o">)</span> <span class="cp">%}</span><span class="x">{ %endraw%}</span>
 <span class="x">&lt;p&gt;Some random HTML code...&lt;/p&gt;</span><span class="cp">{%</span> <span class="k">raw</span><span class="cp">%}{%</span> <span class="k">endmacro</span> <span class="cp">%}</span><span class="x">{ %endraw%}</span>
 <span class="cp">{%</span><span class="k">endgeshi</span><span class="cp">%}</span><span class="x"></span>
@@ -253,20 +246,13 @@ when using Geshi for syntax highlighting. Here&#8217;s the trick to escape it:
     </section>
   </article>
 </div>
-                    
-                </section>
-                <hr class="ui divider" />
-                <div class="ui pagination menu">
-                    
-                    <a class="item" href="/tag/php/2"><i class='left arrow icon'></i> Previous Posts</a>
-                    
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-        
+    
+</section>
+<section>
+    
+    <div class="next"><a href="/tag/php/2">Previous Posts</a></div>
+</section>
+
         
         
 <div class="ui inverted vertical footer segment">

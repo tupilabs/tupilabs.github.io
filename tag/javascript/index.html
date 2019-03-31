@@ -45,20 +45,13 @@
         </div>
         
         
-        
 
-<div class="ui basic segment" id="blog">
-    <div class="ui stackable grid container">
-        <div class="row">
-            <div class="sixteen wide column">
-                <h1>Posts tagged with javascript</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="sixteen wide column">
-                <section>
-                    
-                    <div class="ui padded segment">
+
+<h2>Posts tagged with javascript</h2>
+
+<section>
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2016/09/14/how-to-use-a-context-menu-with-fancytree">How to use a context menu with FancyTree</a></h2>
@@ -79,7 +72,7 @@
 <p><code>bower install --save ui-contextmenu=mar10/jquery-ui-contextmenu#84fb56c6760d1ebd8be3785cd6ff5b67c5c41453</code></p>
 <p>Where <em>84fb56c6760d1ebd8be3785cd6ff5b67c5c41453</em> is the commit hash for the latest tag, <em>v1.13.0</em>.</p>
 <p>Furthermore, as we also have RequireJS, we have to add the following entry under the <em>paths</em> entry.</p>
-<div class="highlight"><pre><span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
     <span class="s1">&#39;jquery-ui/menu&#39;</span><span class="o">:</span> <span class="s1">&#39;libs/jquery-ui/ui/widgets/menu&#39;</span>
 <span class="p">},</span>
 
@@ -107,7 +100,7 @@
 <p>Finally, jquery-ui/menu requires several other dependencies, that you can just add a map entry for RequireJS, and that&#8217;s it.</p>
 <h2>Creating the navigation tree</h2>
 <p>We are using FancyTree for the navigation tree, so the code may look a bit more complex than necessary, but if you abstract the logic for the Nestor QA application, you can see that it consists only of a <em>delegate</em> property, which is the CSS filter for elements that trigger the context menu; the menu items, and a select function invoked when you - as you correctly deduced - select a menu item.</p>
-<div class="highlight"><pre><span class="c1">// context menu</span>
+<div class="highlight"><pre><span></span><span class="c1">// context menu</span>
 <span class="nx">el</span><span class="p">.</span><span class="nx">contextmenu</span><span class="p">({</span>
     <span class="nx">delegate</span><span class="o">:</span> <span class="s2">&quot;.editable&quot;</span><span class="p">,</span>
     <span class="nx">menu</span><span class="o">:</span> <span class="p">[</span>
@@ -166,11 +159,11 @@
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
-      <h2><a href="/2013/03/16/fixing-xmlhttprequest-origin-is-not-allowed-by-access-control-allow-origin-in-php-and-codeigniter">Fixing &#8220;XMLHttpRequest Origin is not allowed by Access-Control-Allow-Origin&#8221; in PHP and CodeIgniter</a></h2>
+      <h2><a href="/2013/03/16/fixing-xmlhttprequest-origin-is-not-allowed-by-access-control-allow-origin-in-php-and-codeigniter">Fixing "XMLHttpRequest Origin is not allowed by Access-Control-Allow-Origin" in PHP and CodeIgniter</a></h2>
       <small>Mar 16, 2013
         
         in 
@@ -202,18 +195,13 @@
     </section>
   </article>
 </div>
-                    
-                </section>
-                <hr class="ui divider" />
-                <div class="ui pagination menu">
-                    
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-        
+    
+</section>
+<section>
+    
+    
+</section>
+
         
         
 <div class="ui inverted vertical footer segment">

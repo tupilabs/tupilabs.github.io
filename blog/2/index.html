@@ -45,19 +45,11 @@
         </div>
         
         
-        <div class="ui basic segment" id="blog">
-    <div class="ui stackable grid container">
-        <div class="row">
-            <div class="sixteen wide column">
-                <h1>Blog</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="sixteen wide column">
-                
-                <section>
-                    
-                    <div class="ui padded segment">
+<h2>Posts in blog</h2>
+
+<section>
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2014/08/11/on-using-laravel-with-the-repository-pattern-and-eloquent">On using Laravel with the repository pattern and Eloquent</a></h2>
@@ -90,7 +82,7 @@ Eloquent classes.</p>
 and SQLite, kind like DAOs (and sometimes like repositories too). However, for Nestor being a test 
 management tool, we are trying to be platform and framework independent. Here&#8217;s the old repository code in 
 action: </p>
-<div class="highlight"><pre><span class="x">class DbProjectRepository implements ProjectRepository {</span>
+<div class="highlight"><pre><span></span><span class="x">class DbProjectRepository implements ProjectRepository {</span>
 
 <span class="x">    public function all()</span>
 <span class="x">    {</span>
@@ -105,7 +97,7 @@ action: </p>
 <p>As you can see, we were returning the result of the get() method from Eloquent. Another big mistake was 
 using these objects in the views. In the end we were not only using data layer elements in the wrong place, 
 but we also had many queries to render an UI. </p>
-<div class="highlight"><pre><span class="x">abstract class DbBaseRepository extends BaseRepository {</span>
+<div class="highlight"><pre><span></span><span class="x">abstract class DbBaseRepository extends BaseRepository {</span>
 
 <span class="x">    protected $model;</span>
 
@@ -132,8 +124,8 @@ views unchanged (hopefully :-). Neat, no?</p>
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2014/06/15/continuation-passing-style">Continuation Passing Style</a></h2>
@@ -171,8 +163,8 @@ Workflow Plug-in.</p>
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2014/02/27/lablua-aceito-no-gsoc-2014">LabLua aceito no GSoC 2014</a></h2>
@@ -199,8 +191,8 @@ estudante e tem interesse em programar em Lua esta é uma ótima oportunidade.</
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2013/10/25/increasing-logging-level-in-tomcat-to-solve-org.apache.catalina.core.StandardContext%20listenerStart-error">Increasing logging level in Tomcat to solve org.apache.catalina.core.StandardContext listenerStart error</a></h2>
@@ -231,8 +223,8 @@ causing your application to fail.</p>
     </section>
   </article>
 </div>
-                    
-                    <div class="ui padded segment">
+    
+    <div class="ui padded segment">
   <article>
     <header>
       <h2><a href="/2013/10/23/evento-spin-sp-64-application-lifecycle">Evento SPIN SP - 64ª reunião - Tema central Application Lifecycle Management</a></h2>
@@ -264,23 +256,13 @@ já promover o <a href="http://www.meetup.com/jenkinsmeetup/events/133598002/">J
     </section>
   </article>
 </div>
-                    
-                </section>
-                <hr class="ui divider" />
-                <div class="ui pagination menu">
-                    
-                    <a class="item" href="/blog/3"><i class='left arrow icon'></i> Previous Posts</a>
-                    
-                    
-                    <a class="item" href="/blog"><i class='right arrow icon'></i> Next Posts</a>
-                    
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
+    
+</section>
+<section>
+    <div class="prev"><a href="/blog">Next Posts</a></div>
+    <div class="next"><a href="/blog/3">Previous Posts</a></div>
+</section>
+
         
         
 <div class="ui inverted vertical footer segment">
