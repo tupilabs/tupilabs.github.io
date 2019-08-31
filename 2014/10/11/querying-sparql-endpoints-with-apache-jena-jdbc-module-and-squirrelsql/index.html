@@ -62,7 +62,7 @@
 <div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
     <span class="k">WHERE</span> <span class="err">{</span>
         <span class="o">?</span><span class="n">s</span> <span class="o">?</span><span class="n">p</span> <span class="o">?</span><span class="n">o</span>
-<span class="err">}</span> 
+<span class="err">}</span>
 <span class="k">LIMIT</span> <span class="mi">10</span>
 </pre></div>
 
@@ -72,7 +72,7 @@
 <li><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.apache.jena%22%20AND%20a%3A%22jena-jdbc-driver-bundle%22">Jena JDBC</a></li>
 </ul>
 <h2>Configuring Squirrel SQL</h2>
-<p>You probably already have Squirrel SQL installed at this point. If not, download the jar and run <code>java -jar squirrel*.jar</code>. And you may have been tempted to check all the plug-ins during the installation. The problem is that the SQL Parametrisation plug-in will think that the <em>?s ?p ?o</em> are variables, and will keep popping a dialog for you to input values. </p>
+<p>You probably already have Squirrel SQL installed at this point. If not, download the jar and run <code>java -jar squirrel*.jar</code>. And you may have been tempted to check all the plug-ins during the installation. The problem is that the SQL Parametrisation plug-in will think that the <em>?s ?p ?o</em> are variables, and will keep popping a dialog for you to input values.</p>
 <p>So <strong>disable the SQL Parametrisation plug-in</strong> by going to Plugins / Summary and unchecking it.</p>
 <p>Copy the Jena JDBC bundle jar to $SQUIRREL_HOME/lib/, and go to the Drivers tab, probably on your left, and add a JDBC driver for Jena JDBC. Give it any name you like. As example URL you can use <em>jdbc:jena:remote:query=http://localhost:3030/ds/query&amp;update=http://localhost:3030/ds/update</em>. And the class name, for remote endpoints, is <strong>org.apache.jena.jdbc.remote.RemoteEndpointDriver</strong>.</p>
 <div class='row'>
@@ -81,7 +81,7 @@
 <a href="/2014/10/11/querying-sparql-endpoints-with-apache-jena-jdbc-module-and-squirrelsql/jenajdbc01.png" class="thumbnail" data-lightbox='post' data-title='Jena JDBC'>
 <img src="/2014/10/11/querying-sparql-endpoints-with-apache-jena-jdbc-module-and-squirrelsql/jenajdbc01.png" alt="Jena JDBC" />
 </a>
-<figcaption>Jena JDBC</i></figcaption>
+<figcaption>Jena JDBC</figcaption>
 </figure>
 </div>
 </div>
