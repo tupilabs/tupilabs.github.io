@@ -25,7 +25,7 @@ We will also need a SPARQL query. Let's use the following simple and intuitive q
 SELECT *
 	WHERE {
 		?s ?p ?o
-} 
+}
 LIMIT 10
 {% endgeshi %}
 
@@ -36,7 +36,7 @@ You will also need to download:
 
 ## Configuring Squirrel SQL
 
-You probably already have Squirrel SQL installed at this point. If not, download the jar and run <code>java -jar squirrel\*.jar</code>. And you may have been tempted to check all the plug-ins during the installation. The problem is that the SQL Parametrisation plug-in will think that the *?s ?p ?o* are variables, and will keep popping a dialog for you to input values. 
+You probably already have Squirrel SQL installed at this point. If not, download the jar and run <code>java -jar squirrel\*.jar</code>. And you may have been tempted to check all the plug-ins during the installation. The problem is that the SQL Parametrisation plug-in will think that the *?s ?p ?o* are variables, and will keep popping a dialog for you to input values.
 
 So **disable the SQL Parametrisation plug-in** by going to Plugins / Summary and unchecking it.
 
@@ -48,7 +48,7 @@ Copy the Jena JDBC bundle jar to $SQUIRREL_HOME/lib/, and go to the Drivers tab,
 <a href="{{assets.jenajdbc01}}" class="thumbnail" data-lightbox='post' data-title='Jena JDBC'>
 <img src="{{assets.jenajdbc01}}" alt="Jena JDBC" />
 </a>
-<figcaption>Jena JDBC</i></figcaption>
+<figcaption>Jena JDBC</figcaption>
 </figure>
 </div>
 </div>
