@@ -4,7 +4,7 @@
 
 .masthead.segment {
 	min-height: 700px;
-	padding: 1em 0em;
+	padding: 1em 0;
 }
 .masthead .logo.item img {
 	margin-right: 1em;
@@ -14,7 +14,7 @@
 }
 .masthead h1.ui.header {
 	margin-top: 3em;
-	margin-bottom: 0em;
+	margin-bottom: 0;
 	font-size: 4em;
 	font-weight: normal;
 }
@@ -24,7 +24,7 @@
 }
 
 .ui.vertical.stripe {
-	padding: 8em 0em;
+	padding: 8em 0;
 }
 .ui.vertical.stripe h3 {
 	font-size: 2em;
@@ -40,11 +40,11 @@
 	font-size: 1.33em;
 }
 .ui.vertical.stripe .horizontal.divider {
-	margin: 3em 0em;
+	margin: 3em 0;
 }
 
 .quote.stripe.segment {
-	padding: 0em;
+	padding: 0;
 }
 .quote.stripe.segment .grid .column {
 	padding-top: 5em;
@@ -52,7 +52,7 @@
 }
 
 .footer.segment {
-	padding: 5em 0em;
+	padding: 5em 0;
 }
 
 .secondary.pointing.menu .toc.item {
@@ -120,7 +120,7 @@
 }
 
 .highlight .hll { background-color: #ffffcc }
-.highlight  { background: #f8f8f8; padding: 0.2em 1.0em; margin: 1em 0em; }
+.highlight  { background: #f8f8f8; padding: 0.2em 1.0em; margin: 1em 0; }
 .highlight .c { color: #408080; font-style: italic } /* Comment */
 .highlight .err { border: 1px solid #FF0000 } /* Error */
 .highlight .k { color: #008000; font-weight: bold } /* Keyword */
