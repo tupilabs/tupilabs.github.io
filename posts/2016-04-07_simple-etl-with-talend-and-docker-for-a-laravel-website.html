@@ -87,7 +87,7 @@ so all it takes is start the containers with the following command:
 And then create the database structure with initial data.
 
     docker exec -ti speaklikeabraziliancom_front_1 /bin/bash
-    
+
     php artisan migrate:install
     php artisan migrate:refresh --seed
 
@@ -186,7 +186,7 @@ In our case, the database for Speak Like A Brazilian had a few columns removed. 
 were simply not mapped into the destination database. Running the job loaded the data, but excluding
 the old columns.
 
-There was also one column added with a defaul value, for which the tMap was also used.
+There was also one column added with a default value, for which the tMap was also used.
 
 You can play with Talend, use row filters and other components to do different data modifications,
 and also use other features such as job schedule or combine with other Talend tools.

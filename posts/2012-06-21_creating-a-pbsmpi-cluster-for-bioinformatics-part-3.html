@@ -2,7 +2,7 @@
 title: 'Creating a PBS/MPI cluster for bioinformatics – Part 3'
 id: 440
 author: kinow
-tags: 
+tags:
     - jenkins
     - bioinformatics
 time: '01:26:44'
@@ -13,7 +13,7 @@ layout: blog
 
 <h2>Installing Structure</h2>
 
-<p>Installing structure is very simple. Download the latest version from <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Pritchard Lab">Prichard Lab page</a>, decompress it and move the executables to a folder in your $PATH (or use symlinks). Here I'm using <code>/usr/local/bin</code>, but to keep things in order, I renamed the <em>console</em> folder (from structure_linux_console.tar.gz) to <em>structure-console-2.3.3</em>, because I like to know the tool and its version without having to browse it. Then I moved it under <code>/opt/biouno</code>, where I keep the executables used by the cluster. Finally, I created the symlink <code>/usr/local/bin/structure</code> that points to <code>/opt/biouno/structure-console-2.3.3/structure</code>.</p>
+<p>Installing structure is very simple. Download the latest version from <a href="http://pritch.bsd.uchicago.edu/structure.html" title="Pritchard Lab">Pritchard Lab page</a>, decompress it and move the executables to a folder in your $PATH (or use symlinks). Here I'm using <code>/usr/local/bin</code>, but to keep things in order, I renamed the <em>console</em> folder (from structure_linux_console.tar.gz) to <em>structure-console-2.3.3</em>, because I like to know the tool and its version without having to browse it. Then I moved it under <code>/opt/biouno</code>, where I keep the executables used by the cluster. Finally, I created the symlink <code>/usr/local/bin/structure</code> that points to <code>/opt/biouno/structure-console-2.3.3/structure</code>.</p>
 
 <!--more-->
 

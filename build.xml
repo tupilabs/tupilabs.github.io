@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ====================================================================== 
-     May 15, 2013 21:20:00 PM                                                        
+<!-- ======================================================================
+     May 15, 2013 21:20:00 PM
 
      TupiLabs.com
      ====================================================================== -->
@@ -10,8 +10,8 @@
         TupiLabs.com
     </description>
 
-    <!-- ================================= 
-          target: usage              
+    <!-- =================================
+          target: usage
          ================================= -->
     <target name="usage" description="Prints build usage">
         <echo message="clean: removes dist directory and its contents" />
@@ -21,21 +21,21 @@
         <echo message="usage: prints this help menu" />
     </target>
 
-    <!-- ================================= 
-          target: clean              
+    <!-- =================================
+          target: clean
          ================================= -->
     <target name="clean" description="Cleans dist directory">
-        <echo message="Cleaninig counter..." />
+        <echo message="Cleaning counter..." />
         <delete dir="${basedir}/_counter" failonerror="false" />
         <echo message="Cleaning cache..." />
         <delete dir="${basedir}/_cache" failonerror="false" />
     </target>
 
-    <!-- ================================= 
-          target: blog              
+    <!-- =================================
+          target: blog
          ================================= -->
     <target name="blog" depends="clean" description="Create static blog">
-        <!-- executes piecrust/bin/chef reading from the site directory 
+        <!-- executes piecrust/bin/chef reading from the site directory
              and writing to blog. The blog directory is not versioned.  -->
         <exec append="true" executable="chef">
             <arg value="bake" />
@@ -43,8 +43,8 @@
         </exec>
     </target>
 
-    <!-- ================================= 
-          target: blog-run              
+    <!-- =================================
+          target: blog-run
          ================================= -->
     <target name="blog-run" depends="clean" description="Runs static blog and watch for modifications">
         <!-- 8080 is the default port -->
@@ -53,8 +53,8 @@
         </exec>
     </target>
 
-    <!-- ================================= 
-          target: deploy              
+    <!-- =================================
+          target: deploy
          ================================= -->
     <target name="deploy" depends="blog" description="Deploys via SSH to the server">
         <input message="Please enter SSH user:" addproperty="ssh.username" />
