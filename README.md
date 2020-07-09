@@ -1,6 +1,6 @@
 # TupiLabs.com
 
-TupiLabs web site. Generated as static site, through [PieCrust](https://bolt80.com/piecrust).
+TupiLabs website. Generated as static site, through [PieCrust](https://bolt80.com/piecrust).
 
 ## Requirements
 
