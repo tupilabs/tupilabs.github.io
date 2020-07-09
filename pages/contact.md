@@ -12,7 +12,7 @@ time: '02:41:06'
         <ul>
           <li><a href="http://www.twitter.com/tupilabs">http://www.twitter.com/tupilabs</a></li>
           <li><a href="http://www.facebook.com/tupilabs">http://www.facebook.com/tupilabs</a></li>
-          <li><a href="http://www.github.com/tupilabs">http://www.github.com/tupilabs</a></li
+          <li><a href="http://www.github.com/tupilabs">http://www.github.com/tupilabs</a></li>
         </ul>
       </div>
     </div>
