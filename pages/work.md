@@ -104,6 +104,16 @@ format: html
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">HumanNameParser.java</div>
+                            <div class="meta">Open Source Project</div>
+                            <div class="description">
+                                <p>A Java port of an existing PHP parser for human names.</p>
+                                <p><a href="https://github.com/tupilabs/HumanNameParser.java">Project Link</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <h2>In the Lab</h2>
                 <div class="ui cards">
