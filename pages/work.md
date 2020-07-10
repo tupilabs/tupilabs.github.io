@@ -114,6 +114,16 @@ format: html
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="content">
+                            <div class="header">vue-lumino</div>
+                            <div class="meta">Open Source Project</div>
+                            <div class="description">
+                                <p>A component to use Vue.js with Jupyter Lumino (PhosphorJS), integrating DOM & VDOM through event listeners and Vue reactivity system.</p>
+                                <p><a href="https://github.com/tupilabs/vue-lumino">Project Link</a></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <h2>In the Lab</h2>
                 <div class="ui cards">
